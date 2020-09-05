@@ -3,7 +3,7 @@ import React from 'react';
 //import render method
 import { render } from 'react-dom';
 //import app component
-import App from './App';
+import { App } from './components/App';
 //import service worker
 import * as serviceWorker from './serviceWorker';
 
