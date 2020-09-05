@@ -2,16 +2,25 @@
 import React from 'react';
 //import render method
 import { render } from 'react-dom';
+//import hashRouter
+import { HashRouter as Router } from 'react-router-dom';
+//import context provider
+import { ContextProvider } from './utils/Contex';
 //import app component
 import { App } from './components/App';
 //import service worker
 import * as serviceWorker from './serviceWorker';
 
+//create root const
+const root = document.getElementById('root');
+
 render(
-	<React.StrictMode>
-		<App />
-	</React.StrictMode>,
-	document.getElementById('root'),
+	<ContextProvider>
+		<Router>
+			<App />
+		</Router>
+	</ContextProvider>,
+	root,
 );
 
 // If you want your app to work offline and load faster, you can change
