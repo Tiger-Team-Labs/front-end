@@ -1,6 +1,6 @@
 //import react
 import React from 'react';
-import { FormControl } from '@material-ui/core';
+import { FormControl, FormControlLabel } from '@material-ui/core';
 
 //create and export register component
 export const Register = () => {
