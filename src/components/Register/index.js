@@ -51,9 +51,10 @@ export const Register = () => {
 					<div className={classes.paper}>
 						{/*Form styled component*/}
 						<FormGroup>
+							{/*Inputs*/}
 							<Input
+								autoFocus={true}
 								placeholder='Name'
-								variant='filled'
 								className={classes.input}
 							/>
 							<Input placeholder='Email' className={classes.input} />

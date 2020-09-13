@@ -9,7 +9,7 @@ export const useStyles = makeStyles((theme) => ({
 		justifyContent: 'center',
 	},
 	paper: {
-		backgroundColor: theme.palette.background.paper,
+		backgroundImage: 'linear-gradient(to top, #ebbba7 0%, #cfc7f8 100%);',
 		border: '.2rem solid #000',
 		boxShadow: theme.shadows[5],
 		padding: '2rem 6rem',
@@ -18,6 +18,7 @@ export const useStyles = makeStyles((theme) => ({
 	input: {
 		fontSize: '2rem !important',
 		margin: '1rem 0',
+		color: 'white !important',
 	},
 	button: {
 		marginTop: '1rem !important',
