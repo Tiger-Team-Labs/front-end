@@ -9,7 +9,9 @@ import { ContextProvider } from './utils/Contex';
 //import app component
 import { App } from './components/App';
 //import service worker
-import * as serviceWorker from './serviceWorker';
+import * as serviceWorker from './utils/serviceWorker';
+//import global styles
+import './GlobalStyles.css';
 
 //create root const
 const root = document.getElementById('root');
