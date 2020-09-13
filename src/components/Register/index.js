@@ -3,7 +3,14 @@ import React from 'react';
 //import custom styles
 import { useStyles } from './styles';
 //import material ui components
-import { Button, Modal, Backdrop, Fade } from '@material-ui/core';
+import {
+	Button,
+	Modal,
+	Backdrop,
+	Fade,
+	FormGroup,
+	TextField,
+} from '@material-ui/core';
 
 //create and export register component
 export const Register = () => {
@@ -39,7 +46,7 @@ export const Register = () => {
 				}}>
 				<Fade in={open}>
 					<div className={classes.paper}>
-						<h1>I'm the modal</h1>
+						<FormGroup></FormGroup>
 					</div>
 				</Fade>
 			</Modal>
