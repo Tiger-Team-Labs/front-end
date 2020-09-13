@@ -3,9 +3,14 @@ import React from 'react';
 //import custom styles
 import { useStyles } from './styles';
 //import material ui components
-import { Button, Modal, Backdrop, Fade, Input } from '@material-ui/core';
-//import styled components
-import { Form } from './styles';
+import {
+	Button,
+	Modal,
+	Backdrop,
+	Fade,
+	Input,
+	FormGroup,
+} from '@material-ui/core';
 
 //create and export register component
 export const Register = () => {
@@ -29,7 +34,7 @@ export const Register = () => {
 		<>
 			{/*Button to display the modal*/}
 			<Button type='button' onClick={handleOpen}>
-				react-transition-group
+				Sign Up
 			</Button>
 			{/*Modal component*/}
 			<Modal
@@ -45,7 +50,7 @@ export const Register = () => {
 				<Fade in={true}>
 					<div className={classes.paper}>
 						{/*Form styled component*/}
-						<Form>
+						<FormGroup>
 							<Input
 								placeholder='Name'
 								variant='filled'
@@ -57,7 +62,13 @@ export const Register = () => {
 								className={classes.input}
 								type='password'
 							/>
-						</Form>
+							<Button
+								className={classes.button}
+								variant='outlined'
+								color='primary'>
+								Sign Up
+							</Button>
+						</FormGroup>
 					</div>
 				</Fade>
 			</Modal>
