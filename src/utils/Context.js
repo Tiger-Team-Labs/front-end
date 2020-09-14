@@ -6,8 +6,12 @@ export const Context = React.createContext();
 //create functional component for context provider and export it
 export const ContextProvider = ({ children }) => {
 	//use state
-	const [user, setUser] = useState({ name: '', email: '', password: '' });
-	const [login, setLogin] = useState({ email: '', password: '' });
+	const [user, setUser] = useState({
+		name: undefined,
+		email: undefined,
+		password: undefined,
+	});
+	const [login, setLogin] = useState({ email: undefined, password: undefined });
 
 	console.dir(user);
 

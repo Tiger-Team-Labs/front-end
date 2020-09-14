@@ -1,19 +1,22 @@
 //import react
-import React from 'react';
+import React, { useContext } from 'react';
 //import register component
 import { Register } from '../Register';
 //import Login Component
 import { Login } from '../Login';
 //import Avatar Component
 import { Avatar } from '../Avatar';
+//import the app context
+import { Context } from '../../utils/Context';
 
 //create and export App component
 export const App = () => {
+	const { user } = useContext(Context);
 	return (
 		<>
 			<Register />
 			<Login />
-			<Avatar />
+			{user.name !== undefined && <Avatar />}
 		</>
 	);
 };
