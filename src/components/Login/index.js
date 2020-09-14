@@ -19,5 +19,15 @@ export const Login = () => {
 	//use state hook
 	const [open, setOpen] = React.useState(false);
 
+	//const to handle the open of the modal
+	const handleOpen = () => {
+		setOpen(true);
+	};
+
+	//const to handle the close of the modal
+	const handleClose = () => {
+		setOpen(false);
+	};
+
 	return <>hey there</>;
 };
