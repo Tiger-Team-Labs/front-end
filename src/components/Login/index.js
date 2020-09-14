@@ -14,5 +14,10 @@ import {
 
 //create and export login component
 export const Login = () => {
+	//use custom hooks from material ui
+	const classes = useStyles();
+	//use state hook
+	const [open, setOpen] = React.useState(false);
+
 	return <>hey there</>;
 };
