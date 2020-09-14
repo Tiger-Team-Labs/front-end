@@ -18,6 +18,8 @@ export const Login = () => {
 	const classes = useStyles();
 	//use state hook
 	const [open, setOpen] = useState(false);
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
 
 	//const to handle the open of the modal
 	const handleOpen = () => {
@@ -27,6 +29,15 @@ export const Login = () => {
 	//const to handle the close of the modal
 	const handleClose = () => {
 		setOpen(false);
+	};
+
+	//handle the click event
+	const handleOnClick = () => {
+		//close the modal
+		handleClose();
+		//reset local state
+		setEmail('');
+		setPassword('');
 	};
 
 	return (
@@ -50,21 +61,26 @@ export const Login = () => {
 					<div className={classes.paper}>
 						{/*Form styled component*/}
 						<FormGroup>
-							{/*Inputs*/}
+							{/*Inputs (control it)*/}
 							<Input
 								autoFocus={true}
 								placeholder='Email'
 								className={classes.input}
+								value={email}
+								onChange={(e) => setEmail(e.target.value)}
 							/>
 							<Input
 								placeholder='Password'
 								className={classes.input}
 								type='password'
+								value={password}
+								onChange={(e) => setPassword(e.target.value)}
 							/>
 							<Button
 								className={classes.button}
 								variant='outlined'
-								color='primary'>
+								color='primary'
+								onClick={handleOnClick}>
 								Sign in
 							</Button>
 						</FormGroup>

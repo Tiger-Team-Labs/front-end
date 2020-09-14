@@ -1,5 +1,5 @@
 //import react
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 //import custom styles
 import { useStyles } from './styles';
 //import material ui components
@@ -11,6 +11,8 @@ import {
 	Input,
 	FormGroup,
 } from '@material-ui/core';
+//import context
+import { Context } from '../../utils/Contex';
 
 //create and export register component
 export const Register = () => {
@@ -18,9 +20,12 @@ export const Register = () => {
 	const classes = useStyles();
 	//use state hook
 	const [open, setOpen] = useState(false);
-	const [name, setName] = useState(null);
-	const [email, setEmail] = useState(null);
-	const [password, setPassword] = useState(null);
+	const [name, setName] = useState('');
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
+
+	//use context hooks
+	const setUser = useContext(Context);
 
 	//const to handle the open of the modal
 	const handleOpen = () => {
@@ -30,6 +35,22 @@ export const Register = () => {
 	//const to handle the close of the modal
 	const handleClose = () => {
 		setOpen(false);
+	};
+
+	//handle the click event
+	const handleOnClick = () => {
+		//set new user
+		setUser({
+			name: name,
+			email: email,
+			password: password,
+		});
+		//close the modal
+		handleClose();
+		//reset local state
+		setEmail('');
+		setName('');
+		setPassword('');
 	};
 
 	return (
@@ -75,10 +96,12 @@ export const Register = () => {
 								className={classes.input}
 								type='password'
 							/>
+							{/*Button and on click event display new user*/}
 							<Button
 								className={classes.button}
 								variant='outlined'
-								color='primary'>
+								color='primary'
+								onClick={handleOnClick}>
 								Sign Up
 							</Button>
 						</FormGroup>
