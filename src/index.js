@@ -6,10 +6,9 @@ import { render } from 'react-dom';
 import { HashRouter as Router } from 'react-router-dom';
 //import context provider
 import { ContextProvider } from './utils/Contex';
-//import app component
-import { App } from './components/App';
-//import service worker
-import * as serviceWorker from './serviceWorker';
+//import register component
+import Form from './components/Register/index'
+
 
 //create root const
 const root = document.getElementById('root');
@@ -17,11 +16,11 @@ const root = document.getElementById('root');
 render(
 	<ContextProvider>
 		<Router>
-			<App />
+			<Form />
 		</Router>
 	</ContextProvider>,
 	root,
 );
 
-//start the service worker
-serviceWorker.unregister();
+// //start the service worker
+// serviceWorker.unregister();
