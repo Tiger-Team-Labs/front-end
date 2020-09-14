@@ -24,7 +24,7 @@ export const Login = () => {
 	const [password, setPassword] = useState('');
 
 	//use context hooks
-	const setLogin = useContext(Context);
+	const { setLogin } = useContext(Context);
 
 	//const to handle the open of the modal
 	const handleOpen = () => {

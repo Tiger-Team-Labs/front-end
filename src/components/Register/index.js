@@ -25,7 +25,7 @@ export const Register = () => {
 	const [password, setPassword] = useState('');
 
 	//use context hooks
-	const setUser = useContext(Context);
+	const { setUser } = useContext(Context);
 
 	//const to handle the open of the modal
 	const handleOpen = () => {
