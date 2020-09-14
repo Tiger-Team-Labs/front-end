@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Form() {
 
   const [form, setForm] = React.useState( {
+    // inicializando valores
     firstName: '',
     lastName: '',
     email: '',
@@ -37,11 +38,9 @@ export default function Form() {
 
   // no logro hacer que se guarden los valores
   const handleChange = e => {
-    setForm(
-      {
-        ...form,
-        [e.target.name]:  e.target.value,
-    });
+    const newForm = [...form, {[e.target.name]:  e.target.value,}]
+    setForm(newForm)
+    
   } 
   
 
