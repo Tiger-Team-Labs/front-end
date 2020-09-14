@@ -12,10 +12,7 @@ import {
 	FormGroup,
 } from '@material-ui/core';
 
-
 //create and export login component
 export const Login = () => {
-	return (
-
-	)
+	return <>hey there</>;
 };
