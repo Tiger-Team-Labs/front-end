@@ -1,8 +1,12 @@
 //import react
 import React from 'react';
+// import MakeStyle to make ours styles
 import { makeStyles } from '@material-ui/core/styles';
+// import textField to form
 import TextField from '@material-ui/core/TextField';
-import { FormControl, InputAdornment } from '@material-ui/core';
+// import formaControl an other componen from core
+import { FormControl, } from '@material-ui/core';
+// import icons
 import {AccountCircle} from '@material-ui/icons/AccountCircle';
 
 const useStyles = makeStyles((theme) => ({
@@ -16,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Form() {
   const classes = useStyles();
+  // aun no he guardado los valores 
   const [name, setName] = React.useState('');
 
   const handleChange = (event) => {
@@ -23,17 +28,14 @@ export default function Form() {
   }
   return (
     <div>
+      {/* aquí no sé porque no sirve formcontrol, lo que quería es que quedara en un solo div pero se va pa todas partes */}
       <FormControl>
+        {/* con form me parecio más cómodo trabajar que con InputLabel e InputAdornment */}
         <form 
         className={classes.root} 
         noValidate autoComplete="off">
         <TextField
           required
-          startAdornment={
-            <InputAdornment position="start">
-              <AccountCircle />
-            </InputAdornment>
-          }
           id="name"
           label="Name"
           variant="outlined"
