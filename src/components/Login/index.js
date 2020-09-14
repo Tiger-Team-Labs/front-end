@@ -1,5 +1,5 @@
 //import react
-import React from 'react';
+import React, { useState } from 'react';
 //import custom styles
 import { useStyles } from './styles';
 //import material ui components
@@ -17,7 +17,7 @@ export const Login = () => {
 	//use custom hooks from material ui
 	const classes = useStyles();
 	//use state hook
-	const [open, setOpen] = React.useState(false);
+	const [open, setOpen] = useState(false);
 
 	//const to handle the open of the modal
 	const handleOpen = () => {
