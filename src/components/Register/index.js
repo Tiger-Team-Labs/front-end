@@ -23,6 +23,14 @@ export default function Form() {
   // aun no he guardado los valores 
   const [name, setName] = React.useState('');
 
+  state = {};
+
+  handleChange = e => {
+    console.log({
+      name: e.target.name,
+      value: e.target.value,
+    });
+
   const handleChange = (event) => {
     setName(event.target.value);
     
@@ -42,6 +50,7 @@ export default function Form() {
           label="Name"
           variant="outlined"
           color="primary"
+          onChange={handleChange}
         />
         <TextField
           id="lastName"
