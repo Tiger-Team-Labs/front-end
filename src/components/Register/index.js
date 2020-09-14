@@ -39,7 +39,7 @@ export const Register = () => {
 			{/*Modal component*/}
 			<Modal
 				className={classes.modal}
-				open={true}
+				open={open}
 				onClose={handleClose}
 				closeAfterTransition
 				BackdropComponent={Backdrop}
@@ -47,7 +47,7 @@ export const Register = () => {
 					timeout: 500,
 				}}>
 				{/*Fade animation for the modals*/}
-				<Fade in={true}>
+				<Fade in={open}>
 					<div className={classes.paper}>
 						{/*Form styled component*/}
 						<FormGroup>
