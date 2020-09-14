@@ -18,7 +18,7 @@ const root = document.getElementById('root');
 render(
 	<ContextProvider>
 		<Router>
-			<Login />
+			<Form />
 		</Router>
 	</ContextProvider>,
 	root,
