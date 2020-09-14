@@ -7,10 +7,13 @@ export const Context = React.createContext();
 export const ContextProvider = ({ children }) => {
 	//use state
 	const [user, setUser] = useState(null);
+	const [login, setLogin] = useState(null);
 
 	console.dir(user);
 
 	return (
-		<Context.Provider value={(user, setUser)}>{children}</Context.Provider>
+		<Context.Provider value={(user, setUser, setLogin)}>
+			{children}
+		</Context.Provider>
 	);
 };

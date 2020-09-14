@@ -1,5 +1,5 @@
 //import react
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 //import custom styles
 import { useStyles } from './styles';
 //import material ui components
@@ -11,6 +11,8 @@ import {
 	Input,
 	FormGroup,
 } from '@material-ui/core';
+//import context
+import { Context } from '../../utils/Context';
 
 //create and export login component
 export const Login = () => {
@@ -20,6 +22,9 @@ export const Login = () => {
 	const [open, setOpen] = useState(false);
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+
+	//use context hooks
+	const setLogin = useContext(Context);
 
 	//const to handle the open of the modal
 	const handleOpen = () => {
@@ -33,6 +38,8 @@ export const Login = () => {
 
 	//handle the click event
 	const handleOnClick = () => {
+		//set the login
+		setLogin({ email: email, password: password });
 		//close the modal
 		handleClose();
 		//reset local state

@@ -5,7 +5,7 @@ import { render } from 'react-dom';
 //import hashRouter
 import { HashRouter as Router } from 'react-router-dom';
 //import context provider
-import { ContextProvider } from './utils/Contex';
+import { ContextProvider } from './utils/Context';
 //import app component
 import { App } from './components/App';
 //import service worker

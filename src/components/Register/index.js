@@ -12,7 +12,7 @@ import {
 	FormGroup,
 } from '@material-ui/core';
 //import context
-import { Context } from '../../utils/Contex';
+import { Context } from '../../utils/Context';
 
 //create and export register component
 export const Register = () => {
