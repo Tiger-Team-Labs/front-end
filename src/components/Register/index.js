@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 // import textField to form
 import TextField from '@material-ui/core/TextField';
 // import formaControl an other componen from core
-import { FormControl, } from '@material-ui/core';
+import { FormControl, Button } from '@material-ui/core';
 // import icons
 import {AccountCircle} from '@material-ui/icons/AccountCircle';
 
@@ -25,6 +25,8 @@ export default function Form() {
 
   const handleChange = (event) => {
     setName(event.target.value);
+    
+    console.log('Se envio el formulario');
   }
   return (
     <div>
@@ -66,6 +68,9 @@ export default function Form() {
           variant="outlined"
           autoComplete="current-password"
         />
+        <Button variant="contained" color="secondary" onClick={handleChange}>
+          Send
+        </Button>
         </form>
       </FormControl>
     </div>
