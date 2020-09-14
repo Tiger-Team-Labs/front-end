@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 // import formaControl an other componen from core
 import {  Button } from '@material-ui/core';
+import { useState } from 'react';
 // import icons
 // import {AccountCircle} from '@material-ui/icons/AccountCircle';
 
@@ -22,14 +23,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Form() {
 
-  const [form, setForm] = React.useState( {
-    // inicializando valores
-    firstName: '',
-    lastName: '',
-    email: '',
-    nickName: '',
-    password: '',
-  });
+  const [name, setName] = useState('');
+  const [lastName, setLastName] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,8 +33,9 @@ export default function Form() {
 
   // no logro hacer que se guarden los valores
   const handleChange = e => {
-    const newForm = [...form, {[e.target.name]:  e.target.value,}]
-    setForm(newForm)
+    // aqui estoy haciendo una prueba para guardar los nuevos valores
+    // const newForm = [...form, {[e.target.name]:  e.target.value,}]
+    // setName(name)
     
   } 
   
@@ -59,14 +55,16 @@ export default function Form() {
           variant="outlined"
           color="primary"
           type="text"
-          value={form.firstName}
-          onChange={handleChange}
+          value={name}
+          onChange={e=> setName(e.target.value)}
         />
         <TextField
           id="lastName"
           label="Last Name"
           variant="outlined"
           color="primary"
+          value={lastName}
+          onChange={e=> setLastName(e.target.value)}
           
         />
         <TextField
