@@ -29,5 +29,44 @@ export const Login = () => {
 		setOpen(false);
 	};
 
-	return <>hey there</>;
+	return (
+		<>
+			{/*Button to display the modal*/}
+			<Button type='button' onClick={handleOpen}>
+				Sign In
+			</Button>
+			{/*Modal component*/}
+			<Modal
+				className={classes.modal}
+				open={open}
+				onClose={handleClose}
+				closeAfterTransition
+				BackdropComponent={Backdrop}
+				BackdropProps={{
+					timeout: 500,
+				}}>
+				{/*Fade animation for the modals*/}
+				<Fade in={open}>
+					<div className={classes.paper}>
+						{/*Form styled component*/}
+						<FormGroup>
+							{/*Inputs*/}
+							<Input placeholder='Email' className={classes.input} />
+							<Input
+								placeholder='Password'
+								className={classes.input}
+								type='password'
+							/>
+							<Button
+								className={classes.button}
+								variant='outlined'
+								color='primary'>
+								Sign in
+							</Button>
+						</FormGroup>
+					</div>
+				</Fade>
+			</Modal>
+		</>
+	);
 };
