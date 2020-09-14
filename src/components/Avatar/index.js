@@ -4,6 +4,6 @@ import React from 'react';
 import { Avatar as AvatarImage } from '@material-ui/core';
 
 //create and export Avatar component
-export const Avatar = () => {
-	return <h1>I'm the avatar</h1>;
+export const Avatar = ({ name }) => {
+	return <AvatarImage alt={name} src='/static/images/avatar/1.jpg' />;
 };
