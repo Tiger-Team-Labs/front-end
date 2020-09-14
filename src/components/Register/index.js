@@ -30,29 +30,22 @@ export default function Form() {
     password: '',
   });
 
-const handleChange = e => {
-    // const nextForm = this.state.form;
-    // nextForm[e.target.name] =  e.target.value;
-
-    this.setState({
-        form: {
-            ...this.state.form,
-            [e.target.name]:  e.target.value,
-        },
-    });
-}
-  
-  const classes = useStyles();
-  // aun no he guardado los valores 
-  const [name, setName] = React.useState('');
-  
-
-  
-  const handleSubmit= (e) =>{
-    const { firstName, lastName, userName, email, password, } = this.state;
+  const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(e.target.value);
   }
 
+  // no logro hacer que se guarden los valores
+  const handleChange = e => {
+    setForm(
+      {
+        ...form,
+        [e.target.name]:  e.target.value,
+    });
+  } 
+  
+
+  const classes = useStyles();
 
   return (
     <div>
@@ -66,7 +59,9 @@ const handleChange = e => {
           label="Name"
           variant="outlined"
           color="primary"
-        
+          type="text"
+          value={form.firstName}
+          onChange={handleChange}
         />
         <TextField
           id="lastName"

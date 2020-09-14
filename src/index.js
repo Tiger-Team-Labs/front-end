@@ -9,7 +9,7 @@ import { ContextProvider } from './utils/Contex';
 //import register component
 import Form from './components/Register/index'
 //import login component
-import Login from './components/Login/index'
+// import Login from './components/Login/index'
 
 
 //create root const
