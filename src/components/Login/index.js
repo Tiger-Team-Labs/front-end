@@ -51,7 +51,11 @@ export const Login = () => {
 						{/*Form styled component*/}
 						<FormGroup>
 							{/*Inputs*/}
-							<Input placeholder='Email' className={classes.input} />
+							<Input
+								autoFocus={true}
+								placeholder='Email'
+								className={classes.input}
+							/>
 							<Input
 								placeholder='Password'
 								className={classes.input}
