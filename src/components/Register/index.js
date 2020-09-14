@@ -59,9 +59,18 @@ export const Register = () => {
 								autoFocus={true}
 								placeholder='Name'
 								className={classes.input}
+								value={name}
+								onChange={(e) => setName(e.target.value)}
 							/>
-							<Input placeholder='Email' className={classes.input} />
 							<Input
+								value={email}
+								onChange={(e) => setEmail(e.target.value)}
+								placeholder='Email'
+								className={classes.input}
+							/>
+							<Input
+								value={password}
+								onChange={(e) => setPassword(e.target.value)}
 								placeholder='Password'
 								className={classes.input}
 								type='password'
