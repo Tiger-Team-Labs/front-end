@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "video-game-foro",
   "version": "0.1.0",
   "private": true,
@@ -35,4 +36,24 @@
       "last 1 safari version"
     ]
   }
+=======
+  "name": "front-end",
+  "version": "1.0.0",
+  "description": "The front-end off the forum",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tiger-Team-Labs/front-end.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tiger-Team-Labs/front-end/issues"
+  },
+  "homepage": "https://github.com/Tiger-Team-Labs/front-end#readme",
+  "keywords": []
+>>>>>>> 5c7d8bab7f53cdb2063c1e9e97acb49f91007366
 }
