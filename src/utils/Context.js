@@ -13,8 +13,6 @@ export const ContextProvider = ({ children }) => {
 	});
 	const [login, setLogin] = useState({ email: undefined, password: undefined });
 
-	console.dir(user);
-
 	return (
 		<Context.Provider value={{ user, setUser, setLogin }}>
 			{children}
