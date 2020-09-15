@@ -7,7 +7,7 @@ import { Register } from '../Register';
 //import Logo
 import { Logo } from '../Logo';
 //import styled component
-import { Header as HeaderContent, Buttons } from './styles';
+import { Header as HeaderContent, Buttons, AvatarContainer } from './styles';
 //import avatar
 import { Avatar } from '../Avatar';
 //import the app context
@@ -21,9 +21,9 @@ export const Header = () => {
 		<HeaderContent>
 			<Logo />
 			{user.name !== undefined ? (
-				<>
+				<AvatarContainer>
 					<Avatar />
-				</>
+				</AvatarContainer>
 			) : (
 				<Buttons>
 					<Register />

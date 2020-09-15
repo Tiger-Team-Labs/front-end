@@ -12,3 +12,9 @@ export const Header = styled.header`
 export const Buttons = styled.div`
 	margin-right: 2rem;
 `;
+
+//Avatar container
+export const AvatarContainer = styled.div`
+	margin-right: 2rem;
+	padding: 1rem;
+`;
