@@ -20,12 +20,11 @@ export const Register = () => {
 	const classes = useStyles();
 	//use state hook
 	const [open, setOpen] = useState(false);
-	const [name, setName] = useState('');
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
 
 	//use context hooks
-	const { setUser } = useContext(Context);
+	const { name, setName, email, setEmail, password, setPassword } = useContext(
+		Context,
+	);
 
 	//const to handle the open of the modal
 	const handleOpen = () => {
@@ -40,11 +39,9 @@ export const Register = () => {
 	//handle the click event
 	const handleOnClick = () => {
 		//set new user
-		setUser({
-			name: name,
-			email: email,
-			password: password,
-		});
+		setName(name);
+		setEmail(email);
+		setPassword(password);
 		//close the modal
 		handleClose();
 		//reset local state

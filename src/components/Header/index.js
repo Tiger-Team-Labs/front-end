@@ -20,7 +20,7 @@ export const Header = () => {
 	return (
 		<HeaderContent>
 			<Logo />
-			{user.name !== undefined ? (
+			{user !== undefined ? (
 				<AvatarContainer>
 					<Avatar />
 				</AvatarContainer>
