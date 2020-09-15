@@ -36,15 +36,20 @@ export default function Form() {
     setValues({...values,[event.target.name]: event.target.value})
   }
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setSubmitted(true);
+  }
+
   const classes = useStyles();
 
   return (
     <div>
       <form 
         className={classes.root} 
-        noValidate autoComplete="off"
+        onSubmit={handleSubmit}
         >
-        <p>Aquí vendrá Alert success Messenge</p>
+        {submitted ? <p>Aquí vendrá Alert success Messenge</p> : null }
         <TextField
           required
           id="firstName"
@@ -75,6 +80,7 @@ export default function Form() {
           onChange={handleChange}
         />
         <TextField
+          required
           id="email"
           label="Email"
           variant="outlined"
@@ -84,6 +90,7 @@ export default function Form() {
           onChange={handleChange}
         />
         <TextField
+          required
           id="password"
           label="Password"
           type="password"
@@ -93,7 +100,7 @@ export default function Form() {
           value={values.password}
           onChange={handleChange}
         />
-        <Button variant="contained" color="secondary" >
+        <Button variant="contained" color="secondary" type="submit" >
           Send
         </Button>
         </form>
