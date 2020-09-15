@@ -1,5 +1,5 @@
 //import React
-import React from 'react';
+import React, { useContext } from 'react';
 //import Login
 import { Login } from '../Login';
 //import Register
@@ -10,14 +10,26 @@ import { Logo } from '../Logo';
 import { Header as HeaderContent } from './styles';
 //import avatar
 import { Avatar } from '../Avatar';
+//import the app context
+import { Context } from '../../utils/Context';
 
 //create and export header component
 export const Header = () => {
+	//use context
+	const { user } = useContext(Context);
 	return (
 		<HeaderContent>
 			<Logo />
-			<Register />
-			<Login />
+			{user.name !== undefined ? (
+				<>
+					<Avatar />
+				</>
+			) : (
+				<>
+					<Register />
+					<Login />
+				</>
+			)}
 		</HeaderContent>
 	);
 };
