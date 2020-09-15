@@ -7,8 +7,7 @@ import TextField from '@material-ui/core/TextField';
 // import formaControl an other componen from core
 import {  Button } from '@material-ui/core';
 import { useState } from 'react';
-// import icons
-// import {AccountCircle} from '@material-ui/icons/AccountCircle';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,22 +22,17 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Form() {
 
-  const [name, setName] = useState('');
-  const [lastName, setLastName] = useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(e.target.value);
-  }
-
-  // no logro hacer que se guarden los valores
-  const handleChange = e => {
-    // aqui estoy haciendo una prueba para guardar los nuevos valores
-    // const newForm = [...form, {[e.target.name]:  e.target.value,}]
-    // setName(name)
-    
-  } 
+  const [values,setValues] = useState({
+    firstName: "",
+    lastName: "",
+    userName: "",
+    email:"",
+    password: "",
+  })
   
+  const handleChange = (event) => {
+    setValues({...values,[event.target.name]: event.target.value})
+  }
 
   const classes = useStyles();
 
@@ -47,37 +41,45 @@ export default function Form() {
       <form 
         className={classes.root} 
         noValidate autoComplete="off"
-        onSubmit={handleSubmit}>
+        >
+          
         <TextField
           required
           id="firstName"
-          label="Name"
+          label="First Name"
           variant="outlined"
           color="primary"
           type="text"
-          value={name}
-          onChange={e=> setName(e.target.value)}
+          name="firstName"
+          value={values.firstName}
+          onChange={handleChange}
         />
         <TextField
           id="lastName"
           label="Last Name"
           variant="outlined"
           color="primary"
-          value={lastName}
-          onChange={e=> setLastName(e.target.value)}
-          
+          name="lastName"
+          value={values.lastName}
+          onChange={handleChange}
         />
         <TextField
           id="userName"
           label="User Name"
           variant="outlined"
           color="primary"
+          name="userName"
+          value={values.userName}
+          onChange={handleChange}
         />
         <TextField
           id="email"
           label="Email"
           variant="outlined"
           color="primary"
+          name="email"
+          value={values.email}
+          onChange={handleChange}
         />
         <TextField
           id="password"
@@ -85,8 +87,11 @@ export default function Form() {
           type="password"
           variant="outlined"
           autoComplete="current-password"
+          name="password"
+          value={values.password}
+          onChange={handleChange}
         />
-        <Button variant="contained" color="secondary" onClick={handleChange}>
+        <Button variant="contained" color="secondary" >
           Send
         </Button>
         </form>
@@ -94,3 +99,4 @@ export default function Form() {
     </div>
   );
 }
+
