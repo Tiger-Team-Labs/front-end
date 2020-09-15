@@ -50,7 +50,7 @@ export const Login = () => {
 	return (
 		<>
 			{/*Button to display the modal*/}
-			<Button color={'primary'} type='button' onClick={handleOpen}>
+			<Button style={{ color: 'white' }} type='button' onClick={handleOpen}>
 				Sign In
 			</Button>
 			{/*Modal component*/}

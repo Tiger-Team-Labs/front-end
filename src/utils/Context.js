@@ -13,6 +13,8 @@ export const ContextProvider = ({ children }) => {
 	});
 	const [login, setLogin] = useState({ email: undefined, password: undefined });
 
+	const createUser = (user) => {};
+
 	return (
 		<Context.Provider value={{ user, setUser, setLogin }}>
 			{children}
