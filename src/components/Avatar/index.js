@@ -1,16 +1,29 @@
-//import react and useContext hook
-import React, { useContext } from 'react';
+//import react and react hooks
+import React, { useContext, useEffect, useState } from 'react';
 //import material ui components
 import { Avatar as AvatarImage } from '@material-ui/core';
 //import context
 import { Context } from '../../utils/Context';
+//import random color
+import randomColor from 'randomcolor';
 
 //create and export Avatar component
-export const Avatar = ({ name }) => {
+export const Avatar = () => {
+	//use state
+	const [color, setColor] = useState('');
 	//use context
 	const { user } = useContext(Context);
 
-	console.log(user);
+	//use Effect
+	useEffect(() => {
+		setColor(randomColor());
+	}, []);
 
-	return <AvatarImage alt={user.name} src='/static/images/avatar/1.jpg' />;
+	return (
+		<AvatarImage
+			style={{ background: color }}
+			alt={user.name}
+			src='/static/images/avatar/1.jpg'
+		/>
+	);
 };
