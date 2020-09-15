@@ -22,6 +22,10 @@ export const Header = styled.header`
 //created buttons component
 export const Buttons = styled.div`
 	margin-right: 2rem;
+
+	@media only screen and (max-width: 350px) {
+		width: 5rem;
+	}
 `;
 
 //Avatar container
