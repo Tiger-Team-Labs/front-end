@@ -57,7 +57,7 @@ export const Register = () => {
 		//react fragment to return whole component
 		<>
 			{/*Button to display the modal*/}
-			<Button type='button' onClick={handleOpen}>
+			<Button color={'secondary'} type='button' onClick={handleOpen}>
 				Sign Up
 			</Button>
 			{/*Modal component*/}
