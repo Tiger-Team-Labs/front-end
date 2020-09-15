@@ -7,7 +7,7 @@ import { Register } from '../Register';
 //import Logo
 import { Logo } from '../Logo';
 //import styled component
-import { Header as HeaderContent } from './styles';
+import { Header as HeaderContent, Buttons } from './styles';
 //import avatar
 import { Avatar } from '../Avatar';
 //import the app context
@@ -25,10 +25,10 @@ export const Header = () => {
 					<Avatar />
 				</>
 			) : (
-				<>
+				<Buttons>
 					<Register />
 					<Login />
-				</>
+				</Buttons>
 			)}
 		</HeaderContent>
 	);
