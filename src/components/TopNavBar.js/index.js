@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -21,6 +22,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function TopNavBar() {
   const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+    console.log(("abre modal"));
+  };
 
   return (
     <div className={classes.root}>
@@ -32,7 +39,7 @@ export default function TopNavBar() {
           <Typography variant="h6" className={classes.title}>
             Foro Game
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button color="inherit" onClick={handleClick}>Login</Button>
         </Toolbar>
       </AppBar>
     </div>
