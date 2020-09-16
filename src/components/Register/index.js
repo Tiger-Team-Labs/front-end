@@ -52,7 +52,7 @@ export default function Form() {
         className={classes.root} 
         onSubmit={handleSubmit}
         >
-        {submitted ? <CustomizedSnackbars/> : null }
+        {submitted ? <CustomizedSnackbars showAlert={submitted}/> : null }
         <TextField
           required
           id="firstName"
