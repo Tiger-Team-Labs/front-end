@@ -7,6 +7,7 @@ import TextField from '@material-ui/core/TextField';
 // import formaControl an other componen from core
 import {  Button } from '@material-ui/core';
 import { useState } from 'react';
+import CustomizedSnackbars from '../SeccessAlarm'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -49,7 +50,7 @@ export default function Form() {
         className={classes.root} 
         onSubmit={handleSubmit}
         >
-        {submitted ? <p>Aquí vendrá Alert success Messenge</p> : null }
+        {submitted ? <CustomizedSnackbars/> : null }
         <TextField
           required
           id="firstName"

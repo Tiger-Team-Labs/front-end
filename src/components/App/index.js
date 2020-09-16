@@ -1,5 +1,10 @@
 //import react
 import React from 'react';
+import TopNavBar from '../TopNavBar.js';
 
 //create and export App component
-export const App = () => (<h1>I'm the app</h1>);
+export default  function App() {
+  return(
+    <TopNavBar/>
+    );
+} 

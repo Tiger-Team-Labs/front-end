@@ -43,7 +43,6 @@ export default function CustomizedSnackbars() {
           This is a success message!
         </Alert>
       </Snackbar>
-      
     </div>
   );
 }

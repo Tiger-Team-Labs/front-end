@@ -6,10 +6,9 @@ import { render } from 'react-dom';
 import { HashRouter as Router } from 'react-router-dom';
 //import context provider
 import { ContextProvider } from './utils/Contex';
-//import register component
-import Form from './components/Register/index'
-//import login component
-// import Login from './components/Login/index'
+//import App component
+import App from './components/App/index'
+
 
 
 //create root const
@@ -18,7 +17,7 @@ const root = document.getElementById('root');
 render(
 	<ContextProvider>
 		<Router>
-			<Form />
+			<App />
 		</Router>
 	</ContextProvider>,
 	root,
