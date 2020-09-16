@@ -5,6 +5,9 @@ import TopNavBar from '../TopNavBar.js';
 //create and export App component
 export default  function App() {
   return(
-    <TopNavBar/>
+    <>
+      <TopNavBar/>
+
+    </>
     );
 } 
