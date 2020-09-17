@@ -83,6 +83,7 @@ export const ContextProvider = ({ children }) => {
 		);
 	};
 
+	//console the use
 	console.dir(user);
 
 	return (
