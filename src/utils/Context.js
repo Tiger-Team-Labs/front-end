@@ -13,6 +13,8 @@ export const ContextProvider = ({ children }) => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [user, setUser] = useState(undefined);
+	const [showError, setError] = useState(false);
+	const [showSuccess, setSucces] = useState(false);
 
 	const createUserForSignUp = async () => {
 		setUser({
@@ -21,6 +23,7 @@ export const ContextProvider = ({ children }) => {
 			password,
 		});
 		await instance.post(postUser, { user });
+		setError(true);
 	};
 
 	const createUserForSignIn = async () => {
@@ -29,6 +32,7 @@ export const ContextProvider = ({ children }) => {
 			password,
 		});
 		await instance.post(checkUser, { user });
+		setError(true);
 	};
 
 	console.dir(user);
