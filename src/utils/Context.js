@@ -56,6 +56,8 @@ export const ContextProvider = ({ children }) => {
 				}),
 			)
 			.catch((err) => console.log(err));
+
+		createPost();
 	};
 
 	/**
@@ -71,8 +73,6 @@ export const ContextProvider = ({ children }) => {
 			content: 'hey',
 		});
 	};
-
-	createPost();
 
 	return (
 		<Context.Provider
