@@ -21,7 +21,7 @@ export const Login = () => {
 	//use custom hooks from material ui
 	const classes = useStyles();
 	//use state hook
-	const [open, setOpen] = useState(true);
+	const [open, setOpen] = useState(false);
 
 	//use context hooks
 	const {
@@ -50,7 +50,7 @@ export const Login = () => {
 		//crate the user
 		createUserForSignIn();
 		//close the modal
-		//handleClose();
+		handleClose();
 		//reset local state
 		setEmail('');
 		setPassword('');

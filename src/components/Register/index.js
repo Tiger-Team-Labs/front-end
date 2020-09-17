@@ -25,6 +25,8 @@ export const Register = () => {
 	const {
 		name,
 		setName,
+		userName,
+		setUserName,
 		email,
 		setEmail,
 		password,
@@ -87,6 +89,12 @@ export const Register = () => {
 								className={classes.input}
 								value={name}
 								onChange={(e) => setName(e.target.value)}
+							/>
+							<Input
+								placeholder='User Name'
+								className={classes.input}
+								value={userName}
+								onChange={(e) => setUserName(e.target.value)}
 							/>
 							<Input
 								value={email}
