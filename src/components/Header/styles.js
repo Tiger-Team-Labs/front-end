@@ -33,3 +33,14 @@ export const AvatarContainer = styled.div`
 	margin-right: 2rem;
 	padding: 1rem;
 `;
+
+//LogOut
+export const LogOut = styled.div`
+	display: flex;
+
+	@media only screen and (max-width: 350px) {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+`;

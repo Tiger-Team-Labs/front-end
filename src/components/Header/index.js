@@ -7,7 +7,12 @@ import { Register } from '../Register';
 //import Logo
 import { Logo } from '../Logo';
 //import styled component
-import { Header as HeaderContent, Buttons, AvatarContainer } from './styles';
+import {
+	Header as HeaderContent,
+	Buttons,
+	AvatarContainer,
+	LogOut,
+} from './styles';
 //import avatar
 import { Avatar } from '../Avatar';
 //import the app context
@@ -18,18 +23,25 @@ import { Button } from '@material-ui/core';
 //create and export header component
 export const Header = () => {
 	//use context
-	const { user } = useContext(Context);
+	const { user, logOut } = useContext(Context);
 
 	return (
 		<HeaderContent>
 			<Logo />
 			{user !== undefined ? (
-				<>
-					<Button>Log Out</Button>
+				<LogOut>
+					<Button
+						fullWidth='false'
+						size='small'
+						color='secondary'
+						variant='contained'
+						onClick={() => logOut()}>
+						Log Out
+					</Button>
 					<AvatarContainer>
 						<Avatar />
 					</AvatarContainer>
-				</>
+				</LogOut>
 			) : (
 				<Buttons>
 					<Register />

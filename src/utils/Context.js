@@ -58,7 +58,12 @@ export const ContextProvider = ({ children }) => {
 			.catch((err) => console.log(err));
 	};
 
-	console.log(user);
+	/**
+	 * @description: logout function
+	 */
+	const logOut = () => {
+		setUser(undefined);
+	};
 
 	return (
 		<Context.Provider
@@ -79,6 +84,7 @@ export const ContextProvider = ({ children }) => {
 				setShowError,
 				error,
 				setError,
+				logOut,
 			}}>
 			{children}
 		</Context.Provider>
