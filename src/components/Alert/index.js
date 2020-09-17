@@ -10,8 +10,6 @@ export const Alert = () => {
 	//use context hook
 	const { showError, showSuccess, error } = useContext(Context);
 
-	console.dir(error);
-
 	return (
 		<>
 			{showError && <Alerts severity='error'>{2}</Alerts>}

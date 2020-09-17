@@ -39,19 +39,35 @@ export const ContextProvider = ({ children }) => {
 	 */
 	const createUserForSignIn = async () => {
 		setUser({
+			name,
 			email,
 			password,
 		});
-		await instance.post(checkUser, { user }).catch((error) => setError(error));
+		await instance.post(postUser, { user }).catch((error) => setError(error));
 		setShowError(true);
 	};
 
 	/**
 	 * @description: check the user
 	 */
-	const checkUser = () =>{
-		if(user)
-	}
+	const checkUser = () => {
+		if (user === '') {
+			setError((error) => (error = 'The user cannot be empty'));
+			setShowError(true);
+		}
+		if (userName === '') {
+			setError((error) => (error = 'The user name cannot be empty'));
+			setShowError(true);
+		}
+		if (email === '') {
+			setError((error) => (error = 'The email cannot be empty'));
+			setShowError(true);
+		}
+		if (password === '') {
+			setError((error) => (error = 'The password cannot be empty'));
+			setShowError(true);
+		}
+	};
 
 	return (
 		<Context.Provider
@@ -73,6 +89,7 @@ export const ContextProvider = ({ children }) => {
 				showSuccess,
 				setShowSuccess,
 				error,
+				checkUser,
 			}}>
 			{children}
 		</Context.Provider>
