@@ -8,7 +8,7 @@ import TextField from '@material-ui/core/TextField';
 import {  Button } from '@material-ui/core';
 import { useState } from 'react';
 // import alarm
-// import CustomizedSnackbars from '../SeccessAlarm/index'
+import CustomizedSnackbars from '../SeccessAlarm/index'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -53,6 +53,7 @@ export default function Form() {
         onSubmit={handleSubmit}
         >
         {/* {submitted ? <CustomizedSnackbars showAlert={submitted} /> : null } */}
+        <CustomizedSnackbars open={handleClick()}/>
         <TextField
           required
           id="firstName"
