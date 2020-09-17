@@ -25,29 +25,38 @@ export const ContextProvider = ({ children }) => {
 	 * @description: allow us to create a user and make the post to the db
 	 */
 	const createUserForSignUp = async () => {
-		await instance.post(postUser, {
-			name: name,
-			username: userName,
-			email: email,
-			password: password,
-		});
+		await instance
+			.post(postUser, {
+				name: name,
+				username: userName,
+				email: email,
+				password: password,
+			})
+			.then((response) => console.log(response))
+			.catch((err) => console.log(err));
 	};
 
 	/**
 	 * @description: allow us to create a user and check if exist in the db
 	 */
 	const createUserForSignIn = async () => {
-		await instance.post(checkUserInDb, {
-			email: email,
-			password: password,
-		});
+		await instance
+			.post(checkUserInDb, {
+				email: email,
+				password: password,
+			})
+			.then((response) =>
+				setUser({
+					email: email,
+					token: response.data,
+				}),
+			)
+			.catch((err) => console.log(err));
+
+		setShowSuccess((bool) => (bool = true));
 	};
 
-	/**
-	 * @description: check the user if there are any error
-	 * with the value then set this error and show the
-	 * alert component
-	 */
+	console.log(user);
 
 	return (
 		<Context.Provider

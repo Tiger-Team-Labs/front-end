@@ -47,6 +47,7 @@ export const Login = () => {
 		} else {
 			setOpen(false);
 			setShowError(false);
+			createUserForSignIn();
 		}
 	};
 
@@ -72,7 +73,10 @@ export const Login = () => {
 			<Modal
 				className={classes.modal}
 				open={open}
-				onClose={() => setOpen(false)}
+				onClose={() => {
+					setOpen(false);
+					setShowError(false);
+				}}
 				closeAfterTransition
 				BackdropComponent={Backdrop}
 				BackdropProps={{

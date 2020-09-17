@@ -80,7 +80,10 @@ export const Register = () => {
 			<Modal
 				className={classes.modal}
 				open={open}
-				onClose={() => setOpen(false)}
+				onClose={() => {
+					setOpen(false);
+					setShowError(false);
+				}}
 				closeAfterTransition
 				BackdropComponent={Backdrop}
 				BackdropProps={{
