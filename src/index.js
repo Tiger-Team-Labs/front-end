@@ -8,6 +8,8 @@ import { HashRouter as Router } from 'react-router-dom';
 import { ContextProvider } from './utils/Contex';
 //import App component
 import App from './components/App/index'
+// practica
+import CustomizedSnackbars from './components/SeccessAlarm'
 
 
 
@@ -17,7 +19,7 @@ const root = document.getElementById('root');
 render(
 	<ContextProvider>
 		<Router>
-			<App />
+			<CustomizedSnackbars/>
 		</Router>
 	</ContextProvider>,
 	root,

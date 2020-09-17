@@ -1,9 +1,20 @@
-//import react
-import React from 'react';
-//create context and export it
+// import react
+import React, { useState } from 'react';
+//create functional component for context provider and export it
 export const Context = React.createContext();
 
-//create functional component for context provider and export it
 export const ContextProvider = ({ children }) => {
-	return <Context.Provider>{children}</Context.Provider>;
-};
+  const [open, setOpen] = useState(false)
+  const [openAlert, setOpenAlert] = useState(false);
+
+  return (
+    <Context.Provider value={{
+      open,
+      setOpen,
+      openAlert,
+      setOpenAlert,
+    }}>
+      {children}
+    </Context.Provider>
+  )
+}

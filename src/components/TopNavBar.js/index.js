@@ -6,8 +6,10 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-// brin Form
+// bring Form
 import FormDialog from '../FormDialog/index'
+// import Context
+import {Context} from '../../utils/Contex';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -24,7 +26,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function TopNavBar() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const {
+    open,
+    setOpen
+  } = React.useContext(Context);
 
   const handleClick = () => {
     setOpen(true);

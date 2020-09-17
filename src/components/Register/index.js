@@ -53,7 +53,7 @@ export default function Form() {
         onSubmit={handleSubmit}
         >
         {/* {submitted ? <CustomizedSnackbars showAlert={submitted} /> : null } */}
-        <CustomizedSnackbars open={handleClick()}/>
+        <CustomizedSnackbars/>
         <TextField
           required
           id="firstName"
