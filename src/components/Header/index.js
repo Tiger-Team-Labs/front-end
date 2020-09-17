@@ -12,8 +12,8 @@ import { Header as HeaderContent, Buttons, AvatarContainer } from './styles';
 import { Avatar } from '../Avatar';
 //import the app context
 import { Context } from '../../utils/Context';
-//import the alert
-import { Alert } from '../Alert';
+//import button
+import { Button } from '@material-ui/core';
 
 //create and export header component
 export const Header = () => {
@@ -25,7 +25,7 @@ export const Header = () => {
 			<Logo />
 			{user !== undefined ? (
 				<>
-					<Alert />
+					<Button>Log Out</Button>
 					<AvatarContainer>
 						<Avatar />
 					</AvatarContainer>

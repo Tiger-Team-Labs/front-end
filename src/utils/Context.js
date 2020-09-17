@@ -17,7 +17,6 @@ export const ContextProvider = ({ children }) => {
 	const [user, setUser] = useState(undefined);
 	//to handler de alert component
 	const [showError, setShowError] = useState(false);
-	const [showSuccess, setShowSuccess] = useState(false);
 	//to handle the error
 	const [error, setError] = useState(undefined);
 
@@ -39,8 +38,6 @@ export const ContextProvider = ({ children }) => {
 				}),
 			)
 			.catch((err) => console.log(err));
-
-		setShowSuccess((bool) => (bool = true));
 	};
 
 	/**
@@ -59,8 +56,6 @@ export const ContextProvider = ({ children }) => {
 				}),
 			)
 			.catch((err) => console.log(err));
-
-		setShowSuccess((bool) => (bool = true));
 	};
 
 	console.log(user);
@@ -82,8 +77,6 @@ export const ContextProvider = ({ children }) => {
 				createUserForSignIn,
 				showError,
 				setShowError,
-				showSuccess,
-				setShowSuccess,
 				error,
 				setError,
 			}}>
