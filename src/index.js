@@ -9,7 +9,7 @@ import { ContextProvider } from './utils/Contex';
 //import App component
 import App from './components/App/index'
 // practica
-import CustomizedSnackbars from './components/SeccessAlarm'
+import Form from './components/Register'
 
 
 
@@ -19,7 +19,7 @@ const root = document.getElementById('root');
 render(
 	<ContextProvider>
 		<Router>
-			<CustomizedSnackbars/>
+			<Form/>
 		</Router>
 	</ContextProvider>,
 	root,
