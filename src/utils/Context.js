@@ -19,30 +19,28 @@ export const ContextProvider = ({ children }) => {
 	const [showError, setShowError] = useState(undefined);
 	const [showSuccess, setShowSuccess] = useState(undefined);
 	//to handle the error
-	const [error, setError] = useState(undefined);
+	const [error, setError] = useState(false);
 
 	/**
 	 * @description: allow us to create a user and make the post to the db
 	 */
 	const createUserForSignUp = async () => {
-		setUser({
-			name,
-			userName,
-			email,
-			password,
+		await instance.post(postUser, {
+			name: name,
+			username: userName,
+			email: email,
+			password: password,
 		});
-		await instance.post(postUser, { user });
 	};
 
 	/**
 	 * @description: allow us to create a user and check if exist in the db
 	 */
 	const createUserForSignIn = async () => {
-		setUser({
-			email,
-			password,
+		await instance.post(checkUserInDb, {
+			email: email,
+			password: password,
 		});
-		await instance.post(checkUserInDb, {});
 	};
 
 	/**

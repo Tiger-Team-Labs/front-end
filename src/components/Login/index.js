@@ -32,7 +32,7 @@ export const Login = () => {
 		createUserForSignIn,
 		setShowError,
 		checkUser,
-		setError,
+		error,
 	} = useContext(Context);
 
 	//const to handle the open of the modal
@@ -43,7 +43,6 @@ export const Login = () => {
 	//const to handle the close of the modal
 	const handleClose = () => {
 		setOpen(false);
-		setError(false);
 		setShowError(false);
 	};
 
@@ -54,10 +53,10 @@ export const Login = () => {
 		setPassword(password);
 		//check the user
 		checkUser();
-		//crate the user
-		createUserForSignIn();
 		//close the modal
-		//handleClose();
+		if (error === false) {
+			handleClose();
+		}
 		//reset local state
 		setEmail('');
 		setPassword('');

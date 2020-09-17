@@ -35,8 +35,9 @@ export const Register = () => {
 		setPassword,
 		createUserForSignUp,
 		checkUser,
-		setError,
 		setShowError,
+		error,
+		setError,
 	} = useContext(Context);
 
 	//const to handle the open of the modal
@@ -47,7 +48,6 @@ export const Register = () => {
 	//const to handle the close of the modal
 	const handleClose = () => {
 		setOpen(false);
-		setError(false);
 		setShowError(false);
 	};
 
@@ -59,10 +59,10 @@ export const Register = () => {
 		setPassword(password);
 		//check the user
 		checkUser();
-		//create the user
-		createUserForSignUp();
 		//close the modal
-		//handleClose();
+		if (error === false) {
+			handleClose();
+		}
 		//reset local state
 		setEmail('');
 		setName('');
