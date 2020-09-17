@@ -1,5 +1,5 @@
 //import react
-import React from 'react';
+import React, { useEffect } from 'react';
 // import MakeStyle to make ours styles
 import { makeStyles } from '@material-ui/core/styles';
 // import textField to form
@@ -7,8 +7,11 @@ import TextField from '@material-ui/core/TextField';
 // import formaControl an other componen from core
 import {  Button } from '@material-ui/core';
 import { useState } from 'react';
+import MuiAlert from '@material-ui/lab/Alert';
+import Snackbar from '@material-ui/core/Snackbar';
+
 // import alarm
-import CustomizedSnackbars from '../SeccessAlarm/index'
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -20,6 +23,44 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+function CustomizedSnackbars(props) {
+  const classes = useStyles();
+  const [open, setOpen] = useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+  
+  useEffect(()=>{
+    
+    console.log('Se cargo use Efecct de customized');
+    
+      
+
+    
+  },[]);
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  return (
+    <div className={classes.root}>
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success">
+          This is a success message!
+        </Alert>
+      </Snackbar>
+    </div>
+  );
+}
 
 
 export default function Form() {
@@ -33,10 +74,27 @@ export default function Form() {
   })
 
   const [submitted, setSubmitted] = useState(false)
-  
+  const [open, setOpen] = useState(false);
+
   const handleChange = (event) => {
     setValues({...values,[event.target.name]: event.target.value})
-  }
+  };
+  const alfredo = () => {
+    console.log(`Otra funcion al mismo tiempo`);
+    
+    setSubmitted(true)
+    console.log(submitted);
+    
+  };
+  const handleClick = () => {
+    setOpen(false);
+  };
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -47,13 +105,11 @@ export default function Form() {
 
   return (
     <div>
-      
+      <CustomizedSnackbars  submitted={submitted}/>
       <form 
         className={classes.root} 
         onSubmit={handleSubmit}
         >
-        {submitted ? <CustomizedSnackbars showAlert={submitted} /> : null }
-        {/* <CustomizedSnackbars /> */}
         <TextField
           required
           id="firstName"
@@ -104,7 +160,7 @@ export default function Form() {
           value={values.password}
           onChange={handleChange}
         />
-        <Button variant="contained" color="secondary" type="submit" >
+        <Button variant="contained" color="secondary" type="submit" onClick={handleClick,alfredo}>
           Send
         </Button>
         </form>

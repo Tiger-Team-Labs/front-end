@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -34,14 +34,18 @@ export default function TopNavBar() {
 
   const handleClick = () => {
     setOpen(true);
-    console.log(("abre modal"));
+    console.log(("abre modal en TopNavar"));
   };
 
   const handleClose = () => {
 
     setOpen(false)
-
+    
   };
+
+  useEffect(()=>{
+    console.log('Se cargo use Efecct');
+  },[])
 
   return (
     <div className={classes.root}>
