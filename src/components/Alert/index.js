@@ -15,6 +15,11 @@ export const Alert = () => {
 			{showError && (
 				<Alerts severity='error'>This is an error alert — check it out!</Alerts>
 			)}
+			{showSuccess && (
+				<Alerts severity='success'>
+					This is an error alert — check it out!
+				</Alerts>
+			)}
 		</>
 	);
 };

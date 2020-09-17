@@ -50,7 +50,7 @@ export const Login = () => {
 		//crate the user
 		createUserForSignIn();
 		//close the modal
-		handleClose();
+		//handleClose();
 		//reset local state
 		setEmail('');
 		setPassword('');
@@ -92,6 +92,7 @@ export const Login = () => {
 								value={password}
 								onChange={(e) => setPassword(e.target.value)}
 							/>
+							<Alert />
 							<Button
 								className={classes.button}
 								variant='outlined'
