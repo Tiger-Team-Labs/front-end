@@ -25,12 +25,12 @@ export const ContextProvider = ({ children }) => {
   });
   const handleChange = (event) => {
     setValues({ ...values, [event.target.name]: event.target.value })
-    console.log((values));
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
     handleClickAlert();
+    console.log('Ahí van los datos');
     
   }
 
