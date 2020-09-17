@@ -31,8 +31,7 @@ export const Login = () => {
 		setPassword,
 		createUserForSignIn,
 		setShowError,
-		checkUser,
-		error,
+		setError,
 	} = useContext(Context);
 
 	//const to handle the open of the modal
@@ -42,8 +41,13 @@ export const Login = () => {
 
 	//const to handle the close of the modal
 	const handleClose = () => {
-		setOpen(false);
-		setShowError(false);
+		if (email === '' || password === '') {
+			setError((error) => (error = 'please check the inputs'));
+			setShowError(true);
+		} else {
+			setOpen(false);
+			setShowError(false);
+		}
 	};
 
 	//handle the click event
@@ -51,12 +55,8 @@ export const Login = () => {
 		//set the login
 		setEmail(email);
 		setPassword(password);
-		//check the user
-		checkUser();
 		//close the modal
-		if (error === false) {
-			handleClose();
-		}
+		handleClose();
 		//reset local state
 		setEmail('');
 		setPassword('');

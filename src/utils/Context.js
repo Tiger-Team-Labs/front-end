@@ -16,10 +16,10 @@ export const ContextProvider = ({ children }) => {
 	const [password, setPassword] = useState('');
 	const [user, setUser] = useState(undefined);
 	//to handler de alert component
-	const [showError, setShowError] = useState(undefined);
-	const [showSuccess, setShowSuccess] = useState(undefined);
+	const [showError, setShowError] = useState(false);
+	const [showSuccess, setShowSuccess] = useState(false);
 	//to handle the error
-	const [error, setError] = useState(false);
+	const [error, setError] = useState(undefined);
 
 	/**
 	 * @description: allow us to create a user and make the post to the db
@@ -48,24 +48,6 @@ export const ContextProvider = ({ children }) => {
 	 * with the value then set this error and show the
 	 * alert component
 	 */
-	const checkUser = () => {
-		if (user === '') {
-			setError((error) => (error = 'The user cannot be empty'));
-			setShowError(true);
-		}
-		if (userName === '') {
-			setError((error) => (error = 'The user name cannot be empty'));
-			setShowError(true);
-		}
-		if (email === '') {
-			setError((error) => (error = 'The email cannot be empty'));
-			setShowError(true);
-		}
-		if (password === '') {
-			setError((error) => (error = 'The password cannot be empty'));
-			setShowError(true);
-		}
-	};
 
 	return (
 		<Context.Provider
@@ -87,7 +69,6 @@ export const ContextProvider = ({ children }) => {
 				showSuccess,
 				setShowSuccess,
 				error,
-				checkUser,
 				setError,
 			}}>
 			{children}
