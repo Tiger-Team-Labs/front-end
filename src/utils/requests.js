@@ -7,6 +7,10 @@ export const instance = axios.create({
 });
 
 //create end points
-export const postUser = '/auth/signup';
+export const postUser = '/auth/signup/';
 //check user
-export const checkUserInDb = '/auth/login';
+export const checkUserInDb = '/auth/login/';
+//get posts
+export const getPosts = '/posts/';
+//post a new pose
+export const postNewPost = '/posts/';

@@ -31,7 +31,7 @@ export const Header = () => {
 			{user !== undefined ? (
 				<LogOut>
 					<Button
-						fullWidth='false'
+						fullWidth={false}
 						size='small'
 						color='secondary'
 						variant='contained'

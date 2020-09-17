@@ -1,7 +1,7 @@
 //import react
 import React, { useState } from 'react';
 //import axios logic
-import { instance, postUser, checkUserInDb } from './requests';
+import { instance, postUser, checkUserInDb, postNewPost } from './requests';
 
 //create context and export it
 export const Context = React.createContext();
@@ -64,6 +64,15 @@ export const ContextProvider = ({ children }) => {
 	const logOut = () => {
 		setUser(undefined);
 	};
+
+	const createPost = () => {
+		instance.post(postNewPost, {
+			title: 'bernardo',
+			content: 'hey',
+		});
+	};
+
+	createPost();
 
 	return (
 		<Context.Provider
