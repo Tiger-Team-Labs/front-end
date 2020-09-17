@@ -52,8 +52,8 @@ export default function Form() {
         className={classes.root} 
         onSubmit={handleSubmit}
         >
-        {/* {submitted ? <CustomizedSnackbars showAlert={submitted} /> : null } */}
-        <CustomizedSnackbars open={handleClick()}/>
+        {submitted ? <CustomizedSnackbars showAlert={submitted} /> : null }
+        {/* <CustomizedSnackbars /> */}
         <TextField
           required
           id="firstName"
