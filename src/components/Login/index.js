@@ -72,7 +72,7 @@ export const Login = () => {
 			<Modal
 				className={classes.modal}
 				open={open}
-				onClose={handleClose}
+				onClose={() => setOpen(false)}
 				closeAfterTransition
 				BackdropComponent={Backdrop}
 				BackdropProps={{

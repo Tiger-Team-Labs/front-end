@@ -62,7 +62,6 @@ export const Register = () => {
 		setPassword(password);
 		//close the modal
 		handleClose();
-
 		//reset local state
 		setEmail('');
 		setName('');
@@ -81,7 +80,7 @@ export const Register = () => {
 			<Modal
 				className={classes.modal}
 				open={open}
-				onClose={handleClose}
+				onClose={() => setOpen(false)}
 				closeAfterTransition
 				BackdropComponent={Backdrop}
 				BackdropProps={{
