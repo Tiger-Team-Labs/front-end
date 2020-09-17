@@ -1,11 +1,11 @@
 //import react
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 // import MakeStyle to make ours styles
 import { makeStyles } from '@material-ui/core/styles';
 // import textField to form
 import TextField from '@material-ui/core/TextField';
 // import formaControl an other componen from core
-import {  Button } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 // import alarm
 import CustomizedSnackbars from '../SeccessAlarm/index'
 // value de context
@@ -24,32 +24,21 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function Form() {
-  const { values,
-    setValues, handleCloseAlert,
-    handleClickAlert,} = useContext(Context);
-
-  const [submitted, setSubmitted] = useState(false)
-  
-  const handleChange = (event) => {
-    setValues({...values,[event.target.name]: event.target.value})
-  }
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setSubmitted(true);
-  }
+  const {  
+    values,
+    handleChange, 
+    handleSubmit,
+    } = useContext(Context);
 
   const classes = useStyles();
 
   return (
     <div>
-      
-      <form 
-        className={classes.root} 
+      <CustomizedSnackbars/>
+      <form
+        className={classes.root}
         onSubmit={handleSubmit}
-        >
-        {/* {submitted ? <CustomizedSnackbars showAlert={submitted} /> : null } */}
-        <CustomizedSnackbars/>
+      >
         <TextField
           required
           id="firstName"
@@ -100,11 +89,11 @@ export default function Form() {
           value={values.password}
           onChange={handleChange}
         />
-        <Button variant="contained" color="secondary" type="submit" onClick={handleClickAlert}>
+        <Button variant="contained" color="secondary" type="submit" >
           Send
         </Button>
-        </form>
-      
+      </form>
+
     </div>
   );
 }

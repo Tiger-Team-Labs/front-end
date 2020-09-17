@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import { makeStyles } from '@material-ui/core/styles';
@@ -21,20 +20,17 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CustomizedSnackbars() {
   const classes = useStyles();
-  const { openAlert, setOpenAlert, handleCloseAlert,
-    handleClickAlert, } = useContext(Context);
+  const { openAlert,  handleCloseAlert,
+    } = useContext(Context);
 
 
 
 
   return (
     <div className={classes.root}>
-      {/* <Button variant="outlined" onClick={handleClickAlert}>
-        Open success snackbar
-      </Button> */}
       <Snackbar open={openAlert} autoHideDuration={6000} onClose={handleCloseAlert}>
         <Alert onClose={handleCloseAlert} severity="success">
-          This is a success message!
+          The form is send!
         </Alert>
       </Snackbar>
     </div>

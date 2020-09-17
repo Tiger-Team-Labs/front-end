@@ -4,16 +4,10 @@ import React, { useState } from 'react';
 export const Context = React.createContext();
 
 export const ContextProvider = ({ children }) => {
+  // Alert
   const [open, setOpen] = useState(false)
   const [openAlert, setOpenAlert] = useState(false);
   const handleClickAlert = () => {setOpenAlert(true);};
-  const [values,setValues] = useState({
-    firstName: "",
-    lastName: "",
-    userName: "",
-    email:"",
-    password: "",
-  });
   const handleCloseAlert = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -21,6 +15,24 @@ export const ContextProvider = ({ children }) => {
 
     setOpenAlert(false);
   };
+  // Form Register
+  const [values,setValues] = useState({
+    firstName: "",
+    lastName: "",
+    userName: "",
+    email:"",
+    password: "",
+  });
+  const handleChange = (event) => {
+    setValues({ ...values, [event.target.name]: event.target.value })
+    console.log((values));
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    handleClickAlert();
+    
+  }
 
 
   return (
@@ -33,6 +45,8 @@ export const ContextProvider = ({ children }) => {
       handleClickAlert,
       values,
       setValues,
+      handleChange,
+      handleSubmit,
     }}>
       {children}
     </Context.Provider>
