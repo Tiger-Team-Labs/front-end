@@ -22,7 +22,7 @@ export const Avatar = () => {
 	return (
 		<AvatarImage
 			style={{ background: color }}
-			alt={user.name}
+			alt={user.email}
 			src='/static/images/avatar/1.jpg'
 		/>
 	);

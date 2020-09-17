@@ -22,9 +22,15 @@ export const Register = () => {
 	const [open, setOpen] = useState(false);
 
 	//use context hooks
-	const { name, setName, email, setEmail, password, setPassword } = useContext(
-		Context,
-	);
+	const {
+		name,
+		setName,
+		email,
+		setEmail,
+		password,
+		setPassword,
+		createUserForSignUp,
+	} = useContext(Context);
 
 	//const to handle the open of the modal
 	const handleOpen = () => {
@@ -42,6 +48,8 @@ export const Register = () => {
 		setName(name);
 		setEmail(email);
 		setPassword(password);
+		//create the user
+		createUserForSignUp();
 		//close the modal
 		handleClose();
 		//reset local state

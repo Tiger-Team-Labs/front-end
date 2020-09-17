@@ -22,7 +22,13 @@ export const Login = () => {
 	const [open, setOpen] = useState(false);
 
 	//use context hooks
-	const { email, setEmail, password, setPassword } = useContext(Context);
+	const {
+		email,
+		setEmail,
+		password,
+		setPassword,
+		createUserForSignIn,
+	} = useContext(Context);
 
 	//const to handle the open of the modal
 	const handleOpen = () => {
@@ -37,7 +43,10 @@ export const Login = () => {
 	//handle the click event
 	const handleOnClick = () => {
 		//set the login
-
+		setEmail(email);
+		setPassword(password);
+		//crate the user
+		createUserForSignIn();
 		//close the modal
 		handleClose();
 		//reset local state
@@ -68,6 +77,7 @@ export const Login = () => {
 						<FormGroup>
 							{/*Inputs (control it)*/}
 							<Input
+								required
 								autoFocus={true}
 								placeholder='Email'
 								className={classes.input}
@@ -75,6 +85,7 @@ export const Login = () => {
 								onChange={(e) => setEmail(e.target.value)}
 							/>
 							<Input
+								required
 								placeholder='Password'
 								className={classes.input}
 								type='password'
