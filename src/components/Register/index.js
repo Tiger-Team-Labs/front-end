@@ -13,6 +13,8 @@ import {
 } from '@material-ui/core';
 //import context
 import { Context } from '../../utils/Context';
+//import alert component
+import { Alert } from '../Alert';
 
 //create and export register component
 export const Register = () => {
@@ -32,6 +34,9 @@ export const Register = () => {
 		password,
 		setPassword,
 		createUserForSignUp,
+		checkUser,
+		setError,
+		setShowError,
 	} = useContext(Context);
 
 	//const to handle the open of the modal
@@ -42,6 +47,8 @@ export const Register = () => {
 	//const to handle the close of the modal
 	const handleClose = () => {
 		setOpen(false);
+		setError(false);
+		setShowError(false);
 	};
 
 	//handle the click event
@@ -50,14 +57,17 @@ export const Register = () => {
 		setName(name);
 		setEmail(email);
 		setPassword(password);
+		//check the user
+		checkUser();
 		//create the user
 		createUserForSignUp();
 		//close the modal
-		handleClose();
+		//handleClose();
 		//reset local state
 		setEmail('');
 		setName('');
 		setPassword('');
+		setUserName('');
 	};
 
 	return (
@@ -109,6 +119,7 @@ export const Register = () => {
 								className={classes.input}
 								type='password'
 							/>
+							<Alert />
 							{/*Button and on click event display new user*/}
 							<Button
 								className={classes.button}
