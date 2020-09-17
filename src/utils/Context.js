@@ -13,8 +13,8 @@ export const ContextProvider = ({ children }) => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [user, setUser] = useState(undefined);
-	const [showError, setError] = useState(false);
-	const [showSuccess, setSucces] = useState(false);
+	const [showError, setShowError] = useState(undefined);
+	const [showSuccess, setShowSuccess] = useState(undefined);
 
 	const createUserForSignUp = async () => {
 		setUser({
@@ -22,8 +22,8 @@ export const ContextProvider = ({ children }) => {
 			email,
 			password,
 		});
+		setShowError(true);
 		await instance.post(postUser, { user });
-		setError(true);
 	};
 
 	const createUserForSignIn = async () => {
@@ -31,8 +31,8 @@ export const ContextProvider = ({ children }) => {
 			email,
 			password,
 		});
+		setShowError(true);
 		await instance.post(checkUser, { user });
-		setError(true);
 	};
 
 	console.dir(user);
@@ -50,6 +50,8 @@ export const ContextProvider = ({ children }) => {
 				setPassword,
 				createUserForSignUp,
 				createUserForSignIn,
+				showError,
+				showSuccess,
 			}}>
 			{children}
 		</Context.Provider>

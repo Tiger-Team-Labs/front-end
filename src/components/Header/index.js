@@ -16,11 +16,11 @@ import { Context } from '../../utils/Context';
 //create and export header component
 export const Header = () => {
 	//use context
-	const { user } = useContext(Context);
+	const { user, showSuccess } = useContext(Context);
 	return (
 		<HeaderContent>
 			<Logo />
-			{user !== undefined ? (
+			{user !== undefined && showSuccess ? (
 				<AvatarContainer>
 					<Avatar />
 				</AvatarContainer>

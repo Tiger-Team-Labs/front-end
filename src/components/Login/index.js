@@ -13,13 +13,15 @@ import {
 } from '@material-ui/core';
 //import context
 import { Context } from '../../utils/Context';
+//import alert component
+import { Alert } from '../Alert';
 
 //create and export login component
 export const Login = () => {
 	//use custom hooks from material ui
 	const classes = useStyles();
 	//use state hook
-	const [open, setOpen] = useState(false);
+	const [open, setOpen] = useState(true);
 
 	//use context hooks
 	const {
@@ -77,7 +79,6 @@ export const Login = () => {
 						<FormGroup>
 							{/*Inputs (control it)*/}
 							<Input
-								required
 								autoFocus={true}
 								placeholder='Email'
 								className={classes.input}
@@ -85,7 +86,6 @@ export const Login = () => {
 								onChange={(e) => setEmail(e.target.value)}
 							/>
 							<Input
-								required
 								placeholder='Password'
 								className={classes.input}
 								type='password'
