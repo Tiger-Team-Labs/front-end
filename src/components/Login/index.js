@@ -30,9 +30,9 @@ export const Login = () => {
 		password,
 		setPassword,
 		createUserForSignIn,
-		checkUser,
-		error,
 		setShowError,
+		checkUser,
+		setError,
 	} = useContext(Context);
 
 	//const to handle the open of the modal
@@ -43,6 +43,8 @@ export const Login = () => {
 	//const to handle the close of the modal
 	const handleClose = () => {
 		setOpen(false);
+		setError(false);
+		setShowError(false);
 	};
 
 	//handle the click event
@@ -53,7 +55,7 @@ export const Login = () => {
 		//check the user
 		checkUser();
 		//crate the user
-		//createUserForSignIn();
+		createUserForSignIn();
 		//close the modal
 		//handleClose();
 		//reset local state

@@ -1,7 +1,7 @@
 //import react
 import React, { useState } from 'react';
 //import axios logic
-import { instance, postUser, checkUser } from './requests';
+import { instance, postUser, checkUserInDb } from './requests';
 
 //create context and export it
 export const Context = React.createContext();
@@ -27,11 +27,11 @@ export const ContextProvider = ({ children }) => {
 	const createUserForSignUp = async () => {
 		setUser({
 			name,
+			userName,
 			email,
 			password,
 		});
-		await instance.post(postUser, { user }).catch((error) => setError(error));
-		setShowError(true);
+		await instance.post(postUser, { user });
 	};
 
 	/**
@@ -39,16 +39,16 @@ export const ContextProvider = ({ children }) => {
 	 */
 	const createUserForSignIn = async () => {
 		setUser({
-			name,
 			email,
 			password,
 		});
-		await instance.post(postUser, { user }).catch((error) => setError(error));
-		setShowError(true);
+		await instance.post(checkUserInDb, {});
 	};
 
 	/**
-	 * @description: check the user
+	 * @description: check the user if there are any error
+	 * with the value then set this error and show the
+	 * alert component
 	 */
 	const checkUser = () => {
 		if (user === '') {
@@ -90,6 +90,7 @@ export const ContextProvider = ({ children }) => {
 				setShowSuccess,
 				error,
 				checkUser,
+				setError,
 			}}>
 			{children}
 		</Context.Provider>

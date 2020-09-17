@@ -12,7 +12,7 @@ export const Alert = () => {
 
 	return (
 		<>
-			{showError && <Alerts severity='error'>{2}</Alerts>}
+			{showError && <Alerts severity='error'>{error}</Alerts>}
 			{showSuccess && (
 				<Alerts severity='success'>
 					This is an error alert — check it out!

@@ -9,4 +9,4 @@ export const instance = axios.create({
 //create end points
 export const postUser = '/auth/signup';
 //check user
-export const checkUser = '/auth/login';
+export const checkUserInDb = '/auth/login';
