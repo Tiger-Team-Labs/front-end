@@ -83,6 +83,8 @@ export const ContextProvider = ({ children }) => {
 		);
 	};
 
+	console.dir(user);
+
 	return (
 		<Context.Provider
 			value={{
