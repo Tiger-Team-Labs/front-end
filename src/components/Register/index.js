@@ -1,14 +1,15 @@
 //import react
-import React from 'react';
+import React, { useState, useContext } from 'react';
 // import MakeStyle to make ours styles
 import { makeStyles } from '@material-ui/core/styles';
 // import textField to form
 import TextField from '@material-ui/core/TextField';
 // import formaControl an other componen from core
 import {  Button } from '@material-ui/core';
-import { useState } from 'react';
 // import alarm
 import CustomizedSnackbars from '../SeccessAlarm/index'
+// value de context
+import { Context } from '../../utils/Contex';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -23,14 +24,9 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function Form() {
-
-  const [values,setValues] = useState({
-    firstName: "",
-    lastName: "",
-    userName: "",
-    email:"",
-    password: "",
-  })
+  const { values,
+    setValues, handleCloseAlert,
+    handleClickAlert,} = useContext(Context);
 
   const [submitted, setSubmitted] = useState(false)
   
@@ -104,7 +100,7 @@ export default function Form() {
           value={values.password}
           onChange={handleChange}
         />
-        <Button variant="contained" color="secondary" type="submit" >
+        <Button variant="contained" color="secondary" type="submit" onClick={handleClickAlert}>
           Send
         </Button>
         </form>
