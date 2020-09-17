@@ -26,4 +26,4 @@ render(
 );
 
 //start the service worker
-serviceWorker.unregister();
+serviceWorker.register();
