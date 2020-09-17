@@ -32,6 +32,14 @@ export const ContextProvider = ({ children }) => {
     handleClickAlert();
     console.log('Ahí van los datos');
   }
+  // FormDialog
+  const [openFormDialog, setOpenFormDialog] = React.useState(false);
+
+  const handleClickOpenFormDialog = () => {
+    setOpenFormDialog(true);};
+
+  const handleCloseFormDialog = () => {
+    setOpenFormDialog(false)};
 
 
   return (
@@ -46,6 +54,10 @@ export const ContextProvider = ({ children }) => {
       setValues,
       handleChange,
       handleSubmit,
+      openFormDialog, 
+      setOpenFormDialog,
+      handleClickOpenFormDialog,
+      handleCloseFormDialog,
     }}>
       {children}
     </Context.Provider>

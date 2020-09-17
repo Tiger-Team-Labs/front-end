@@ -9,7 +9,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 // bring Form
 import FormDialog from '../FormDialog/index'
 // import Context
-import {Context} from '../../utils/Contex';
+import { Context } from '../../utils/Contex';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -27,14 +27,10 @@ const useStyles = makeStyles((theme) => ({
 export default function TopNavBar() {
   const classes = useStyles();
   const {
-    open,
-    setOpen
+    handleClickOpenFormDialog,
   } = React.useContext(Context);
 
-  const handleClick = () => {
-    setOpen(true);
-    console.log(("abre modal"));
-  };
+
 
   return (
     <div className={classes.root}>
@@ -46,10 +42,12 @@ export default function TopNavBar() {
           <Typography variant="h6" className={classes.title}>
             Foro Game
           </Typography>
-          <Button color="inherit" onClick={handleClick}>Login</Button>
+          <Button color="inherit" onClick={handleClickOpenFormDialog}>Login</Button>
+          <Button color="inherit" onClick={handleClickOpenFormDialog}>Signup</Button>
+
         </Toolbar>
       </AppBar>
-      {open ? <FormDialog open={true}/> : null }
+      <FormDialog />
     </div>
   );
 }
