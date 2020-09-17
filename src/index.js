@@ -9,7 +9,7 @@ import { ContextProvider } from './utils/Contex';
 //import App component
 import App from './components/App/index'
 // practica
-import TopNavBar from './components/TopNavBar'
+import FormDialog from './components/FormDialog'
 
 
 
@@ -19,7 +19,7 @@ const root = document.getElementById('root');
 render(
 	<ContextProvider>
 		<Router>
-			<TopNavBar/>
+			<FormDialog/>
 		</Router>
 	</ContextProvider>,
 	root,

@@ -31,7 +31,6 @@ export const ContextProvider = ({ children }) => {
     event.preventDefault();
     handleClickAlert();
     console.log('Ahí van los datos');
-    
   }
 
 

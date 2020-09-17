@@ -9,24 +9,24 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Form from '../Register';
 
 export default function FormDialog(props) {
-  const [open, setOpen] = React.useState(false);
+  const [openFormDialog, setOpenFormDialog] = React.useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handleClickOpenFormDialog = () => {
+    setOpenFormDialog(true);
   };
 
-  const handleClose = () => {
-    if(props.open){
-      setOpen(false)
-    }
+  const handleCloseFormDialog = () => {
+    
+      setOpenFormDialog(false)
+    
   };
 
   return (
     <div>
-      {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+      <Button variant="outlined" color="primary" onClick={handleClickOpenFormDialog}>
         Aqui tiene que ir el login
-      </Button> */}
-      <Dialog open={props.open} onClose={handleClose} aria-labelledby="form-dialog-title">
+      </Button>
+      <Dialog open={openFormDialog} onClose={handleCloseFormDialog} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Login</DialogTitle>
         <DialogContent>
           <DialogContentText>
@@ -36,10 +36,10 @@ export default function FormDialog(props) {
           <Form/>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleCloseFormDialog} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleCloseFormDialog} color="primary">
             Login
           </Button>
         </DialogActions>
