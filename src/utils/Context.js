@@ -68,10 +68,19 @@ export const ContextProvider = ({ children }) => {
 	};
 
 	const createPost = () => {
-		instance.post(postNewPost, {
-			title: 'bernardo',
-			content: 'hey',
-		});
+		instance.post(
+			postNewPost,
+			{
+				title: 'bernardo',
+				content: 'hey',
+			},
+			{
+				headers: {
+					'x-access-token': `${user.token.token}`,
+					'Content-Type': 'application/json',
+				},
+			},
+		);
 	};
 
 	return (
