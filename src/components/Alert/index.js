@@ -8,12 +8,7 @@ import { Context } from '../../utils/Context';
 //crete and export alert component
 export const Alert = () => {
 	//use context hook
-	const { showError, showSuccess, error } = useContext(Context);
+	const { showError, error } = useContext(Context);
 
-	return (
-		<>
-			{showError && <Alerts severity='error'>{error}</Alerts>}
-			{showSuccess && <Alerts severity='success'>Success!!</Alerts>}
-		</>
-	);
+	return <>{showError && <Alerts severity='error'>{error}</Alerts>}</>;
 };

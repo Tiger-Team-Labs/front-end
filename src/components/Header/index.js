@@ -12,18 +12,24 @@ import { Header as HeaderContent, Buttons, AvatarContainer } from './styles';
 import { Avatar } from '../Avatar';
 //import the app context
 import { Context } from '../../utils/Context';
+//import the alert
+import { Alert } from '../Alert';
 
 //create and export header component
 export const Header = () => {
 	//use context
-	const { user, showSuccess } = useContext(Context);
+	const { user } = useContext(Context);
+
 	return (
 		<HeaderContent>
 			<Logo />
-			{user !== undefined && showSuccess ? (
-				<AvatarContainer>
-					<Avatar />
-				</AvatarContainer>
+			{user !== undefined ? (
+				<>
+					<Alert />
+					<AvatarContainer>
+						<Avatar />
+					</AvatarContainer>
+				</>
 			) : (
 				<Buttons>
 					<Register />

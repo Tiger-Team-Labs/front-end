@@ -32,8 +32,15 @@ export const ContextProvider = ({ children }) => {
 				email: email,
 				password: password,
 			})
-			.then((response) => console.log(response))
+			.then((response) =>
+				setUser({
+					email: email,
+					token: response.data,
+				}),
+			)
 			.catch((err) => console.log(err));
+
+		setShowSuccess((bool) => (bool = true));
 	};
 
 	/**
