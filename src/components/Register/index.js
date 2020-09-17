@@ -51,6 +51,7 @@ export const Register = () => {
 		} else {
 			setOpen(false);
 			setShowError(false);
+			createUserForSignUp();
 		}
 	};
 
