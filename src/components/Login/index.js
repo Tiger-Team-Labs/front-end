@@ -10,8 +10,9 @@ import {
 } from '@material-ui/core';
 // value de context
 import { Context } from '../../utils/Contex';
-// icon
+// Icons
 import FacebookIcon from '@material-ui/icons/Facebook';
+import MailIcon from '@material-ui/icons/Mail';
 
 
 
@@ -70,14 +71,14 @@ export default function Login() {
           onChange={handleChangeLogin}
         />
         <Button variant="contained" color="secondary" type="submit" fullWidth >
-          Login
+          Log in
         </Button>
       </form>
       <Divider variant='fullWidth' />
         <Button startIcon={<FacebookIcon/>} variant="contained" color="primary" fullWidth={true} >
           Facebook
       </Button>
-        <Button variant="contained" color="primary" fullWidth={true} >
+        <Button startIcon={<MailIcon/>} variant="contained" color="primary" fullWidth={true} >
           Google
       </Button>
     </div>

@@ -5,7 +5,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+// Icons
+import SportsEsportsIcon from '@material-ui/icons/SportsEsports';
 // bring Form
 import FormDialog from '../FormDialog/index'
 // import Context
@@ -37,7 +38,7 @@ export default function TopNavBar() {
       <AppBar position="static" color="secondary">
         <Toolbar>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <AccountCircleIcon />
+            <SportsEsportsIcon/>
           </IconButton>
           <Typography variant="h6" className={classes.title}>
             Foro Game
