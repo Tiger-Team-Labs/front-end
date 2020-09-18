@@ -11,6 +11,8 @@ import SportsEsportsIcon from '@material-ui/icons/SportsEsports';
 import FormDialog from '../FormDialog/index'
 // import Context
 import { Context } from '../../utils/Contex';
+// import CustomizedSnackbars
+import CustomizedSnackbars from '../SeccessAlarm'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -47,6 +49,7 @@ export default function TopNavBar() {
         </Toolbar>
       </AppBar>
       <FormDialog />
+      <CustomizedSnackbars />
     </div>
   );
 }

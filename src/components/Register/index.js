@@ -9,8 +9,6 @@ import {
   TextField,
   makeStyles,
 } from '@material-ui/core';
-// import alarm
-import CustomizedSnackbars from '../SeccessAlarm/index'
 // value de context
 import { Context } from '../../utils/Contex';
 
@@ -41,7 +39,6 @@ export default function Form() {
 
   return (
     <div className={classes.rootp}>
-      <CustomizedSnackbars />
       <Divider variant='fullWidth' />
       <form
         className={classes.root}
