@@ -19,6 +19,8 @@ export const ContextProvider = ({ children }) => {
 	const [showError, setShowError] = useState(false);
 	//to handle the error
 	const [error, setError] = useState(undefined);
+	//token
+	const [token, setToken] = useState(undefined);
 
 	/**
 	 * @description: allow us to create a user and make the post to the db
@@ -34,7 +36,7 @@ export const ContextProvider = ({ children }) => {
 			.then((response) =>
 				setUser({
 					email: email,
-					token: response.data,
+					token: response.data.token,
 				}),
 			)
 			.catch((err) => console.log(err));
@@ -49,16 +51,18 @@ export const ContextProvider = ({ children }) => {
 				email: email,
 				password: password,
 			})
-			.then((response) =>
+			.then((response) => {
 				setUser({
 					email: email,
-					token: response.data,
-				}),
-			)
-			.catch((err) => console.log(err));
+					token: response.data.token,
+				});
 
-		createPost();
+				setToken(response.data.token);
+			})
+			.catch((err) => console.log(err));
 	};
+
+	console.dir(user);
 
 	/**
 	 * @description: logout function
@@ -76,15 +80,12 @@ export const ContextProvider = ({ children }) => {
 			},
 			{
 				headers: {
-					'x-access-token': `${user.token.token}`,
+					'x-access-token': `${token}`,
 					'Content-Type': 'application/json',
 				},
 			},
 		);
 	};
-
-	//console the use
-	console.dir(user);
 
 	return (
 		<Context.Provider
