@@ -2,11 +2,11 @@
 import React, { useContext } from 'react';
 // import MakeStyle to make ours styles// import textField to form
 // import formaControl an other componen from core
-import { 
+import {
   Button,
-  Divider, 
-  TextField, 
-  makeStyles 
+  Divider,
+  TextField,
+  makeStyles
 } from '@material-ui/core';
 // value de context
 import { Context } from '../../utils/Contex';
@@ -75,11 +75,11 @@ export default function Login() {
         </Button>
       </form>
       <Divider variant='fullWidth' />
-        <Button startIcon={<FacebookIcon/>} variant="contained" color="primary" fullWidth={true} >
-          Facebook
+      <Button startIcon={<FacebookIcon />} variant="contained" color="primary" fullWidth={true} >
+        Facebook
       </Button>
-        <Button startIcon={<MailIcon/>} variant="contained" color="primary" fullWidth={true} >
-          Google
+      <Button startIcon={<MailIcon />} variant="contained" color="primary" fullWidth={true} >
+        Google
       </Button>
     </div>
   );

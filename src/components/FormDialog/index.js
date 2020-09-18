@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
@@ -11,10 +11,10 @@ import Login from '../Login/index'
 import { Context } from '../../utils/Contex';
 
 export default function FormDialog(props) {
-  const {  
-    openFormDialog, 
+  const {
+    openFormDialog,
     handleCloseFormDialog,
-    } = useContext(Context);
+  } = useContext(Context);
 
   return (
     <div>
@@ -22,10 +22,10 @@ export default function FormDialog(props) {
         <DialogTitle id="form-dialog-title">Login</DialogTitle>
         <DialogContent>
           <DialogContentText>
-          To be able to make comments and start interacting with your questions, please register.
+            To be able to make comments and start interacting with your questions, please register.
           </DialogContentText>
-          <Login/>
-          <Form/>
+          <Login />
+          <Form />
         </DialogContent>
       </Dialog>
     </div>

@@ -40,12 +40,12 @@ export default function TopNavBar() {
       <AppBar position="static" color="secondary">
         <Toolbar>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <SportsEsportsIcon/>
+            <SportsEsportsIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
             Foro Game
           </Typography>
-          <Button color="inherit" onClick={handleClickOpenFormDialog}>Login</Button>
+          <Button color="inherit" onClick={handleClickOpenFormDialog}> Login </Button>
         </Toolbar>
       </AppBar>
       <FormDialog />

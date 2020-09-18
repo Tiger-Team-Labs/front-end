@@ -20,8 +20,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CustomizedSnackbars() {
   const classes = useStyles();
-  const { openAlert,  handleCloseAlert,
-    } = useContext(Context);
+  const { openAlert, handleCloseAlert,
+  } = useContext(Context);
 
 
 
