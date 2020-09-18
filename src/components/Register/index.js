@@ -39,41 +39,32 @@ export default function Form() {
 
   return (
     <div className={classes.rootp}>
-      <Divider variant='fullWidth' />
+      
       <form
         className={classes.root}
         onSubmit={handleSubmit}
       >
+      <Divider variant='fullWidth' />
         <TextField
           required
           fullWidth
-          id="firstName"
-          label="First Name"
+          id="name"
+          label="Name"
           variant="outlined"
           color="primary"
           type="text"
-          name="firstName"
-          value={values.firstName}
+          name="name"
+          value={values.name}
           onChange={handleChange}
         />
         <TextField
           fullWidth
-          id="lastName"
-          label="Last Name"
-          variant="outlined"
-          color="primary"
-          name="lastName"
-          value={values.lastName}
-          onChange={handleChange}
-        />
-        <TextField
-          fullWidth
-          id="userName"
+          id="username"
           label="User Name"
           variant="outlined"
           color="primary"
-          name="userName"
-          value={values.userName}
+          name="username"
+          value={values.username}
           onChange={handleChange}
         />
         <TextField

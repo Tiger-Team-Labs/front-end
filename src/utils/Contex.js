@@ -38,9 +38,8 @@ export const ContextProvider = ({ children }) => {
 
   // Form Register
   const [values, setValues] = useState({
-    firstName: "",
-    lastName: "",
-    userName: "",
+    name: "",
+    username: "",
     email: "",
     password: "",
   });
@@ -54,9 +53,8 @@ export const ContextProvider = ({ children }) => {
     console.log('Ahí van los datos del formulario');
     setOpenFormDialog(false)
     setValues({
-      firstName: "",
-      lastName: "",
-      userName: "",
+      name: "",
+      username: "",
       email: "",
       password: "",
     });
