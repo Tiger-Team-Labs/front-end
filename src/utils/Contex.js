@@ -10,11 +10,27 @@ export const ContextProvider = ({ children }) => {
   const handleClickAlert = () => {setOpenAlert(true);};
   const handleCloseAlert = (event, reason) => {
     if (reason === 'clickaway') {
+      setOpenFormDialog(false)
       return;
     }
 
     setOpenAlert(false);
   };
+  // Login Values
+  const [valuesLogin,setValuesLogin] = useState({
+    email:"",
+    password: "",
+  })
+  const handleChangeLogin = (event) => {
+    setValuesLogin({...valuesLogin,[event.target.name]: event.target.value})
+  }
+
+  const handleSubmitLogin = (event) => {
+    event.preventDefault();
+    handleClickAlert();
+    console.log('Ahí van los datos del Login');
+  }
+
   // Form Register
   const [values,setValues] = useState({
     firstName: "",
@@ -30,7 +46,8 @@ export const ContextProvider = ({ children }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     handleClickAlert();
-    console.log('Ahí van los datos');
+    console.log('Ahí van los datos del formulario');
+    setOpenFormDialog(false)
   }
   // FormDialog
   const [openFormDialog, setOpenFormDialog] = React.useState(false);
@@ -41,7 +58,7 @@ export const ContextProvider = ({ children }) => {
   const handleCloseFormDialog = () => {
     setOpenFormDialog(false)};
 
-
+    // return Value
   return (
     <Context.Provider value={{
       open,
@@ -58,6 +75,10 @@ export const ContextProvider = ({ children }) => {
       setOpenFormDialog,
       handleClickOpenFormDialog,
       handleCloseFormDialog,
+      valuesLogin,
+      setValuesLogin,
+      handleChangeLogin, 
+      handleSubmitLogin,
     }}>
       {children}
     </Context.Provider>

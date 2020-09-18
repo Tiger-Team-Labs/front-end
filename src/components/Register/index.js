@@ -1,11 +1,14 @@
 //import react
 import React, { useContext } from 'react';
 // import MakeStyle to make ours styles
-import { makeStyles } from '@material-ui/core/styles';
 // import textField to form
-import TextField from '@material-ui/core/TextField';
 // import formaControl an other componen from core
-import { Button } from '@material-ui/core';
+import { 
+  Button,
+  Divider,
+  TextField,
+  makeStyles,
+} from '@material-ui/core';
 // import alarm
 import CustomizedSnackbars from '../SeccessAlarm/index'
 // value de context
@@ -16,7 +19,11 @@ const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
       margin: theme.spacing(1),
-      width: '25ch',
+    },
+    rootp: {
+      '& > *': {
+        margin: theme.spacing(1),
+      },
     },
   },
 }));
@@ -24,23 +31,25 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function Form() {
-  const {  
+  const {
     values,
-    handleChange, 
+    handleChange,
     handleSubmit,
-    } = useContext(Context);
+  } = useContext(Context);
 
   const classes = useStyles();
 
   return (
-    <div>
-      <CustomizedSnackbars/>
+    <div className={classes.rootp}>
+      <CustomizedSnackbars />
+      <Divider variant='fullWidth' />
       <form
         className={classes.root}
         onSubmit={handleSubmit}
       >
         <TextField
           required
+          fullWidth
           id="firstName"
           label="First Name"
           variant="outlined"
@@ -51,6 +60,7 @@ export default function Form() {
           onChange={handleChange}
         />
         <TextField
+          fullWidth
           id="lastName"
           label="Last Name"
           variant="outlined"
@@ -60,6 +70,7 @@ export default function Form() {
           onChange={handleChange}
         />
         <TextField
+          fullWidth
           id="userName"
           label="User Name"
           variant="outlined"
@@ -69,6 +80,7 @@ export default function Form() {
           onChange={handleChange}
         />
         <TextField
+          fullWidth
           required
           id="email"
           label="Email"
@@ -79,6 +91,7 @@ export default function Form() {
           onChange={handleChange}
         />
         <TextField
+          fullWidth
           required
           id="password"
           label="Password"
@@ -89,7 +102,7 @@ export default function Form() {
           value={values.password}
           onChange={handleChange}
         />
-        <Button variant="contained" color="secondary" type="submit" >
+        <Button fullWidth variant="contained" color="secondary" type="submit" >
           Send
         </Button>
       </form>

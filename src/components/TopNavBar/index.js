@@ -43,8 +43,6 @@ export default function TopNavBar() {
             Foro Game
           </Typography>
           <Button color="inherit" onClick={handleClickOpenFormDialog}>Login</Button>
-          <Button color="inherit" onClick={handleClickOpenFormDialog}>Signup</Button>
-
         </Toolbar>
       </AppBar>
       <FormDialog />

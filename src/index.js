@@ -8,8 +8,7 @@ import { HashRouter as Router } from 'react-router-dom';
 import { ContextProvider } from './utils/Contex';
 //import App component
 import App from './components/App/index'
-// practica
-import TopNavBar from './components/TopNavBar';
+
 
 
 
@@ -19,7 +18,7 @@ const root = document.getElementById('root');
 render(
 	<ContextProvider>
 		<Router>
-			<TopNavBar/>
+			<App/>
 		</Router>
 	</ContextProvider>,
 	root,
