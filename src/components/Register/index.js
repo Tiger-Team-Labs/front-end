@@ -103,7 +103,7 @@ export default function Form() {
           onChange={handleChange}
         />
         <Button fullWidth variant="contained" color="secondary" type="submit" >
-          Send
+          Sign Up
         </Button>
       </form>
 
