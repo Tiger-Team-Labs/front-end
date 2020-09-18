@@ -7,7 +7,7 @@ export const ContextProvider = ({ children }) => {
   // Alert
   const [open, setOpen] = useState(false)
   const [openAlert, setOpenAlert] = useState(false);
-  const handleClickAlert = () => {setOpenAlert(true);};
+  const handleClickAlert = () => { setOpenAlert(true); };
   const handleCloseAlert = (event, reason) => {
     if (reason === 'clickaway') {
       setOpenFormDialog(false)
@@ -17,26 +17,31 @@ export const ContextProvider = ({ children }) => {
     setOpenAlert(false);
   };
   // Login Values
-  const [valuesLogin,setValuesLogin] = useState({
-    email:"",
+  const [valuesLogin, setValuesLogin] = useState({
+    email: "",
     password: "",
   })
   const handleChangeLogin = (event) => {
-    setValuesLogin({...valuesLogin,[event.target.name]: event.target.value})
+    setValuesLogin({ ...valuesLogin, [event.target.name]: event.target.value })
   }
 
   const handleSubmitLogin = (event) => {
     event.preventDefault();
     handleClickAlert();
+    setOpenFormDialog(false)
     console.log('Ahí van los datos del Login');
+    setValuesLogin({
+      email: "",
+      password: "",
+    })
   }
 
   // Form Register
-  const [values,setValues] = useState({
+  const [values, setValues] = useState({
     firstName: "",
     lastName: "",
     userName: "",
-    email:"",
+    email: "",
     password: "",
   });
   const handleChange = (event) => {
@@ -48,17 +53,26 @@ export const ContextProvider = ({ children }) => {
     handleClickAlert();
     console.log('Ahí van los datos del formulario');
     setOpenFormDialog(false)
+    setValues({
+      firstName: "",
+      lastName: "",
+      userName: "",
+      email: "",
+      password: "",
+    });
   }
   // FormDialog
   const [openFormDialog, setOpenFormDialog] = React.useState(false);
 
   const handleClickOpenFormDialog = () => {
-    setOpenFormDialog(true);};
+    setOpenFormDialog(true);
+  };
 
   const handleCloseFormDialog = () => {
-    setOpenFormDialog(false)};
+    setOpenFormDialog(false)
+  };
 
-    // return Value
+  // return Value
   return (
     <Context.Provider value={{
       open,
@@ -71,13 +85,13 @@ export const ContextProvider = ({ children }) => {
       setValues,
       handleChange,
       handleSubmit,
-      openFormDialog, 
+      openFormDialog,
       setOpenFormDialog,
       handleClickOpenFormDialog,
       handleCloseFormDialog,
       valuesLogin,
       setValuesLogin,
-      handleChangeLogin, 
+      handleChangeLogin,
       handleSubmitLogin,
     }}>
       {children}
