@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -27,12 +27,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
 export default function TopNavBar() {
   const classes = useStyles();
+// Context
   const {
     handleClickOpenFormDialog,
   } = React.useContext(Context);
+  
+  // Value res
+  const [name, setName] = useState("");
 
+  useEffect(() => {
+    fetch('https://testing-api-foro.herokuapp.com/') 
+    .then(res => res.json()) 
+    .then(res => setName(res)) 
+    .catch(error => {
+      console.log('Hubo un problema con la petición Fetch:' + error.message)
+    });
+  }, []); 
 
 
   return (
@@ -50,6 +64,8 @@ export default function TopNavBar() {
       </AppBar>
       <FormDialog />
       <CustomizedSnackbars />
+  <h1>Team: {name.author}</h1>
+  <p>{name.description}</p>
     </div>
   );
 }
