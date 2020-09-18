@@ -23,13 +23,14 @@ import { Button } from '@material-ui/core';
 //create and export header component
 export const Header = () => {
 	//use context
-	const { user, logOut } = useContext(Context);
+	const { user, logOut, createPost } = useContext(Context);
 
 	return (
 		<HeaderContent>
 			<Logo />
 			{user !== undefined ? (
 				<LogOut>
+					//<Button onClick={() => createPost()}>Create a post</Button>
 					<Button
 						fullWidth={false}
 						size='small'

@@ -62,8 +62,6 @@ export const ContextProvider = ({ children }) => {
 			.catch((err) => console.log(err));
 	};
 
-	console.dir(user);
-
 	/**
 	 * @description: logout function
 	 */
@@ -72,19 +70,20 @@ export const ContextProvider = ({ children }) => {
 	};
 
 	const createPost = () => {
-		instance.post(
-			postNewPost,
-			{
-				title: 'bernardo',
-				content: 'hey',
-			},
-			{
-				headers: {
-					'x-access-token': `${token}`,
-					'Content-Type': 'application/json',
+		instance
+			.post(
+				postNewPost,
+				{
+					title: 'bernardo',
+					content: 'hey',
 				},
-			},
-		);
+				{
+					headers: {
+						'x-access-token': `${token}`,
+					},
+				},
+			)
+			.then((response) => console.log(response));
 	};
 
 	return (
@@ -107,6 +106,7 @@ export const ContextProvider = ({ children }) => {
 				error,
 				setError,
 				logOut,
+				createPost,
 			}}>
 			{children}
 		</Context.Provider>

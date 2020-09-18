@@ -3,8 +3,8 @@ import axios from 'axios';
 
 //create the instance
 export const instance = axios.create({
-	//baseURL: 'https://api-foro.herokuapp.com/api',
-	baseURL: 'https://testing-api-foro.herokuapp.com/api',
+	baseURL: 'https://api-foro.herokuapp.com/api',
+	//baseURL: 'https://testing-api-foro.herokuapp.com/api',
 });
 
 //create end points
