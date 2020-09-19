@@ -1,16 +1,16 @@
 //import react
-import React from 'react';
+import React, { forwardRef } from 'react';
 //import materia ui components
 import { Typography, Card, CardContent, CardMedia } from '@material-ui/core';
 //import use styles
 import { useStyles } from './styles';
 
 //create list of post component and export it
-export const Category = ({ name }) => {
+export const Category = forwardRef(({ name }, ref) => {
 	const classes = useStyles();
 
 	return (
-		<Card className={classes.root}>
+		<Card className={classes.root} ref={ref}>
 			<div className={classes.details}>
 				<CardContent className={classes.content}>
 					<Typography component='h5' variant='h5'>
@@ -29,4 +29,4 @@ export const Category = ({ name }) => {
 			/>
 		</Card>
 	);
-};
+});

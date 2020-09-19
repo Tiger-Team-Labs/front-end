@@ -38,6 +38,7 @@ export const AvatarContainer = styled.div`
 //LogOut
 export const LogOut = styled.div`
 	display: flex;
+	padding: 0.5rem;
 
 	@media only screen and (max-width: 350px) {
 		flex-direction: column;

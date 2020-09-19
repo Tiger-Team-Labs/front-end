@@ -33,7 +33,7 @@ export const Header = () => {
 					<Button
 						fullWidth={false}
 						size='small'
-						color='secondary'
+						color='primary'
 						variant='contained'
 						onClick={() => logOut()}>
 						Log Out

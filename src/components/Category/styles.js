@@ -3,8 +3,8 @@ import { makeStyles } from '@material-ui/core';
 export const useStyles = makeStyles(() => ({
 	root: {
 		display: 'flex',
-		margin: '1rem',
-		width: '50%',
+		margin: '1rem auto',
+		width: '60%',
 	},
 	details: {
 		display: 'flex',
