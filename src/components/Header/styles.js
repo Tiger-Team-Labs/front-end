@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 //create and export header component
 export const Header = styled.header`
+	font-size: 2rem !important;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
