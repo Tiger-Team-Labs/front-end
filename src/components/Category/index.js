@@ -1,20 +1,32 @@
 //import react
 import React from 'react';
 //import materia ui components
-import {
-	Typography,
-	Card,
-	CardContent,
-	CardMedia,
-	IconButton,
-	SkipPreviousIcon,
-} from '@material-ui/core';
+import { Typography, Card, CardContent, CardMedia } from '@material-ui/core';
+//import use styles
+import { useStyles } from './styles';
 
 //create list of post component and export it
 export const Category = ({ name }) => {
+	const classes = useStyles();
+
 	return (
-		<>
-			<Typography variant='h2'>{name}</Typography>
-		</>
+		<Card className={classes.root}>
+			<div className={classes.details}>
+				<CardContent className={classes.content}>
+					<Typography component='h5' variant='h5'>
+						Live From Space
+					</Typography>
+					<Typography variant='subtitle1' color='textSecondary'>
+						Mac Miller
+					</Typography>
+				</CardContent>
+				<div className={classes.controls}></div>
+			</div>
+			<CardMedia
+				className={classes.cover}
+				image='/static/images/cards/live-from-space.jpg'
+				title='Live from space album cover'
+			/>
+		</Card>
 	);
 };

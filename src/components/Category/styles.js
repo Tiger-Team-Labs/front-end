@@ -1,8 +1,10 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core';
 
-export const useStyles = makeStyles((theme) => ({
+export const useStyles = makeStyles(() => ({
 	root: {
 		display: 'flex',
+		margin: '1rem',
+		width: '50%',
 	},
 	details: {
 		display: 'flex',
@@ -17,11 +19,7 @@ export const useStyles = makeStyles((theme) => ({
 	controls: {
 		display: 'flex',
 		alignItems: 'center',
-		paddingLeft: theme.spacing(1),
-		paddingBottom: theme.spacing(1),
-	},
-	playIcon: {
-		height: 38,
-		width: 38,
+		paddingLeft: '1rem',
+		paddingBottom: '1rem',
 	},
 }));
