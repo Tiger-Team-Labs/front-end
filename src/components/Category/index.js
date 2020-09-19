@@ -10,18 +10,20 @@ export const Category = forwardRef(({ title, src, subTitle }, ref) => {
 	const classes = useStyles();
 
 	return (
-		<Card className={classes.root} ref={ref}>
-			<div className={classes.details}>
-				<CardContent className={classes.content}>
-					<Typography component='h5' variant='h5'>
-						{title}
-					</Typography>
-					<Typography variant='subtitle1' color='textSecondary'>
-						{subTitle}
-					</Typography>
-				</CardContent>
-				<div className={classes.controls}></div>
-			</div>
-		</Card>
+		<>
+			<Card className={classes.root} ref={ref}>
+				<div className={classes.details}>
+					<CardContent className={classes.content}>
+						<Typography className={classes.typo} component='h5' variant='h5'>
+							{title}
+						</Typography>
+						<Typography className={classes.typo} variant='subtitle1'>
+							{subTitle}
+						</Typography>
+					</CardContent>
+					<div className={classes.controls}></div>
+				</div>
+			</Card>
+		</>
 	);
 });
