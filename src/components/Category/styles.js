@@ -9,12 +9,10 @@ export const useStyles = makeStyles(() => ({
 	details: {
 		display: 'flex',
 		flexDirection: 'column',
+		padding: '1rem',
 	},
 	content: {
-		flex: '1 0 auto',
-	},
-	cover: {
-		width: 151,
+		flex: '0 1 auto',
 	},
 	controls: {
 		display: 'flex',

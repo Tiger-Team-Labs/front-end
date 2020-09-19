@@ -11,10 +11,10 @@ export const Categories = () => {
 		<FlipMove>
 			{/**show the list of categories*/}
 			{/**add the flip move effect*/}
-			<Category name='action games' />
-			<Category name='adventure games' />
-			<Category name='real time games' />
-			<Category name='strategy games' />
+			<Category title='action games' subTitle='the best' />
+			<Category title='adventure games' subTitle='woow' />
+			<Category title='strategy games' subTitle='¿the best game?' />
+			<Category title='horror games' subTitle='this is insane' />
 		</FlipMove>
 	);
 };
