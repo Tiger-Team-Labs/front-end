@@ -3,5 +3,10 @@ import React from 'react';
 
 //create body component and export it
 export const Body = () => {
-	return <h1>I'm the body</h1>;
+	return (
+		<>
+			{/*list of posts as categories*/}
+			{/*use react flip move*/}
+		</>
+	);
 };
