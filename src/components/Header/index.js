@@ -30,7 +30,6 @@ export const Header = () => {
 			<Logo />
 			{user !== undefined ? (
 				<LogOut>
-					//<Button onClick={() => createPost()}>Create a post</Button>
 					<Button
 						fullWidth={false}
 						size='small'
