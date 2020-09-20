@@ -8,6 +8,8 @@ import { BodyBackground } from './styles';
 import { Route, Switch } from 'react-router-dom';
 //import list post component
 import { ListOfPosts } from '../ListOfPosts';
+//import post component
+import { Post } from '../Post';
 
 //create body component and export it
 export const Body = () => {
@@ -17,8 +19,11 @@ export const Body = () => {
 				<Route path='/' exact>
 					<Categories />
 				</Route>
-				<Route path={`/:category`}>
+				<Route path='/:category'>
 					<ListOfPosts />
+				</Route>
+				<Route path='/:category/:post'>
+					<Post />
 				</Route>
 			</Switch>
 		</BodyBackground>

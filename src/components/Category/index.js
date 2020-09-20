@@ -6,8 +6,6 @@ import { Typography, Card, CardContent } from '@material-ui/core';
 import { useStyles } from './styles';
 //router elements
 import { Link } from 'react-router-dom';
-//import use param hook
-import { useParams } from 'react-router-dom';
 
 //create list of post component and export it
 export const Category = ({ title }) => {

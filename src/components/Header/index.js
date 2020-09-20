@@ -25,11 +25,11 @@ import { Link } from 'react-router-dom';
 //create and export header component
 export const Header = () => {
 	//use context
-	const { user, logOut, createPost } = useContext(Context);
+	const { user, logOut } = useContext(Context);
 
 	return (
 		<HeaderContent>
-			<Link to='/'>
+			<Link style={{ width: 0 }} to='/'>
 				<Logo />
 			</Link>
 			{user !== undefined ? (

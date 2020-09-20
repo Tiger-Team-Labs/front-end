@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 //import category component
 import { Category } from '../Category';
-//import flip move
 
 //create list of post component and export it
 export const Categories = () => {
