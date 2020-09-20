@@ -5,7 +5,7 @@ export const useStyles = makeStyles({
 		margin: '1rem',
 		width: '15rem',
 		background:
-			' linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996)' /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */,
+			' linear-gradient(to right, #ff6e7f, #bfe9ff)' /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */,
 	},
 	bullet: {
 		display: 'inline-block',

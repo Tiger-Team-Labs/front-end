@@ -8,6 +8,7 @@
 html {
 	font-size: 14px;
 	overflow: none;
+	overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {

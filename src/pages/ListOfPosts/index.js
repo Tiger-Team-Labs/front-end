@@ -14,6 +14,11 @@ export const ListOfPosts = () => {
 		{ _id: 'cd', post: 'some text', category: 'action games' },
 		{ _id: 'ef', post: 'some text', category: 'action games' },
 		{ _id: 'jh', post: 'some text', category: 'action games' },
+		{ _id: 'jhw', post: 'some text', category: 'action games' },
+		{ _id: 'jhwq', post: 'some text', category: 'action games' },
+		{ _id: 'jhdf', post: 'some text', category: 'action games' },
+		{ _id: 'jha', post: 'some text', category: 'action games' },
+		{ _id: 'jhq', post: 'some text', category: 'action games' },
 	]);
 
 	return (
