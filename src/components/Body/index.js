@@ -4,12 +4,23 @@ import React from 'react';
 import { Categories } from '../Categories';
 //import body background
 import { BodyBackground } from './styles';
+//import router elements
+import { Route, Switch } from 'react-router-dom';
+//import list post component
+import { ListOfPosts } from '../ListOfPosts';
 
 //create body component and export it
 export const Body = () => {
 	return (
 		<BodyBackground>
-			<Categories />
+			<Switch>
+				<Route path='/' exact>
+					<Categories />
+				</Route>
+				<Route path={`/:category`}>
+					<ListOfPosts />
+				</Route>
+			</Switch>
 		</BodyBackground>
 	);
 };

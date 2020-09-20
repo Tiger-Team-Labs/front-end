@@ -19,6 +19,8 @@ import { Avatar } from '../Avatar';
 import { Context } from '../../utils/Context';
 //import button
 import { Button } from '@material-ui/core';
+//import link from react render dom
+import { Link } from 'react-router-dom';
 
 //create and export header component
 export const Header = () => {
@@ -27,7 +29,9 @@ export const Header = () => {
 
 	return (
 		<HeaderContent>
-			<Logo />
+			<Link to='/'>
+				<Logo />
+			</Link>
 			{user !== undefined ? (
 				<LogOut>
 					<Button
