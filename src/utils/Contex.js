@@ -1,5 +1,7 @@
 // import react
 import React, { useState } from 'react';
+// import Axios
+import axios from 'axios'; 
 //create functional component for context provider and export it
 export const Context = React.createContext();
 
@@ -46,18 +48,24 @@ export const ContextProvider = ({ children }) => {
   const handleChange = (event) => {
     setValues({ ...values, [event.target.name]: event.target.value })
   }
+   // send datos
+  const url = "https://testing-api-foro.herokuapp.com/api/auth/signup"
+
+// Ejemplo implementando el metodo axios:
+
+  const loginForm = async () => {
+  await axios.post(url,values)
+      .then(res => console.log(res))
+      .catch(err => { console.log(`Algo paso, aquí te lo muestro: ${err}`)})
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
     handleClickAlert();
-    console.log('Ahí van los datos del formulario');
-    setOpenFormDialog(false)
-    setValues({
-      name: "",
-      username: "",
-      email: "",
-      password: "",
-    });
+    console.log(`'Ahí van los datos del formulario: ${values.name}'`);
+    loginForm();
+    setOpenFormDialog(false);
+  
   }
   // FormDialog
   const [openFormDialog, setOpenFormDialog] = React.useState(false);
