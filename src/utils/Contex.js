@@ -22,6 +22,7 @@ export const ContextProvider = ({ children }) => {
   const [valuesLogin, setValuesLogin] = useState({
     email: "",
     password: "",
+    token:""
   })
   const handleChangeLogin = (event) => {
     setValuesLogin({ ...valuesLogin, [event.target.name]: event.target.value })
