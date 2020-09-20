@@ -1,7 +1,7 @@
 //import react
 import React, { useState } from 'react';
 //import post component
-import { Post } from '../Post';
+import { PostCard } from '../PostCard';
 //import link component
 import { Link } from 'react-router-dom';
 
@@ -19,7 +19,7 @@ export const ListOfPosts = () => {
 			{/**posts in other words I need to make the fetch*/}
 			{posts.map((post, id) => (
 				<Link to={`/${post.category}/${id}`}>
-					<Post key={id} title={post.post} />
+					<PostCard key={id} title={post.post} />
 				</Link>
 			))}
 		</>

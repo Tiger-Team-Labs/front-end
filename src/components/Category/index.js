@@ -16,11 +16,10 @@ export const Category = ({ title }) => {
 			<Card className={classes.root}>
 				<div className={classes.details}>
 					<CardContent className={classes.content}>
-						<Typography className={classes.typo} component='h5' variant='h5'>
+						<Typography className={classes.typo} component='h2' variant='h3'>
 							{title}
 						</Typography>
 					</CardContent>
-					<div className={classes.controls}></div>
 				</div>
 			</Card>
 		</Link>

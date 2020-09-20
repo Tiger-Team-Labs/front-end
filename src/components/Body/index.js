@@ -19,10 +19,10 @@ export const Body = () => {
 				<Route path='/' exact>
 					<Categories />
 				</Route>
-				<Route path='/:category'>
+				<Route exact path='/:category'>
 					<ListOfPosts />
 				</Route>
-				<Route path='/:category/:post'>
+				<Route exact path='/:category/:post'>
 					<Post />
 				</Route>
 			</Switch>
