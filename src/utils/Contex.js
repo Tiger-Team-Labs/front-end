@@ -26,12 +26,22 @@ export const ContextProvider = ({ children }) => {
   const handleChangeLogin = (event) => {
     setValuesLogin({ ...valuesLogin, [event.target.name]: event.target.value })
   }
+  // send datos  Login
+  const urlLogin = "https://testing-api-foro.herokuapp.com/api/auth/login"
+  // Ejemplo implementando el metodo axios:
+  
+    const createUserWhitFromLogin = async () => {
+    await axios.post(urlLogin,valuesLogin)
+        .then(res => console.log(res))
+        .catch(err => { console.log(`Algo paso, aquí te lo muestro: ${err}`)})
+    }
 
   const handleSubmitLogin = (event) => {
     event.preventDefault();
     handleClickAlert();
     setOpenFormDialog(false)
     console.log('Ahí van los datos del Login');
+    createUserWhitFromLogin()
     setValuesLogin({
       email: "",
       password: "",
@@ -49,12 +59,12 @@ export const ContextProvider = ({ children }) => {
     setValues({ ...values, [event.target.name]: event.target.value })
   }
    // send datos
-  const url = "https://testing-api-foro.herokuapp.com/api/auth/signup"
+  const urlSignUp = "https://testing-api-foro.herokuapp.com/api/auth/signup"
 
 // Ejemplo implementando el metodo axios:
 
-  const loginForm = async () => {
-  await axios.post(url,values)
+  const createUserWhitFormSignUP = async () => {
+  await axios.post(urlSignUp,values)
       .then(res => console.log(res))
       .catch(err => { console.log(`Algo paso, aquí te lo muestro: ${err}`)})
   }
@@ -63,7 +73,7 @@ export const ContextProvider = ({ children }) => {
     event.preventDefault();
     handleClickAlert();
     console.log(`'Ahí van los datos del formulario: ${values.name}'`);
-    loginForm();
+    createUserWhitFormSignUP();
     setOpenFormDialog(false);
   
   }
