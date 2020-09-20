@@ -1,7 +1,7 @@
 //import react
 import React, { useState } from 'react';
 //import post component
-import { PostCard } from '../PostCard';
+import { PostCard } from '../../components/PostCard';
 //import link component
 import { Link } from 'react-router-dom';
 

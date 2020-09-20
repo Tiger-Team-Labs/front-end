@@ -1,7 +1,5 @@
 //import react
 import React from 'react';
-//import register component
-import { Header } from '../Header';
 //import body component
 import { Body } from '../Body';
 
@@ -9,7 +7,6 @@ import { Body } from '../Body';
 export const App = () => {
 	return (
 		<>
-			<Header />
 			<Body />
 		</>
 	);
