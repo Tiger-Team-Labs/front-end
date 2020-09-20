@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { PostCard } from '../../components/PostCard';
 //import link component
 import { Link } from 'react-router-dom';
+//import grid component from materia ui
+import Grid from '@material-ui/core/Grid';
 
 //create list of post component and export it
 export const ListOfPosts = () => {
@@ -17,11 +19,19 @@ export const ListOfPosts = () => {
 	return (
 		<>
 			{/**posts in other words I need to make the fetch*/}
-			{posts.map((post, i) => (
-				<Link key={post._id} to={`/${post.category}/${i}`}>
-					<PostCard title={post.post} />
-				</Link>
-			))}
+			{/*use the grid container*/}
+			<Grid container spacing={2}>
+				{/*use the grid item*/}
+				<Grid item xs={12}>
+					<Grid container justify='center' spacing={2}>
+						{posts.map((post, i) => (
+							<Link key={post._id} to={`/${post.category}/${i}`}>
+								<PostCard title={post.post} />
+							</Link>
+						))}
+					</Grid>
+				</Grid>
+			</Grid>
 		</>
 	);
 };

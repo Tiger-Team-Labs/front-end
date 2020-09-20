@@ -1,13 +1,7 @@
 //import react
 import React from 'react';
 import { useStyles } from './styles';
-import {
-	Card,
-	CardActions,
-	CardContent,
-	Button,
-	Typography,
-} from '@material-ui/core';
+import { Card, CardContent, Typography } from '@material-ui/core';
 
 //create and import postC, art component
 export const PostCard = () => {
