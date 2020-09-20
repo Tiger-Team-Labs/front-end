@@ -11,6 +11,7 @@ export const Categories = () => {
 		{ title: 'adventure games' },
 		{ title: 'strategy games' },
 		{ title: 'horror games' },
+		{ title: 'pay to win games' },
 	]);
 
 	return (
