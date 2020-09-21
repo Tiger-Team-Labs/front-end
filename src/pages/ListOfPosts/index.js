@@ -1,5 +1,5 @@
 //import react
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 //import post component
 import { PostCard } from '../../components/PostCard';
 //import link component
@@ -23,7 +23,7 @@ export const ListOfPosts = () => {
 		{ _id: 'jhq', post: 'some text', category: 'action games' },
 	]);
 
-	const [state, toggle] = useState(true);
+	const [state] = useState(true);
 	const { x } = useSpring({
 		from: { x: 0 },
 		x: state ? 1 : 0,
@@ -40,7 +40,12 @@ export const ListOfPosts = () => {
 					<Grid container justify='center' spacing={2}>
 						{/*show all the components*/}
 						{posts.map((post, i) => (
-							<Link key={post._id} to={`/${post.category}/${i}`}>
+							<Link
+								style={{ textDecoration: 'none' }}
+								key={post._id}
+								to={`/${post.category}/${i}`}>
+								{/*add the link ability to change into different pages*/}
+								{/*add the animation ability*/}
 								<animated.div
 									style={{
 										opacity: x.interpolate({ range: [0, 1], output: [0.3, 1] }),
@@ -51,6 +56,7 @@ export const ListOfPosts = () => {
 											})
 											.interpolate((x) => `scale(${x})`),
 									}}>
+									{/*show the card*/}
 									<PostCard title={post.post} />
 								</animated.div>
 							</Link>
