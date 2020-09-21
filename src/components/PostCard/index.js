@@ -4,21 +4,14 @@ import { useStyles } from './styles';
 import { Card, CardContent, Typography } from '@material-ui/core';
 
 //create and import postC, art component
-export const PostCard = () => {
+export const PostCard = ({ title }) => {
 	const classes = useStyles();
-	const bull = <span className={classes.bullet}>•</span>;
 
 	return (
 		<Card className={classes.root}>
 			<CardContent>
-				<Typography
-					className={classes.title}
-					color='textSecondary'
-					gutterBottom>
-					Word of the Day
-				</Typography>
 				<Typography variant='h5' component='h2'>
-					be{bull}nev{bull}o{bull}lent
+					{title}
 				</Typography>
 			</CardContent>
 		</Card>

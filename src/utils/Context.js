@@ -126,6 +126,7 @@ export const ContextProvider = ({ children }) => {
 				setError,
 				logOut,
 				createPost,
+				posts,
 			}}>
 			{children}
 		</Context.Provider>

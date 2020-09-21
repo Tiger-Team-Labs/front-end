@@ -1,5 +1,5 @@
 //import react
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 //import post component
 import { PostCard } from '../../components/PostCard';
 //import link component
@@ -8,20 +8,13 @@ import { Link } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 //import spring tools
 import { useSpring, animated } from 'react-spring';
+//import the context
+import { Context } from '../../utils/Context';
 
 //create list of post component and export it
 export const ListOfPosts = () => {
-	const [posts] = useState([
-		{ _id: 'ab', post: 'some text', category: 'action games' },
-		{ _id: 'cd', post: 'some text', category: 'action games' },
-		{ _id: 'ef', post: 'some text', category: 'action games' },
-		{ _id: 'jh', post: 'some text', category: 'action games' },
-		{ _id: 'jhw', post: 'some text', category: 'action games' },
-		{ _id: 'jhwq', post: 'some text', category: 'action games' },
-		{ _id: 'jhdf', post: 'some text', category: 'action games' },
-		{ _id: 'jha', post: 'some text', category: 'action games' },
-		{ _id: 'jhq', post: 'some text', category: 'action games' },
-	]);
+	//use the context
+	const { posts } = useContext(Context);
 
 	const [state] = useState(true);
 	const { x } = useSpring({
@@ -43,7 +36,7 @@ export const ListOfPosts = () => {
 							<Link
 								style={{ textDecoration: 'none' }}
 								key={post._id}
-								to={`/${post.category}/${i}`}>
+								to={`/${post.title}/${i}`}>
 								{/*add the link ability to change into different pages*/}
 								{/*add the animation ability*/}
 								<animated.div
@@ -57,7 +50,7 @@ export const ListOfPosts = () => {
 											.interpolate((x) => `scale(${x})`),
 									}}>
 									{/*show the card*/}
-									<PostCard title={post.post} />
+									<PostCard title={post.title} />
 								</animated.div>
 							</Link>
 						))}
