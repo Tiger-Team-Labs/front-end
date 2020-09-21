@@ -1,7 +1,13 @@
 //import react
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 //import axios logic
-import { instance, postUser, checkUserInDb, postNewPost } from './requests';
+import {
+	instance,
+	postUser,
+	checkUserInDb,
+	postNewPost,
+	getPosts,
+} from './requests';
 
 //create context and export it
 export const Context = React.createContext();
@@ -21,7 +27,20 @@ export const ContextProvider = ({ children }) => {
 	const [error, setError] = useState(undefined);
 	//token
 	const [token, setToken] = useState(undefined);
+	//posts
+	const [posts, setPosts] = useState([]);
 
+	//use effect for bring the posts
+	/**
+	 * bring the data from de data base
+	 */
+	useEffect(() => {
+		const bringData = async () =>
+			await instance.get(getPosts).then((response) => setPosts(response.data));
+
+		bringData();
+	}, []);
+	console.log(posts);
 	/**
 	 * @description: allow us to create a user and make the post to the db
 	 */
