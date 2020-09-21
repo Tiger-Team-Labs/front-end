@@ -1,12 +1,26 @@
-//import react
-import React from 'react';
+//import react and its hooks
+import React, { useContext, useEffect, useState } from 'react';
 // use params hook
 import { useParams } from 'react-router-dom';
+//import context
+import { Context } from '../../utils/Context';
 
 //create post component and export it
 export const Post = ({ title }) => {
+	//use params hook
 	const params = useParams();
-	console.log(params);
+	console.dir(params);
+	//use context
+	const { posts } = useContext(Context);
+	//use state to save the post specific post
+	const [post, setPost] = useState();
+
+	//use effect to find the post
+	useEffect(() => {
+		setPost(posts.filter((post) => post._id === params.post));
+	}, [params.post, posts]);
+
+	console.log(post);
 
 	return (
 		<>

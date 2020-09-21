@@ -40,7 +40,7 @@ export const ContextProvider = ({ children }) => {
 
 		bringData();
 	}, []);
-	console.log(posts);
+
 	/**
 	 * @description: allow us to create a user and make the post to the db
 	 */

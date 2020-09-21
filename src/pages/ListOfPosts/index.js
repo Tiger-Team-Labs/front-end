@@ -10,18 +10,25 @@ import { Grid } from '@material-ui/core';
 import { useSpring, animated } from 'react-spring';
 //import the context
 import { Context } from '../../utils/Context';
+// use params hook
+import { useParams } from 'react-router-dom';
 
 //create list of post component and export it
 export const ListOfPosts = () => {
 	//use the context
 	const { posts } = useContext(Context);
 
+	// confi for animation
 	const [state] = useState(true);
 	const { x } = useSpring({
 		from: { x: 0 },
 		x: state ? 1 : 0,
 		config: { duration: 1000 },
 	});
+
+	//use params
+	const params = useParams();
+	console.log(params);
 
 	return (
 		<>
