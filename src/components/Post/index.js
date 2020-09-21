@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import { Context } from '../../utils/Context';
 
 //create post component and export it
-export const Post = ({ title }) => {
+export const Post = () => {
 	//use params hook
 	const params = useParams();
 	console.dir(params);
@@ -20,14 +20,11 @@ export const Post = ({ title }) => {
 		setPost(posts.filter((post) => post._id === params.post));
 	}, [params.post, posts]);
 
-	console.log(post);
-
 	return (
 		<>
 			{/*post card*/}
 			{/*title*/}
 			{/*contents*/}
-			<h2>{title}</h2>
 			<h4>I'm the post</h4>
 		</>
 	);

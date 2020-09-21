@@ -6,6 +6,7 @@ export const useStyles = makeStyles(() => ({
 		width: '60%',
 		backgroundImage:
 			'linear-gradient(to right, #DAE2F8 0%, #D6A4A4 51%, #DAE2F8 100%)',
+		textTransform: 'capitalize',
 	},
 	details: {
 		display: 'flex',
