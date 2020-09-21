@@ -36,7 +36,7 @@ export const ListOfPosts = () => {
 							<Link
 								style={{ textDecoration: 'none' }}
 								key={post._id}
-								to={`/${post.title}/${i}`}>
+								to={`/${post.title}/${post._id}`}>
 								{/*add the link ability to change into different pages*/}
 								{/*add the animation ability*/}
 								<animated.div
