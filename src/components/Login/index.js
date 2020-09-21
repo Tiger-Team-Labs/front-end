@@ -15,6 +15,8 @@ import {
 import { Context } from '../../utils/Context';
 //import alert component
 import { Alert } from '../Alert';
+//import icon
+import VpnKeyOutlinedIcon from '@material-ui/icons/VpnKeyOutlined';
 
 //create and export login component
 export const Login = () => {
@@ -67,7 +69,7 @@ export const Login = () => {
 		<>
 			{/*Button to display the modal*/}
 			<Button style={{ color: 'white' }} type='button' onClick={handleOpen}>
-				Sign In
+				Sign In <VpnKeyOutlinedIcon style={{ marginLeft: '.2rem' }} />
 			</Button>
 			{/*Modal component*/}
 			<Modal

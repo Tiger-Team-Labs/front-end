@@ -11,7 +11,7 @@ export const useStyles = makeStyles(() => ({
 		display: 'flex',
 		flexDirection: 'column',
 		width: '100%',
-		color: '#729294',
+		color: '#506869',
 	},
 	content: {
 		display: 'flex',

@@ -21,6 +21,8 @@ import { Context } from '../../utils/Context';
 import { Button } from '@material-ui/core';
 //import link from react render dom
 import { Link } from 'react-router-dom';
+//import icons
+import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
 
 //create and export header component
 export const Header = () => {
@@ -41,6 +43,7 @@ export const Header = () => {
 						variant='contained'
 						onClick={() => logOut()}>
 						Log Out
+						<ExitToAppOutlinedIcon />
 					</Button>
 					<AvatarContainer>
 						<Avatar />

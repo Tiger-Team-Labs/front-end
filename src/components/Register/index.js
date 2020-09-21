@@ -15,6 +15,8 @@ import {
 import { Context } from '../../utils/Context';
 //import alert component
 import { Alert } from '../Alert';
+//add icons
+import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
 
 //create and export register component
 export const Register = () => {
@@ -75,7 +77,7 @@ export const Register = () => {
 		<>
 			{/*Button to display the modal*/}
 			<Button style={{ color: 'white' }} type='button' onClick={handleOpen}>
-				Sign Up
+				Sign Up <PermIdentityOutlinedIcon style={{ marginLeft: '.2rem' }} />
 			</Button>
 			{/*Modal component*/}
 			<Modal
