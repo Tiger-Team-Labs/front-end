@@ -1,7 +1,10 @@
 //import react and its hooks
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+//import material ui components
 import { Modal, Backdrop, Fade, IconButton } from '@material-ui/core';
+//import icon
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
 const useStyles = makeStyles((theme) => ({
 	modal: {
@@ -14,6 +17,9 @@ const useStyles = makeStyles((theme) => ({
 		border: '2px solid #000',
 		boxShadow: theme.shadows[5],
 		padding: theme.spacing(2, 4, 3),
+	},
+	icon: {
+		color: 'white',
 	},
 }));
 
@@ -32,9 +38,13 @@ export const CreatePost = () => {
 
 	return (
 		<>
-			<button type='button' onClick={handleOpen}>
-				react-transition-group
-			</button>
+			<IconButton
+				className={classes.icon}
+				aria-labelledby='icon button for open the modal'
+				type='button'
+				onClick={handleOpen}>
+				<AddCircleOutlineIcon aria-labelledby='icon to create post' />
+			</IconButton>
 			<Modal
 				aria-labelledby='transition-modal-title'
 				aria-describedby='transition-modal-description'

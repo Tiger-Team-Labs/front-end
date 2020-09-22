@@ -3,7 +3,7 @@ import React from 'react';
 //import categories
 import { Categories } from '../../pages/Categories';
 //import body background
-import { BodyBackground } from './styles';
+import { BodyBackground, FixedButton } from './styles';
 //import router elements
 import { Route, Switch } from 'react-router-dom';
 //import list post component
@@ -12,6 +12,8 @@ import { ListOfPosts } from '../../pages/ListOfPosts';
 import { Post } from '../Post';
 //import layout
 import { Layout } from '../../layout';
+//import create post component
+import { CreatePost } from '../CreatePost';
 
 //create body component and export it
 export const Body = () => {
@@ -34,6 +36,9 @@ export const Body = () => {
 					</Route>
 				</Switch>
 			</BodyBackground>
+			<FixedButton>
+				<CreatePost />
+			</FixedButton>
 		</Layout>
 	);
 };
