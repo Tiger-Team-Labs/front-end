@@ -76,11 +76,16 @@ export const Register = () => {
 		//react fragment to return whole component
 		<>
 			{/*Button to display the modal*/}
-			<Button style={{ color: 'white' }} type='button' onClick={handleOpen}>
+			<Button
+				aria-label='button to open the register modal'
+				style={{ color: 'white' }}
+				type='button'
+				onClick={handleOpen}>
 				Sign Up <PermIdentityOutlinedIcon style={{ marginLeft: '.2rem' }} />
 			</Button>
 			{/*Modal component*/}
 			<Modal
+				aria-label='register modal'
 				className={classes.modal}
 				open={open}
 				onClose={() => {
@@ -99,6 +104,7 @@ export const Register = () => {
 						<FormGroup>
 							{/*Inputs*/}
 							<Input
+								aria-label='input for name'
 								autoFocus={true}
 								placeholder='Name'
 								className={classes.input}
@@ -106,18 +112,21 @@ export const Register = () => {
 								onChange={(e) => setName(e.target.value)}
 							/>
 							<Input
+								aria-label='input for user name'
 								placeholder='User Name'
 								className={classes.input}
 								value={userName}
 								onChange={(e) => setUserName(e.target.value)}
 							/>
 							<Input
+								aria-label='input for email'
 								value={email}
 								onChange={(e) => setEmail(e.target.value)}
 								placeholder='Email'
 								className={classes.input}
 							/>
 							<Input
+								aria-label='input for password'
 								value={password}
 								onChange={(e) => setPassword(e.target.value)}
 								placeholder='Password'
@@ -127,6 +136,7 @@ export const Register = () => {
 							<Alert />
 							{/*Button and on click event display new user*/}
 							<Button
+								aria-label='button for register new user'
 								className={classes.button}
 								variant='outlined'
 								color='primary'

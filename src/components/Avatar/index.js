@@ -21,6 +21,7 @@ export const Avatar = () => {
 
 	return (
 		<AvatarImage
+			aria-label='avatar'
 			style={{ background: color }}
 			alt={user.email}
 			src='/static/images/avatar/1.jpg'

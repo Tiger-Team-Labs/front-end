@@ -50,12 +50,16 @@ export const Post = () => {
 	const classes = useStyles();
 
 	return (
-		<Card className={classes.root} variant='outlined'>
+		<Card aria-label='post' className={classes.root} variant='outlined'>
 			{/*Card container up*/}
-			<CardContent>
+			<CardContent aria-label='content of the post'>
 				{/*Card content down*/}
 				{/*title*/}
-				<Typography align='center' className={classes.title} variant='h1'>
+				<Typography
+					aria-label='title of the post'
+					align='center'
+					className={classes.title}
+					variant='h1'>
 					{title}
 				</Typography>
 				{/*content with an animation*/}
@@ -64,6 +68,7 @@ export const Post = () => {
 						<div style={props}>
 							{
 								<Typography
+									aria-label='content of the post'
 									className={classes.post}
 									variant='body1'
 									component='p'>
@@ -75,6 +80,7 @@ export const Post = () => {
 				</Spring>
 				{/*last update*/}
 				<Typography
+					aria-label='last update of the post'
 					align='right'
 					className={classes.lastUpdate}
 					variant='body2'

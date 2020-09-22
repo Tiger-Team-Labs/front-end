@@ -10,5 +10,13 @@ export const Alert = () => {
 	//use context hook
 	const { showError, error } = useContext(Context);
 
-	return <>{showError && <Alerts severity='error'>{error}</Alerts>}</>;
+	return (
+		<>
+			{showError && (
+				<Alerts aria-label='alert' severity='error'>
+					{error}
+				</Alerts>
+			)}
+		</>
+	);
 };

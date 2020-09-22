@@ -8,9 +8,12 @@ export const PostCard = ({ title }) => {
 	const classes = useStyles();
 
 	return (
-		<Card className={classes.root}>
+		<Card aria-label='post card preview' className={classes.root}>
 			<CardContent>
-				<Typography variant='h5' component='h2'>
+				<Typography
+					aria-label='post card preview title'
+					variant='h5'
+					component='h2'>
 					{title}
 				</Typography>
 			</CardContent>

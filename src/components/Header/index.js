@@ -32,7 +32,7 @@ export const Header = () => {
 	return (
 		<HeaderContent>
 			{/*header component*/}
-			<Link style={{ width: 0 }} to='/'>
+			<Link aria-label='link to home' style={{ width: 0 }} to='/'>
 				<Logo />
 			</Link>
 			{/*logo with a link to the home page*/}
@@ -40,6 +40,7 @@ export const Header = () => {
 				<LogOut>
 					{/*log out button*/}
 					<Button
+						aria-label='log out button'
 						fullWidth={false}
 						size='small'
 						color='primary'

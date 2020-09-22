@@ -68,11 +68,16 @@ export const Login = () => {
 	return (
 		<>
 			{/*Button to display the modal*/}
-			<Button style={{ color: 'white' }} type='button' onClick={handleOpen}>
+			<Button
+				aria-label='sign in open button'
+				style={{ color: 'white' }}
+				type='button'
+				onClick={handleOpen}>
 				Sign In <VpnKeyOutlinedIcon style={{ marginLeft: '.2rem' }} />
 			</Button>
 			{/*Modal component*/}
 			<Modal
+				aria-label='modal to sign in'
 				className={classes.modal}
 				open={open}
 				onClose={() => {
@@ -88,9 +93,10 @@ export const Login = () => {
 				<Fade in={open}>
 					<div className={classes.paper}>
 						{/*Form styled component*/}
-						<FormGroup>
+						<FormGroup aria-label='form group'>
 							{/*Inputs (control it)*/}
 							<Input
+								aria-label='input for the emaill'
 								autoFocus={true}
 								placeholder='Email'
 								className={classes.input}
@@ -98,6 +104,7 @@ export const Login = () => {
 								onChange={(e) => setEmail(e.target.value)}
 							/>
 							<Input
+								aria-label='input for the password'
 								placeholder='Password'
 								className={classes.input}
 								type='password'
@@ -106,6 +113,7 @@ export const Login = () => {
 							/>
 							<Alert />
 							<Button
+								aria-label='button to make the login'
 								className={classes.button}
 								variant='outlined'
 								color='primary'

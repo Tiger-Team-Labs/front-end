@@ -29,15 +29,22 @@ export const Category = ({ title }) => {
 	}));
 
 	return (
-		<Link style={{ textDecoration: 'none' }} to={title}>
+		<Link
+			aria-label='link to category'
+			style={{ textDecoration: 'none' }}
+			to={title}>
 			<animated.div
 				onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
 				onMouseLeave={() => set({ xys: [0, 0, 1] })}
 				style={{ transform: props.xys.interpolate(trans) }}>
-				<Card className={classes.root}>
+				<Card aria-label='card' className={classes.root}>
 					<div className={classes.details}>
-						<CardContent className={classes.content}>
-							<Typography className={classes.typo} component='h2' variant='h3'>
+						<CardContent aria-label='card content' className={classes.content}>
+							<Typography
+								aria-label='category name'
+								className={classes.typo}
+								component='h2'
+								variant='h3'>
 								{title}
 							</Typography>
 						</CardContent>
