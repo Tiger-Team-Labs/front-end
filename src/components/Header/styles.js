@@ -25,7 +25,7 @@ export const Header = styled.header`
 export const Buttons = styled.div`
 	margin-right: 2rem;
 
-	@media only screen and (max-width: 350px) {
+	@media only screen and (max-width: 600px) {
 		width: 5rem;
 	}
 `;
