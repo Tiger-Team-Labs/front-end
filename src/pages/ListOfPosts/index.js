@@ -12,11 +12,15 @@ import { useSpring, animated } from 'react-spring';
 import { Context } from '../../utils/Context';
 // use params hook
 import { useParams } from 'react-router-dom';
+//use styled components
+import { FixedButton } from './styles';
+//import create post component
+import { CreatePost } from '../../components/CreatePost';
 
 //create list of post component and export it
 export const ListOfPosts = () => {
 	//use the context
-	const { posts } = useContext(Context);
+	const { posts, user } = useContext(Context);
 
 	// confi for animation
 	const [state] = useState(true);
@@ -64,6 +68,12 @@ export const ListOfPosts = () => {
 					</Grid>
 				</Grid>
 			</Grid>
+			{/*check if the user exist*/}
+			{user !== undefined && (
+				<FixedButton>
+					<CreatePost />
+				</FixedButton>
+			)}
 		</>
 	);
 };

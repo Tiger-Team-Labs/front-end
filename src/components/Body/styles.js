@@ -11,10 +11,3 @@ export const BodyBackground = styled.div`
 		padding: 0.5rem;
 	}
 `;
-
-//create fixed button component and export it
-export const FixedButton = styled.a`
-	position: fixed;
-	bottom: 1%;
-	right: 1%;
-`;

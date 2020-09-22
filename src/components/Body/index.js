@@ -12,16 +12,9 @@ import { ListOfPosts } from '../../pages/ListOfPosts';
 import { Post } from '../Post';
 //import layout
 import { Layout } from '../../layout';
-//import create post component
-import { CreatePost } from '../CreatePost';
-//import context
-import { Context } from '../../utils/Context';
 
 //create body component and export it
 export const Body = () => {
-	//use context hook
-	const { user } = useContext(Context);
-
 	return (
 		<Layout>
 			<BodyBackground>
@@ -41,12 +34,6 @@ export const Body = () => {
 					</Route>
 				</Switch>
 			</BodyBackground>
-			{/*check if the user exist*/}
-			{user !== undefined && (
-				<FixedButton>
-					<CreatePost />
-				</FixedButton>
-			)}
 		</Layout>
 	);
 };

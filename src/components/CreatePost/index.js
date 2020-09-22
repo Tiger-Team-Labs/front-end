@@ -1,37 +1,31 @@
 //import react and its hooks
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 //import material ui components
-import { Modal, Backdrop, Fade, IconButton } from '@material-ui/core';
+import {
+	Modal,
+	Backdrop,
+	Fade,
+	IconButton,
+	Typography,
+} from '@material-ui/core';
 //import icon
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-
-const useStyles = makeStyles((theme) => ({
-	modal: {
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
-	paper: {
-		backgroundColor: theme.palette.background.paper,
-		border: '2px solid #000',
-		boxShadow: theme.shadows[5],
-		padding: theme.spacing(2, 4, 3),
-	},
-	icon: {
-		color: 'white',
-	},
-}));
+//import use styles
+import { useStyles } from './styles';
 
 //create create post component and export it
 export const CreatePost = () => {
+	//use the styles
 	const classes = useStyles();
+	//use local state to open the modal
 	const [open, setOpen] = React.useState(false);
 
+	//handle the open of modal
 	const handleOpen = () => {
 		setOpen(true);
 	};
 
+	//handle the close of modal
 	const handleClose = () => {
 		setOpen(false);
 	};
@@ -60,12 +54,7 @@ export const CreatePost = () => {
 					timeout: 500,
 				}}>
 				<Fade in={open}>
-					<div className={classes.paper}>
-						<h2 id='transition-modal-title'>Transition modal</h2>
-						<p id='transition-modal-description'>
-							react-transition-group animates me.
-						</p>
-					</div>
+					<div className={classes.paper}></div>
 				</Fade>
 			</Modal>
 		</>
