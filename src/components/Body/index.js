@@ -1,5 +1,5 @@
-//import react
-import React from 'react';
+//import react and use context hook
+import React, { useContext } from 'react';
 //import categories
 import { Categories } from '../../pages/Categories';
 //import body background
@@ -14,9 +14,14 @@ import { Post } from '../Post';
 import { Layout } from '../../layout';
 //import create post component
 import { CreatePost } from '../CreatePost';
+//import context
+import { Context } from '../../utils/Context';
 
 //create body component and export it
 export const Body = () => {
+	//use context hook
+	const { user } = useContext(Context);
+
 	return (
 		<Layout>
 			<BodyBackground>
@@ -36,9 +41,12 @@ export const Body = () => {
 					</Route>
 				</Switch>
 			</BodyBackground>
-			<FixedButton>
-				<CreatePost />
-			</FixedButton>
+			{/*check if the user exist*/}
+			{user !== undefined && (
+				<FixedButton>
+					<CreatePost />
+				</FixedButton>
+			)}
 		</Layout>
 	);
 };
