@@ -43,7 +43,10 @@ export const CreatePost = () => {
 				aria-labelledby='icon button for open the modal'
 				type='button'
 				onClick={handleOpen}>
-				<AddCircleOutlineIcon aria-labelledby='icon to create post' />
+				<AddCircleOutlineIcon
+					fontSize='large'
+					aria-labelledby='icon to create post'
+				/>
 			</IconButton>
 			<Modal
 				aria-labelledby='transition-modal-title'
