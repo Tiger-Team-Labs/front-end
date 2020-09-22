@@ -9,7 +9,7 @@ export const useStyles = makeStyles({
 	},
 	title: {
 		textTransform: 'capitalize',
-		['@media (max-width:600px)']: {
+		'@media (max-width:600px)': {
 			fontSize: '2.5rem',
 		},
 	},

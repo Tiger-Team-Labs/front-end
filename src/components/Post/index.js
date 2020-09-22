@@ -12,6 +12,8 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 //import typography component
 import Typography from '@material-ui/core/Typography';
+//use spring animations
+import { Spring } from 'react-spring/renderprops';
 
 //create post component and export it
 export const Post = () => {
@@ -54,7 +56,9 @@ export const Post = () => {
 					{title}
 				</Typography>
 				<Typography className={classes.post} variant='body1' component='p'>
-					{content}
+					<Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+						{(props) => <div style={props}>{content}</div>}
+					</Spring>
 				</Typography>
 				<Typography
 					align='right'
