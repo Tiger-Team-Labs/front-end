@@ -98,8 +98,8 @@ export const ContextProvider = ({ children }) => {
 			.post(
 				postNewPost,
 				{
-					title: 'bernardo',
-					content: 'hey',
+					title: title,
+					content: content,
 				},
 				{
 					headers: {

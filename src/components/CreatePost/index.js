@@ -10,6 +10,7 @@ import {
 	FormGroup,
 	Input,
 	TextareaAutosize,
+	Button,
 } from '@material-ui/core';
 //import icon
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
@@ -25,7 +26,9 @@ export const CreatePost = ({ category }) => {
 	//use local state to open the modal
 	const [open, setOpen] = useState(false);
 	//use context methods
-	const { setTitle, setContent, title, content } = useContext(Context);
+	const { setTitle, setContent, title, content, createPost } = useContext(
+		Context,
+	);
 
 	//handle the open of modal
 	const handleOpen = () => {
@@ -85,7 +88,11 @@ export const CreatePost = ({ category }) => {
 							<TextareaAutosize
 								value={content}
 								onChange={(e) => setContent(e.target.value)}
+								placeholder='content'
 							/>
+							<Button variant='outlined' color='primary' onClick={createPost}>
+								Create post
+							</Button>
 						</FormGroup>
 					</div>
 				</Fade>
