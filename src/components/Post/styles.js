@@ -5,16 +5,9 @@ import { makeStyles } from '@material-ui/core/styles';
 export const useStyles = makeStyles({
 	root: {
 		minWidth: 275,
+		background: 'linear-gradient(to right, #c9d6ff, #e2e2e2)',
+		padding: '1.5rem',
 	},
-	bullet: {
-		display: 'inline-block',
-		margin: '0 2px',
-		transform: 'scale(0.8)',
-	},
-	title: {
-		fontSize: 14,
-	},
-	pos: {
-		marginBottom: 12,
-	},
+	post: { fontSize: '1.5rem', margin: '1rem 0' },
+	lastUpdate: {},
 });

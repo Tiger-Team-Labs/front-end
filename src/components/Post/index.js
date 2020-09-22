@@ -6,8 +6,11 @@ import { useParams } from 'react-router-dom';
 import { Context } from '../../utils/Context';
 //import use styles hook
 import { useStyles } from './styles';
+//import the card component
 import Card from '@material-ui/core/Card';
+//import card content component
 import CardContent from '@material-ui/core/CardContent';
+//import typography component
 import Typography from '@material-ui/core/Typography';
 
 //create post component and export it
@@ -47,20 +50,18 @@ export const Post = () => {
 	return (
 		<Card className={classes.root} variant='outlined'>
 			<CardContent>
-				<Typography
-					className={classes.title}
-					color='textSecondary'
-					gutterBottom>
+				<Typography align='center' className={classes.title} variant='h1'>
 					{title}
 				</Typography>
-				<Typography className={classes.pos} color='textSecondary'>
-					adjective
-				</Typography>
-				<Typography variant='body2' component='p'>
+				<Typography className={classes.post} variant='body1' component='p'>
 					{content}
 				</Typography>
-				<Typography variant='body2' component='p'>
-					{lastUpdate}
+				<Typography
+					align='right'
+					className={classes.lastUpdate}
+					variant='body2'
+					component='p'>
+					lasted update: {lastUpdate}
 				</Typography>
 			</CardContent>
 		</Card>
