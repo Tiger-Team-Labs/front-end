@@ -55,11 +55,20 @@ export const Post = () => {
 				<Typography align='center' className={classes.title} variant='h1'>
 					{title}
 				</Typography>
-				<Typography className={classes.post} variant='body1' component='p'>
-					<Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
-						{(props) => <div style={props}>{content}</div>}
-					</Spring>
-				</Typography>
+				<Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+					{(props) => (
+						<div style={props}>
+							{
+								<Typography
+									className={classes.post}
+									variant='body1'
+									component='p'>
+									{content}
+								</Typography>
+							}
+						</div>
+					)}
+				</Spring>
 				<Typography
 					align='right'
 					className={classes.lastUpdate}
