@@ -4,6 +4,11 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 //import context
 import { Context } from '../../utils/Context';
+//import use styles hook
+import { useStyles } from './styles';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 
 //create post component and export it
 export const Post = () => {
@@ -37,17 +42,27 @@ export const Post = () => {
 		setLastUpdate(post.updatedAt);
 	}, [post]);
 
-	console.log(post);
+	const classes = useStyles();
 
 	return (
-		<>
-			{/*post card*/}
-			{/*title*/}
-			<h1>{title}</h1>
-			{/*contents*/}
-			<h4>{content}</h4>
-			{/*last update*/}
-			<h4>{lastUpdate}</h4>
-		</>
+		<Card className={classes.root} variant='outlined'>
+			<CardContent>
+				<Typography
+					className={classes.title}
+					color='textSecondary'
+					gutterBottom>
+					{title}
+				</Typography>
+				<Typography className={classes.pos} color='textSecondary'>
+					adjective
+				</Typography>
+				<Typography variant='body2' component='p'>
+					{content}
+				</Typography>
+				<Typography variant='body2' component='p'>
+					{lastUpdate}
+				</Typography>
+			</CardContent>
+		</Card>
 	);
 };
