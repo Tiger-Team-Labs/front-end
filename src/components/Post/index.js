@@ -51,10 +51,14 @@ export const Post = () => {
 
 	return (
 		<Card className={classes.root} variant='outlined'>
+			{/*Card container up*/}
 			<CardContent>
+				{/*Card content down*/}
+				{/*title*/}
 				<Typography align='center' className={classes.title} variant='h1'>
 					{title}
 				</Typography>
+				{/*content with an animation*/}
 				<Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
 					{(props) => (
 						<div style={props}>
@@ -69,6 +73,7 @@ export const Post = () => {
 						</div>
 					)}
 				</Spring>
+				{/*last update*/}
 				<Typography
 					align='right'
 					className={classes.lastUpdate}
