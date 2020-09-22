@@ -7,6 +7,7 @@ import {
 	Fade,
 	IconButton,
 	Typography,
+	FormGroup,
 } from '@material-ui/core';
 //import icon
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
@@ -54,7 +55,14 @@ export const CreatePost = () => {
 					timeout: 500,
 				}}>
 				<Fade in={open}>
-					<div className={classes.paper}></div>
+					<div className={classes.paper} aria-label='paper'>
+						{'form group'}
+						<FormGroup aria-label='form group'>
+							<Typography variant='h1' component='h2' gutterBottom>
+								Create your post
+							</Typography>
+						</FormGroup>
+					</div>
 				</Fade>
 			</Modal>
 		</>

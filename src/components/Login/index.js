@@ -96,7 +96,7 @@ export const Login = () => {
 						<FormGroup aria-label='form group'>
 							{/*Inputs (control it)*/}
 							<Input
-								aria-label='input for the emaill'
+								aria-label='input for the email'
 								autoFocus={true}
 								placeholder='Email'
 								className={classes.input}

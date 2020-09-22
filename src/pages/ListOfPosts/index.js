@@ -71,7 +71,7 @@ export const ListOfPosts = () => {
 			{/*check if the user exist*/}
 			{user !== undefined && (
 				<FixedButton>
-					<CreatePost />
+					<CreatePost category={params} />
 				</FixedButton>
 			)}
 		</>

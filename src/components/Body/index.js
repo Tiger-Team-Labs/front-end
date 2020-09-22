@@ -1,9 +1,9 @@
 //import react and use context hook
-import React, { useContext } from 'react';
+import React from 'react';
 //import categories
 import { Categories } from '../../pages/Categories';
 //import body background
-import { BodyBackground, FixedButton } from './styles';
+import { BodyBackground } from './styles';
 //import router elements
 import { Route, Switch } from 'react-router-dom';
 //import list post component
