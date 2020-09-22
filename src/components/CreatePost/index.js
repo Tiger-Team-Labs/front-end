@@ -43,6 +43,7 @@ export const CreatePost = ({ category }) => {
 	//handle the click event
 	const handleOnClick = () => {
 		//set the login
+		createPost();
 		//close the modal
 		handleClose();
 		//reset local state
@@ -106,7 +107,7 @@ export const CreatePost = ({ category }) => {
 								aria-label='button'
 								variant='outlined'
 								color='primary'
-								onClick={createPost}>
+								onClick={handleOnClick}>
 								Create post
 							</Button>
 						</FormGroup>

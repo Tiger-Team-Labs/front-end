@@ -15,6 +15,8 @@ export const Context = React.createContext();
 //create functional component for context provider and export it
 export const ContextProvider = ({ children }) => {
 	//use state
+	//use state to handle the response
+	const [response, setResponse] = useState(undefined);
 	//fo handle the user
 	const [name, setName] = useState('');
 	const [userName, setUserName] = useState('');
@@ -44,7 +46,7 @@ export const ContextProvider = ({ children }) => {
 			await instance.get(getPosts).then((response) => setPosts(response.data));
 
 		bringData();
-	}, []);
+	}, [response]);
 
 	/**
 	 * @description: allow us to create a user and make the post to the db
@@ -107,8 +109,10 @@ export const ContextProvider = ({ children }) => {
 					},
 				},
 			)
-			.then((response) => console.log(response));
+			.then((response) => setResponse(response));
 	};
+
+	console.log(response);
 
 	return (
 		<Context.Provider
