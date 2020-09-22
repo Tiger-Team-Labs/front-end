@@ -31,11 +31,14 @@ export const Header = () => {
 
 	return (
 		<HeaderContent>
+			{/*header component*/}
 			<Link style={{ width: 0 }} to='/'>
 				<Logo />
 			</Link>
+			{/*logo with a link to the home page*/}
 			{user !== undefined ? (
 				<LogOut>
+					{/*log out button*/}
 					<Button
 						fullWidth={false}
 						size='small'
@@ -45,12 +48,14 @@ export const Header = () => {
 						Log Out
 						<ExitToAppOutlinedIcon />
 					</Button>
+					{/*avatar*/}
 					<AvatarContainer>
 						<Avatar />
 					</AvatarContainer>
 				</LogOut>
 			) : (
 				<Buttons>
+					{/*buttons for register and login*/}
 					<Register />
 					<Login />
 				</Buttons>
