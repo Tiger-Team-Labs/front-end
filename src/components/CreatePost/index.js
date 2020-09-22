@@ -40,6 +40,16 @@ export const CreatePost = ({ category }) => {
 		setOpen(false);
 	};
 
+	//handle the click event
+	const handleOnClick = () => {
+		//set the login
+		//close the modal
+		handleClose();
+		//reset local state
+		setTitle('');
+		setContent('');
+	};
+
 	return (
 		<>
 			<IconButton
@@ -80,17 +90,23 @@ export const CreatePost = ({ category }) => {
 								{`Create your ${category} post`}
 							</Typography>
 							<Input
+								aria-label='title'
 								value={title}
 								onChange={(e) => setTitle(e.target.value)}
 								autoFocus={true}
 								placeholder='Title'
 							/>
 							<TextareaAutosize
+								aria-label='text area'
 								value={content}
 								onChange={(e) => setContent(e.target.value)}
 								placeholder='content'
 							/>
-							<Button variant='outlined' color='primary' onClick={createPost}>
+							<Button
+								aria-label='button'
+								variant='outlined'
+								color='primary'
+								onClick={createPost}>
 								Create post
 							</Button>
 						</FormGroup>
