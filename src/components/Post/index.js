@@ -13,11 +13,13 @@ export const Post = () => {
 	//use context
 	const { posts } = useContext(Context);
 	//use stat to save the post
-	const [post, setPost] = useState({ title: '', content: '' });
+	const [post, setPost] = useState({ title: '', content: '', updatedAt: '' });
 	//use state to save the title specific post
 	const [title, setTitle] = useState('');
 	//use state to save the content of specific post
 	const [content, setContent] = useState('');
+	//use state for last update
+	const [lastUpdate, setLastUpdate] = useState('');
 
 	//use effect to find the post
 	useEffect(() => {
@@ -31,6 +33,8 @@ export const Post = () => {
 		setTitle(post.title);
 		//save the content
 		setContent(post.content);
+		//save the last update
+		setLastUpdate(post.updatedAt);
 	}, [post]);
 
 	console.log(post);
@@ -42,6 +46,8 @@ export const Post = () => {
 			<h1>{title}</h1>
 			{/*contents*/}
 			<h4>{content}</h4>
+			{/*last update*/}
+			<h4>{lastUpdate}</h4>
 		</>
 	);
 };
