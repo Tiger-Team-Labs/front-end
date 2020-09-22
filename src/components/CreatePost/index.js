@@ -15,7 +15,7 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import { useStyles } from './styles';
 
 //create create post component and export it
-export const CreatePost = () => {
+export const CreatePost = ({ category }) => {
 	//use the styles
 	const classes = useStyles();
 	//use local state to open the modal
@@ -56,10 +56,10 @@ export const CreatePost = () => {
 				}}>
 				<Fade in={open}>
 					<div className={classes.paper} aria-label='paper'>
-						{'form group'}
+						{/*'form group'*/}
 						<FormGroup aria-label='form group'>
 							<Typography variant='h1' component='h2' gutterBottom>
-								Create your post
+								{`Create your ${category} post`}
 							</Typography>
 						</FormGroup>
 					</div>

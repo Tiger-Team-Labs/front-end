@@ -31,8 +31,7 @@ export const ListOfPosts = () => {
 	});
 
 	//use params
-	const params = useParams();
-	console.log(params);
+	const { category } = useParams();
 
 	return (
 		<>
@@ -71,7 +70,7 @@ export const ListOfPosts = () => {
 			{/*check if the user exist*/}
 			{user !== undefined && (
 				<FixedButton>
-					<CreatePost category={params} />
+					<CreatePost category={category} />
 				</FixedButton>
 			)}
 		</>
