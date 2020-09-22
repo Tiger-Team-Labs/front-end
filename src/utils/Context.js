@@ -29,6 +29,11 @@ export const ContextProvider = ({ children }) => {
 	const [token, setToken] = useState(undefined);
 	//posts
 	const [posts, setPosts] = useState([]);
+	//post variables
+	//title
+	const [title, setTitle] = useState('');
+	//content
+	const [content, setContent] = useState('');
 
 	//use effect for bring the posts
 	/**
@@ -127,6 +132,10 @@ export const ContextProvider = ({ children }) => {
 				logOut,
 				createPost,
 				posts,
+				title,
+				setTitle,
+				content,
+				setContent,
 			}}>
 			{children}
 		</Context.Provider>

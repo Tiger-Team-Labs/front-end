@@ -14,8 +14,14 @@ export const useStyles = makeStyles((theme) => ({
 		boxShadow: theme.shadows[5],
 		padding: theme.spacing(2, 4, 3),
 		color: 'black',
+		background: 'linear-gradient(to right, #c9d6ff, #e2e2e2)',
 	},
 	icon: {
 		color: 'white',
+	},
+	title: {
+		'@media (max-width:600px)': {
+			fontSize: '2.5rem',
+		},
 	},
 }));

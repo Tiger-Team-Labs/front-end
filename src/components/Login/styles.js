@@ -13,7 +13,6 @@ export const useStyles = makeStyles((theme) => ({
 		border: '.2rem solid #000',
 		boxShadow: theme.shadows[5],
 		padding: '2rem 6rem',
-		minWidth: '',
 	},
 	input: {
 		fontSize: '2rem !important',
