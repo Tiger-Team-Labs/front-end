@@ -14,22 +14,30 @@ export const ResponseAlert = () => {
 	//use context
 	const { response, setResponse } = useContext(Context);
 
-	return (
-		<div className={classes.root}>
-			{/*good alert*/}
-			{response >= 200 && response < 300 ? (
-				<Alert onClose={() => setResponse(0)}>Task completed!</Alert>
-			) : (
-				<></>
-			)}
-			{/*bad alert*/}
-			{response >= 400 ? (
-				<Alert severity='error' onClose={() => setResponse(0)}>
-					Error, the server file!
-				</Alert>
-			) : (
-				<></>
-			)}
-		</div>
-	);
+	const switchTheResponse = () => {
+		switch (response) {
+			case 200:
+				return <Alert onClose={() => setResponse(0)}>Task completed!</Alert>;
+			case 201:
+				return <Alert onClose={() => setResponse(0)}>Created!</Alert>;
+			case 204:
+				return <Alert onClose={() => setResponse(0)}>Deleted!</Alert>;
+			case 400:
+				return (
+					<Alert severity='error' onClose={() => setResponse(0)}>
+						Please check your inputs
+					</Alert>
+				);
+			case 401:
+				return (
+					<Alert severity='error' onClose={() => setResponse(0)}>
+						Unauthorized
+					</Alert>
+				);
+			default:
+				return <> </>;
+		}
+	};
+
+	return <div className={classes.root}>{switchTheResponse()}</div>;
 };
