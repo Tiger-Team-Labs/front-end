@@ -1,9 +1,7 @@
 //import react
-import React, { useContext } from 'react';
+import React from 'react';
 import { useStyles } from './styles';
 import { Card, CardContent, Typography } from '@material-ui/core';
-//import the context
-import { Context } from '../../utils/Context';
 
 //create and import postC, art component
 export const PostCard = ({ title }) => {

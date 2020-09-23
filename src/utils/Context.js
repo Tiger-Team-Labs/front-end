@@ -1,5 +1,5 @@
 //import react
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 //import axios logic
 import {
 	instance,
@@ -113,13 +113,14 @@ export const ContextProvider = ({ children }) => {
 	/**
 	 * @description: delete post
 	 */
-	const deletePost = (id) => {
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	const deletePost = useCallback((id) => {
 		instance.delete(deleteWithId(id), {
 			headers: {
 				'x-access-token': `${token}`,
 			},
 		});
-	};
+	});
 
 	//use effect for bring the posts
 	/**
