@@ -59,13 +59,15 @@ export const ContextProvider = ({ children }) => {
 				email: email,
 				password: password,
 			})
-			.then((response) =>
+			.then((response) => {
 				setUser({
 					email: email,
 					token: response.data.token,
-				}),
-			)
-			.catch((err) => console.log(err));
+				});
+
+				setResponse(response.status);
+			})
+			.catch((err) => setResponse(err.response.status));
 	};
 
 	/**
@@ -84,8 +86,10 @@ export const ContextProvider = ({ children }) => {
 				});
 
 				setToken(response.data.token);
+
+				setResponse(response.status);
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => setResponse(err.response.status));
 	};
 
 	/**
@@ -109,10 +113,11 @@ export const ContextProvider = ({ children }) => {
 					},
 				},
 			)
-			.then((response) => setResponse(response));
+			.then((response) => setResponse(response.status))
+			.catch((err) => setResponse(err.response.status));
 	};
 
-	console.log(response);
+	console.log(error);
 
 	return (
 		<Context.Provider
