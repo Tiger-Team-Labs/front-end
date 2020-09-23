@@ -1,10 +1,10 @@
 //import react
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 //import category component
 import { Category } from '../../components/Category';
 
 //create list of post component and export it
-export const Categories = () => {
+export const Categories = memo(() => {
 	//use state
 	const [categories] = useState([
 		{ title: 'action games' },
@@ -23,4 +23,4 @@ export const Categories = () => {
 			))}
 		</>
 	);
-};
+});

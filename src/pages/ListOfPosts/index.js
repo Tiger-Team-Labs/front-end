@@ -1,5 +1,5 @@
 //import react
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, memo } from 'react';
 //import post component
 import { PostCard } from '../../components/PostCard';
 //import link component
@@ -20,7 +20,7 @@ import { CreatePost } from '../../components/CreatePost';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 
 //create list of post component and export it
-export const ListOfPosts = () => {
+export const ListOfPosts = memo(() => {
 	//use the context
 	const { posts, user, deletePost } = useContext(Context);
 
@@ -94,4 +94,4 @@ export const ListOfPosts = () => {
 			)}
 		</>
 	);
-};
+});
