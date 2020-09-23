@@ -4,8 +4,7 @@ export const useStyles = makeStyles(() => ({
 	root: {
 		margin: '1rem auto',
 		width: '60%',
-		backgroundImage:
-			'linear-gradient(to right, #DAE2F8 0%, #D6A4A4 51%, #DAE2F8 100%)',
+		backgroundImage: 'white',
 		textTransform: 'capitalize',
 	},
 	details: {
