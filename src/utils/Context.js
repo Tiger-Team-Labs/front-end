@@ -143,6 +143,8 @@ export const ContextProvider = ({ children }) => {
 				setTitle,
 				content,
 				setContent,
+				response,
+				setResponse,
 			}}>
 			{children}
 		</Context.Provider>

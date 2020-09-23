@@ -1,11 +1,11 @@
 //import react
-import React from 'react';
+import React, { useContext } from 'react';
 //import styles
 import { useStyles } from './styles';
 //import alert component
 import { Alert } from '@material-ui/lab';
 //import context
-import { Context } from '../../utils/context';
+import { Context } from '../../utils/Context';
 
 //create and export response alert component
 export const ResponseAlert = () => {
