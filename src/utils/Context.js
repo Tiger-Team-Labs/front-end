@@ -117,8 +117,6 @@ export const ContextProvider = ({ children }) => {
 			.catch((err) => setResponse(err.response.status));
 	};
 
-	console.log(error);
-
 	return (
 		<Context.Provider
 			value={{
