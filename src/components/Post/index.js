@@ -19,7 +19,6 @@ import { Spring } from 'react-spring/renderprops';
 export const Post = () => {
 	//use params hook
 	const params = useParams();
-	console.dir(params);
 	//use context
 	const { posts } = useContext(Context);
 	//use stat to save the post

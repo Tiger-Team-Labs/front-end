@@ -15,3 +15,5 @@ export const checkUserInDb = '/auth/login/';
 export const getPosts = '/posts/';
 //post a new pose
 export const postNewPost = '/posts/';
+//delete a post
+export const deleteWithId = (id) => `/posts/${id}`;

@@ -7,6 +7,7 @@ import {
 	checkUserInDb,
 	postNewPost,
 	getPosts,
+	deleteWithId,
 } from './requests';
 
 //create context and export it
@@ -36,17 +37,6 @@ export const ContextProvider = ({ children }) => {
 	const [title, setTitle] = useState('');
 	//content
 	const [content, setContent] = useState('');
-
-	//use effect for bring the posts
-	/**
-	 * bring the data from de data base
-	 */
-	useEffect(() => {
-		const bringData = async () =>
-			await instance.get(getPosts).then((response) => setPosts(response.data));
-
-		bringData();
-	}, [response]);
 
 	/**
 	 * @description: allow us to create a user and make the post to the db
@@ -99,6 +89,9 @@ export const ContextProvider = ({ children }) => {
 		setUser(undefined);
 	};
 
+	/**
+	 * @description: allow us to create a user and check if exist in the db
+	 */
 	const createPost = () => {
 		instance
 			.post(
@@ -116,6 +109,28 @@ export const ContextProvider = ({ children }) => {
 			.then((response) => setResponse(response.status))
 			.catch((err) => setResponse(err.response.status));
 	};
+
+	/**
+	 * @description: delete post
+	 */
+	const deletePost = (id) => {
+		instance.delete(deleteWithId(id), {
+			headers: {
+				'x-access-token': `${token}`,
+			},
+		});
+	};
+
+	//use effect for bring the posts
+	/**
+	 * bring the data from de data base
+	 */
+	useEffect(() => {
+		const bringData = async () =>
+			await instance.get(getPosts).then((response) => setPosts(response.data));
+
+		bringData();
+	}, [response, deletePost]);
 
 	return (
 		<Context.Provider
@@ -145,6 +160,7 @@ export const ContextProvider = ({ children }) => {
 				setContent,
 				response,
 				setResponse,
+				deletePost,
 			}}>
 			{children}
 		</Context.Provider>
