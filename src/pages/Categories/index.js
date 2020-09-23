@@ -19,7 +19,7 @@ export const Categories = () => {
 			{/**show the list of categories*/}
 			{/**add the flip move effect*/}
 			{categories.map((category, i) => (
-				<Category key={i} title={category.title} />
+				<Category aria-label='category catrd' key={i} title={category.title} />
 			))}
 		</>
 	);

@@ -65,7 +65,11 @@ export const ListOfPosts = () => {
 												.interpolate((x) => `scale(${x})`),
 										}}>
 										{/*show the card*/}
-										<PostCard title={post.title} id={post._id} />
+										<PostCard
+											aria-label='post card'
+											title={post.title}
+											id={post._id}
+										/>
 									</animated.div>
 								</Link>
 								{/*Delete a post functionality*/}
@@ -84,8 +88,8 @@ export const ListOfPosts = () => {
 			</Grid>
 			{/*check if the user exist*/}
 			{user !== undefined && (
-				<FixedButton>
-					<CreatePost category={category} />
+				<FixedButton aria-label='fixed button'>
+					<CreatePost aria-label='Create post modal' category={category} />
 				</FixedButton>
 			)}
 		</>
