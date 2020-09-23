@@ -45,10 +45,9 @@ export const ListOfPosts = () => {
 					<Grid container justify='center' spacing={2}>
 						{/*show all the components*/}
 						{posts.map((post, i) => (
-							<>
+							<div key={post._id}>
 								<Link
 									style={{ textDecoration: 'none' }}
-									key={post._id}
 									to={`/${post.title}/${post._id}`}>
 									{/*add the link ability to change into different pages*/}
 									{/*add the animation ability*/}
@@ -78,7 +77,7 @@ export const ListOfPosts = () => {
 										<DeleteOutlineIcon />
 									</IconButton>
 								)}
-							</>
+							</div>
 						))}
 					</Grid>
 				</Grid>

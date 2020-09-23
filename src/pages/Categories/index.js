@@ -1,7 +1,5 @@
 //import react
 import React, { useState } from 'react';
-//import lazy load
-import LazyLoad from 'react-lazyload';
 //import category component
 import { Category } from '../../components/Category';
 
@@ -21,9 +19,7 @@ export const Categories = () => {
 			{/**show the list of categories*/}
 			{/**add the flip move effect*/}
 			{categories.map((category, i) => (
-				<LazyLoad key={i}>
-					<Category title={category.title} />
-				</LazyLoad>
+				<Category key={i} title={category.title} />
 			))}
 		</>
 	);
