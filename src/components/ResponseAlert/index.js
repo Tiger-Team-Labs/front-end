@@ -17,20 +17,38 @@ export const ResponseAlert = () => {
 	const switchTheResponse = () => {
 		switch (response) {
 			case 200:
-				return <Alert onClose={() => setResponse(0)}>Task completed!</Alert>;
+				return (
+					<Alert aria-label='response' onClose={() => setResponse(0)}>
+						Task completed!
+					</Alert>
+				);
 			case 201:
-				return <Alert onClose={() => setResponse(0)}>Created!</Alert>;
+				return (
+					<Alert aria-label='response' onClose={() => setResponse(0)}>
+						Created!
+					</Alert>
+				);
 			case 204:
-				return <Alert onClose={() => setResponse(0)}>Deleted!</Alert>;
+				return (
+					<Alert aria-label='response' onClose={() => setResponse(0)}>
+						Deleted!
+					</Alert>
+				);
 			case 400:
 				return (
-					<Alert severity='error' onClose={() => setResponse(0)}>
+					<Alert
+						aria-label='response'
+						severity='error'
+						onClose={() => setResponse(0)}>
 						Please check your inputs
 					</Alert>
 				);
 			case 401:
 				return (
-					<Alert severity='error' onClose={() => setResponse(0)}>
+					<Alert
+						aria-label='response'
+						severity='error'
+						onClose={() => setResponse(0)}>
 						Unauthorized
 					</Alert>
 				);
@@ -39,5 +57,9 @@ export const ResponseAlert = () => {
 		}
 	};
 
-	return <div className={classes.root}>{switchTheResponse()}</div>;
+	return (
+		<div aria-label='response' className={classes.root}>
+			{switchTheResponse()}
+		</div>
+	);
 };
