@@ -18,6 +18,8 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import { useStyles } from './styles';
 //import the context
 import { Context } from '../../utils/Context';
+//import alert
+import { Alert } from '../Alert';
 
 //create create post component and export it.
 export const CreatePost = ({ category }) => {
@@ -26,9 +28,15 @@ export const CreatePost = ({ category }) => {
 	//use local state to open the modal
 	const [open, setOpen] = useState(false);
 	//use context methods
-	const { setTitle, setContent, title, content, createPost } = useContext(
-		Context,
-	);
+	const {
+		setTitle,
+		setContent,
+		title,
+		content,
+		createPost,
+		setError,
+		setShowError,
+	} = useContext(Context);
 
 	//handle the open of modal
 	const handleOpen = () => {
@@ -37,13 +45,18 @@ export const CreatePost = ({ category }) => {
 
 	//handle the close of modal
 	const handleClose = () => {
-		setOpen(false);
+		if (title === '' || content === '') {
+			setError((error) => (error = 'please check the inputs'));
+			setShowError(true);
+		} else {
+			setOpen(false);
+			setShowError(false);
+			createPost();
+		}
 	};
 
 	//handle the click event
 	const handleOnClick = () => {
-		//set the login
-		createPost();
 		//close the modal
 		handleClose();
 		//reset local state
@@ -110,6 +123,7 @@ export const CreatePost = ({ category }) => {
 								onClick={handleOnClick}>
 								Create post
 							</Button>
+							<Alert />
 						</FormGroup>
 					</div>
 				</Fade>
