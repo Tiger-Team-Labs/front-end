@@ -18,6 +18,8 @@ import { FixedButton } from './styles';
 import { CreatePost } from '../../components/CreatePost';
 //import icon
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
+//import update a post component
+import { UpdatePost } from '../../components/UpdatePost';
 
 //create list of post component and export it
 const ListOfPosts = memo(() => {
@@ -81,6 +83,7 @@ const ListOfPosts = memo(() => {
 											}}>
 											<DeleteOutlineIcon />
 										</IconButton>
+										<UpdatePost post={post} />
 									</>
 								)}
 							</div>

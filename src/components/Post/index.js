@@ -14,8 +14,6 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 //use spring animations
 import { Spring } from 'react-spring/renderprops';
-//import update a post component
-import { UpdatePost } from '../UpdatePost';
 
 //create post component and export it
 const Post = () => {
@@ -52,7 +50,6 @@ const Post = () => {
 
 	return (
 		<>
-			<UpdatePost post={post} />
 			<Card aria-label='post' className={classes.root} variant='outlined'>
 				{/*Card container up*/}
 				<CardContent aria-label='content of the post'>

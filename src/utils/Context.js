@@ -144,7 +144,7 @@ export const ContextProvider = ({ children }) => {
 					},
 				},
 			)
-			.then((response) => console.log(response))
+			.then((response) => setResponse(response.status))
 			.catch((err) => setResponse(err.response.status));
 	};
 

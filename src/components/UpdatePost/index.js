@@ -59,7 +59,7 @@ export const UpdatePost = ({ post }) => {
 		} else {
 			setOpen(false);
 			setShowError(false);
-			updatePost(post?.id);
+			updatePost(post?._id);
 			handleClose();
 		}
 		//reset local state
@@ -70,10 +70,10 @@ export const UpdatePost = ({ post }) => {
 	//use effect to handle the initial value
 	useEffect(() => {
 		//set the title value
-		setTitle(post.title);
+		setTitle(post?.title);
 		//set the content value
-		setContent(post.content);
-	}, [post.content, post.title, setContent, setTitle]);
+		setContent(post?.content);
+	}, [post.content, post.title, setContent, setTitle, handleOpen]);
 
 	return (
 		<>
@@ -109,7 +109,7 @@ export const UpdatePost = ({ post }) => {
 								component='h3'
 								gutterBottom
 								aria-label='title'>
-								{`update ${post.title} post`}
+								{`update ${post?.title} post`}
 							</Typography>
 							<Input
 								aria-label='title'
