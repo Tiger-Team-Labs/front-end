@@ -3,21 +3,21 @@ import React, { useEffect,useState } from 'react'
 import axios from 'axios';
 
 export default function Post() {
-  const [name, setName] = useState("");
+  const [posts, setPosts] = useState("");
   const urlLogin = "https://testing-api-foro.herokuapp.com/api/posts"
 
   useEffect(() => {
     const verPost = async () => {
       await axios.get(urlLogin)
         .then(res => {
-          setName(res)
+          setPosts(res)
         })
         .catch(err => { console.log(`Algo paso, aquí te lo muestro: ${err}`) })
     }
     verPost()
   }, []);
   
-  if (name.length === 0) {
+  if (posts.length === 0) {
     return (
       <div>
         <h3>No badges were found</h3>
@@ -28,11 +28,11 @@ export default function Post() {
     
     <>
       <h1>Post</h1>
-      {name.map(item => {
+      {posts.map(post => {
               return (
-                <li key={item.id}>
-                  <h3>{item.title}</h3>
-                  <p>{item.content}</p>
+                <li key={post._id}>
+                  <h3>{post.title}</h3>
+                  <p>{post.content}</p>
                 </li>
               );
         })
