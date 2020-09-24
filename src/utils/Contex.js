@@ -1,7 +1,7 @@
 // import react
 import React, { useState } from 'react';
 // import Axios
-import axios from 'axios'; 
+import axios from 'axios';
 //create functional component for context provider and export it
 export const Context = React.createContext();
 
@@ -22,7 +22,7 @@ export const ContextProvider = ({ children }) => {
   const [valuesLogin, setValuesLogin] = useState({
     email: "",
     password: "",
-    token:""
+    token: ""
   })
   const handleChangeLogin = (event) => {
     setValuesLogin({ ...valuesLogin, [event.target.name]: event.target.value })
@@ -30,12 +30,17 @@ export const ContextProvider = ({ children }) => {
   // send datos  Login
   const urlLogin = "https://testing-api-foro.herokuapp.com/api/auth/login"
   // Ejemplo implementando el metodo axios:
-  
-    const createUserWhitFromLogin = async () => {
-    await axios.post(urlLogin,valuesLogin)
-        .then(res => console.log(res))
-        .catch(err => { console.log(`Algo paso, aquí te lo muestro: ${err}`)})
-    }
+  const [userLogin, setUserLogin] = useState(undefined)
+
+
+  const createUserWhitFromLogin = async () => {
+    await axios.post(urlLogin, valuesLogin)
+      .then(res => {
+        setUserLogin(res)
+        console.log(res)
+      })
+      .catch(err => { console.log(`Algo paso, aquí te lo muestro: ${err}`) })
+  }
 
   const handleSubmitLogin = (event) => {
     event.preventDefault();
@@ -59,15 +64,18 @@ export const ContextProvider = ({ children }) => {
   const handleChange = (event) => {
     setValues({ ...values, [event.target.name]: event.target.value })
   }
-   // send datos
+  // send datos
   const urlSignUp = "https://testing-api-foro.herokuapp.com/api/auth/signup"
 
-// Ejemplo implementando el metodo axios:
-
+  // Ejemplo implementando el metodo axios:
+  const [userForm, setUserForm] = useState(undefined)
   const createUserWhitFormSignUP = async () => {
-  await axios.post(urlSignUp,values)
-      .then(res => console.log(res))
-      .catch(err => { console.log(`Algo paso, aquí te lo muestro: ${err}`)})
+    await axios.post(urlSignUp, values)
+      .then(res => {
+        setUserForm(res.data.token)
+        console.log(res)
+      })
+      .catch(err => { console.log(`Algo paso, aquí te lo muestro: ${err}`) })
   }
 
   const handleSubmit = (event) => {
@@ -76,7 +84,7 @@ export const ContextProvider = ({ children }) => {
     console.log(`'Ahí van los datos del formulario: ${values.name}'`);
     createUserWhitFormSignUP();
     setOpenFormDialog(false);
-  
+
   }
   // FormDialog
   const [openFormDialog, setOpenFormDialog] = React.useState(false);
@@ -110,6 +118,10 @@ export const ContextProvider = ({ children }) => {
       setValuesLogin,
       handleChangeLogin,
       handleSubmitLogin,
+      userLogin, 
+      setUserLogin,
+      userForm, 
+      setUserForm
     }}>
       {children}
     </Context.Provider>
