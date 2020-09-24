@@ -14,6 +14,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 //use spring animations
 import { Spring } from 'react-spring/renderprops';
+//import update component
+import { UpdatePost } from '../../components/UpdatePost';
 
 //create post component and export it
 const Post = () => {
@@ -49,45 +51,48 @@ const Post = () => {
 	const classes = useStyles();
 
 	return (
-		<Card aria-label='post' className={classes.root} variant='outlined'>
-			{/*Card container up*/}
-			<CardContent aria-label='content of the post'>
-				{/*Card content down*/}
-				{/*title*/}
-				<Typography
-					aria-label='title of the post'
-					align='center'
-					className={classes.title}
-					variant='h1'>
-					{title}
-				</Typography>
-				{/*content with an animation*/}
-				<Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
-					{(props) => (
-						<div style={props}>
-							{
-								<Typography
-									aria-label='content of the post'
-									className={classes.post}
-									variant='body1'
-									component='p'>
-									{content}
-								</Typography>
-							}
-						</div>
-					)}
-				</Spring>
-				{/*last update*/}
-				<Typography
-					aria-label='last update of the post'
-					align='right'
-					className={classes.lastUpdate}
-					variant='body2'
-					component='p'>
-					lasted update: {lastUpdate}
-				</Typography>
-			</CardContent>
-		</Card>
+		<>
+			<Card aria-label='post' className={classes.root} variant='outlined'>
+				{/*Card container up*/}
+				<CardContent aria-label='content of the post'>
+					{/*Card content down*/}
+					{/*title*/}
+					<Typography
+						aria-label='title of the post'
+						align='center'
+						className={classes.title}
+						variant='h1'>
+						{title}
+					</Typography>
+					{/*content with an animation*/}
+					<Spring from={{ opacity: 0 }} to={{ opacity: 1 }}>
+						{(props) => (
+							<div style={props}>
+								{
+									<Typography
+										aria-label='content of the post'
+										className={classes.post}
+										variant='body1'
+										component='p'>
+										{content}
+									</Typography>
+								}
+							</div>
+						)}
+					</Spring>
+					{/*last update*/}
+					<Typography
+						aria-label='last update of the post'
+						align='right'
+						className={classes.lastUpdate}
+						variant='body2'
+						component='p'>
+						lasted update: {lastUpdate}
+					</Typography>
+				</CardContent>
+			</Card>
+			<UpdatePost />
+		</>
 	);
 };
 

@@ -13,7 +13,7 @@ import {
 	Button,
 } from '@material-ui/core';
 //import icon
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import UpdateIcon from '@material-ui/icons/Update';
 //import use styles
 import { useStyles } from './styles';
 //import the context
@@ -22,7 +22,7 @@ import { Context } from '../../utils/Context';
 import { Alert } from '../Alert';
 
 //create create post component and export it.
-export const CreatePost = ({ category }) => {
+export const UpdatePost = ({ category }) => {
 	//use the styles
 	const classes = useStyles();
 	//use local state to open the modal
@@ -33,7 +33,7 @@ export const CreatePost = ({ category }) => {
 		setContent,
 		title,
 		content,
-		createPost,
+		update,
 		setError,
 		setShowError,
 	} = useContext(Context);
@@ -45,20 +45,23 @@ export const CreatePost = ({ category }) => {
 
 	//handle the close of modal
 	const handleClose = () => {
+		setOpen(false);
+		//reset local state
+		setTitle('');
+		setContent('');
+	};
+
+	//handle the click event
+	const handleOnClick = () => {
 		if (title === '' || content === '') {
 			setError((error) => (error = 'please check the inputs'));
 			setShowError(true);
 		} else {
 			setOpen(false);
 			setShowError(false);
-			createPost();
+			update();
+			handleClose();
 		}
-	};
-
-	//handle the click event
-	const handleOnClick = () => {
-		//close the modal
-		handleClose();
 		//reset local state
 		setTitle('');
 		setContent('');
@@ -72,10 +75,7 @@ export const CreatePost = ({ category }) => {
 				type='button'
 				onClick={handleOpen}>
 				{/*'icon to show this modal'*/}
-				<AddCircleOutlineIcon
-					fontSize='large'
-					aria-labelledby='icon to create post'
-				/>
+				<UpdateIcon fontSize='large' aria-labelledby='icon to create post' />
 			</IconButton>
 			<Modal
 				aria-labelledby='transition-modal-title'

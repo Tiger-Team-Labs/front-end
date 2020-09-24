@@ -17,3 +17,5 @@ export const getPosts = '/posts/';
 export const postNewPost = '/posts/';
 //delete a post
 export const deleteWithId = (id) => `/posts/${id}`;
+//update post
+export const updateWithId = (id) => `/posts/${id}`;

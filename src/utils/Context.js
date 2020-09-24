@@ -8,6 +8,7 @@ import {
 	postNewPost,
 	getPosts,
 	deleteWithId,
+	updateWithId,
 } from './requests';
 
 //create context and export it
@@ -122,6 +123,18 @@ export const ContextProvider = ({ children }) => {
 		});
 	});
 
+	/**
+	 * @description: delete post
+	 */
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	const updatePost = useCallback((id) => {
+		instance.put(updateWithId(id), {
+			headers: {
+				'x-access-token': `${token}`,
+			},
+		});
+	});
+
 	//use effect for bring the posts
 	/**
 	 * bring the data from de data base
@@ -162,6 +175,7 @@ export const ContextProvider = ({ children }) => {
 				response,
 				setResponse,
 				deletePost,
+				updatePost,
 			}}>
 			{children}
 		</Context.Provider>
