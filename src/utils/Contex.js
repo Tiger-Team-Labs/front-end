@@ -30,14 +30,16 @@ export const ContextProvider = ({ children }) => {
   // send datos  Login
   const urlLogin = "https://testing-api-foro.herokuapp.com/api/auth/login"
   // Ejemplo implementando el metodo axios:
-  const [userLogin, setUserLogin] = useState(undefined)
 
 
   const createUserWhitFromLogin = async () => {
     await axios.post(urlLogin, valuesLogin)
       .then(res => {
-        setUserLogin(res)
-        console.log(res)
+        setUser({
+          token: res.data.token,
+          
+				});
+        console.log(res.data.status)
       })
       .catch(err => { console.log(`Algo paso, aquí te lo muestro: ${err}`) })
   }
@@ -60,6 +62,7 @@ export const ContextProvider = ({ children }) => {
     username: "",
     email: "",
     password: "",
+    token:"",
   });
   const handleChange = (event) => {
     setValues({ ...values, [event.target.name]: event.target.value })
@@ -68,13 +71,16 @@ export const ContextProvider = ({ children }) => {
   const urlSignUp = "https://testing-api-foro.herokuapp.com/api/auth/signup"
 
   // Ejemplo implementando el metodo axios:
-  const [userForm, setUserForm] = useState(undefined)
+  const [user, setUser] = useState(undefined)
   const createUserWhitFormSignUP = async () => {
     await axios.post(urlSignUp, values)
       .then(res => {
-        setUserForm(res.data.token)
+        setUser({
+					token: res.data.token,
+				});
         console.log(res)
       })
+      
       .catch(err => { console.log(`Algo paso, aquí te lo muestro: ${err}`) })
   }
 
@@ -118,10 +124,8 @@ export const ContextProvider = ({ children }) => {
       setValuesLogin,
       handleChangeLogin,
       handleSubmitLogin,
-      userLogin, 
-      setUserLogin,
-      userForm, 
-      setUserForm
+      user, 
+      setUser
     }}>
       {children}
     </Context.Provider>

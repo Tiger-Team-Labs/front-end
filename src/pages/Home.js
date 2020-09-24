@@ -14,6 +14,7 @@ export default function Home() {
 
   return (
     <div className={classes.root}>
+      <h1>Bienvenidos éste es Home</h1>
       <FormDialog />
       <CustomizedSnackbars />
     </div>

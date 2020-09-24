@@ -3,8 +3,11 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 // bring pages Home
 import Home from '../../pages/Home'
+import Post from '../../pages/Post';
 // bring pages layout
 import Layout from '../Layout'
+// Loading pages
+import Loading from '../Loading';
 // import error NotFound pages
 import NotFound from '../NotFound'
 
@@ -15,6 +18,8 @@ export default function App() {
     <Layout>
         <Switch>
           <Route exact path="/" component={Home}/>
+          <Route exact path="/login" component={Loading}/>
+          <Route exact path="/posts" component={Post}/>
           <Route component={NotFound} />
         </Switch>
     </Layout>

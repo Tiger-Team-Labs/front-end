@@ -37,8 +37,6 @@ export default function Form() {
     handleSubmit,
   } = useContext(Context);
 
- 
-
 
   const classes = useStyles();
 

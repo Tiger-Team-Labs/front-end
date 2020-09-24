@@ -20,7 +20,8 @@ export default function TopNavBar() {
   // Context
   const {
     handleClickOpenFormDialog,
-
+    values,
+    user
   } = React.useContext(Context);
 
   return (
@@ -33,9 +34,15 @@ export default function TopNavBar() {
           <Typography variant="h6" className={classes.title}>
             Foro Game
           </Typography>
-          <Button color="inherit" onClick={handleClickOpenFormDialog}>
+          {user !== undefined 
+            ? <Button color="inherit" onClick={handleClickOpenFormDialog}>
+              Log-uot {values.name}
+            </Button>
+            : <Button color="inherit" onClick={handleClickOpenFormDialog}>
             Login
           </Button>
+          }
+          
         </Toolbar>
       </AppBar>
     </div>
