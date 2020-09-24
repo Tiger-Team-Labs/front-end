@@ -20,7 +20,7 @@ import { CreatePost } from '../../components/CreatePost';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 
 //create list of post component and export it
-export const ListOfPosts = memo(() => {
+const ListOfPosts = memo(() => {
 	//use the context
 	const { posts, user, deletePost } = useContext(Context);
 
@@ -95,3 +95,5 @@ export const ListOfPosts = memo(() => {
 		</>
 	);
 });
+
+export default ListOfPosts;

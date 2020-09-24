@@ -4,7 +4,7 @@ import React, { useState, memo } from 'react';
 import { Category } from '../../components/Category';
 
 //create list of post component and export it
-export const Categories = memo(() => {
+const Categories = memo(() => {
 	//use state
 	const [categories] = useState([
 		{ title: 'action games' },
@@ -24,3 +24,5 @@ export const Categories = memo(() => {
 		</>
 	);
 });
+
+export default Categories;

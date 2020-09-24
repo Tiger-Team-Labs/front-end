@@ -16,7 +16,7 @@ import Typography from '@material-ui/core/Typography';
 import { Spring } from 'react-spring/renderprops';
 
 //create post component and export it
-export const Post = () => {
+const Post = () => {
 	//use params hook
 	const params = useParams();
 	//use context
@@ -90,3 +90,5 @@ export const Post = () => {
 		</Card>
 	);
 };
+
+export default Post;
