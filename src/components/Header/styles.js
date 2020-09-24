@@ -22,11 +22,12 @@ export const Header = styled.header`
 `;
 
 //created buttons component
-export const Buttons = styled.div`
+export const MenuContainer = styled.div`
 	margin-right: 2rem;
+	color: black;
 
 	@media only screen and (max-width: 600px) {
-		width: 5rem;
+		margin-right: 1rem;
 	}
 `;
 

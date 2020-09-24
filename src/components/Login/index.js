@@ -70,7 +70,7 @@ export const Login = () => {
 			{/*Button to display the modal*/}
 			<Button
 				aria-label='sign in open button'
-				style={{ color: 'white' }}
+				style={{ color: 'black' }}
 				type='button'
 				onClick={handleOpen}>
 				Sign In <VpnKeyOutlinedIcon style={{ marginLeft: '.2rem' }} />

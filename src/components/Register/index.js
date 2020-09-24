@@ -78,7 +78,7 @@ export const Register = () => {
 			{/*Button to display the modal*/}
 			<Button
 				aria-label='button to open the register modal'
-				style={{ color: 'white' }}
+				style={{ color: 'black' }}
 				type='button'
 				onClick={handleOpen}>
 				Sign Up <PermIdentityOutlinedIcon style={{ marginLeft: '.2rem' }} />

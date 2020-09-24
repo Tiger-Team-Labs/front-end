@@ -1,15 +1,11 @@
 //import React
 import React, { useContext } from 'react';
-//import Login
-import { Login } from '../Login';
-//import Register
-import { Register } from '../Register';
 //import Logo
 import { Logo } from '../Logo';
 //import styled component
 import {
 	Header as HeaderContent,
-	Buttons,
+	MenuContainer,
 	AvatarContainer,
 	LogOut,
 } from './styles';
@@ -23,6 +19,8 @@ import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 //import icons
 import ExitToAppOutlinedIcon from '@material-ui/icons/ExitToAppOutlined';
+//import menu component
+import { Menu } from '../Menu';
 
 //create and export header component
 export const Header = () => {
@@ -55,11 +53,10 @@ export const Header = () => {
 					</AvatarContainer>
 				</LogOut>
 			) : (
-				<Buttons>
-					{/*buttons for register and login*/}
-					<Register />
-					<Login />
-				</Buttons>
+				<MenuContainer aria-label='menu container'>
+					{/*Menu*/}
+					<Menu aria-label='menu label' />
+				</MenuContainer>
 			)}
 		</HeaderContent>
 	);
