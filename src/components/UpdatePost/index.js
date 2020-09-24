@@ -1,5 +1,5 @@
 //import react and its hooks
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useCallback } from 'react';
 //import material ui components
 import {
 	Modal,
@@ -25,6 +25,8 @@ import { Alert } from '../Alert';
 export const UpdatePost = ({ post }) => {
 	//use the styles
 	const classes = useStyles();
+	//isUpdate local state
+	const [isUpdate, setIsUpdate] = useState(0);
 	//use local state to open the modal
 	const [open, setOpen] = useState(false);
 	//use context methods
@@ -39,9 +41,11 @@ export const UpdatePost = ({ post }) => {
 	} = useContext(Context);
 
 	//handle the open of modal
-	const handleOpen = () => {
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	const handleOpen = useCallback(() => {
 		setOpen(true);
-	};
+		setIsUpdate((number) => number + 1);
+	});
 
 	//handle the close of modal
 	const handleClose = () => {
@@ -67,13 +71,12 @@ export const UpdatePost = ({ post }) => {
 		setContent('');
 	};
 
-	//use effect to handle the initial value
+	// use effect
 	useEffect(() => {
-		//set the title value
 		setTitle(post?.title);
-		//set the content value
 		setContent(post?.content);
-	}, [post.content, post.title, setContent, setTitle, handleOpen]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [isUpdate]);
 
 	return (
 		<>

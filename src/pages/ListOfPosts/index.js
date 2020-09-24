@@ -46,11 +46,11 @@ const ListOfPosts = memo(() => {
 				<Grid item xs={12}>
 					<Grid container justify='center' spacing={2}>
 						{/*show all the components*/}
-						{posts.map((post, i) => (
+						{posts.map((post) => (
 							<div key={post._id}>
 								<Link
 									style={{ textDecoration: 'none' }}
-									to={`/${post.title}/${post._id}`}>
+									to={`/${category}/${post._id}`}>
 									{/*add the link ability to change into different pages*/}
 									{/*add the animation ability*/}
 									<animated.div
