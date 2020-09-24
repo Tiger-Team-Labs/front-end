@@ -41,7 +41,7 @@ export const Menu = () => {
 					className={classes.menuButton}
 					color='inherit'
 					aria-label='menu button'>
-					<MenuIcon size='large' />
+					<MenuIcon className={classes.icon} size='large' />
 				</IconButton>
 				<MenuMaterial
 					aria-label='menu'

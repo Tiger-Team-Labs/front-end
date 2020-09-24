@@ -45,6 +45,14 @@ export const CreatePost = ({ category }) => {
 
 	//handle the close of modal
 	const handleClose = () => {
+		setOpen(false);
+		setTitle('');
+		setContent('');
+	};
+
+	//handle the click event
+	const handleOnClick = () => {
+		//check the modal info
 		if (title === '' || content === '') {
 			setError((error) => (error = 'please check the inputs'));
 			setShowError(true);
@@ -53,13 +61,6 @@ export const CreatePost = ({ category }) => {
 			setShowError(false);
 			createPost();
 		}
-	};
-
-	//handle the click event
-	const handleOnClick = () => {
-		//close the modal
-		handleClose();
-		//reset local state
 		setTitle('');
 		setContent('');
 	};
