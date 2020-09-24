@@ -24,4 +24,7 @@ export const useStyles = makeStyles((theme) => ({
 			fontSize: '2.5rem',
 		},
 	},
+	button: {
+		margin: '1rem 0',
+	},
 }));

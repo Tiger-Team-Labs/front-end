@@ -117,6 +117,7 @@ export const CreatePost = ({ category }) => {
 								placeholder='content'
 							/>
 							<Button
+								className={classes.button}
 								aria-label='button'
 								variant='outlined'
 								color='primary'
