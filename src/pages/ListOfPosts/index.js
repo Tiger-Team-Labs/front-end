@@ -72,14 +72,16 @@ const ListOfPosts = memo(() => {
 										/>
 									</animated.div>
 								</Link>
-								{/*Delete a post functionality*/}
+								{/*Delete a post functionality and update functionality*/}
 								{user !== undefined && (
-									<IconButton
-										onClick={() => {
-											deletePost(post._id);
-										}}>
-										<DeleteOutlineIcon />
-									</IconButton>
+									<>
+										<IconButton
+											onClick={() => {
+												deletePost(post._id);
+											}}>
+											<DeleteOutlineIcon />
+										</IconButton>
+									</>
 								)}
 							</div>
 						))}

@@ -1,5 +1,5 @@
 //import react and its hooks
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 //import material ui components
 import {
 	Modal,
@@ -22,7 +22,7 @@ import { Context } from '../../utils/Context';
 import { Alert } from '../Alert';
 
 //create create post component and export it.
-export const UpdatePost = ({ category }) => {
+export const UpdatePost = ({ post }) => {
 	//use the styles
 	const classes = useStyles();
 	//use local state to open the modal
@@ -33,7 +33,7 @@ export const UpdatePost = ({ category }) => {
 		setContent,
 		title,
 		content,
-		update,
+		updatePost,
 		setError,
 		setShowError,
 	} = useContext(Context);
@@ -59,13 +59,21 @@ export const UpdatePost = ({ category }) => {
 		} else {
 			setOpen(false);
 			setShowError(false);
-			update();
+			updatePost(post?.id);
 			handleClose();
 		}
 		//reset local state
 		setTitle('');
 		setContent('');
 	};
+
+	//use effect to handle the initial value
+	useEffect(() => {
+		//set the title value
+		setTitle(post.title);
+		//set the content value
+		setContent(post.content);
+	}, [post.content, post.title, setContent, setTitle]);
 
 	return (
 		<>
@@ -101,20 +109,22 @@ export const UpdatePost = ({ category }) => {
 								component='h3'
 								gutterBottom
 								aria-label='title'>
-								{`Create your ${category} post`}
+								{`update ${post.title} post`}
 							</Typography>
 							<Input
 								aria-label='title'
 								value={title}
 								onChange={(e) => setTitle(e.target.value)}
 								autoFocus={true}
-								placeholder='Title'
+								placeholder={post?.title}
 							/>
 							<TextareaAutosize
+								rowsMax={10}
+								rowsMin={10}
 								aria-label='text area'
 								value={content}
 								onChange={(e) => setContent(e.target.value)}
-								placeholder='content'
+								placeholder={post?.content}
 							/>
 							<Button
 								className={classes.button}
@@ -122,7 +132,7 @@ export const UpdatePost = ({ category }) => {
 								variant='outlined'
 								color='primary'
 								onClick={handleOnClick}>
-								Create post
+								Update post
 							</Button>
 							<Alert />
 						</FormGroup>

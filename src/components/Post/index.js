@@ -14,8 +14,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 //use spring animations
 import { Spring } from 'react-spring/renderprops';
-//import update component
-import { UpdatePost } from '../../components/UpdatePost';
+//import update a post component
+import { UpdatePost } from '../UpdatePost';
 
 //create post component and export it
 const Post = () => {
@@ -24,7 +24,7 @@ const Post = () => {
 	//use context
 	const { posts } = useContext(Context);
 	//use stat to save the post
-	const [post, setPost] = useState({ title: '', content: '', updatedAt: '' });
+	const [post, setPost] = useState({});
 	//use state to save the title specific post
 	const [title, setTitle] = useState('');
 	//use state to save the content of specific post
@@ -41,17 +41,18 @@ const Post = () => {
 	//use effect to set the title and the content
 	useEffect(() => {
 		//save the title
-		setTitle(post.title);
+		setTitle(post?.title);
 		//save the content
-		setContent(post.content);
+		setContent(post?.content);
 		//save the last update
-		setLastUpdate(post.updatedAt);
+		setLastUpdate(post?.updatedAt);
 	}, [post]);
 
 	const classes = useStyles();
 
 	return (
 		<>
+			<UpdatePost post={post} />
 			<Card aria-label='post' className={classes.root} variant='outlined'>
 				{/*Card container up*/}
 				<CardContent aria-label='content of the post'>
@@ -91,7 +92,6 @@ const Post = () => {
 					</Typography>
 				</CardContent>
 			</Card>
-			<UpdatePost />
 		</>
 	);
 };

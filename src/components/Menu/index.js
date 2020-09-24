@@ -1,12 +1,7 @@
 //import react and its hooks
 import React, { useState } from 'react';
 //import components
-import {
-	Typography,
-	IconButton,
-	Menu as MenuMaterial,
-	MenuItem,
-} from '@material-ui/core';
+import { IconButton, Menu as MenuMaterial, MenuItem } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 //import delete user component
 import { useStyles } from './styles';

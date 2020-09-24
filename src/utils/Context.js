@@ -116,24 +116,37 @@ export const ContextProvider = ({ children }) => {
 	 */
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	const deletePost = useCallback((id) => {
-		instance.delete(deleteWithId(id), {
-			headers: {
-				'x-access-token': `${token}`,
-			},
-		});
+		instance
+			.delete(deleteWithId(id), {
+				headers: {
+					'x-access-token': `${token}`,
+				},
+			})
+			.then((response) => setResponse(response.status))
+			.catch((err) => setResponse(err.response.status));
 	});
 
 	/**
 	 * @description: delete post
 	 */
 	// eslint-disable-next-line react-hooks/exhaustive-deps
-	const updatePost = useCallback((id) => {
-		instance.put(updateWithId(id), {
-			headers: {
-				'x-access-token': `${token}`,
-			},
-		});
-	});
+	const updatePost = (id) => {
+		instance
+			.put(
+				updateWithId(id),
+				{
+					title: title,
+					content: content,
+				},
+				{
+					headers: {
+						'x-access-token': `${token}`,
+					},
+				},
+			)
+			.then((response) => console.log(response))
+			.catch((err) => setResponse(err.response.status));
+	};
 
 	//use effect for bring the posts
 	/**
