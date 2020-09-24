@@ -1,6 +1,7 @@
 import React, { useEffect,useState } from 'react'
 // import Axios
 import axios from 'axios';
+import Loading from '../components/Loading';
 
 export default function Post() {
   const [posts, setPosts] = useState("");
@@ -10,7 +11,8 @@ export default function Post() {
     const verPost = async () => {
       await axios.get(urlLogin)
         .then(res => {
-          setPosts(res)
+          setPosts(res.data)
+          console.log(res);
         })
         .catch(err => { console.log(`Algo paso, aquí te lo muestro: ${err}`) })
     }
@@ -19,24 +21,21 @@ export default function Post() {
   
   if (posts.length === 0) {
     return (
-      <div>
-        <h3>No badges were found</h3>
-      </div>
+      <Loading/>
     );
+  } else {
+    return (
+      <div>
+      {posts.map((post, _id) => {
+        return(
+          <div key={post._id}>
+            <h2>{post.title}</h2>
+            <p>{post.content} </p>
+            <small>{post.createdAt} </small>
+          </div>
+        )
+      })}
+    </div>
+    )
   }
-  return( 
-    
-    <>
-      <h1>Post</h1>
-      {posts.map(post => {
-              return (
-                <li key={post._id}>
-                  <h3>{post.title}</h3>
-                  <p>{post.content}</p>
-                </li>
-              );
-        })
-      }
-    </>
-  )  
 }

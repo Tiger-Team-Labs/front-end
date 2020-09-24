@@ -37,7 +37,6 @@ export const ContextProvider = ({ children }) => {
       .then(res => {
         setUser({
           token: res.data.token,
-          
 				});
         console.log(res.data.status)
       })

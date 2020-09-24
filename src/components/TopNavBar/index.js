@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -6,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 // Icons
 import SportsEsportsIcon from '@material-ui/icons/SportsEsports';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 // import Context
 import { Context } from '../../utils/Contex';
 // Styles
@@ -20,24 +22,30 @@ export default function TopNavBar() {
   // Context
   const {
     handleClickOpenFormDialog,
-    values,
-    user
+    user,
+    setUser
   } = React.useContext(Context);
 
   return (
     <div className={classes.root}>
       <AppBar position="static" color="secondary">
         <Toolbar>
+          
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <SportsEsportsIcon />
+            <Link to={"/"}>
+              <SportsEsportsIcon  />
+            </Link>
           </IconButton>
           <Typography variant="h6" className={classes.title}>
             Foro Game
           </Typography>
           {user !== undefined 
-            ? <Button color="inherit" onClick={handleClickOpenFormDialog}>
-              Log-uot {values.name}
-            </Button>
+            ? <>
+                <AccountCircleIcon /> Hola {user.name}
+                <Button color="inherit" onClick={()=>setUser(undefined)}>
+                  Log-uot 
+                </Button>
+              </>
             : <Button color="inherit" onClick={handleClickOpenFormDialog}>
             Login
           </Button>
