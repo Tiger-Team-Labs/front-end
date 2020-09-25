@@ -41,7 +41,7 @@ export default function TopNavBar() {
           </Typography>
           {user !== undefined 
             ? <>
-                <AccountCircleIcon /> Hola {user.name}
+                <AccountCircleIcon /> Hola {user.username}
                 <Button color="inherit" onClick={()=>setUser(undefined)}>
                   Log-uot 
                 </Button>

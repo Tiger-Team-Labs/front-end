@@ -7,15 +7,17 @@ export default function Post() {
   const [posts, setPosts] = useState("");
   const urlLogin = "https://testing-api-foro.herokuapp.com/api/posts"
 
+  // Require post 
+  const verPost = async () => {
+    await axios.get(urlLogin)
+      .then(res => {
+        setPosts(res.data)
+        console.log(res);
+      })
+      .catch(err => { console.log(`Algo paso, aquí te lo muestro: ${err}`) })
+  }
+
   useEffect(() => {
-    const verPost = async () => {
-      await axios.get(urlLogin)
-        .then(res => {
-          setPosts(res.data)
-          console.log(res);
-        })
-        .catch(err => { console.log(`Algo paso, aquí te lo muestro: ${err}`) })
-    }
     verPost()
   }, []);
   

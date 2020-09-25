@@ -74,9 +74,7 @@ export const ContextProvider = ({ children }) => {
   const createUserWhitFormSignUP = async () => {
     await axios.post(urlSignUp, values)
       .then(res => {
-        setUser({
-					token: res.data.token,
-				});
+        setUser(res.data);
         console.log(res)
       })
       
