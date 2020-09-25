@@ -39,8 +39,6 @@ export const ContextProvider = memo(({ children }) => {
 	//content
 	const [content, setContent] = useState('');
 
-	console.log(user);
-
 	/**
 	 * @description: allow us to create a user and make the post to the db
 	 */
@@ -163,7 +161,7 @@ export const ContextProvider = memo(({ children }) => {
 			await instance.get(getPosts).then((response) => setPosts(response.data));
 
 		bringData();
-	}, []);
+	}, [response]);
 
 	return (
 		<Context.Provider

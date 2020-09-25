@@ -13,7 +13,7 @@ import { Context } from '../../utils/Context';
 // use params hook
 import { useParams } from 'react-router-dom';
 //use styled components
-import { FixedButton } from './styles';
+import { FixedButton, Color } from './styles';
 //import create post component
 import { CreatePost } from '../../components/CreatePost';
 //import icon
@@ -75,16 +75,20 @@ const ListOfPosts = memo(() => {
 									</animated.div>
 								</Link>
 								{/*Delete a post functionality and update functionality*/}
-								{user !== undefined && (
-									<>
+								{user !== undefined && post?.author === user.id && (
+									<Color>
+										<UpdatePost aria-label='button' post={post} />
 										<IconButton
+											size='medium'
+											color='inherit'
+											aria-label='button'
+											style={{ color: 'white !important' }}
 											onClick={() => {
 												deletePost(post._id);
 											}}>
-											<DeleteOutlineIcon />
+											<DeleteOutlineIcon color='inherit' />
 										</IconButton>
-										<UpdatePost post={post} />
-									</>
+									</Color>
 								)}
 							</div>
 						))}
