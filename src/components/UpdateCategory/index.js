@@ -13,40 +13,51 @@ import { useStyles } from './styles';
 export const UpdateCategory = () => {
 	//use custom hooks from material ui
 	const classes = useStyles();
-
 	//use context hooks
 	const {
 		categoryName,
 		setCategoryName,
-		createNewCategory,
+		updateCategory,
 		setShowError,
 		setError,
+		categoryId,
+		setCategoryId,
 	} = useContext(Context);
 
 	//handle the click event
 	const handleOnClick = () => {
-		//set the login
+		//set the data
+		setCategoryId(categoryId);
 		setCategoryName(categoryName);
 		//check if the input is empty
-		if (categoryName === '') {
+		if (categoryName === '' || categoryId === '') {
 			setError((error) => (error = 'please check the inputs'));
 			setShowError(true);
 		} else {
 			setShowError(false);
-			createNewCategory();
+			updateCategory();
 		}
 		//reset local state
 		setCategoryName('');
+		setCategoryId('');
 	};
 
 	return (
 		<>
-			<Typography>Create new category</Typography>
+			<Typography>Update category</Typography>
 			<FormGroup aria-label='form group'>
-				{/*Inputs (control it)*/}
+				{/*category id*/}
 				<Input
-					aria-label='input for the name of the new category'
+					aria-label='input for the id of the category'
 					autoFocus={true}
+					placeholder='category id'
+					className={classes.input}
+					value={categoryId}
+					onChange={(e) => setCategoryId(e.target.value)}
+				/>
+				{/*category name*/}
+				<Input
+					aria-label='input for the name of the category'
 					placeholder='category name'
 					className={classes.input}
 					value={categoryName}
@@ -54,12 +65,12 @@ export const UpdateCategory = () => {
 				/>
 				<Alert />
 				<Button
-					aria-label='button to make the login'
+					aria-label='button to make update'
 					className={classes.button}
 					variant='outlined'
 					color='primary'
 					onClick={handleOnClick}>
-					Create!
+					Update!
 				</Button>
 			</FormGroup>
 		</>

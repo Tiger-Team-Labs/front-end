@@ -54,7 +54,7 @@ export const CreateCategory = () => {
 				/>
 				<Alert />
 				<Button
-					aria-label='button to make the login'
+					aria-label='button to create new category'
 					className={classes.button}
 					variant='outlined'
 					color='primary'

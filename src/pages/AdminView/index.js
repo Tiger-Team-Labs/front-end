@@ -34,12 +34,17 @@ import { Paper } from '@material-ui/core';
 import { Context } from '../../utils/Context';
 //import response alert
 import { ResponseAlert } from '../../components/ResponseAlert';
+//import update category component
+import { UpdateCategory } from '../../components/UpdateCategory';
 
 export const Dashboard = memo(() => {
 	//use styles
 	const classes = useStyles();
 	//use local style
 	const [open, setOpen] = useState(true);
+	//use context
+	const { dashboardOption } = useContext(Context);
+
 	//handle the open of the menu
 	const handleDrawerOpen = () => {
 		setOpen(true);
@@ -47,6 +52,22 @@ export const Dashboard = memo(() => {
 	//handle the close of the menu
 	const handleDrawerClose = () => {
 		setOpen(false);
+	};
+
+	//handle the switch
+	/**
+	 * @description this function allow to handle the component to display
+	 * @param {number} option
+	 */
+	const handleSwitch = (option) => {
+		switch (option) {
+			case 1:
+				return <CreateCategory />;
+			case 3:
+				return <UpdateCategory />;
+			default:
+				return <></>;
+		}
 	};
 
 	return (
@@ -110,8 +131,9 @@ export const Dashboard = memo(() => {
 					className={classes.container}>
 					<ResponseAlert />
 					<Paper className={classes.paper}></Paper>
+					{/**switch to handle the component ti display it */}
 					<Paper className={classes.paper}>
-						<CreateCategory />
+						{handleSwitch(dashboardOption)}
 					</Paper>
 				</Container>
 			</main>

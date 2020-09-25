@@ -10,6 +10,7 @@ import {
 	deleteWithId,
 	updateWithId,
 	createCategory,
+	updateCategoryWithId,
 } from './requests';
 
 //create context and export it
@@ -43,6 +44,8 @@ export const ContextProvider = memo(({ children }) => {
 	const [categoryName, setCategoryName] = useState(undefined);
 	//category
 	const [dashboardOption, setDashboardOption] = useState(0);
+	//category
+	const [categoryId, setCategoryId] = useState(undefined);
 
 	/**
 	 * @description: allow us to create a user and make the post to the db
@@ -122,6 +125,7 @@ export const ContextProvider = memo(({ children }) => {
 
 	/**
 	 * @description: delete post
+	 * @param id
 	 */
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	const deletePost = useCallback((id) => {
@@ -136,7 +140,8 @@ export const ContextProvider = memo(({ children }) => {
 	});
 
 	/**
-	 * @description: delete post
+	 * @description: update post
+	 * @param id
 	 */
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	const updatePost = (id) => {
@@ -165,6 +170,28 @@ export const ContextProvider = memo(({ children }) => {
 		instance
 			.post(
 				createCategory,
+				{
+					name: categoryName,
+				},
+				{
+					headers: {
+						'x-access-token': `${token}`,
+					},
+				},
+			)
+			.then((response) => setResponse(response?.status))
+			.catch((err) => setResponse(err.response?.status));
+	};
+
+	/**
+	 * @description: update post
+	 * @param id
+	 */
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	const updateCategory = () => {
+		instance
+			.put(
+				updateCategoryWithId(categoryId),
 				{
 					name: categoryName,
 				},
@@ -224,6 +251,9 @@ export const ContextProvider = memo(({ children }) => {
 				createNewCategory,
 				dashboardOption,
 				setDashboardOption,
+				categoryId,
+				setCategoryId,
+				updateCategory,
 			}}>
 			{children}
 		</Context.Provider>
