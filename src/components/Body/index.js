@@ -12,30 +12,46 @@ const Categories = lazy(() => import('../../pages/Categories'));
 const ListOfPosts = lazy(() => import('../../pages/ListOfPosts'));
 //import post component ../Post
 const Post = lazy(() => import('../Post'));
+//import dashboard
+const DashBoard = lazy(() => import('../../pages/AdminView'));
 
 //create body component and export it
 export const Body = () => {
 	return (
-		<Layout>
-			<BodyBackground>
-				{/*switch the components in other words decide which component will render*/}
-				<Switch>
-					<Suspense fallback={<div>Loading...</div>}>
-						{/*route for categories*/}
-						<Route path='/' exact>
-							<Categories />
-						</Route>
-						{/*route for specific category*/}
-						<Route exact path='/:category'>
-							<ListOfPosts />
-						</Route>
-						{/*route for specific post*/}
-						<Route exact path='/:category/:post'>
-							<Post />
-						</Route>
-					</Suspense>
-				</Switch>
-			</BodyBackground>
-		</Layout>
+		<>
+			{/*switch the components in other words decide which component will render*/}
+			<Switch>
+				<Suspense fallback={<div>Loading...</div>}>
+					{/*route for categories*/}
+					<Route exact path='/'>
+						<Layout>
+							<BodyBackground>
+								<Categories />
+							</BodyBackground>
+						</Layout>
+					</Route>
+					{/*Route for dashboard*/}
+					<Route exact path='/dashboard'>
+						<DashBoard />
+					</Route>
+					{/*route for specific category*/}
+					<Route exact path='/:category'>
+						<Layout>
+							<BodyBackground>
+								<ListOfPosts />
+							</BodyBackground>
+						</Layout>
+					</Route>
+					{/*route for specific post*/}
+					<Route exact path='/:category/:post'>
+						<Layout>
+							<BodyBackground>
+								<Post />
+							</BodyBackground>
+						</Layout>
+					</Route>
+				</Suspense>
+			</Switch>
+		</>
 	);
 };
