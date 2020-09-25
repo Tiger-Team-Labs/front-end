@@ -32,6 +32,8 @@ import { CreateCategory } from '../../components/CreateCategory';
 import { Paper } from '@material-ui/core';
 //import the context
 import { Context } from '../../utils/Context';
+//import response alert
+import { ResponseAlert } from '../../components/ResponseAlert';
 
 export const Dashboard = memo(() => {
 	//use styles
@@ -106,6 +108,7 @@ export const Dashboard = memo(() => {
 					aria-label='Container'
 					maxWidth='lg'
 					className={classes.container}>
+					<ResponseAlert />
 					<Paper className={classes.paper}></Paper>
 					<Paper className={classes.paper}>
 						<CreateCategory />
