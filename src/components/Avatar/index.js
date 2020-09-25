@@ -23,7 +23,7 @@ export const Avatar = () => {
 		<AvatarImage
 			aria-label='avatar'
 			style={{ background: color }}
-			alt={user.email}
+			alt={user?.userName}
 			src='/static/images/avatar/1.jpg'
 		/>
 	);

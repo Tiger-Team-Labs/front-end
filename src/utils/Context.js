@@ -52,7 +52,7 @@ export const ContextProvider = ({ children }) => {
 			})
 			.then((response) => {
 				setUser({
-					email: email,
+					userName: response.data.username,
 					token: response.data.token,
 				});
 
@@ -72,7 +72,7 @@ export const ContextProvider = ({ children }) => {
 			})
 			.then((response) => {
 				setUser({
-					email: email,
+					userName: response.data.username,
 					token: response.data.token,
 				});
 
@@ -107,8 +107,8 @@ export const ContextProvider = ({ children }) => {
 					},
 				},
 			)
-			.then((response) => setResponse(response.status))
-			.catch((err) => setResponse(err.response.status));
+			.then((response) => setResponse(response?.status))
+			.catch((err) => setResponse(err.response?.status));
 	};
 
 	/**
@@ -122,8 +122,8 @@ export const ContextProvider = ({ children }) => {
 					'x-access-token': `${token}`,
 				},
 			})
-			.then((response) => setResponse(response.status))
-			.catch((err) => setResponse(err.response.status));
+			.then((response) => setResponse(response?.status))
+			.catch((err) => setResponse(err.response?.status));
 	});
 
 	/**
@@ -144,8 +144,8 @@ export const ContextProvider = ({ children }) => {
 					},
 				},
 			)
-			.then((response) => setResponse(response.status))
-			.catch((err) => setResponse(err.response.status));
+			.then((response) => setResponse(response?.status))
+			.catch((err) => setResponse(err.response?.status));
 	};
 
 	//use effect for bring the posts

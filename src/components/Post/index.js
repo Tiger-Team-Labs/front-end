@@ -22,7 +22,7 @@ const Post = () => {
 	//use context
 	const { posts } = useContext(Context);
 	//use stat to save the post
-	const [post, setPost] = useState({});
+	const [post, setPost] = useState(undefined);
 	//use state to save the title specific post
 	const [title, setTitle] = useState('');
 	//use state to save the content of specific post
