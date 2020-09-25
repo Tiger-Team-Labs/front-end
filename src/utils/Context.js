@@ -41,6 +41,8 @@ export const ContextProvider = memo(({ children }) => {
 	const [content, setContent] = useState('');
 	//category
 	const [categoryName, setCategoryName] = useState(undefined);
+	//category
+	const [dashboardOption, setDashboardOption] = useState(1);
 
 	/**
 	 * @description: allow us to create a user and make the post to the db
@@ -61,21 +63,31 @@ export const ContextProvider = memo(({ children }) => {
 					roles: response.data?.roles,
 				});
 
+				setToken(response.data?.token);
+
 				setResponse(response?.status);
 			})
 			.catch((err) => setResponse(err.response?.status));
 	};
 
 	/**
-	 * @description: allow us to create a user and check if exist in the db
+	 * @description: allow us to check if exist in the db
 	 */
 	const createUserForSignIn = async () => {
 		await instance
-			.post(createCategory, {
-				name: categoryName,
+			.post(checkUserInDb, {
+				email: email,
+				password: password,
 			})
 			.then((response) => {
+				setUser({
+					userName: response.data?.username,
+					token: response.data?.token,
+					id: response.data?._id,
+					roles: response.data?.roles,
+				});
 				setResponse(response?.status);
+				setToken(response.data?.token);
 			})
 			.catch((err) => setResponse(err.response?.status));
 	};
@@ -147,15 +159,14 @@ export const ContextProvider = memo(({ children }) => {
 
 	//create a new category
 	/**
-	 * @description: allow us to create a user and check if exist in the db
+	 * @description: allow us to create a new category
 	 */
 	const createNewCategory = () => {
 		instance
 			.post(
-				postNewPost,
+				createCategory,
 				{
-					title: title,
-					content: content,
+					name: categoryName,
 				},
 				{
 					headers: {
@@ -208,6 +219,11 @@ export const ContextProvider = memo(({ children }) => {
 				setResponse,
 				deletePost,
 				updatePost,
+				categoryName,
+				setCategoryName,
+				createNewCategory,
+				dashboardOption,
+				setDashboardOption,
 			}}>
 			{children}
 		</Context.Provider>

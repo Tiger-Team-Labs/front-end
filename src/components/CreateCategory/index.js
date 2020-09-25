@@ -16,14 +16,28 @@ export const CreateCategory = () => {
 
 	//use context hooks
 	const {
-		email,
-		setEmail,
-		password,
-		setPassword,
-		createUserForSignIn,
+		categoryName,
+		setCategoryName,
+		createNewCategory,
 		setShowError,
 		setError,
 	} = useContext(Context);
+
+	//handle the click event
+	const handleOnClick = () => {
+		//set the login
+		setCategoryName(categoryName);
+		//check if the input is empty
+		if (categoryName === '') {
+			setError((error) => (error = 'please check the inputs'));
+			setShowError(true);
+		} else {
+			setShowError(false);
+			createNewCategory();
+		}
+		//reset local state
+		setCategoryName('');
+	};
 
 	return (
 		<>
@@ -35,16 +49,8 @@ export const CreateCategory = () => {
 					autoFocus={true}
 					placeholder='Email'
 					className={classes.input}
-					value={email}
-					onChange={(e) => setEmail(e.target.value)}
-				/>
-				<Input
-					aria-label='input for the password'
-					placeholder='Password'
-					className={classes.input}
-					type='password'
-					value={password}
-					onChange={(e) => setPassword(e.target.value)}
+					value={categoryName}
+					onChange={(e) => setCategoryName(e.target.value)}
 				/>
 				<Alert />
 				<Button
@@ -53,7 +59,7 @@ export const CreateCategory = () => {
 					variant='outlined'
 					color='primary'
 					onClick={handleOnClick}>
-					Sign in
+					Create!
 				</Button>
 			</FormGroup>
 		</>

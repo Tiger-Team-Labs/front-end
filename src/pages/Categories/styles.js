@@ -2,7 +2,7 @@
 import styled from 'styled-components';
 
 //create fixed button component and export it
-export const FixedButton = styled.a`
+export const FixedButton = styled.div`
 	position: fixed;
 	bottom: 1%;
 	right: 1%;

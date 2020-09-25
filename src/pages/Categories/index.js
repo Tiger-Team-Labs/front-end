@@ -36,13 +36,13 @@ const Categories = memo(() => {
 			))}
 			{/*Display the button for the dash board*/}
 			{user?.roles.length === 2 && (
-				<FixedButton>
-					<Link aria-label='link' to='/dashboard'>
+				<Link aria-label='link' to='/dashboard'>
+					<FixedButton>
 						<IconButton aria-label='dashboard logo' color='inherit'>
 							<DashboardIcon aria-label='dashboard logo' />
 						</IconButton>
-					</Link>
-				</FixedButton>
+					</FixedButton>
+				</Link>
 			)}
 		</>
 	);
