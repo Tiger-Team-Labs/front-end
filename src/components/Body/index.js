@@ -23,40 +23,40 @@ export const Body = () => {
 	const { user } = useContext(Context);
 
 	return (
-		<Layout>
+		<>
 			{/*switch the components in other words decide which component will render*/}
 			<Switch>
+				{/*Route for dashboard*/}
 				<Suspense fallback={<div>Loading...</div>}>
 					{/*route for categories*/}
 					<Route exact path='/'>
-						<BodyBackground>
-							<Categories />
-						</BodyBackground>
-					</Route>
-					{/*Route for dashboard*/}
-					<Route exact path='/dashboard'>
-						{user?.roles.length === 2 ? (
-							<DashBoard />
-						) : (
+						<Layout>
 							<BodyBackground>
 								<Categories />
 							</BodyBackground>
-						)}
+						</Layout>
+					</Route>
+					<Route exact path='/dashboard'>
+						{user?.roles.length === 2 ? <DashBoard /> : <></>}
 					</Route>
 					{/*route for specific category*/}
-					<Route exact path='/:category'>
-						<BodyBackground>
-							<ListOfPosts />
-						</BodyBackground>
+					<Route exact path='/category/:category'>
+						<Layout>
+							<BodyBackground>
+								<ListOfPosts />
+							</BodyBackground>
+						</Layout>
 					</Route>
 					{/*route for specific post*/}
-					<Route exact path='/:category/:post'>
-						<BodyBackground>
-							<Post />
-						</BodyBackground>
+					<Route exact path='/category/:category/:post'>
+						<Layout>
+							<BodyBackground>
+								<Post />
+							</BodyBackground>
+						</Layout>
 					</Route>
 				</Suspense>
 			</Switch>
-		</Layout>
+		</>
 	);
 };

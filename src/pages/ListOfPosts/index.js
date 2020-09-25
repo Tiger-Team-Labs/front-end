@@ -50,7 +50,7 @@ const ListOfPosts = memo(() => {
 							<div key={post._id}>
 								<Link
 									style={{ textDecoration: 'none' }}
-									to={`/${category}/${post._id}`}>
+									to={`/category/${category}/${post._id}`}>
 									{/*add the link ability to change into different pages*/}
 									{/*add the animation ability*/}
 									<animated.div

@@ -32,7 +32,7 @@ export const Category = ({ title }) => {
 		<Link
 			aria-label='link to category'
 			style={{ textDecoration: 'none' }}
-			to={title}>
+			to={`/category/${title}`}>
 			<animated.div
 				onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
 				onMouseLeave={() => set({ xys: [0, 0, 1] })}
