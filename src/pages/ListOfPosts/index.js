@@ -74,8 +74,11 @@ const ListOfPosts = memo(() => {
 										/>
 									</animated.div>
 								</Link>
-								{/*Delete a post functionality and update functionality*/}
-								{user !== undefined && post?.author === user.id && (
+								{/*Delete a post functionality and update functionality
+								with the logic to check if the user that write the post is the same,
+								also than the user are not an admin
+								*/}
+								{user !== undefined && post?.author === user?.id && (
 									<Color>
 										<UpdatePost aria-label='button' post={post} />
 										<IconButton
@@ -96,7 +99,7 @@ const ListOfPosts = memo(() => {
 				</Grid>
 			</Grid>
 			{/*check if the user exist*/}
-			{user !== undefined && (
+			{user !== undefined && user?.roles.length === 1 && (
 				<FixedButton aria-label='fixed button'>
 					<CreatePost aria-label='Create post modal' category={category} />
 				</FixedButton>
