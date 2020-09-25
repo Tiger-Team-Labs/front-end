@@ -23,17 +23,15 @@ export const Body = () => {
 	const { user } = useContext(Context);
 
 	return (
-		<>
+		<Layout>
 			{/*switch the components in other words decide which component will render*/}
 			<Switch>
 				<Suspense fallback={<div>Loading...</div>}>
 					{/*route for categories*/}
 					<Route exact path='/'>
-						<Layout>
-							<BodyBackground>
-								<Categories />
-							</BodyBackground>
-						</Layout>
+						<BodyBackground>
+							<Categories />
+						</BodyBackground>
 					</Route>
 					{/*Route for dashboard*/}
 					<Route exact path='/dashboard'>
@@ -47,22 +45,18 @@ export const Body = () => {
 					</Route>
 					{/*route for specific category*/}
 					<Route exact path='/:category'>
-						<Layout>
-							<BodyBackground>
-								<ListOfPosts />
-							</BodyBackground>
-						</Layout>
+						<BodyBackground>
+							<ListOfPosts />
+						</BodyBackground>
 					</Route>
 					{/*route for specific post*/}
 					<Route exact path='/:category/:post'>
-						<Layout>
-							<BodyBackground>
-								<Post />
-							</BodyBackground>
-						</Layout>
+						<BodyBackground>
+							<Post />
+						</BodyBackground>
 					</Route>
 				</Suspense>
 			</Switch>
-		</>
+		</Layout>
 	);
 };
