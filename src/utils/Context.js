@@ -12,6 +12,7 @@ import {
 	createCategory,
 	updateCategoryWithId,
 	deleteCategoryWithId,
+	readCategories,
 } from './requests';
 
 //create context and export it
@@ -47,6 +48,8 @@ export const ContextProvider = memo(({ children }) => {
 	const [dashboardOption, setDashboardOption] = useState(1);
 	//category
 	const [categoryId, setCategoryId] = useState('');
+	//category
+	const [categories, setCategories] = useState([]);
 
 	/**
 	 * @description: allow us to create a user and make the post to the db
@@ -221,14 +224,20 @@ export const ContextProvider = memo(({ children }) => {
 			.catch((err) => setResponse(err.response?.status));
 	};
 
-	//use effect for bring the posts
+	//use effect for bring the posts and categories
 	/**
 	 * bring the data from de data base
 	 */
 	useEffect(() => {
-		const bringData = async () =>
-			await instance.get(getPosts).then((response) => setPosts(response.data));
+		const bringCategories = async () =>
+			await instance
+				.get(readCategories)
+				.then((response) => setCategories(response?.data));
 
+		const bringData = async () =>
+			await instance.get(getPosts).then((response) => setPosts(response?.data));
+
+		bringCategories();
 		bringData();
 	}, [response]);
 
@@ -271,6 +280,7 @@ export const ContextProvider = memo(({ children }) => {
 				setCategoryId,
 				updateCategory,
 				deleteCategory,
+				categories,
 			}}>
 			{children}
 		</Context.Provider>

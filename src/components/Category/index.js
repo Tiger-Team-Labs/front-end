@@ -19,7 +19,7 @@ const trans = (x, y, s) =>
 	`perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
 //create list of post component and export it
-export const Category = ({ title }) => {
+export const Category = ({ name, categoryId }) => {
 	//custom hook from material ui
 	const classes = useStyles();
 	//custom hooks from use spring
@@ -32,7 +32,7 @@ export const Category = ({ title }) => {
 		<Link
 			aria-label='link to category'
 			style={{ textDecoration: 'none' }}
-			to={`/category/${title}`}>
+			to={`/category/${categoryId}`}>
 			<animated.div
 				onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
 				onMouseLeave={() => set({ xys: [0, 0, 1] })}
@@ -45,7 +45,7 @@ export const Category = ({ title }) => {
 								className={classes.typo}
 								component='h2'
 								variant='h3'>
-								{title}
+								{name}
 							</Typography>
 						</CardContent>
 					</div>

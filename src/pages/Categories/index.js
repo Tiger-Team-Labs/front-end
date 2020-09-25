@@ -1,5 +1,5 @@
 //import react
-import React, { useState, memo, useContext } from 'react';
+import React, { memo, useContext } from 'react';
 //import category component
 import { Category } from '../../components/Category';
 //import fixed component
@@ -15,24 +15,20 @@ import { Link } from 'react-router-dom';
 
 //create list of post component and export it
 const Categories = memo(() => {
-	//use state
-	const [categories] = useState([
-		{ title: 'action games' },
-		{ title: 'adventure games' },
-		{ title: 'strategy games' },
-		{ title: 'horror games' },
-		{ title: 'pay to win games' },
-	]);
-
 	//use context
-	const { user } = useContext(Context);
+	const { user, categories } = useContext(Context);
 
 	return (
 		<>
 			{/**show the list of categories*/}
 			{/**add the flip move effect*/}
 			{categories.map((category, i) => (
-				<Category aria-label='category card' key={i} title={category.title} />
+				<Category
+					aria-label='category card'
+					key={i}
+					name={category?.name}
+					categoryId={category?._id}
+				/>
 			))}
 			{/*Display the button for the dash board*/}
 			{user?.roles.length === 2 && (
