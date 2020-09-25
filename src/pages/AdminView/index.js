@@ -1,3 +1,4 @@
+//import react
 import React from 'react';
 import clsx from 'clsx';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -15,10 +16,15 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { mainListItems } from '../../components/ListItems';
 //import styles
 import { useStyles } from './styles';
+//import react router
 
 function Copyright() {
 	return (
-		<Typography variant='body2' color='textSecondary' align='center'>
+		<Typography
+			aria-label='copyright'
+			variant='body2'
+			color='textSecondary'
+			align='center'>
 			{'Copyright © '}
 			<Link
 				color='inherit'
@@ -60,6 +66,7 @@ export default function Dashboard() {
 						<MenuIcon />
 					</IconButton>
 					<Typography
+						aria-label='text of nav bar'
 						component='h1'
 						variant='h6'
 						color='inherit'
@@ -86,7 +93,10 @@ export default function Dashboard() {
 			</Drawer>
 			<main className={classes.content}>
 				<div className={classes.appBarSpacer} />
-				<Container maxWidth='lg' className={classes.container}>
+				<Container
+					aria-label='Container'
+					maxWidth='lg'
+					className={classes.container}>
 					{Copyright()}
 				</Container>
 			</main>

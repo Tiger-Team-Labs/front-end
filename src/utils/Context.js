@@ -9,6 +9,7 @@ import {
 	getPosts,
 	deleteWithId,
 	updateWithId,
+	createCategory,
 } from './requests';
 
 //create context and export it
@@ -38,6 +39,8 @@ export const ContextProvider = memo(({ children }) => {
 	const [title, setTitle] = useState('');
 	//content
 	const [content, setContent] = useState('');
+	//category
+	const [categoryName, setCategoryName] = useState(undefined);
 
 	/**
 	 * @description: allow us to create a user and make the post to the db
@@ -68,20 +71,10 @@ export const ContextProvider = memo(({ children }) => {
 	 */
 	const createUserForSignIn = async () => {
 		await instance
-			.post(checkUserInDb, {
-				email: email,
-				password: password,
+			.post(createCategory, {
+				name: categoryName,
 			})
 			.then((response) => {
-				setUser({
-					userName: response.data?.username,
-					token: response.data?.token,
-					id: response.data?._id,
-					roles: response.data?.roles,
-				});
-
-				setToken(response.data?.token);
-
 				setResponse(response?.status);
 			})
 			.catch((err) => setResponse(err.response?.status));
@@ -138,6 +131,28 @@ export const ContextProvider = memo(({ children }) => {
 		instance
 			.put(
 				updateWithId(id),
+				{
+					title: title,
+					content: content,
+				},
+				{
+					headers: {
+						'x-access-token': `${token}`,
+					},
+				},
+			)
+			.then((response) => setResponse(response?.status))
+			.catch((err) => setResponse(err.response?.status));
+	};
+
+	//create a new category
+	/**
+	 * @description: allow us to create a user and check if exist in the db
+	 */
+	const createNewCategory = () => {
+		instance
+			.post(
+				postNewPost,
 				{
 					title: title,
 					content: content,
