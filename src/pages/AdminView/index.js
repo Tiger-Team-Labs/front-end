@@ -36,6 +36,8 @@ import { Context } from '../../utils/Context';
 import { ResponseAlert } from '../../components/ResponseAlert';
 //import update category component
 import { UpdateCategory } from '../../components/UpdateCategory';
+//import delete category
+import { DeleteCategory } from '../../components/DeleteCategory';
 
 export const Dashboard = memo(() => {
 	//use styles
@@ -63,6 +65,8 @@ export const Dashboard = memo(() => {
 		switch (option) {
 			case 1:
 				return <CreateCategory />;
+			case 2:
+				return <DeleteCategory />;
 			case 3:
 				return <UpdateCategory />;
 			default:

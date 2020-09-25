@@ -11,6 +11,7 @@ import {
 	updateWithId,
 	createCategory,
 	updateCategoryWithId,
+	deleteCategoryWithId,
 } from './requests';
 
 //create context and export it
@@ -41,11 +42,11 @@ export const ContextProvider = memo(({ children }) => {
 	//content
 	const [content, setContent] = useState('');
 	//category
-	const [categoryName, setCategoryName] = useState(undefined);
+	const [categoryName, setCategoryName] = useState('');
 	//category
-	const [dashboardOption, setDashboardOption] = useState(0);
+	const [dashboardOption, setDashboardOption] = useState(1);
 	//category
-	const [categoryId, setCategoryId] = useState(undefined);
+	const [categoryId, setCategoryId] = useState('');
 
 	/**
 	 * @description: allow us to create a user and make the post to the db
@@ -205,6 +206,21 @@ export const ContextProvider = memo(({ children }) => {
 			.catch((err) => setResponse(err.response?.status));
 	};
 
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	/**
+	 * @description delete a category with the id
+	 */
+	const deleteCategory = () => {
+		instance
+			.delete(deleteCategoryWithId(categoryId), {
+				headers: {
+					'x-access-token': `${token}`,
+				},
+			})
+			.then((response) => setResponse(response?.status))
+			.catch((err) => setResponse(err.response?.status));
+	};
+
 	//use effect for bring the posts
 	/**
 	 * bring the data from de data base
@@ -254,6 +270,7 @@ export const ContextProvider = memo(({ children }) => {
 				categoryId,
 				setCategoryId,
 				updateCategory,
+				deleteCategory,
 			}}>
 			{children}
 		</Context.Provider>
