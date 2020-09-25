@@ -1,5 +1,5 @@
 //import react and its hooks
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, memo } from 'react';
 import clsx from 'clsx';
 import CssBaseline from '@material-ui/core/CssBaseline';
 //import drawer
@@ -23,7 +23,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 //import chevron left icon
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 //import list of items
-import { mainListItems } from '../../components/ListItems';
+import { MainListItems } from '../../components/ListItems';
 //import styles
 import { useStyles } from './styles';
 //import create category component
@@ -33,7 +33,7 @@ import { Paper } from '@material-ui/core';
 //import the context
 import { Context } from '../../utils/Context';
 
-export default function Dashboard() {
+export const Dashboard = memo(() => {
 	//use styles
 	const classes = useStyles();
 	//use local style
@@ -93,7 +93,9 @@ export default function Dashboard() {
 					</IconButton>
 				</div>
 				<Divider />
-				<List>{mainListItems}</List>
+				<List>
+					<MainListItems />
+				</List>
 				<Divider />
 			</Drawer>
 			{/**main content*/}
@@ -111,4 +113,6 @@ export default function Dashboard() {
 			</main>
 		</div>
 	);
-}
+});
+
+export default Dashboard;

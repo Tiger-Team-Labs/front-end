@@ -42,7 +42,9 @@ export const ContextProvider = memo(({ children }) => {
 	//category
 	const [categoryName, setCategoryName] = useState(undefined);
 	//category
-	const [dashboardOption, setDashboardOption] = useState(1);
+	const [dashboardOption, setDashboardOption] = useState(0);
+
+	console.log(dashboardOption);
 
 	/**
 	 * @description: allow us to create a user and make the post to the db
