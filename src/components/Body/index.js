@@ -3,7 +3,7 @@ import React, { Suspense, lazy, useContext } from 'react';
 //import body background
 import { BodyBackground } from './styles';
 //import router elements
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 //import layout
 import { Layout } from '../../layout';
 //import context
@@ -37,7 +37,7 @@ export const Body = () => {
 						</Layout>
 					</Route>
 					<Route exact path='/dashboard'>
-						{user?.roles.length === 2 ? <DashBoard /> : <></>}
+						{user?.roles.length === 2 ? <DashBoard /> : <Redirect to='/' />}
 					</Route>
 					{/*route for specific category*/}
 					<Route exact path='/category/:category'>
