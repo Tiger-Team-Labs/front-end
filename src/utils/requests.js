@@ -19,3 +19,11 @@ export const postNewPost = '/posts/';
 export const deleteWithId = (id) => `/posts/${id}`;
 //update post
 export const updateWithId = (id) => `/posts/${id}`;
+//read categories
+export const readCategories = '/categories/';
+//create category
+export const createCategory = '/categories/';
+//update category
+export const updateCategoryWithId = (id) => `/categories/${id}`;
+//delete category
+export const deleteCategoryWithId = (id) => `/categories/${id}`;

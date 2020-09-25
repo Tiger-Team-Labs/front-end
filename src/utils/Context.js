@@ -1,5 +1,5 @@
 //import react
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, memo } from 'react';
 //import axios logic
 import {
 	instance,
@@ -15,7 +15,7 @@ import {
 export const Context = React.createContext();
 
 //create functional component for context provider and export it
-export const ContextProvider = ({ children }) => {
+export const ContextProvider = memo(({ children }) => {
 	//use state
 	//use state to handle the response
 	const [response, setResponse] = useState(undefined);
@@ -39,6 +39,8 @@ export const ContextProvider = ({ children }) => {
 	//content
 	const [content, setContent] = useState('');
 
+	console.log(user);
+
 	/**
 	 * @description: allow us to create a user and make the post to the db
 	 */
@@ -52,13 +54,15 @@ export const ContextProvider = ({ children }) => {
 			})
 			.then((response) => {
 				setUser({
-					userName: response.data.username,
-					token: response.data.token,
+					userName: response.data?.username,
+					token: response.data?.token,
+					id: response.data?._id,
+					roles: response.data?.roles,
 				});
 
-				setResponse(response.status);
+				setResponse(response?.status);
 			})
-			.catch((err) => setResponse(err.response.status));
+			.catch((err) => setResponse(err.response?.status));
 	};
 
 	/**
@@ -72,15 +76,17 @@ export const ContextProvider = ({ children }) => {
 			})
 			.then((response) => {
 				setUser({
-					userName: response.data.username,
-					token: response.data.token,
+					userName: response.data?.username,
+					token: response.data?.token,
+					id: response.data?._id,
+					roles: response.data?.roles,
 				});
 
-				setToken(response.data.token);
+				setToken(response.data?.token);
 
-				setResponse(response.status);
+				setResponse(response?.status);
 			})
-			.catch((err) => setResponse(err.response.status));
+			.catch((err) => setResponse(err.response?.status));
 	};
 
 	/**
@@ -157,7 +163,7 @@ export const ContextProvider = ({ children }) => {
 			await instance.get(getPosts).then((response) => setPosts(response.data));
 
 		bringData();
-	}, [response, deletePost]);
+	}, []);
 
 	return (
 		<Context.Provider
@@ -193,4 +199,4 @@ export const ContextProvider = ({ children }) => {
 			{children}
 		</Context.Provider>
 	);
-};
+});
