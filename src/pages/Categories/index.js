@@ -10,6 +10,8 @@ import DashboardIcon from '@material-ui/icons/Dashboard';
 import { IconButton } from '@material-ui/core';
 //import context
 import { Context } from '../../utils/Context';
+//import link
+import { Link } from 'react-router-dom';
 
 //create list of post component and export it
 const Categories = memo(() => {
@@ -35,9 +37,11 @@ const Categories = memo(() => {
 			{/*Display the button for the dash board*/}
 			{user?.roles.length === 2 && (
 				<FixedButton>
-					<IconButton aria-label='dashboard logo' color='inherit'>
-						<DashboardIcon aria-label='dashboard logo' />
-					</IconButton>
+					<Link aria-label='link' to='/dashboard'>
+						<IconButton aria-label='dashboard logo' color='inherit'>
+							<DashboardIcon aria-label='dashboard logo' />
+						</IconButton>
+					</Link>
 				</FixedButton>
 			)}
 		</>
