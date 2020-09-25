@@ -106,6 +106,7 @@ export const Dashboard = memo(() => {
 					aria-label='Container'
 					maxWidth='lg'
 					className={classes.container}>
+					<Paper className={classes.paper}></Paper>
 					<Paper className={classes.paper}>
 						<CreateCategory />
 					</Paper>

@@ -15,20 +15,28 @@ export const MainListItems = () => {
 
 	return (
 		<>
-			<ListItem button>
-				<ListItemIcon
-					onClick={() => setDashboardOption((number) => (number = 1))}>
+			{/*item for create a category*/}
+			<ListItem
+				button
+				onClick={() => setDashboardOption((number) => (number = 1))}>
+				<ListItemIcon>
 					<AddIcon />
 				</ListItemIcon>
 				<ListItemText primary='Create Category' />
 			</ListItem>
-			<ListItem button>
+			{/*item for delete category*/}
+			<ListItem
+				button
+				onClick={() => setDashboardOption((number) => (number = 2))}>
 				<ListItemIcon>
 					<HighlightOffIcon />
 				</ListItemIcon>
 				<ListItemText primary='Delete Category' />
 			</ListItem>
-			<ListItem button>
+			{/*item for update category*/}
+			<ListItem
+				button
+				onClick={() => setDashboardOption((number) => (number = 3))}>
 				<ListItemIcon>
 					<UpdateIcon />
 				</ListItemIcon>

@@ -41,13 +41,13 @@ export const CreateCategory = () => {
 
 	return (
 		<>
-			<Typography>Create new post</Typography>
+			<Typography>Create new category</Typography>
 			<FormGroup aria-label='form group'>
 				{/*Inputs (control it)*/}
 				<Input
-					aria-label='input for the email'
+					aria-label='input for the name of the new category'
 					autoFocus={true}
-					placeholder='Email'
+					placeholder='category name'
 					className={classes.input}
 					value={categoryName}
 					onChange={(e) => setCategoryName(e.target.value)}
