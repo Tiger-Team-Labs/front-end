@@ -38,6 +38,8 @@ import { ResponseAlert } from '../../components/ResponseAlert';
 import { UpdateCategory } from '../../components/UpdateCategory';
 //import delete category
 import { DeleteCategory } from '../../components/DeleteCategory';
+//import link
+import { Link } from 'react-router-dom';
 
 export const Dashboard = memo(() => {
 	//use styles
@@ -103,7 +105,12 @@ export const Dashboard = memo(() => {
 						color='inherit'
 						noWrap
 						className={classes.title}>
-						Dashboard Foro App
+						<Link
+							aria-label='link to back to home'
+							style={{ textDecoration: 'none', color: 'inherit' }}
+							to='/'>
+							Dashboard Foro App
+						</Link>
 					</Typography>
 				</Toolbar>
 			</AppBar>

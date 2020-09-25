@@ -52,6 +52,15 @@ export const ResponseAlert = () => {
 						Unauthorized
 					</Alert>
 				);
+			case 503:
+				return (
+					<Alert
+						aria-label='response'
+						severity='error'
+						onClose={() => setResponse(0)}>
+						Please check the inputs
+					</Alert>
+				);
 			default:
 				return <> </>;
 		}
