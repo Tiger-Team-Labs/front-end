@@ -51,7 +51,6 @@ export default function Form() {
         <TextField
           required
           fullWidth
-          
           label="Name"
           variant="outlined"
           color="primary"
@@ -62,11 +61,11 @@ export default function Form() {
         />
         <TextField
           fullWidth
-          id="username"
           label="User Name"
           variant="outlined"
           color="primary"
           name="username"
+          autoComplete="current-username"
           value={values.username}
           onChange={handleChange}
         />
@@ -78,6 +77,7 @@ export default function Form() {
           variant="outlined"
           color="primary"
           name="email"
+          autoComplete="current-email"
           value={values.email}
           onChange={handleChange}
         />

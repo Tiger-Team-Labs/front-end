@@ -8,7 +8,7 @@ export default function Post() {
   const urlLogin = "https://testing-api-foro.herokuapp.com/api/posts"
 
   // Require post 
-  const verPost = async () => {
+  const bringPost = async () => {
     await axios.get(urlLogin)
       .then(res => {
         setPosts(res.data)
@@ -18,7 +18,7 @@ export default function Post() {
   }
 
   useEffect(() => {
-    verPost()
+    bringPost()
   }, []);
   
   if (posts.length === 0) {

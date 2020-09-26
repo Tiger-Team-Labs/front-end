@@ -99,6 +99,9 @@ export const ContextProvider = ({ children }) => {
   const handleCloseFormDialog = () => {
     setOpenFormDialog(false)
   };
+  // Home
+  const [categories, setCategories] = useState("");
+
 
   // return Value
   return (
@@ -122,7 +125,9 @@ export const ContextProvider = ({ children }) => {
       handleChangeLogin,
       handleSubmitLogin,
       user, 
-      setUser
+      setUser,
+      categories, 
+      setCategories
     }}>
       {children}
     </Context.Provider>
