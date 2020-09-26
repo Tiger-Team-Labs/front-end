@@ -1,11 +1,10 @@
 import React, { useContext, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 // import Axios
 import axios from 'axios';
 // bring Loading
 import Loading from '../components/Loading';
-// button
-import Button from '@material-ui/core/Button'
+// bring Card
+import Cards from '../components/Card'
 // import Context
 import { Context } from '../utils/Contex';
 
@@ -13,9 +12,9 @@ import { Context } from '../utils/Contex';
 
 export default function Home() {
   const {
-    user,
     categories,
-    setCategories
+    setCategories,
+    handleClickAlert
   } = useContext(Context);
 
   // Require post 
@@ -49,19 +48,9 @@ export default function Home() {
       <>
         {categories.map((categorie, _id) => {
           return (
-            <div key={categorie._id}>
-              <h2>{categorie.name}</h2>
-            </div>
+            <Cards key={categorie._id} data={categorie}/>
           )
         })}
-        {/* is Login or Register? */}
-        {user !== undefined
-          ? <Link to={"/posts"} >
-            <Button variant="contained" color="default">
-              Go to Post
-            </Button>
-            </Link>
-          : null}
       </>
     )
   }

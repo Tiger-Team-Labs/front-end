@@ -35,24 +35,23 @@ export const ContextProvider = ({ children }) => {
   const createUserWhitFromLogin = async () => {
     await axios.post(urlLogin, valuesLogin)
       .then(res => {
-        setUser({
-          token: res.data.token,
-				});
-        console.log(res.data.status)
+        setUser(res.data);
+        console.log(user)
+        handleClickAlert();
+        setValuesLogin({
+          email: "",
+          password: "",
+        })
       })
       .catch(err => { console.log(`Algo paso, aquí te lo muestro: ${err}`) })
   }
 
   const handleSubmitLogin = (event) => {
     event.preventDefault();
-    handleClickAlert();
     setOpenFormDialog(false)
     console.log('Ahí van los datos del Login');
     createUserWhitFromLogin()
-    setValuesLogin({
-      email: "",
-      password: "",
-    })
+    
   }
 
   // Form Register
@@ -83,11 +82,9 @@ export const ContextProvider = ({ children }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    handleClickAlert();
     console.log(`'Ahí van los datos del formulario: ${values.name}'`);
     createUserWhitFormSignUP();
     setOpenFormDialog(false);
-
   }
   // FormDialog
   const [openFormDialog, setOpenFormDialog] = React.useState(false);
