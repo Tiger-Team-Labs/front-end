@@ -59,8 +59,7 @@ export const ContextProvider = ({ children }) => {
     name: "",
     username: "",
     email: "",
-    password: "",
-    token:"",
+    password: ""
   });
   const handleChange = (event) => {
     setValues({ ...values, [event.target.name]: event.target.value })
@@ -74,7 +73,13 @@ export const ContextProvider = ({ children }) => {
     await axios.post(urlSignUp, values)
       .then(res => {
         setUser(res.data);
-        console.log(res)
+        console.log(res);
+        setValues({
+          name: "",
+          username: "",
+          email: "",
+          password: ""
+        })
       })
       
       .catch(err => { console.log(`Algo paso, aquí te lo muestro: ${err}`) })
