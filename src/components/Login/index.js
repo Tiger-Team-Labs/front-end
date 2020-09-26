@@ -19,12 +19,12 @@ import MailIcon from '@material-ui/icons/Mail';
 const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
-      margin: theme.spacing(1),
+      marginTop: theme.spacing(1),
     },
   },
   rootp: {
     '& > *': {
-      margin: theme.spacing(1),
+      marginTop: theme.spacing(1),
     },
   },
 }));

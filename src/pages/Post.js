@@ -2,6 +2,7 @@ import React, { useEffect,useState } from 'react'
 // import Axios
 import axios from 'axios';
 import Loading from '../components/Loading';
+import CardPost from '../components/CardPost';
 
 export default function Post() {
   const [posts, setPosts] = useState("");
@@ -27,17 +28,13 @@ export default function Post() {
     );
   } else {
     return (
-      <div>
+      <>
       {posts.map((post, _id) => {
         return(
-          <div key={post._id}>
-            <h2>{post.title}</h2>
-            <p>{post.content} </p>
-            <small>{post.createdAt} </small>
-          </div>
+          <CardPost key={post._id} data={post}/>
         )
       })}
-    </div>
+    </>
     )
   }
 }

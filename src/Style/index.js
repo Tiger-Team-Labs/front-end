@@ -16,6 +16,12 @@ export const useStyles = makeStyles((theme) => ({
   card: {
     minWidth: 270,
     margin: theme.spacing(1),
+  },
+  cardPost: {
+    margin:theme.spacing(2),
+  },
+  headingCardPost: {
+    fontSize: theme.typography.pxToRem(16),
+    fontWeight: theme.typography.fontWeightRegular,
   }
-  
 }));
