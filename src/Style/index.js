@@ -10,7 +10,8 @@ export const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   link: {
-    color: 'white',
+    color: "white" ,
+    textDecoration: "none",
   },
   card: {
     minWidth: 270,

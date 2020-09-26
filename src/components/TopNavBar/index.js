@@ -38,13 +38,17 @@ export default function TopNavBar() {
           {user !== undefined 
             ? <>
                 <AccountCircleIcon /> Hola {user.username}
-                <Button color="inherit" onClick={()=>setUser(undefined)}>
-                  Log-uot 
-                </Button>
+                <Link to={"/"} className={classes.link}>
+                  <Button color="inherit" onClick={()=>setUser(undefined)}>
+                    Log-uot 
+                  </Button>
+                </Link>
               </>
-            : <Button color="inherit" onClick={handleClickOpenFormDialog}>
-            Login
-          </Button>
+            : 
+                <Button color="inherit" onClick={handleClickOpenFormDialog}>
+                  Login
+                </Button>
+              
           }
           
         </Toolbar>
