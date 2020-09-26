@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CustomizedSnackbars() {
+export default function WarningAlarm() {
   const classes = useStyles();
   const { openAlert, handleCloseAlert,
   } = useContext(Context);
@@ -29,8 +29,8 @@ export default function CustomizedSnackbars() {
   return (
     <div className={classes.root}>
       <Snackbar open={openAlert} autoHideDuration={3000} onClose={handleCloseAlert}>
-        <Alert onClose={handleCloseAlert} severity="success">
-          The form is send!
+        <Alert onClose={handleCloseAlert} severity="warning">
+          Ops! Sorry 😅, something happened, please try again!
         </Alert>
       </Snackbar>
     </div>
