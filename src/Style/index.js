@@ -13,6 +13,10 @@ export const useStyles = makeStyles((theme) => ({
     color: "white" ,
     textDecoration: "none",
   },
+  cardPostButton: {
+    color: "black" ,
+    textDecoration: "none",
+  },
   card: {
     minWidth: 270,
     margin: theme.spacing(1),
