@@ -14,6 +14,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   card: {
     minWidth: 270,
+    margin: theme.spacing(1),
   }
   
 }));
