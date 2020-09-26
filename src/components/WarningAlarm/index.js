@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function WarningAlarm() {
   const classes = useStyles();
-  const { openAlert, handleCloseAlert,
+  const { handleCloseAlert,openAlertWarning
   } = useContext(Context);
 
 
@@ -28,9 +28,9 @@ export default function WarningAlarm() {
 
   return (
     <div className={classes.root}>
-      <Snackbar open={openAlert} autoHideDuration={3000} onClose={handleCloseAlert}>
+      <Snackbar open={openAlertWarning} autoHideDuration={3000} onClose={handleCloseAlert}>
         <Alert onClose={handleCloseAlert} severity="warning">
-          Ops! Sorry 😅, something happened, please try again!
+          Ops! Sorry, something happened, please try again!
         </Alert>
       </Snackbar>
     </div>

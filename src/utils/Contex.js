@@ -11,14 +11,13 @@ export const ContextProvider = ({ children }) => {
   const [openAlert, setOpenAlert] = useState(false);
   const [openAlertWarning, setOpenAlertWarning] = useState(false);
   const handleClickAlert = () => { setOpenAlert(true); };
-  const handleClickAlertWarning = () => setOpenAlertWarning(!openAlertWarning)
   const handleCloseAlert = (event, reason) => {
     if (reason === 'clickaway') {
       setOpenFormDialog(false)
       return;
     }
-
     setOpenAlert(false);
+    setOpenAlertWarning(false);
   };
   // Login Values
   const [valuesLogin, setValuesLogin] = useState({
@@ -47,7 +46,7 @@ export const ContextProvider = ({ children }) => {
       })
       .catch(err => { 
         console.log(`Algo paso, aquí te lo muestro: ${err}`);
-        handleClickAlertWarning()
+        setOpenAlertWarning(true)
       })
   }
 
@@ -89,7 +88,7 @@ export const ContextProvider = ({ children }) => {
       
       .catch(err => { 
         console.log(`Algo paso, aquí te lo muestro: ${err}`);
-        handleClickAlertWarning();
+        setOpenAlertWarning(true)
       })
   }
 
