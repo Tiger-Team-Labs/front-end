@@ -9,7 +9,9 @@ export const ContextProvider = ({ children }) => {
   // Alert
   const [open, setOpen] = useState(false)
   const [openAlert, setOpenAlert] = useState(false);
+  const [openAlertWarning, setOpenAlertWarning] = useState(false);
   const handleClickAlert = () => { setOpenAlert(true); };
+  const handleClickAlertWarning = () => setOpenAlertWarning(!openAlertWarning)
   const handleCloseAlert = (event, reason) => {
     if (reason === 'clickaway') {
       setOpenFormDialog(false)
@@ -43,7 +45,10 @@ export const ContextProvider = ({ children }) => {
           password: "",
         })
       })
-      .catch(err => { console.log(`Algo paso, aquí te lo muestro: ${err}`) })
+      .catch(err => { 
+        console.log(`Algo paso, aquí te lo muestro: ${err}`);
+        handleClickAlertWarning()
+      })
   }
 
   const handleSubmitLogin = (event) => {
@@ -82,7 +87,10 @@ export const ContextProvider = ({ children }) => {
         })
       })
       
-      .catch(err => { console.log(`Algo paso, aquí te lo muestro: ${err}`) })
+      .catch(err => { 
+        console.log(`Algo paso, aquí te lo muestro: ${err}`);
+        handleClickAlertWarning();
+      })
   }
 
   const handleSubmit = (event) => {
@@ -112,6 +120,8 @@ export const ContextProvider = ({ children }) => {
       setOpen,
       openAlert,
       setOpenAlert,
+      openAlertWarning, 
+      setOpenAlertWarning,
       handleCloseAlert,
       handleClickAlert,
       values,

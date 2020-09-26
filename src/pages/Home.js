@@ -14,7 +14,6 @@ export default function Home() {
   const {
     categories,
     setCategories,
-    handleClickAlert
   } = useContext(Context);
 
   // Require post 
