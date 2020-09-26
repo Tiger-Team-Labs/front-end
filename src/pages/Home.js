@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 // bring Loading
 import Loading from '../components/Loading';
-// styles
-import { useStyles } from '../Style'
 // button
 import Button from '@material-ui/core/Button'
 // import Context
@@ -14,7 +12,6 @@ import { Context } from '../utils/Contex';
 
 
 export default function Home() {
-  const classes = useStyles();
   const {
     user,
     categories,
@@ -35,7 +32,7 @@ export default function Home() {
 
   // bring data Categories
   useEffect(() => {
-    bringCategories()
+    bringCategories();
   }, []);
 
   // show loadign 
@@ -59,7 +56,7 @@ export default function Home() {
         })}
         {/* is Login or Register? */}
         {user !== undefined
-          ? <Link to={"/posts"}>
+          ? <Link to={"/posts"} >
             <Button variant="contained" color="default">
               Go to Post
             </Button>
