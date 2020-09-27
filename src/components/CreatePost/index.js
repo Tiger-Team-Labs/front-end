@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -6,21 +6,47 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { useStyles } from '../../Style/'
+// import Context
+import { Context } from '../../utils/Contex';
+// import Axios
+import axios from 'axios';
 
 
 export default function CreatePost() {
+  const {
+    
+    user,
+    
+  } = useContext(Context);
+
   const classes = useStyles();
-  const [createPost, setCreatePost] = useState({
+  const [valuesCreatePost, setValuesCreatePost] = useState({
     title:"",
     content:""
   })
+  const urlNewPost = 'https://testing-api-foro.herokuapp.com/api/posts'
+  const createNewPost = async () => {
+    
+    await axios.post(urlNewPost,valuesCreatePost,
+      {
+        headers: {
+          'x-access-token' : `${user?.token}`}
+      },
+      )
+      .then(res => console.log(res))
+      .catch (error => {
+      console.error(`Algo pasó en createNewPost: ${error}`)
+    })
+  }
+
   const handleChangeCreatePost = (event) => {
-    setCreatePost({ ...createPost, [event.target.name]: event.target.value })
-    console.log(createPost);
+    setValuesCreatePost({ ...valuesCreatePost, [event.target.name]: event.target.value })
   }
   const handleSubmitCreatePost = (event) => {
     event.preventDefault();
-    console.log(`Ahí van los datos Para crear el Post: ${createPost.title}`);    
+    console.log(`Ahí van los datos Para crear el Post datos: ${valuesCreatePost.title}`);
+    console.log(`Si vienen los datos del token: ${user?.token} or ${user}`);
+    createNewPost();    
   }
   
   // Open or Close Dialog Form
@@ -46,7 +72,10 @@ export default function CreatePost() {
           <DialogContentText>
             Create your new Post
           </DialogContentText>
-          <form className={classes.root}>
+          <form 
+            className={classes.root}
+            onSubmit={handleSubmitCreatePost}
+          >
             <TextField
               autoFocus
               required
@@ -55,7 +84,7 @@ export default function CreatePost() {
               label="Title Post"
               name="title"
               variant="outlined"
-              value={createPost.title}
+              value={valuesCreatePost.title}
               onChange={handleChangeCreatePost}
             />
             <TextField
@@ -65,7 +94,7 @@ export default function CreatePost() {
               name="content"
               label="Content Post"
               variant="outlined"
-              value={createPost.content}
+              value={valuesCreatePost.content}
               onChange={handleChangeCreatePost}
               fullWidth
             />

@@ -48,6 +48,7 @@ export default function Login() {
         onSubmit={handleSubmitLogin}
       >
         <TextField
+          autoFocus
           required
           fullWidth
           label="Email"

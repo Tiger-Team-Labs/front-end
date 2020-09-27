@@ -23,7 +23,7 @@ export const ContextProvider = ({ children }) => {
   const [valuesLogin, setValuesLogin] = useState({
     email: "",
     password: "",
-    token: ""
+    
   })
   const handleChangeLogin = (event) => {
     setValuesLogin({ ...valuesLogin, [event.target.name]: event.target.value })
@@ -37,7 +37,7 @@ export const ContextProvider = ({ children }) => {
     await axios.post(urlLogin, valuesLogin)
       .then(res => {
         setUser(res.data);
-        console.log(user)
+        console.log(res)
         handleClickAlert();
         setValuesLogin({
           email: "",
