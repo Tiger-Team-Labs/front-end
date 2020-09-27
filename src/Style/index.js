@@ -27,5 +27,10 @@ export const useStyles = makeStyles((theme) => ({
   headingCardPost: {
     fontSize: theme.typography.pxToRem(16),
     fontWeight: theme.typography.fontWeightRegular,
-  }
+  },
+  createPost: {
+    '& > *': {
+      marginTop: theme.spacing(1),
+    },
+  },
 }));

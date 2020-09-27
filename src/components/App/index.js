@@ -7,6 +7,7 @@ import Home from '../../pages/Home'
 import Post from '../../pages/Post';
 // import Post
 import PostDetails from '../../pages/PostDetails'
+import CreatePost from '../CreatePost';
 // bring pages layout
 import Layout from '../Layout'
 // Loading pages
@@ -20,7 +21,7 @@ export default function App() {
   <BrowserRouter>
     <Layout>
         <Switch>
-          <Route exact path="/" component={Home}/>
+          <Route exact path="/" component={CreatePost}/>
           <Route exact path="/login" component={Loading}/>
           <Route exact path="/posts" component={Post}/>
           <Route exact path="/posts/:_id" component={PostDetails}/>

@@ -35,7 +35,8 @@ export default function CardPost(props) {
               {props.data.createdAt}
             </Typography>
           </AccordionDetails>
-          <>
+          
+              <>
             <IconButton edge="end"  >
               <Link to={`/${props.data._id}`} className={classes.cardPostButton}>
                 <EditIcon color="primary"/>

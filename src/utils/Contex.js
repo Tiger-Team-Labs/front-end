@@ -68,10 +68,9 @@ export const ContextProvider = ({ children }) => {
   const handleChange = (event) => {
     setValues({ ...values, [event.target.name]: event.target.value })
   }
-  // send datos
+  // send data whit Axios Post
   const urlSignUp = "https://testing-api-foro.herokuapp.com/api/auth/signup"
 
-  // Ejemplo implementando el metodo axios:
   const [user, setUser] = useState(undefined)
   const createUserWhitFormSignUP = async () => {
     await axios.post(urlSignUp, values)
