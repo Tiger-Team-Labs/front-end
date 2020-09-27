@@ -107,8 +107,23 @@ export const ContextProvider = ({ children }) => {
   const handleCloseFormDialog = () => {
     setOpenFormDialog(false)
   };
+
   // Home
   const [categories, setCategories] = useState("");
+
+  // State CreateNewPost
+  const [valuesCreatePost, setValuesCreatePost] = useState({
+    title:"",
+    content:""})
+  const [openCreatePost, setOpenCreatePost] = useState(false);
+    // Open or Close Dialog Form
+    const handleClickOpenCreatePost = () => {
+      setOpenCreatePost(true);
+    };
+    const handleCloseCreatePost = () => {
+      setOpenCreatePost(false);
+    };
+
 
 
   // return Value
@@ -137,7 +152,13 @@ export const ContextProvider = ({ children }) => {
       user, 
       setUser,
       categories, 
-      setCategories
+      setCategories,
+      valuesCreatePost, 
+      setValuesCreatePost,
+      openCreatePost, 
+      setOpenCreatePost,
+      handleCloseCreatePost,
+      handleClickOpenCreatePost
     }}>
       {children}
     </Context.Provider>

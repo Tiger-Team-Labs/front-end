@@ -14,25 +14,25 @@ import axios from 'axios';
 
 export default function CreatePost() {
   const {
-    
+    valuesCreatePost, 
+    setValuesCreatePost,
     user,
-    
+    openCreatePost, 
+    handleCloseCreatePost,
+    setOpenCreatePost,
+    handleClickOpenCreatePost
   } = useContext(Context);
 
   const classes = useStyles();
-  const [valuesCreatePost, setValuesCreatePost] = useState({
-    title:"",
-    content:""
-  })
+
   const urlNewPost = 'https://testing-api-foro.herokuapp.com/api/posts'
+  
   const createNewPost = async () => {
-    
     await axios.post(urlNewPost,valuesCreatePost,
       {
         headers: {
           'x-access-token' : `${user?.token}`}
-      },
-      )
+      })
       .then(res => console.log(res))
       .catch (error => {
       console.error(`Algo pasó en createNewPost: ${error}`)
@@ -44,28 +44,11 @@ export default function CreatePost() {
   }
   const handleSubmitCreatePost = (event) => {
     event.preventDefault();
-    console.log(`Ahí van los datos Para crear el Post datos: ${valuesCreatePost.title}`);
-    console.log(`Si vienen los datos del token: ${user?.token} or ${user}`);
     createNewPost();    
   }
-  
-  // Open or Close Dialog Form
-  const [
-    openCreatePost, 
-    setOpenCreatePost] = useState(false);
-
-  const handleClickOpenCreatePost = () => {
-    setOpenCreatePost(true);
-  };
-  const handleCloseCreatePost = () => {
-    setOpenCreatePost(false);
-  };
 
   return (
     <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpenCreatePost}>
-        Open form dialog
-      </Button>
       <Dialog open={openCreatePost} onClose={handleCloseCreatePost} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">A new post</DialogTitle>
         <DialogContent>
