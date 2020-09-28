@@ -9,7 +9,9 @@ import { Layout } from '../../layout';
 //import context
 import { Context } from '../../utils/Context';
 //import loader
-import { Loader } from '../../components/Loader';
+import { Loader } from '../Loader';
+//import not found component
+import { NotFound } from '../404';
 //import categories
 const Categories = lazy(() => import('../../pages/Categories'));
 //import list post component
@@ -57,6 +59,13 @@ export const Body = () => {
 							</BodyBackground>
 						</Layout>
 					</Route>
+					<Route path='*' />
+					<Layout>
+						<BodyBackground>
+							<NotFound />
+						</BodyBackground>
+					</Layout>
+					<Route />
 				</Suspense>
 			</Switch>
 		</>
