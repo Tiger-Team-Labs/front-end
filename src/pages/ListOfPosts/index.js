@@ -1,5 +1,5 @@
 //import react
-import React, { useState, useContext, memo, useEffect } from 'react';
+import React, { useState, useContext, memo } from 'react';
 //import post component
 import { PostCard } from '../../components/PostCard';
 //import link component
@@ -25,8 +25,6 @@ import { UpdatePost } from '../../components/UpdatePost';
 const ListOfPosts = memo(() => {
 	//use the context
 	const { posts, user, deletePost } = useContext(Context);
-	//local posts
-	const [localPosts, setLocalPosts] = useState([]);
 
 	// confi for animation
 	const [state] = useState(true);
@@ -38,13 +36,6 @@ const ListOfPosts = memo(() => {
 
 	//use params
 	const { category } = useParams();
-
-	//use effect to create the local posts
-	useEffect(() => {
-		setLocalPosts(posts.map((post) => post?.categories));
-	}, [posts]);
-
-	console.log(localPosts);
 
 	return (
 		<>
@@ -58,37 +49,34 @@ const ListOfPosts = memo(() => {
 						{posts.map((post) => (
 							<div key={post._id}>
 								{/*check if are the same family*/}
-								{post?.categories.length > 0 &&
-									post?.categories.filter(
-										(element) => element === category,
-									) && (
-										<Link
-											style={{ textDecoration: 'none' }}
-											to={`/category/${category}/${post._id}`}>
-											{/*add the link ability to change into different pages*/}
-											{/*add the animation ability*/}
-											<animated.div
-												style={{
-													opacity: x.interpolate({
-														range: [0, 1],
-														output: [0.3, 1],
-													}),
-													transform: x
-														.interpolate({
-															range: [0, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 1],
-															output: [1, 0.97, 0.9, 1.1, 0.9, 1.1, 1.03, 1],
-														})
-														.interpolate((x) => `scale(${x})`),
-												}}>
-												{/*show the card*/}
-												<PostCard
-													aria-label='post card'
-													title={post.title}
-													id={post._id}
-												/>
-											</animated.div>
-										</Link>
-									)}
+								{post?.categories.filter((name) => name === category) && (
+									<Link
+										style={{ textDecoration: 'none' }}
+										to={`/category/${category}/${post._id}`}>
+										{/*add the link ability to change into different pages*/}
+										{/*add the animation ability*/}
+										<animated.div
+											style={{
+												opacity: x.interpolate({
+													range: [0, 1],
+													output: [0.3, 1],
+												}),
+												transform: x
+													.interpolate({
+														range: [0, 0.25, 0.35, 0.45, 0.55, 0.65, 0.75, 1],
+														output: [1, 0.97, 0.9, 1.1, 0.9, 1.1, 1.03, 1],
+													})
+													.interpolate((x) => `scale(${x})`),
+											}}>
+											{/*show the card*/}
+											<PostCard
+												aria-label='post card'
+												title={post.title}
+												id={post._id}
+											/>
+										</animated.div>
+									</Link>
+								)}
 								{/*Delete a post functionality and update functionality
 								with the logic to check if the user that write the post is the same,
 								also than the user are not an admin

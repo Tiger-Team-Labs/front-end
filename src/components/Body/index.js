@@ -37,7 +37,7 @@ export const Body = () => {
 						</Layout>
 					</Route>
 					<Route exact path='/dashboard'>
-						{user?.roles.length === 2 ? <DashBoard /> : <Redirect to='/' />}
+						{user?.roles?.length === 2 ? <DashBoard /> : <Redirect to='/' />}
 					</Route>
 					{/*route for specific category*/}
 					<Route exact path='/category/:category'>

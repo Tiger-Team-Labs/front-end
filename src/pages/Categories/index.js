@@ -27,11 +27,11 @@ const Categories = memo(() => {
 					aria-label='category card'
 					key={i}
 					name={category?.name}
-					categoryId={category?._id}
+					categoryId={category?.name}
 				/>
 			))}
 			{/*Display the button for the dash board*/}
-			{user?.roles.length === 2 && (
+			{user?.roles?.length === 2 && (
 				<Link aria-label='link' to='/dashboard'>
 					<FixedButton>
 						<IconButton aria-label='dashboard logo' color='inherit'>
