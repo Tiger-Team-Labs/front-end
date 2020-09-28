@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, { useContext} from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -19,8 +19,7 @@ export default function CreatePost() {
     user,
     openCreatePost, 
     handleCloseCreatePost,
-    setOpenCreatePost,
-    handleClickOpenCreatePost
+    bringPost
   } = useContext(Context);
 
   const classes = useStyles();
@@ -33,7 +32,11 @@ export default function CreatePost() {
         headers: {
           'x-access-token' : `${user?.token}`}
       })
-      .then(res => console.log(res))
+      .then(res => {
+        console.log(res)
+        bringPost()
+        handleCloseCreatePost()
+      })
       .catch (error => {
       console.error(`Algo pasó en createNewPost: ${error}`)
     })

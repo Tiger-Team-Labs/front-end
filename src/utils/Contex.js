@@ -124,7 +124,17 @@ export const ContextProvider = ({ children }) => {
       setOpenCreatePost(false);
     };
 
-
+// Page Post
+const [posts, setPosts] = useState("");
+const urlPost = "https://testing-api-foro.herokuapp.com/api/posts"
+const bringPost = async () => {
+  await axios.get(urlPost)
+    .then(res => {
+      setPosts(res.data)
+      console.log(res);
+    })
+    .catch(err => { console.log(`Algo paso, aquí te lo muestro: ${err}`) })
+}
 
   // return Value
   return (
@@ -158,7 +168,10 @@ export const ContextProvider = ({ children }) => {
       openCreatePost, 
       setOpenCreatePost,
       handleCloseCreatePost,
-      handleClickOpenCreatePost
+      handleClickOpenCreatePost,
+      posts, 
+      setPosts,
+      bringPost
     }}>
       {children}
     </Context.Provider>
