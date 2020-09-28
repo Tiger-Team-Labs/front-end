@@ -42,7 +42,7 @@ export const Body = () => {
 						{user?.roles?.length === 2 ? <DashBoard /> : <Redirect to='/' />}
 					</Route>
 					{/*route for specific category*/}
-					<Route exact path='/category/:category'>
+					<Route exact path='/category/:categoryName'>
 						<Layout>
 							<BodyBackground>
 								<ListOfPosts />
@@ -50,7 +50,7 @@ export const Body = () => {
 						</Layout>
 					</Route>
 					{/*route for specific post*/}
-					<Route exact path='/category/:category/:post'>
+					<Route exact path='/category/:categoryName/:post'>
 						<Layout>
 							<BodyBackground>
 								<Post />

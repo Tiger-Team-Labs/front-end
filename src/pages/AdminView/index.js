@@ -40,6 +40,7 @@ import { UpdateCategory } from '../../components/UpdateCategory';
 import { DeleteCategory } from '../../components/DeleteCategory';
 //import link
 import { Link } from 'react-router-dom';
+import { ShowCategories } from '../../components/ShowCategories';
 
 export const Dashboard = memo(() => {
 	//use styles
@@ -141,7 +142,9 @@ export const Dashboard = memo(() => {
 					maxWidth='lg'
 					className={classes.container}>
 					<ResponseAlert />
-					<Paper className={classes.paper}></Paper>
+					<Paper className={classes.paper}>
+						<ShowCategories />
+					</Paper>
 					{/**switch to handle the component ti display it */}
 					<Paper className={classes.paper}>
 						{handleSwitch(dashboardOption)}

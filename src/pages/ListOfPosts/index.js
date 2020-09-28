@@ -35,7 +35,7 @@ const ListOfPosts = memo(() => {
 	});
 
 	//use params
-	const { category } = useParams();
+	const { categoryName } = useParams();
 
 	return (
 		<>
@@ -49,10 +49,10 @@ const ListOfPosts = memo(() => {
 						{posts.map((post) => (
 							<div key={post._id}>
 								{/*check if are the same family*/}
-								{post?.categories.filter((name) => name === category) && (
+								{post?.categories.filter((name) => name === categoryName) && (
 									<Link
 										style={{ textDecoration: 'none' }}
-										to={`/category/${category}/${post._id}`}>
+										to={`/category/${categoryName}/${post._id}`}>
 										{/*add the link ability to change into different pages*/}
 										{/*add the animation ability*/}
 										<animated.div

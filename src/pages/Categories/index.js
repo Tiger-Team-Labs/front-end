@@ -27,7 +27,7 @@ const Categories = memo(() => {
 					aria-label='category card'
 					key={i}
 					name={category?.name}
-					categoryId={category?.name}
+					categoryId={category?._id}
 				/>
 			))}
 			{/*Display the button for the dash board*/}
