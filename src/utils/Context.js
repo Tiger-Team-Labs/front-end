@@ -70,9 +70,9 @@ export const ContextProvider = memo(({ children }) => {
 					roles: response.data?.roles,
 				});
 
-				setToken(response.data?.token);
-
 				setResponse(response?.status);
+
+				setToken(response.data?.token);
 			})
 			.catch((err) => setResponse(err.response?.status));
 	};
@@ -93,7 +93,9 @@ export const ContextProvider = memo(({ children }) => {
 					id: response.data?._id,
 					roles: response.data?.roles,
 				});
+
 				setResponse(response?.status);
+
 				setToken(response.data?.token);
 			})
 			.catch((err) => setResponse(err.response?.status));
