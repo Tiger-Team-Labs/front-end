@@ -8,6 +8,8 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { Layout } from '../../layout';
 //import context
 import { Context } from '../../utils/Context';
+//import loader
+import { Loader } from '../../components/Loader';
 //import categories
 const Categories = lazy(() => import('../../pages/Categories'));
 //import list post component
@@ -27,7 +29,7 @@ export const Body = () => {
 			{/*switch the components in other words decide which component will render*/}
 			<Switch>
 				{/*Route for dashboard*/}
-				<Suspense fallback={<div>Loading...</div>}>
+				<Suspense fallback={<Loader aria-label='loader' />}>
 					{/*route for categories*/}
 					<Route exact path='/'>
 						<Layout>
