@@ -1,60 +1,64 @@
 //import react
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 //import material ui components
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import ListItemText from '@material-ui/core/ListItemText';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 import { IconButton } from '@material-ui/core';
 //import icons
 import DeleteIcon from '@material-ui/icons/Delete';
 import UpdateIcon from '@material-ui/icons/Update';
 //import context
+import { Context } from '../../utils/Context';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
 		width: '100%',
-		maxWidth: 360,
+		maxWidth: 600,
 		backgroundColor: theme.palette.background.paper,
 	},
 }));
 
 export const AdminUsers = () => {
 	const classes = useStyles();
-	const [checked, setChecked] = React.useState([1]);
-
-	const handleToggle = (value) => () => {
-		const currentIndex = checked.indexOf(value);
-		const newChecked = [...checked];
-
-		if (currentIndex === -1) {
-			newChecked.push(value);
-		} else {
-			newChecked.splice(currentIndex, 1);
-		}
-
-		setChecked(newChecked);
-	};
+	//use context
+	const { users } = useContext(Context);
 
 	return (
-		<List dense className={classes.root}>
-			{[0, 1, 2, 3].map((value) => {
-				const labelId = `checkbox-list-secondary-label-${value}`;
-				return (
-					<ListItem key={value} button>
-						<ListItemText id={labelId} primary={`Line item ${value + 1}`} />
-						<ListItemSecondaryAction>
-							<IconButton>
-								<DeleteIcon />
-							</IconButton>
-							<IconButton>
-								<UpdateIcon />
-							</IconButton>
-						</ListItemSecondaryAction>
-					</ListItem>
-				);
-			})}
-		</List>
+		<TableContainer component={Paper}>
+			<Table className={classes.table} size='small' aria-label='a dense table'>
+				<TableHead>
+					<TableRow>
+						<TableCell>Name</TableCell>
+						<TableCell align='left'>user name</TableCell>
+						<TableCell align='left'>email</TableCell>
+					</TableRow>
+				</TableHead>
+				<TableBody>
+					{users.map((row) => (
+						<TableRow key={row._id}>
+							<TableCell component='th' scope='row'>
+								{row.name}
+							</TableCell>
+							<TableCell align='left'>{row.username}</TableCell>
+							<TableCell align='left'>{row.email}</TableCell>
+							<>
+								<IconButton>
+									<DeleteIcon />
+								</IconButton>
+								<IconButton>
+									<UpdateIcon />
+								</IconButton>
+							</>
+						</TableRow>
+					))}
+				</TableBody>
+			</Table>
+		</TableContainer>
 	);
 };

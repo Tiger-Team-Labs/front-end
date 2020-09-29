@@ -302,6 +302,7 @@ export const ContextProvider = memo(({ children }) => {
 				updateCategory,
 				deleteCategory,
 				categories,
+				users,
 			}}>
 			{children}
 		</Context.Provider>
