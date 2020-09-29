@@ -17,7 +17,8 @@ export default function Post() {
     handleClickOpenCreatePost,
     posts, 
     user,
-    bringPost
+    bringPost,
+    handleClickOpenEditPost
   } = useContext(Context);
 
 
@@ -41,7 +42,7 @@ export default function Post() {
             {user !== undefined 
             ?<>
               <IconButton edge="end"  >
-                <Link to={`/posts/${post._id}/edit`} className={classes.cardPostButton}>
+                <Link onClick={handleClickOpenEditPost} to={`/posts/${post._id}/edit`} className={classes.cardPostButton}>
                   <EditIcon color="primary" />
                 </Link>
               </IconButton>

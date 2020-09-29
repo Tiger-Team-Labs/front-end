@@ -136,6 +136,16 @@ const bringPost = async () => {
     .catch(err => { console.log(`Algo paso, aquí te lo muestro: ${err}`) })
 }
 
+// EditPost
+const [openEditPost, setOpenEditPost] = useState(false);
+    // Open or Close Dialog Form
+    const handleClickOpenEditPost = () => {
+      setOpenEditPost(true);
+    }
+    const handleCloseEditPost = () => {
+      setOpenEditPost(false);
+    };
+
   // return Value
   return (
     <Context.Provider value={{
@@ -171,7 +181,11 @@ const bringPost = async () => {
       handleClickOpenCreatePost,
       posts, 
       setPosts,
-      bringPost
+      bringPost,
+      openEditPost, 
+      setOpenEditPost,
+      handleClickOpenEditPost,
+      handleCloseEditPost
     }}>
       {children}
     </Context.Provider>
