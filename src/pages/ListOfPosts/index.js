@@ -49,7 +49,7 @@ const ListOfPosts = memo(() => {
 						{posts.map((post) => (
 							<div key={post._id}>
 								{/*check if are the same family*/}
-								{post?.categories.filter((name) => name === categoryName) && (
+								{post?.categories === categoryName && (
 									<Link
 										style={{ textDecoration: 'none' }}
 										to={`/category/${categoryName}/${post._id}`}>

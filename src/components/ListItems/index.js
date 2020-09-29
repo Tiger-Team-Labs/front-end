@@ -42,6 +42,14 @@ export const MainListItems = () => {
 				</ListItemIcon>
 				<ListItemText primary='Update Category' />
 			</ListItem>
+			<ListItem
+				button
+				onClick={() => setDashboardOption((number) => (number = 4))}>
+				<ListItemIcon>
+					<UpdateIcon />
+				</ListItemIcon>
+				<ListItemText primary='users' />
+			</ListItem>
 		</>
 	);
 };

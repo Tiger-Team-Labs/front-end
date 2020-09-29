@@ -271,7 +271,7 @@ export const ContextProvider = memo(({ children }) => {
 				})
 				.then((response) => setUsers(response?.data));
 		user?.roles?.length === 2 && bringUsers();
-	}, [token, user]);
+	}, [token, user, response]);
 
 	return (
 		<Context.Provider

@@ -39,21 +39,21 @@ export const AdminUsers = () => {
 				</TableHead>
 				<TableBody>
 					{users.map((row) => (
-						<TableRow key={row._id}>
-							<TableCell component='th' scope='row'>
-								{row.name}
-							</TableCell>
-							<TableCell align='left'>{row.username}</TableCell>
-							<TableCell align='left'>{row.email}</TableCell>
-							<TableCell>
-								<IconButton onClick={handleDelete(row._id)}>
-									<DeleteIcon />
-								</IconButton>
-								<IconButton>
-									<UpdateIcon />
-								</IconButton>
-							</TableCell>
-						</TableRow>
+						<>
+							<TableRow key={row._id}>
+								<TableCell component='th' scope='row'>
+									{row.name}
+								</TableCell>
+								<TableCell align='left'>{row.username}</TableCell>
+								<TableCell align='left'>{row.email}</TableCell>
+							</TableRow>
+							<IconButton onClick={handleDelete(row._id)}>
+								<DeleteIcon />
+							</IconButton>
+							<IconButton>
+								<UpdateIcon />
+							</IconButton>
+						</>
 					))}
 				</TableBody>
 			</Table>
