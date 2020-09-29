@@ -118,6 +118,7 @@ export const ContextProvider = memo(({ children }) => {
 				{
 					title: title,
 					content: content,
+					categories: categoryId,
 				},
 				{
 					headers: {

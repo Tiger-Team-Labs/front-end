@@ -104,7 +104,10 @@ const ListOfPosts = memo(() => {
 			{/*check if the user exist*/}
 			{user !== undefined && user?.roles.length === 1 && (
 				<FixedButton aria-label='fixed button'>
-					<CreatePost aria-label='Create post modal' />
+					<CreatePost
+						categoryId={categoryName}
+						aria-label='Create post modal'
+					/>
 				</FixedButton>
 			)}
 		</>

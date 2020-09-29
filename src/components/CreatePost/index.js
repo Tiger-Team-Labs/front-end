@@ -22,7 +22,7 @@ import { Context } from '../../utils/Context';
 import { Alert } from '../Alert';
 
 //create create post component and export it.
-export const CreatePost = ({ category }) => {
+export const CreatePost = ({ categoryId }) => {
 	//use the styles
 	const classes = useStyles();
 	//use local state to open the modal
@@ -36,11 +36,14 @@ export const CreatePost = ({ category }) => {
 		createPost,
 		setError,
 		setShowError,
+		setCategoryId,
 	} = useContext(Context);
 
 	//handle the open of modal
 	const handleOpen = () => {
 		setOpen(true);
+		setTitle('');
+		setContent('');
 	};
 
 	//handle the close of modal
@@ -59,6 +62,7 @@ export const CreatePost = ({ category }) => {
 		} else {
 			setOpen(false);
 			setShowError(false);
+			setCategoryId(categoryId);
 			createPost();
 		}
 		setTitle('');
@@ -102,7 +106,7 @@ export const CreatePost = ({ category }) => {
 								component='h3'
 								gutterBottom
 								aria-label='title'>
-								{`Create your ${category} post`}
+								{`Create your post`}
 							</Typography>
 							<Input
 								aria-label='title'
