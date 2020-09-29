@@ -15,13 +15,11 @@ import axios from 'axios';
 export default function EditPost(props) {
   const {
     openEditPost, 
-    setOpenEditPost,
-    handleClickOpenEditPost,
     handleCloseEditPost
   } = useContext(Context);
 
   const classes = useStyles();
-  const [postEdit, setPostEdit] = React.useState({
+  const [postEdit, setPostEdit] = useState({
     title:"",
     content:""})
 
@@ -56,7 +54,7 @@ const bringPostEdit = async () => {
   return (
     <div>
       <Dialog open={openEditPost} onClose={handleCloseEditPost} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Edit post</DialogTitle>
+        <DialogTitle id="form-dialog-title">Post {postEdit.title} </DialogTitle>
         <DialogContent>
           <DialogContentText>
             Edit your Post

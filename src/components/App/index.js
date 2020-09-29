@@ -5,7 +5,6 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from '../../pages/Home'
 // import Post
 import Post from '../../pages/Post';
-import PostEdit from '../../pages/PostEdit';
 import EditPost from '../EditPost';
 // bring pages layout
 import Layout from '../Layout'
