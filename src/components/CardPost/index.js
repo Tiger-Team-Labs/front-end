@@ -37,21 +37,6 @@ export default function CardPost(props) {
             {props.data.createdAt}
           </Typography>
         </AccordionDetails>
-
-        {/* {user !== undefined 
-        ?<>
-          <IconButton edge="end"  >
-            <Link to={"/post"} className={classes.cardPostButton}>
-              <EditIcon color="primary" />
-            </Link>
-          </IconButton>
-          <IconButton>
-            <Link to={"/post"} className={classes.cardPostButton}>
-              <DeleteIcon color="secondary" />
-            </Link>
-          </IconButton>
-        </>
-        : null} */}
       </Accordion>
     </div>
   );
