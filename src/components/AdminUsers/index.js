@@ -47,14 +47,14 @@ export const AdminUsers = () => {
 							</TableCell>
 							<TableCell align='left'>{row.username}</TableCell>
 							<TableCell align='left'>{row.email}</TableCell>
-							<>
+							<TableCell>
 								<IconButton>
 									<DeleteIcon />
 								</IconButton>
 								<IconButton>
 									<UpdateIcon />
 								</IconButton>
-							</>
+							</TableCell>
 						</TableRow>
 					))}
 				</TableBody>
