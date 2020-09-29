@@ -81,21 +81,23 @@ const ListOfPosts = memo(() => {
 								with the logic to check if the user that write the post is the same,
 								also than the user are not an admin
 								*/}
-								{user !== undefined && post?.author === user?.id && (
-									<Color>
-										<UpdatePost aria-label='button' post={post} />
-										<IconButton
-											size='medium'
-											color='inherit'
-											aria-label='button'
-											style={{ color: 'white !important' }}
-											onClick={() => {
-												deletePost(post._id);
-											}}>
-											<DeleteOutlineIcon color='inherit' />
-										</IconButton>
-									</Color>
-								)}
+								{user !== undefined &&
+									post?.author === user?.id &&
+									post?.categories === categoryName && (
+										<Color>
+											<UpdatePost aria-label='button' post={post} />
+											<IconButton
+												size='medium'
+												color='inherit'
+												aria-label='button'
+												style={{ color: 'white !important' }}
+												onClick={() => {
+													deletePost(post._id);
+												}}>
+												<DeleteOutlineIcon color='inherit' />
+											</IconButton>
+										</Color>
+									)}
 							</div>
 						))}
 					</Grid>

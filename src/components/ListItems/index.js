@@ -9,6 +9,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import AddIcon from '@material-ui/icons/Add';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import UpdateIcon from '@material-ui/icons/Update';
+import Divider from '@material-ui/core/Divider';
+import PeopleIcon from '@material-ui/icons/People';
 
 export const MainListItems = () => {
 	const { setDashboardOption } = useContext(Context);
@@ -42,11 +44,12 @@ export const MainListItems = () => {
 				</ListItemIcon>
 				<ListItemText primary='Update Category' />
 			</ListItem>
+			<Divider />
 			<ListItem
 				button
 				onClick={() => setDashboardOption((number) => (number = 4))}>
 				<ListItemIcon>
-					<UpdateIcon />
+					<PeopleIcon />
 				</ListItemIcon>
 				<ListItemText primary='users' />
 			</ListItem>

@@ -8,10 +8,6 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { IconButton } from '@material-ui/core';
-//import icons
-import DeleteIcon from '@material-ui/icons/Delete';
-import UpdateIcon from '@material-ui/icons/Update';
 //import context
 import { Context } from '../../utils/Context';
 //import styles
@@ -20,12 +16,7 @@ import { useStyles } from './styles';
 export const AdminUsers = () => {
 	const classes = useStyles();
 	//use context
-	const { users, deleteUser } = useContext(Context);
-
-	//handle delete
-	const handleDelete = (id) => {
-		deleteUser(id);
-	};
+	const { users } = useContext(Context);
 
 	return (
 		<TableContainer component={Paper}>
@@ -35,6 +26,7 @@ export const AdminUsers = () => {
 						<TableCell>Name</TableCell>
 						<TableCell align='left'>user name</TableCell>
 						<TableCell align='left'>email</TableCell>
+						<TableCell align='left'>id</TableCell>
 					</TableRow>
 				</TableHead>
 				<TableBody>
@@ -46,13 +38,8 @@ export const AdminUsers = () => {
 								</TableCell>
 								<TableCell align='left'>{row.username}</TableCell>
 								<TableCell align='left'>{row.email}</TableCell>
+								<TableCell align='left'>{row._id}</TableCell>
 							</TableRow>
-							<IconButton onClick={handleDelete(row._id)}>
-								<DeleteIcon />
-							</IconButton>
-							<IconButton>
-								<UpdateIcon />
-							</IconButton>
 						</>
 					))}
 				</TableBody>
