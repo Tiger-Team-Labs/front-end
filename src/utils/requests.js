@@ -27,3 +27,5 @@ export const createCategory = '/categories/';
 export const updateCategoryWithId = (id) => `/categories/${id}`;
 //delete category
 export const deleteCategoryWithId = (id) => `/categories/${id}`;
+//bring users
+export const readUsers = '/users';

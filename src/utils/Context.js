@@ -13,6 +13,7 @@ import {
 	updateCategoryWithId,
 	deleteCategoryWithId,
 	readCategories,
+	readUsers,
 } from './requests';
 
 //create context and export it
@@ -50,6 +51,8 @@ export const ContextProvider = memo(({ children }) => {
 	const [categoryId, setCategoryId] = useState('');
 	//category
 	const [categories, setCategories] = useState([]);
+	//users
+	const [users, setUsers] = useState([]);
 
 	/**
 	 * @description: allow us to create a user and make the post to the db
@@ -240,9 +243,15 @@ export const ContextProvider = memo(({ children }) => {
 		const bringData = async () =>
 			await instance.get(getPosts).then((response) => setPosts(response?.data));
 
+		const bringUsers = async () =>
+			await instance
+				.get(readUsers)
+				.then((response) => setUsers(response?.data));
+
 		bringCategories();
 		bringData();
-	}, [response]);
+		user?.roles?.length === 2 && bringUsers();
+	}, [response, user]);
 
 	return (
 		<Context.Provider
