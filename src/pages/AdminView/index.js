@@ -44,6 +44,8 @@ import { Link } from 'react-router-dom';
 import { AdminUsers } from '../../components/AdminUsers';
 //import show categories
 import { ShowCategories } from '../../components/ShowCategories';
+//import delete user
+import { DeleteUser } from '../../components/DeleteUser';
 
 export const Dashboard = memo(() => {
 	//use styles
@@ -154,6 +156,11 @@ export const Dashboard = memo(() => {
 					<Paper className={classes.paper}>
 						{handleSwitch(dashboardOption)}
 					</Paper>
+					{dashboardOption === 4 && (
+						<Paper>
+							<DeleteUser />
+						</Paper>
+					)}
 				</Container>
 			</main>
 		</div>

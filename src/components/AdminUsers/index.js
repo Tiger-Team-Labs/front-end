@@ -31,16 +31,14 @@ export const AdminUsers = () => {
 				</TableHead>
 				<TableBody>
 					{users.map((row) => (
-						<>
-							<TableRow key={row._id}>
-								<TableCell component='th' scope='row'>
-									{row.name}
-								</TableCell>
-								<TableCell align='left'>{row.username}</TableCell>
-								<TableCell align='left'>{row.email}</TableCell>
-								<TableCell align='left'>{row._id}</TableCell>
-							</TableRow>
-						</>
+						<TableRow key={row._id}>
+							<TableCell component='th' scope='row'>
+								{row.name}
+							</TableCell>
+							<TableCell align='left'>{row.username}</TableCell>
+							<TableCell align='left'>{row.email}</TableCell>
+							<TableCell align='left'>{row._id}</TableCell>
+						</TableRow>
 					))}
 				</TableBody>
 			</Table>

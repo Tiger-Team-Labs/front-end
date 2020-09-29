@@ -42,7 +42,7 @@ export const DeleteUser = () => {
 				<Input
 					aria-label='input for the id of the user'
 					autoFocus={true}
-					placeholder='category id'
+					placeholder='user id'
 					className={classes.input}
 					value={id}
 					onChange={(e) => setId(e.target.value)}
