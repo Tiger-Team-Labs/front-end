@@ -41,7 +41,7 @@ export default function CardPost(props) {
           </Typography>
         </AccordionDetails>
 
-        {user !== undefined 
+        {/* {user !== undefined 
         ?<>
           <IconButton edge="end"  >
             <Link to={"/post"} className={classes.cardPostButton}>
@@ -54,7 +54,7 @@ export default function CardPost(props) {
             </Link>
           </IconButton>
         </>
-        : null}
+        : null} */}
       </Accordion>
     </div>
   );
