@@ -54,11 +54,13 @@ const updatePost = async () => {
     })
     .then(res => {
       console.log(res)
+      
       setPostEdit({
         title:"",
         content:""})
+        props.history.push('/posts')
     })
-    props.history.push('/post')
+    
     .catch (error => {
     console.error(`Algo pasó en createNewPost: ${error}`)
     handleOpenEditPost()
