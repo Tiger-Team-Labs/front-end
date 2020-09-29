@@ -40,6 +40,9 @@ import { UpdateCategory } from '../../components/UpdateCategory';
 import { DeleteCategory } from '../../components/DeleteCategory';
 //import link
 import { Link } from 'react-router-dom';
+//import admin users
+import { AdminUsers } from '../../components/AdminUsers';
+//import show categories
 import { ShowCategories } from '../../components/ShowCategories';
 
 export const Dashboard = memo(() => {
@@ -72,6 +75,8 @@ export const Dashboard = memo(() => {
 				return <DeleteCategory />;
 			case 3:
 				return <UpdateCategory />;
+			case 4:
+				return <AdminUsers />;
 			default:
 				return <></>;
 		}

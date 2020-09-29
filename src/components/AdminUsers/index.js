@@ -1,6 +1,5 @@
 //import react
 import React, { useContext } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 //import material ui components
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -15,14 +14,8 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import UpdateIcon from '@material-ui/icons/Update';
 //import context
 import { Context } from '../../utils/Context';
-
-const useStyles = makeStyles((theme) => ({
-	root: {
-		width: '100%',
-		maxWidth: 600,
-		backgroundColor: theme.palette.background.paper,
-	},
-}));
+//import styles
+import { useStyles } from './styles';
 
 export const AdminUsers = () => {
 	const classes = useStyles();
@@ -53,7 +46,7 @@ export const AdminUsers = () => {
 							<TableCell align='left'>{row.username}</TableCell>
 							<TableCell align='left'>{row.email}</TableCell>
 							<TableCell>
-								<IconButton onClick={handleDelete}>
+								<IconButton onClick={handleDelete(row._id)}>
 									<DeleteIcon />
 								</IconButton>
 								<IconButton>
