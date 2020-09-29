@@ -23,7 +23,7 @@ export default function Home() {
     await axios.get(urlCategories)
       .then(res => {
         setCategories(res.data)
-        console.log(res);
+        console.log(`Llamado bringCategories ${res}`);
       })
       .catch(err => { console.log(`Algo paso, aquí te lo muestro: ${err}`) })
   }

@@ -19,7 +19,8 @@ export default function CreatePost() {
     user,
     openCreatePost, 
     handleCloseCreatePost,
-    bringPost
+    bringPost,
+    handleClickOpenFormDialog
   } = useContext(Context);
 
   const classes = useStyles();
@@ -36,9 +37,14 @@ export default function CreatePost() {
         console.log(res)
         bringPost()
         handleCloseCreatePost()
+        setValuesCreatePost({
+          title:"",
+          content:""})
       })
       .catch (error => {
       console.error(`Algo pasó en createNewPost: ${error}`)
+      handleClickOpenFormDialog()
+
     })
   }
 
@@ -47,7 +53,8 @@ export default function CreatePost() {
   }
   const handleSubmitCreatePost = (event) => {
     event.preventDefault();
-    createNewPost();    
+    createNewPost();
+    handleCloseCreatePost();
   }
 
   return (
