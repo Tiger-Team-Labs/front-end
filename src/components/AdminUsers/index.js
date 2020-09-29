@@ -27,7 +27,12 @@ const useStyles = makeStyles((theme) => ({
 export const AdminUsers = () => {
 	const classes = useStyles();
 	//use context
-	const { users } = useContext(Context);
+	const { users, deleteUser } = useContext(Context);
+
+	//handle delete
+	const handleDelete = (id) => {
+		deleteUser(id);
+	};
 
 	return (
 		<TableContainer component={Paper}>
@@ -48,7 +53,7 @@ export const AdminUsers = () => {
 							<TableCell align='left'>{row.username}</TableCell>
 							<TableCell align='left'>{row.email}</TableCell>
 							<TableCell>
-								<IconButton>
+								<IconButton onClick={handleDelete}>
 									<DeleteIcon />
 								</IconButton>
 								<IconButton>

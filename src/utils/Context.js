@@ -14,6 +14,7 @@ import {
 	deleteCategoryWithId,
 	readCategories,
 	readUsers,
+	deleteUserWithId,
 } from './requests';
 
 //create context and export it
@@ -230,6 +231,18 @@ export const ContextProvider = memo(({ children }) => {
 			.catch((err) => setResponse(err.response?.status));
 	};
 
+	//delete user
+	const deleteUser = (id) => {
+		instance
+			.delete(deleteUserWithId(id), {
+				headers: {
+					'x-access-token': `${token}`,
+				},
+			})
+			.then((response) => setResponse(response?.status))
+			.catch((err) => setResponse(err.response?.status));
+	};
+
 	//use effect for bring the posts and categories
 	/**
 	 * bring the data from de data base
@@ -259,8 +272,6 @@ export const ContextProvider = memo(({ children }) => {
 				.then((response) => setUsers(response?.data));
 		user?.roles?.length === 2 && bringUsers();
 	}, [token, user]);
-
-	console.log(users);
 
 	return (
 		<Context.Provider
@@ -303,6 +314,7 @@ export const ContextProvider = memo(({ children }) => {
 				deleteCategory,
 				categories,
 				users,
+				deleteUser,
 			}}>
 			{children}
 		</Context.Provider>

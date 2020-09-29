@@ -102,7 +102,7 @@ const ListOfPosts = memo(() => {
 				</Grid>
 			</Grid>
 			{/*check if the user exist*/}
-			{user !== undefined && user?.roles.length === 1 && (
+			{user !== undefined && user?.roles?.length === 1 && (
 				<FixedButton aria-label='fixed button'>
 					<CreatePost
 						categoryId={categoryName}
