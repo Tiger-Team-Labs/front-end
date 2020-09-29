@@ -243,15 +243,24 @@ export const ContextProvider = memo(({ children }) => {
 		const bringData = async () =>
 			await instance.get(getPosts).then((response) => setPosts(response?.data));
 
-		const bringUsers = async () =>
-			await instance
-				.get(readUsers)
-				.then((response) => setUsers(response?.data));
-
 		bringCategories();
 		bringData();
+	}, [response]);
+
+	//use effect to bring the users
+	useEffect(() => {
+		const bringUsers = async () =>
+			await instance
+				.get(readUsers, {
+					headers: {
+						'x-access-token': `${token}`,
+					},
+				})
+				.then((response) => setUsers(response?.data));
 		user?.roles?.length === 2 && bringUsers();
-	}, [response, user]);
+	}, [token, user]);
+
+	console.log(users);
 
 	return (
 		<Context.Provider

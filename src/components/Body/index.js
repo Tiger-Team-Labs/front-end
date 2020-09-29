@@ -10,8 +10,6 @@ import { Layout } from '../../layout';
 import { Context } from '../../utils/Context';
 //import loader
 import { Loader } from '../Loader';
-//import AdminUsers
-import { AdminUsers } from '../AdminUsers';
 //import categories
 const Categories = lazy(() => import('../../pages/Categories'));
 //import list post component
@@ -28,7 +26,6 @@ export const Body = () => {
 
 	return (
 		<>
-			<AdminUsers />
 			{/*switch the components in other words decide which component will render*/}
 			<Switch>
 				{/*Route for dashboard*/}
