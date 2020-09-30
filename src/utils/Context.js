@@ -15,6 +15,7 @@ import {
 	readCategories,
 	readUsers,
 	deleteUserWithId,
+	updateUserWithId,
 } from './requests';
 
 //create context and export it
@@ -232,6 +233,10 @@ export const ContextProvider = memo(({ children }) => {
 	};
 
 	//delete user
+	/**
+	 * @description delete the user with an id
+	 * @param {number} id
+	 */
 	const deleteUser = (id) => {
 		instance
 			.delete(deleteUserWithId(id), {
@@ -239,6 +244,27 @@ export const ContextProvider = memo(({ children }) => {
 					'x-access-token': `${token}`,
 				},
 			})
+			.then((response) => setResponse(response?.status))
+			.catch((err) => setResponse(err.response?.status));
+	};
+
+	//update the user
+	const updateUser = (id, body) => {
+		console.log(body);
+		instance
+			.put(
+				updateUserWithId(id),
+				{
+					name: body?.name,
+					username: body?.userName,
+					email: body?.email,
+				},
+				{
+					headers: {
+						'x-access-token': `${token}`,
+					},
+				},
+			)
 			.then((response) => setResponse(response?.status))
 			.catch((err) => setResponse(err.response?.status));
 	};
@@ -315,6 +341,7 @@ export const ContextProvider = memo(({ children }) => {
 				categories,
 				users,
 				deleteUser,
+				updateUser,
 			}}>
 			{children}
 		</Context.Provider>

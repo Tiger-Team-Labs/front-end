@@ -32,3 +32,4 @@ export const readUsers = '/users/';
 //delete user with id
 export const deleteUserWithId = (id) => `/users/${id}`;
 //update user with id
+export const updateUserWithId = (id) => `/users/${id}`;

@@ -46,6 +46,8 @@ import { AdminUsers } from '../../components/AdminUsers';
 import { ShowCategories } from '../../components/ShowCategories';
 //import delete user
 import { DeleteUser } from '../../components/DeleteUser';
+//import update user
+import { UpdateUser } from '../../components/UpdateUser';
 
 export const Dashboard = memo(() => {
 	//use styles
@@ -157,9 +159,14 @@ export const Dashboard = memo(() => {
 						{handleSwitch(dashboardOption)}
 					</Paper>
 					{dashboardOption === 4 && (
-						<Paper>
-							<DeleteUser />
-						</Paper>
+						<>
+							<Paper className={classes.paper}>
+								<UpdateUser />
+							</Paper>
+							<Paper className={classes.paper}>
+								<DeleteUser />
+							</Paper>
+						</>
 					)}
 				</Container>
 			</main>
