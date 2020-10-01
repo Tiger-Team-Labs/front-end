@@ -10,6 +10,7 @@ import { useStyles } from '../../Style/'
 import { Context } from '../../utils/Contex';
 // import Axios
 import axios from 'axios';
+import {urlNewPost} from '../../utils/Route'
 
 
 export default function CreatePost() {
@@ -25,7 +26,6 @@ export default function CreatePost() {
 
   const classes = useStyles();
 
-  const urlNewPost = 'https://testing-api-foro.herokuapp.com/api/posts'
   
   const createNewPost = async () => {
     await axios.post(urlNewPost,valuesCreatePost,

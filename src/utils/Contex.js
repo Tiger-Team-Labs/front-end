@@ -146,6 +146,16 @@ const [openEditPost, setOpenEditPost] = useState(false);
       setOpenEditPost(false);
     };
 
+  // RemovePost
+const [openRemovePost, setOpenRemovePost] = useState(false);
+// Open or Close RemovePost
+const handleClickOpenRemovePost = () => {
+  setOpenRemovePost(true);
+};
+const handleCloseRemovePost = () => {
+  setOpenRemovePost(false);
+};
+
   // return Value
   return (
     <Context.Provider value={{
@@ -185,7 +195,11 @@ const [openEditPost, setOpenEditPost] = useState(false);
       openEditPost, 
       setOpenEditPost,
       handleClickOpenEditPost,
-      handleCloseEditPost
+      handleCloseEditPost,
+      openRemovePost, 
+      setOpenRemovePost,
+      handleClickOpenRemovePost,
+      handleCloseRemovePost
     }}>
       {children}
     </Context.Provider>
