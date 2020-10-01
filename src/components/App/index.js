@@ -1,6 +1,7 @@
 //import react
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Admin } from '../../pages/Admin';
 // bring pages Home
 import Home from '../../pages/Home'
 // import Post
@@ -23,6 +24,7 @@ export default function App() {
           <Route exact path="/login" component={Loading}/>
           <Route exact path="/posts" component={Post}/>
           <Route exact path="/posts/:post_id/edit" component={EditPost}/>
+          <Route exact path="/admin" component={Admin}/>
           <Route component={NotFound} />
         </Switch>
     </Layout>

@@ -7,6 +7,7 @@ import Loading from '../components/Loading';
 import Cards from '../components/Card'
 // import Context
 import { Context } from '../utils/Contex';
+import {urlCategories} from '../utils/Route'
 
 
 
@@ -17,8 +18,6 @@ export default function Home() {
   } = useContext(Context);
 
   // Require post 
-  const urlCategories = "https://testing-api-foro.herokuapp.com/api/categories"
-
   const bringCategories = async () => {
     await axios.get(urlCategories)
       .then(res => {
