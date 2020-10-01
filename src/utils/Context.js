@@ -251,6 +251,7 @@ export const ContextProvider = memo(({ children }) => {
 	//update the user
 	const updateUser = (id, body) => {
 		console.log(body);
+		console.log(id);
 		instance
 			.put(
 				updateUserWithId(id),
