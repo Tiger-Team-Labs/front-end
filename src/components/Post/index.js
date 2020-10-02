@@ -14,6 +14,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 //use spring animations
 import { Spring } from 'react-spring/renderprops';
+//import commits
+import { Commits } from '../Commits';
 
 //create post component and export it
 const Post = () => {
@@ -89,6 +91,7 @@ const Post = () => {
 					</Typography>
 				</CardContent>
 			</Card>
+			<Commits />
 		</>
 	);
 };
