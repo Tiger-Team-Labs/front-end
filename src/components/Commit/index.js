@@ -29,14 +29,20 @@ const useStyles = makeStyles(() => ({
 	},
 }));
 
-export const Message = () => {
+export const Commit = () => {
 	//use local state
 	const [isOpen, setIsOpen] = useState(false);
 	const [message, setMessage] = useState('example');
 	//use styles
 	const classes = useStyles();
 
-	const EditMessage = () => <Input className={classes.input} value={message} />;
+	const EditMessage = () => (
+		<Input
+			onChange={(e) => setMessage(e.target.value)}
+			className={classes.input}
+			value={message}
+		/>
+	);
 
 	return (
 		<Card className={classes.root}>
@@ -46,7 +52,7 @@ export const Message = () => {
 				) : (
 					<CardContent className={classes.content}>
 						<Typography component='h5' variant='h5'>
-							Comment
+							{message}
 						</Typography>
 					</CardContent>
 				)}
