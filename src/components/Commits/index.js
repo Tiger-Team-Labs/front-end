@@ -17,6 +17,8 @@ export const Commits = () => {
 	const [localCommits, setLocalCommits] = useState([]);
 	//use styles
 	const classes = useStyles();
+	//use context
+	const { user } = useContext(Context);
 
 	//use effect to bring the commits
 	useEffect(() => {
@@ -28,7 +30,7 @@ export const Commits = () => {
 		bringUsers();
 	}, []);
 
-	console.log(localCommits);
+	// console.log(localCommits);
 
 	return (
 		<Paper className={classes.paper}>

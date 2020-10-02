@@ -7,5 +7,6 @@ export const useStyles = makeStyles((theme) => ({
 		overflow: 'auto',
 		flexDirection: 'column',
 		marginTop: '1rem',
+		background: 'transparent',
 	},
 }));

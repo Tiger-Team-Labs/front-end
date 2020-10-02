@@ -48,7 +48,9 @@ const Post = () => {
 		setLastUpdate(post?.updatedAt);
 	}, [post]);
 
+	//use styles
 	const classes = useStyles();
+	console.log(post);
 
 	return (
 		<>
@@ -91,6 +93,7 @@ const Post = () => {
 					</Typography>
 				</CardContent>
 			</Card>
+			{/*the commits, pass data to the commits*/}
 			<Commits />
 		</>
 	);
