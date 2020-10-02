@@ -13,6 +13,7 @@ import Layout from '../Layout'
 import Loading from '../Loading';
 // import error NotFound pages
 import NotFound from '../NotFound'
+import RemovePost from '../RemovePost'
 
 //create and export App component
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
           <Route exact path="/login" component={Loading}/>
           <Route exact path="/posts" component={Post}/>
           <Route exact path="/posts/:post_id/edit" component={EditPost}/>
+          <Route exact path="/posts/:post_id/remove" component={RemovePost}/>
           <Route exact path="/admin" component={Admin}/>
           <Route component={NotFound} />
         </Switch>

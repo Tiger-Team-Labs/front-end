@@ -11,8 +11,6 @@ import { Link } from 'react-router-dom';
 import { useStyles } from '../../Style/'
 // import Context
 import { Context } from '../../utils/Contex';
-import RemovePost from '../RemovePost'
-
 
 export default function CardPost(props) {
   const classes = useStyles();
@@ -21,6 +19,7 @@ export default function CardPost(props) {
     user,
     handleClickOpenEditPost
   } = useContext(Context);
+
 
   return (
     <div className={classes.cardPost}>
@@ -45,17 +44,18 @@ export default function CardPost(props) {
       </Accordion>
       {user !== undefined
         ? <>
-          <IconButton edge="end"  >
-            <Link onClick={() => handleClickOpenEditPost()} to={`/posts/${props.data._id}/edit`} className={classes.cardPostButton}>
+          <IconButton onClick={() => handleClickOpenEditPost()} edge="end"  >
+            <Link  to={`/posts/${props.data._id}/edit`} className={classes.cardPostButton}>
               <EditIcon color="primary" />
             </Link>
           </IconButton>
-          <IconButton>
-            <DeleteIcon color="secondary" onClick={() => handleClickOpenRemovePost()} className={classes.cardPostButton} />
+          <IconButton onClick={() => handleClickOpenRemovePost()}>
+          <Link  to={`/posts/${props.data._id}/remove`} className={classes.cardPostButton}>
+            <DeleteIcon color="secondary"  className={classes.cardPostButton} />
+          </Link>
           </IconButton>
         </>
         : null}
-        <RemovePost id={props.data._id} />
     </div>
   );
 }
