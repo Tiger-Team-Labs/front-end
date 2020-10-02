@@ -1,3 +1,4 @@
+import { blue } from '@material-ui/core/colors';
 import { makeStyles } from '@material-ui/core/styles'
 
 export const useStyles = makeStyles((theme) => ({
@@ -37,6 +38,11 @@ export const useStyles = makeStyles((theme) => ({
   form: {
     '& > *': {
       margin: theme.spacing(1),
+    }
+  },
+  admin: {
+    '& > *': {
+      marginTop: theme.spacing(1),
     }
   },
 }));

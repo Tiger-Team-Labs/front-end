@@ -18,6 +18,7 @@ export const Admin = () => {
   // stateGlobal
   const {
     user,
+    setOpenAlertWarning
   } = useContext(Context);
   // styles
   const classes = useStyles();
@@ -33,7 +34,6 @@ export const Admin = () => {
     // Funcion state handleChange ModalCreateCategories
   const handleChangeCreateCategories = (event) => {
     setValueCategory({ ...valuecategory, [event.target.name]: event.target.value })
-    console.log(valuecategory);
   }
   // Create New category whit axios
   const createNewCategory = async () => {
@@ -44,16 +44,20 @@ export const Admin = () => {
       })
       .then(res => {
         console.log(res)
+        // refresh category
         bringCategories()
-      //   handleCloseCreatePost()
-      //   setValuesCreatePost({
-      //     title:"",
-      //     content:""})
+        // closeModal
+        modalCreateOpenClose()
+        // clean de form
+        setValueCategory({
+          name:"",
+        })
       })
       .catch (error => {
       console.error(`Algo pasó en createNewCategory: ${error}`)
-      // handleClickOpenFormDialog()
-
+       // openModal
+      modalCreateOpenClose()
+      setOpenAlertWarning(true)
     })
   }
   // HandleSubmit Modal New Category
@@ -64,7 +68,6 @@ export const Admin = () => {
     createNewCategory();
     // closeModal
     modalCreateOpenClose();
-    console.log('Se enviaron los datos');
   }
 
 
@@ -99,8 +102,8 @@ export const Admin = () => {
     );
   }
   return (
-    <section>
-      <Button onClick={() => modalCreateOpenClose()} variant="contained" color="secondary">
+    <section className={classes.admin}>
+      <Button  onClick={() => modalCreateOpenClose()} variant="contained" color="secondary">
         Agregar categoria
       </Button>
       <TableContainer>
