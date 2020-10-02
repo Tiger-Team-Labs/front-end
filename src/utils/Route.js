@@ -5,6 +5,8 @@ export const urlNewPost = `${urlBase}/posts`
 
 export const urlCategories = `${urlBase}/categories`
 
+export const urlSignUp = `${urlBase}/auth/signup`
+
 
 
 

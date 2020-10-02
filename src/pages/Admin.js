@@ -1,15 +1,72 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { urlCategories } from '../utils/Route'
-import { Button, TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from '@material-ui/core'
+import { Dialog, Button, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, DialogTitle, DialogContent, TextField } from '@material-ui/core'
 // import Axios
 import axios from 'axios';
 // Loading
 import Loading from '../components/Loading'
+// icons
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
+import { useStyles } from '../Style/index'
+// import Context
+import { Context } from '../utils/Contex';
 
 
 
 export const Admin = () => {
-  const [categories, setCategories] = useState({})
+  // stateGlobal
+  const {
+    user,
+  } = useContext(Context);
+  // styles
+  const classes = useStyles();
+// state of categories
+  const [categories, setCategories] = useState("")
+  // state modalCreateCategories
+  const [openModalCreate, setOpenModalCreate] = useState(false)
+
+  // state handleChange ModalCreateCategories
+  const[valuecategory, setValueCategory] = useState({
+    name:"",
+  })
+    // Funcion state handleChange ModalCreateCategories
+  const handleChangeCreateCategories = (event) => {
+    setValueCategory({ ...valuecategory, [event.target.name]: event.target.value })
+    console.log(valuecategory);
+  }
+  // Create New category whit axios
+  const createNewCategory = async () => {
+    await axios.post(urlCategories,valuecategory,
+      {
+        headers: {
+          'x-access-token' : `${user?.token}`}
+      })
+      .then(res => {
+        console.log(res)
+        bringCategories()
+      //   handleCloseCreatePost()
+      //   setValuesCreatePost({
+      //     title:"",
+      //     content:""})
+      })
+      .catch (error => {
+      console.error(`Algo pasó en createNewCategory: ${error}`)
+      // handleClickOpenFormDialog()
+
+    })
+  }
+  // HandleSubmit Modal New Category
+  const handleSubmitNewCategory = event => {
+    // PreventRefresh
+    event.preventDefault();
+    // axiosNewCategory
+    createNewCategory();
+    // closeModal
+    modalCreateOpenClose();
+    console.log('Se enviaron los datos');
+  }
+
 
 
   // Require post 
@@ -17,7 +74,6 @@ export const Admin = () => {
     await axios.get(urlCategories)
       .then(res => {
         setCategories(res.data)
-        console.log(`Llamado bringCategories ${res.data.name}`);
       })
       .catch(err => { console.log(`Algo paso, aquí te lo muestro: ${err}`) })
   }
@@ -26,6 +82,13 @@ export const Admin = () => {
   useEffect(() => {
     bringCategories();
   }, []);
+
+  // open and close ModalCreate
+  const modalCreateOpenClose = () => {
+    setOpenModalCreate(!openModalCreate)
+  }
+
+
 
   // show loadign 
   if (categories.length === 0) {
@@ -37,7 +100,7 @@ export const Admin = () => {
   }
   return (
     <section>
-      <Button variant="contained" color="secondary">
+      <Button onClick={() => modalCreateOpenClose()} variant="contained" color="secondary">
         Agregar categoria
       </Button>
       <TableContainer>
@@ -51,15 +114,65 @@ export const Admin = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            <TableRow>
-            <TableCell>
-              otro fila
-            </TableCell>
-            </TableRow>
+            {categories.map(category => {
+              return (
+                <TableRow key={category._id}>
+                  <TableCell>
+                    {category.name}
+                  </TableCell>
+                  <TableCell>
+                    {category._id}
+                  </TableCell>
+                  <TableCell>
+                    {category.__v}
+                  </TableCell>
+                  <TableCell>
+                    <EditIcon onClick={() => {
+                      console.log(category._id)
+                      console.log('Otra funcion al mismo tiempo')
+                    }} />
+                    <DeleteIcon />
+                  </TableCell>
+                </TableRow>
+              )
+            })}
           </TableBody>
         </Table>
       </TableContainer>
-      
+
+      {/* modal Create Start*/}
+      <Dialog
+        open={openModalCreate}
+        onClose={() => modalCreateOpenClose()}
+        aria-labelledby="form-dialog-title">
+        <DialogTitle> Create New category </DialogTitle>
+        <DialogContent>
+          <form 
+            className={classes.createPost} 
+            onSubmit={handleSubmitNewCategory}
+          >
+            <TextField
+              autoFocus
+              fullWidth
+              required
+              margin="dense"
+              id="name"
+              label="Category"
+              name="name"
+              variant="outlined"
+              value={valuecategory.name}
+              onChange={handleChangeCreateCategories}
+              />
+            <Button fullWidth variant="contained" color="primary" type="submit" >
+              Create
+            </Button>
+            <Button onClick={() => modalCreateOpenClose()} fullWidth variant="contained" color="secondary"  >
+              Cancel
+            </Button>
+          </form>
+        </DialogContent>
+      </Dialog>
+      {/* modal Create end */}
     </section>
   )
 }
