@@ -41,15 +41,21 @@ export default function RemovePost(props) {
       })
   }
 
+  const cancellRemovePost = () => {
+    props.history.push('/posts')
+  }
 
 
   return (
     <div>
       <Dialog open={openRemovePost} onClose={()=>handleCloseRemovePost()} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Estás seguro de borrar el Post id: ${props.match.params.post_id}</DialogTitle>
+        <DialogTitle id="form-dialog-title">¿Are you sure about remove the post?</DialogTitle>
         <DialogContent>
-          <Button onClick={() => postRemoveById()} variant="contained" color="primary">
+          <Button onClick={() => postRemoveById()} variant="contained" color="secondary" fullWidth>
             YES
+          </Button>
+          <Button onClick={() => cancellRemovePost()} variant="contained" color="primary" fullWidth>
+            No
           </Button>
         </DialogContent>
       </Dialog>
