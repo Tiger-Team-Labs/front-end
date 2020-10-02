@@ -30,7 +30,7 @@ export const Commits = ({ id }) => {
 
 	return (
 		<Paper className={classes.paper}>
-			<Commit />
+			{localCommits?.comments?.length > 0 ? <Commit /> : <></>}
 		</Paper>
 	);
 };
