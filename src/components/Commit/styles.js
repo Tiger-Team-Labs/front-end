@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 export const useStyles = makeStyles(() => ({
 	root: {
 		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
 	},
 	details: {
 		display: 'flex',
@@ -14,5 +16,6 @@ export const useStyles = makeStyles(() => ({
 	input: {
 		padding: '.5rem',
 		margin: '.5em',
+		minWidth: '50vw',
 	},
 }));

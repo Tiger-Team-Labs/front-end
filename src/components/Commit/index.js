@@ -30,6 +30,8 @@ export const Commit = () => {
 						onChange={(e) => setMessage(e.target.value)}
 						className={classes.input}
 						value={message}
+						multiline
+						rowsMax={5}
 					/>
 				) : (
 					<CardContent className={classes.content}>

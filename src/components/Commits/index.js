@@ -8,11 +8,15 @@ import { instance, commits } from '../../utils/requests';
 import { Context } from '../../utils/Context';
 //import components
 import { Paper } from '@material-ui/core';
+//import styles
+import { useStyles } from './styles';
 
 //create and export commits
 export const Commits = () => {
 	//use local state
 	const [localCommits, setLocalCommits] = useState([]);
+	//use styles
+	const classes = useStyles();
 
 	//use effect to bring the commits
 	useEffect(() => {
@@ -27,7 +31,7 @@ export const Commits = () => {
 	console.log(localCommits);
 
 	return (
-		<Paper>
+		<Paper className={classes.paper}>
 			<Commit />
 		</Paper>
 	);
