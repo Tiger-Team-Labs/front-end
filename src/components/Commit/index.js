@@ -1,33 +1,18 @@
 //import react
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+//import material ui components
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 //import input
-import Input from '@material-ui/core/Input';
+import TextField from '@material-ui/core/TextField';
 //import icons
 import DeleteIcon from '@material-ui/icons/Delete';
 import CreateIcon from '@material-ui/icons/Create';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
-
-const useStyles = makeStyles(() => ({
-	root: {
-		display: 'flex',
-	},
-	details: {
-		display: 'flex',
-		flexDirection: 'column',
-	},
-	content: {
-		flex: '1 0 auto',
-	},
-	input: {
-		padding: '.5rem',
-		margin: '.5em',
-	},
-}));
+//import styles
+import { useStyles } from './styles';
 
 export const Commit = () => {
 	//use local state
@@ -36,19 +21,16 @@ export const Commit = () => {
 	//use styles
 	const classes = useStyles();
 
-	const EditMessage = () => (
-		<Input
-			onChange={(e) => setMessage(e.target.value)}
-			className={classes.input}
-			value={message}
-		/>
-	);
-
 	return (
 		<Card className={classes.root}>
 			<div className={classes.details}>
 				{isOpen ? (
-					<EditMessage />
+					<TextField
+						type=''
+						onChange={(e) => setMessage(e.target.value)}
+						className={classes.input}
+						value={message}
+					/>
 				) : (
 					<CardContent className={classes.content}>
 						<Typography component='h5' variant='h5'>
