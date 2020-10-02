@@ -50,7 +50,6 @@ const Post = () => {
 
 	//use styles
 	const classes = useStyles();
-	console.log(post);
 
 	return (
 		<>
@@ -94,7 +93,7 @@ const Post = () => {
 				</CardContent>
 			</Card>
 			{/*the commits, pass data to the commits*/}
-			<Commits />
+			<Commits id={post?._id} />
 		</>
 	);
 };
