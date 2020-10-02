@@ -93,7 +93,7 @@ const Post = () => {
 				</CardContent>
 			</Card>
 			{/*the commits, pass data to the commits*/}
-			<Commits id={post?._id} />
+			<Commits post={post?._id} />
 		</>
 	);
 };

@@ -10,7 +10,7 @@ import { Paper } from '@material-ui/core';
 import { useStyles } from './styles';
 
 //create and export commits
-export const Commits = ({ id }) => {
+export const Commits = ({ post }) => {
 	//use local state
 	const [localCommits, setLocalCommits] = useState([]);
 	//use styles
@@ -20,11 +20,11 @@ export const Commits = ({ id }) => {
 	useEffect(() => {
 		const bringUsers = async () =>
 			await instance
-				.get(commits(id))
+				.get(commits(post))
 				.then((response) => setLocalCommits(response?.data || ''));
 
 		bringUsers();
-	}, [id]);
+	}, [post]);
 
 	console.log(localCommits);
 
