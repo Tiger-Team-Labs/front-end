@@ -22,25 +22,32 @@ export const Admin = () => {
   } = useContext(Context);
   // styles
   const classes = useStyles();
-// state of categories
+  // state of categories
   const [categories, setCategories] = useState("")
   // state modalCreateCategories
   const [openModalCreate, setOpenModalCreate] = useState(false)
+  // Modal Edit
+  const [editcategory, setEditCategory] = useState(false)
+
+  const editCategoryTrueFalse = () => {
+      setEditCategory(true)
+  }
 
   // state handleChange ModalCreateCategories
-  const[valuecategory, setValueCategory] = useState({
-    name:"",
+  const [valuecategory, setValueCategory] = useState({
+    name: "",
   })
-    // Funcion state handleChange ModalCreateCategories
+  // Funcion state handleChange ModalCreateCategories
   const handleChangeCreateCategories = (event) => {
     setValueCategory({ ...valuecategory, [event.target.name]: event.target.value })
   }
   // Create New category whit axios
   const createNewCategory = async () => {
-    await axios.post(urlCategories,valuecategory,
+    await axios.post(urlCategories, valuecategory,
       {
         headers: {
-          'x-access-token' : `${user?.token}`}
+          'x-access-token': `${user?.token}`
+        }
       })
       .then(res => {
         console.log(res)
@@ -50,15 +57,15 @@ export const Admin = () => {
         modalCreateOpenClose()
         // clean de form
         setValueCategory({
-          name:"",
+          name: "",
         })
       })
-      .catch (error => {
-      console.error(`Algo pasó en createNewCategory: ${error}`)
-       // openModal
-      modalCreateOpenClose()
-      setOpenAlertWarning(true)
-    })
+      .catch(error => {
+        console.error(`Algo pasó en createNewCategory: ${error}`)
+        // openModal
+        modalCreateOpenClose()
+        setOpenAlertWarning(true)
+      })
   }
   // HandleSubmit Modal New Category
   const handleSubmitNewCategory = event => {
@@ -90,7 +97,13 @@ export const Admin = () => {
   const modalCreateOpenClose = () => {
     setOpenModalCreate(!openModalCreate)
   }
+  
 
+  const mostrarId = (id) => {
+    console.log(`id a traves de la función : ${id.name}`);
+    setValueCategory(id)
+    
+  }
 
 
   // show loadign 
@@ -103,8 +116,8 @@ export const Admin = () => {
   }
   return (
     <section className={classes.admin}>
-      <Button  onClick={() => modalCreateOpenClose()} variant="contained" color="secondary">
-        Agregar categoria
+      <Button onClick={() => {modalCreateOpenClose(); setEditCategory(false)}} variant="contained" color="secondary">
+        Agree category 
       </Button>
       <TableContainer>
         <Table stickyHeader aria-label="sticky table">
@@ -131,8 +144,9 @@ export const Admin = () => {
                   </TableCell>
                   <TableCell>
                     <EditIcon onClick={() => {
-                      console.log(category._id)
-                      console.log('Otra funcion al mismo tiempo')
+                      setEditCategory(true)
+                      modalCreateOpenClose()
+                      mostrarId(category)
                     }} />
                     <DeleteIcon />
                   </TableCell>
@@ -148,10 +162,10 @@ export const Admin = () => {
         open={openModalCreate}
         onClose={() => modalCreateOpenClose()}
         aria-labelledby="form-dialog-title">
-        <DialogTitle> Create New category </DialogTitle>
+        <DialogTitle> {editcategory? "Edit" : "Create"}  category </DialogTitle>
         <DialogContent>
-          <form 
-            className={classes.createPost} 
+          <form
+            className={classes.createPost}
             onSubmit={handleSubmitNewCategory}
           >
             <TextField
@@ -163,12 +177,21 @@ export const Admin = () => {
               label="Category"
               name="name"
               variant="outlined"
-              value={valuecategory.name}
+              value={editcategory? valuecategory.name :  valuecategory.name}
               onChange={handleChangeCreateCategories}
-              />
+            />
+            {editcategory 
+            ? 
+            <Button fullWidth variant="contained" color="primary"  >
+              Actualizar
+            </Button>
+            :
             <Button fullWidth variant="contained" color="primary" type="submit" >
               Create
             </Button>
+            
+            }
+          
             <Button onClick={() => modalCreateOpenClose()} fullWidth variant="contained" color="secondary"  >
               Cancel
             </Button>
