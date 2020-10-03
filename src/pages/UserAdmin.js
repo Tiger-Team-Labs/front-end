@@ -22,13 +22,12 @@ export const UserAdmin = () => {
   } = useContext(Context);
   // styles
   const classes = useStyles();
-  // state of categories
-  const [categories, setCategories] = useState("")
+  // state of users
+  const [users, setUsers] = useState("")
   // state modalCreateCategories
   const [openModalCreate, setOpenModalCreate] = useState(false)
   // Modal Remove
   const [openModalRemove, setOpenModalRemove] = useState(false)
-
   // state handleChange ModalCreateCategories
   const [valuecategory, setValueCategory] = useState({
     name: "",
@@ -46,7 +45,7 @@ export const UserAdmin = () => {
       }
     })
       .then(res => {
-        setCategories(res.data)
+        setUsers(res.data)
       })
       .catch(err => { console.log(`Algo paso, aquí te lo muestro: ${err}`) })
   }
@@ -136,7 +135,7 @@ export const UserAdmin = () => {
 
 
   // show loadign 
-  if (categories.length === 0) {
+  if (users.length === 0) {
     return (
       <>
         <Loading />
@@ -162,7 +161,7 @@ export const UserAdmin = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {categories.map(category => {
+            {users.map(category => {
               return (
                 <TableRow key={category._id}>
                   <TableCell>{category.name}</TableCell>
