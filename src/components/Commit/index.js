@@ -64,7 +64,7 @@ export const Commit = ({ content, author, id }) => {
 						onClick={() => setIsOpen((value) => (value = true))}>
 						<CreateIcon />
 					</IconButton>
-					<IconButton onClick={() => console.log('click')} color='inherit'>
+					<IconButton onClick={() => deleteCommit(id)} color='inherit'>
 						<DeleteIcon />
 					</IconButton>
 				</>
