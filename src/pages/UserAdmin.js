@@ -73,7 +73,7 @@ export const UserAdmin = () => {
       })
       .then(res => {
         console.log(res)
-        // refresh category
+        // refresh Users
         bringUsers()
         // closeModal
         modalEditOpenClose()
@@ -83,31 +83,31 @@ export const UserAdmin = () => {
         })
       })
       .catch(error => {
-        console.error(`Algo pasó en createNewCategory: ${error}`)
+        console.error(`Algo pasó en EditUser: ${error}`)
         // openModal
         modalEditOpenClose()
         setOpenAlertWarning(true)
       })
   }
-  const updateValuesCategory = (id) => {
-    setValueUser(id)
+  const updateValuesUser = (user) => {
+    setValueUser(user)
   }
-  // HandleSubmit Modal Edit Category
-  const handleSubmitEditCategory = event => {
+  // HandleSubmit Modal Edit User
+  const handleSubmitEditUser = event => {
     // PreventRefresh
     event.preventDefault();
-    // axiosNewCategory
+    // Bring data Users
     editUser();
     // closeModal
     modalEditOpenClose();
   }
 
-  // Remove Category
+  // Remove USER
   const modalRemoveOpenClose = () => {
     setOpenModalRemove(!openModalRemove)
   }
-  // Remove category whit axios
-  const removeCategory = async () => {
+  // Remove user whit axios
+  const removeUser = async () => {
     await axios.delete(urlUser + valueUser._id,
       {
         headers: {
@@ -116,7 +116,7 @@ export const UserAdmin = () => {
       })
       .then(res => {
         console.log(res)
-        // refresh category
+        // refresh user
         bringUsers()
         // closeModal
         modalRemoveOpenClose()
@@ -126,7 +126,7 @@ export const UserAdmin = () => {
         })
       })
       .catch(error => {
-        console.error(`Algo pasó en createNewCategory: ${error}`)
+        console.error(`Algo pasó al tratar de Eliminar un usuario: ${error}`)
         // openModal
         modalRemoveOpenClose()
         setOpenAlertWarning(true)
@@ -156,31 +156,30 @@ export const UserAdmin = () => {
               <TableCell>Password</TableCell>
               <TableCell>Id</TableCell>
               <TableCell>Updated At</TableCell>
-
               <TableCell>Action</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {users.map(category => {
+            {users.map(user => {
               return (
-                <TableRow key={category._id}>
-                  <TableCell>{category.name}</TableCell>
-                  <TableCell>{category.roles[0]}</TableCell>
-                  <TableCell>{category.username}</TableCell>
-                  <TableCell>{category.email}</TableCell>
-                  <TableCell size={"small"}>{category.password}</TableCell>
-                  <TableCell>{category._id}</TableCell>
-                  <TableCell>{category.updatedAt} </TableCell>
+                <TableRow key={user._id}>
+                  <TableCell>{user.name}</TableCell>
+                  <TableCell>{user.roles[0]}</TableCell>
+                  <TableCell>{user.username}</TableCell>
+                  <TableCell>{user.email}</TableCell>
+                  <TableCell size={"small"}>{user.password}</TableCell>
+                  <TableCell>{user._id}</TableCell>
+                  <TableCell>{user.updatedAt} </TableCell>
 
                   <TableCell>
                     <EditIcon onClick={() => {
                       modalEditOpenClose()
-                      updateValuesCategory(category)
+                      updateValuesUser(user)
                     }} />
                     <DeleteIcon onClick={() => {
-                      console.log(category._id)
+                      console.log(user._id)
                       modalRemoveOpenClose()
-                      updateValuesCategory(category)
+                      updateValuesUser(user)
                     }} />
                   </TableCell>
                 </TableRow>
@@ -199,7 +198,7 @@ export const UserAdmin = () => {
         <DialogContent>
           <form
             className={classes.createPost}
-            onSubmit={handleSubmitEditCategory}
+            onSubmit={handleSubmitEditUser}
           >
             <TextField
               autoFocus
@@ -207,7 +206,7 @@ export const UserAdmin = () => {
               required
               margin="dense"
               id="name"
-              label="Category"
+              label="Name"
               name="name"
               variant="outlined"
               value={valueUser.name}
@@ -238,8 +237,6 @@ export const UserAdmin = () => {
             <TextField
               fullWidth
               required
-              multiline
-              rows={3}
               margin="dense"
               id="password"
               label="Password"
@@ -250,8 +247,7 @@ export const UserAdmin = () => {
             />
             <Button fullWidth variant="contained" color="primary" type="submit" >
               Actualizar
-              </Button>
-
+            </Button>
             <Button onClick={() => modalEditOpenClose()} fullWidth variant="contained" color="secondary"  >
               Cancel
             </Button>
@@ -272,7 +268,7 @@ export const UserAdmin = () => {
           </Typography>
         </DialogContent>
         <div className={classes.action}>
-          <Button onClick={() => removeCategory()} className={classes.action} fullWidth variant="contained" color="primary">
+          <Button onClick={() => removeUser()} className={classes.action} fullWidth variant="contained" color="primary">
             Remove
         </Button>
         </div>
