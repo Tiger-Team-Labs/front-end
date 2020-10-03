@@ -6,6 +6,7 @@ import { Admin } from '../../pages/Admin';
 import Home from '../../pages/Home'
 // import Post
 import Post from '../../pages/Post';
+import { UserAdmin } from '../../pages/UserAdmin';
 import EditPost from '../EditPost';
 // bring pages layout
 import Layout from '../Layout'
@@ -27,6 +28,7 @@ export default function App() {
           <Route exact path="/posts/:post_id/edit" component={EditPost}/>
           <Route exact path="/posts/:post_id/remove" component={RemovePost}/>
           <Route exact path="/admin" component={Admin}/>
+          <Route exact path="/user" component={UserAdmin}/>
           <Route component={NotFound} />
         </Switch>
     </Layout>

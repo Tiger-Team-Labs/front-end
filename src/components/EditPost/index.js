@@ -36,7 +36,7 @@ export default function EditPost(props) {
   }, []);
 
   // select post by Id
-  const urlPostEdit = `${urlBase}/posts/${props.match.params.post_id}`
+  const urlPostEdit = `${urlBase}posts/${props.match.params.post_id}`
 const bringPostEdit = async () => {
   await axios.get(urlPostEdit)
     .then(res => {

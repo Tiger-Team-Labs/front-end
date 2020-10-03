@@ -24,7 +24,7 @@ export default function RemovePost(props) {
   // Start
   // Delete Post
   // select post by Id
-  const urlPostRemove = `${urlBase}/posts/${props.match.params.post_id}`
+  const urlPostRemove = `${urlBase}posts/${props.match.params.post_id}`
   const postRemoveById = async () => {
     await axios.delete(urlPostRemove, {
       headers: {

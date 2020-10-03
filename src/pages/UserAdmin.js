@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { urlCategories } from '../utils/Route'
+import { urlUser } from '../utils/Route'
 import { Dialog, Button, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, DialogTitle, DialogContent, TextField } from '@material-ui/core'
 // import Axios
 import axios from 'axios';
@@ -41,7 +41,7 @@ export const UserAdmin = () => {
   }
   // Create New category whit axios
   const createNewCategory = async () => {
-    await axios.post(urlCategories, valuecategory,
+    await axios.post(urlUser, valuecategory,
       {
         headers: {
           'x-access-token': `${user?.token}`
@@ -80,7 +80,11 @@ export const UserAdmin = () => {
 
   // Require post 
   const bringCategories = async () => {
-    await axios.get(urlCategories)
+    await axios.get(urlUser,{
+      headers: {
+        'x-access-token': `${user?.token}`
+      }
+    })
       .then(res => {
         setCategories(res.data)
       })
@@ -102,7 +106,7 @@ export const UserAdmin = () => {
   // Update EditCategory
   // Update Edit category whit axios
   const editCategory = async () => {
-    await axios.put(urlCategories + valuecategory._id, valuecategory,
+    await axios.put(urlUser + valuecategory._id, valuecategory,
       {
         headers: {
           'x-access-token': `${user?.token}`
@@ -145,7 +149,7 @@ export const UserAdmin = () => {
   }
   // Remove category whit axios
   const removeCategory = async () => {
-    await axios.delete(urlCategories + valuecategory._id,
+    await axios.delete(urlUser + valuecategory._id,
       {
         headers: {
           'x-access-token': `${user?.token}`
