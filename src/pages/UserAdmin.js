@@ -28,17 +28,17 @@ export const UserAdmin = () => {
   const [openModalEdit, setOpenModalEdit] = useState(false)
   // Modal Remove Users
   const [openModalRemove, setOpenModalRemove] = useState(false)
-  // state handleChange  EditUser
+  // state support  EditUser
   const [valueUser, setValueUser] = useState({
     name: "",
   })
-  // Funcion state handleChange ModalCreateCategories
-  const handleChangeCreateCategories = (event) => {
+  // Funcion state handleChange ModalEditUser
+  const handleChangeEditUser = (event) => {
     setValueUser({ ...valueUser, [event.target.name]: event.target.value })
   }
   
-  // Require post 
-  const bringCategories = async () => {
+  // Require Users 
+  const bringUsers = async () => {
     await axios.get(urlUser, {
       headers: {
         'x-access-token': `${user?.token}`
@@ -47,12 +47,12 @@ export const UserAdmin = () => {
       .then(res => {
         setUsers(res.data)
       })
-      .catch(err => { console.log(`Algo paso, aquí te lo muestro: ${err}`) })
+      .catch(err => { console.log(`Algo paso al traer a los usuarios, aquí te lo muestro: ${err}`) })
   }
 
-  // bring data Categories
+  // bring data User
   useEffect(() => {
-    bringCategories();
+    bringUsers();
     return;
   }, []);
 
@@ -74,7 +74,7 @@ export const UserAdmin = () => {
       .then(res => {
         console.log(res)
         // refresh category
-        bringCategories()
+        bringUsers()
         // closeModal
         modalCreateOpenClose()
         // clean de form
@@ -117,7 +117,7 @@ export const UserAdmin = () => {
       .then(res => {
         console.log(res)
         // refresh category
-        bringCategories()
+        bringUsers()
         // closeModal
         modalRemoveOpenClose()
         // clean de form
@@ -211,7 +211,7 @@ export const UserAdmin = () => {
               name="name"
               variant="outlined"
               value={valueUser.name}
-              onChange={handleChangeCreateCategories}
+              onChange={handleChangeEditUser}
             />
             <TextField
               fullWidth
@@ -222,7 +222,7 @@ export const UserAdmin = () => {
               name="username"
               variant="outlined"
               value={valueUser.username}
-              onChange={handleChangeCreateCategories}
+              onChange={handleChangeEditUser}
             />
             <TextField
               fullWidth
@@ -233,7 +233,7 @@ export const UserAdmin = () => {
               name="email"
               variant="outlined"
               value={valueUser.email}
-              onChange={handleChangeCreateCategories}
+              onChange={handleChangeEditUser}
             />
             <TextField
               fullWidth
@@ -246,7 +246,7 @@ export const UserAdmin = () => {
               name="password"
               variant="outlined"
               value={valueUser.password}
-              onChange={handleChangeCreateCategories}
+              onChange={handleChangeEditUser}
             />
             <Button fullWidth variant="contained" color="primary" type="submit" >
               Actualizar
