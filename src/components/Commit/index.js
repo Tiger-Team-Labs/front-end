@@ -34,7 +34,6 @@ export const Commit = ({ content, author }) => {
 			<div className={classes.details}>
 				{isOpen ? (
 					<TextField
-						type=''
 						onChange={(e) => setMessage(e.target.value)}
 						className={classes.input}
 						value={message}
@@ -43,7 +42,7 @@ export const Commit = ({ content, author }) => {
 					/>
 				) : (
 					<CardContent className={classes.content}>
-						<Typography component='h5' variant='h5'>
+						<Typography component='h5' variant='p'>
 							{message}
 						</Typography>
 					</CardContent>
