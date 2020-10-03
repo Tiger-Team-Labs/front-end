@@ -24,17 +24,17 @@ export const UserAdmin = () => {
   const classes = useStyles();
   // state of users
   const [users, setUsers] = useState("")
-  // state modalCreateCategories
-  const [openModalCreate, setOpenModalCreate] = useState(false)
-  // Modal Remove
+  // state modalEditUsers
+  const [openModalEdit, setOpenModalEdit] = useState(false)
+  // Modal Remove Users
   const [openModalRemove, setOpenModalRemove] = useState(false)
-  // state handleChange ModalCreateCategories
-  const [valuecategory, setValueCategory] = useState({
+  // state handleChange  EditUser
+  const [valueUser, setValueUser] = useState({
     name: "",
   })
   // Funcion state handleChange ModalCreateCategories
   const handleChangeCreateCategories = (event) => {
-    setValueCategory({ ...valuecategory, [event.target.name]: event.target.value })
+    setValueUser({ ...valueUser, [event.target.name]: event.target.value })
   }
   
   // Require post 
@@ -58,14 +58,14 @@ export const UserAdmin = () => {
 
   // open and close ModalCreate
   const modalCreateOpenClose = () => {
-    setOpenModalCreate(!openModalCreate)
+    setOpenModalEdit(!openModalEdit)
   }
 
 
   // Update EditCategory
   // Update Edit category whit axios
   const editCategory = async () => {
-    await axios.put(urlUser + valuecategory._id, valuecategory,
+    await axios.put(urlUser + valueUser._id, valueUser,
       {
         headers: {
           'x-access-token': `${user?.token}`
@@ -78,7 +78,7 @@ export const UserAdmin = () => {
         // closeModal
         modalCreateOpenClose()
         // clean de form
-        setValueCategory({
+        setValueUser({
           name: "",
         })
       })
@@ -90,7 +90,7 @@ export const UserAdmin = () => {
       })
   }
   const updateValuesCategory = (id) => {
-    setValueCategory(id)
+    setValueUser(id)
   }
   // HandleSubmit Modal Edit Category
   const handleSubmitEditCategory = event => {
@@ -108,7 +108,7 @@ export const UserAdmin = () => {
   }
   // Remove category whit axios
   const removeCategory = async () => {
-    await axios.delete(urlUser + valuecategory._id,
+    await axios.delete(urlUser + valueUser._id,
       {
         headers: {
           'x-access-token': `${user?.token}`
@@ -121,7 +121,7 @@ export const UserAdmin = () => {
         // closeModal
         modalRemoveOpenClose()
         // clean de form
-        setValueCategory({
+        setValueUser({
           name: "",
         })
       })
@@ -192,7 +192,7 @@ export const UserAdmin = () => {
 
       {/* modal Edit Start*/}
       <Dialog
-        open={openModalCreate}
+        open={openModalEdit}
         onClose={() => modalCreateOpenClose()}
         aria-labelledby="form-dialog-title">
         <DialogTitle> Edit  User </DialogTitle>
@@ -210,7 +210,7 @@ export const UserAdmin = () => {
               label="Category"
               name="name"
               variant="outlined"
-              value={valuecategory.name}
+              value={valueUser.name}
               onChange={handleChangeCreateCategories}
             />
             <TextField
@@ -221,7 +221,7 @@ export const UserAdmin = () => {
               label="User Name"
               name="username"
               variant="outlined"
-              value={valuecategory.username}
+              value={valueUser.username}
               onChange={handleChangeCreateCategories}
             />
             <TextField
@@ -232,7 +232,7 @@ export const UserAdmin = () => {
               label="Email"
               name="email"
               variant="outlined"
-              value={valuecategory.email}
+              value={valueUser.email}
               onChange={handleChangeCreateCategories}
             />
             <TextField
@@ -245,7 +245,7 @@ export const UserAdmin = () => {
               label="Password"
               name="password"
               variant="outlined"
-              value={valuecategory.password}
+              value={valueUser.password}
               onChange={handleChangeCreateCategories}
             />
             <Button fullWidth variant="contained" color="primary" type="submit" >
@@ -268,7 +268,7 @@ export const UserAdmin = () => {
         <DialogTitle> ¿Are you sure?  </DialogTitle>
         <DialogContent dividers>
           <Typography gutterBottom>
-            {`User ${valuecategory.name}  will be deleted forever `}
+            {`User ${valueUser.name}  will be deleted forever `}
           </Typography>
         </DialogContent>
         <div className={classes.action}>
