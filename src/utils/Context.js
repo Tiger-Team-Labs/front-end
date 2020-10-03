@@ -273,12 +273,12 @@ export const ContextProvider = memo(({ children }) => {
 
 	//delete commit
 	/**
-	 * @description delete the user with an id
+	 * @description delete the commit with an id
 	 * @param {number} id
 	 */
 	const deleteCommit = (id) => {
 		instance
-			.delete(deleteUserWithId(id), {
+			.delete(commits('', id), {
 				headers: {
 					'x-access-token': `${token}`,
 				},
@@ -360,6 +360,7 @@ export const ContextProvider = memo(({ children }) => {
 				users,
 				deleteUser,
 				updateUser,
+				deleteCommit,
 			}}>
 			{children}
 		</Context.Provider>

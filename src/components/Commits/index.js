@@ -27,8 +27,6 @@ export const Commits = ({ post }) => {
 		bringUsers();
 	}, [post]);
 
-	console.log(localCommits);
-
 	return (
 		<Paper className={classes.paper}>
 			{localCommits?.length > 0 &&
@@ -36,6 +34,7 @@ export const Commits = ({ post }) => {
 					<Commit
 						content={commit?.content}
 						author={commit?.author}
+						id={commit?._id}
 						key={commit?._id}
 					/>
 				))}

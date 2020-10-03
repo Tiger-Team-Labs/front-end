@@ -16,7 +16,7 @@ import { useStyles } from './styles';
 //import context
 import { Context } from '../../utils/Context';
 
-export const Commit = ({ content, author }) => {
+export const Commit = ({ content, author, id }) => {
 	//use local state
 	const [isOpen, setIsOpen] = useState(false);
 	const [message, setMessage] = useState('example');
@@ -24,14 +24,12 @@ export const Commit = ({ content, author }) => {
 	//use styles
 	const classes = useStyles();
 	//use context
-	const { user } = useContext(Context);
+	const { user, deleteCommit } = useContext(Context);
 	//use effect
 	useEffect(() => {
 		setMessage(content);
 		setLocalAuthor(author);
 	}, [author, content]);
-
-	console.log(user);
 
 	return (
 		<Card className={classes.root}>
@@ -59,14 +57,14 @@ export const Commit = ({ content, author }) => {
 					<HighlightOffIcon />
 				</IconButton>
 			)}
-			{!isOpen && user !== undefined && (
-				<>
+			{!isOpen && (
+				/*user !== undefined &&*/ <>
 					<IconButton
 						color='inherit'
 						onClick={() => setIsOpen((value) => (value = true))}>
 						<CreateIcon />
 					</IconButton>
-					<IconButton color='inherit'>
+					<IconButton onClick={() => console.log('click')} color='inherit'>
 						<DeleteIcon />
 					</IconButton>
 				</>
