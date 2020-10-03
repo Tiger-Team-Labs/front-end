@@ -198,6 +198,9 @@ export const UserAdmin = () => {
           <TableHead>
             <TableRow>
               <TableCell>Name</TableCell>
+              <TableCell>Roles</TableCell>
+              <TableCell>UserName</TableCell>
+              <TableCell>Email</TableCell>
               <TableCell>Id</TableCell>
               <TableCell>V</TableCell>
               <TableCell>Action</TableCell>
@@ -207,15 +210,12 @@ export const UserAdmin = () => {
             {categories.map(category => {
               return (
                 <TableRow key={category._id}>
-                  <TableCell>
-                    {category.name}
-                  </TableCell>
-                  <TableCell>
-                    {category._id}
-                  </TableCell>
-                  <TableCell>
-                    {category.__v}
-                  </TableCell>
+                  <TableCell>{category.name}</TableCell>
+                  <TableCell>{category.roles.name}</TableCell>
+                  <TableCell>{category.username}</TableCell>
+                  <TableCell>{category.email}</TableCell>
+                  <TableCell>{category._id}</TableCell>
+                  <TableCell>{category.__v}</TableCell>
                   <TableCell>
                     <EditIcon onClick={() => {
                       setEditCategory(true)
