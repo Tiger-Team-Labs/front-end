@@ -56,14 +56,14 @@ export const UserAdmin = () => {
     return;
   }, []);
 
-  // open and close ModalCreate
-  const modalCreateOpenClose = () => {
+  // open and close ModalEdit
+  const modalEditOpenClose = () => {
     setOpenModalEdit(!openModalEdit)
   }
 
 
-  // Update EditCategory
-  // Update Edit category whit axios
+  // Update EditUser
+  // Update Edit user  whit axios
   const editCategory = async () => {
     await axios.put(urlUser + valueUser._id, valueUser,
       {
@@ -76,7 +76,7 @@ export const UserAdmin = () => {
         // refresh category
         bringUsers()
         // closeModal
-        modalCreateOpenClose()
+        modalEditOpenClose()
         // clean de form
         setValueUser({
           name: "",
@@ -85,7 +85,7 @@ export const UserAdmin = () => {
       .catch(error => {
         console.error(`Algo pasó en createNewCategory: ${error}`)
         // openModal
-        modalCreateOpenClose()
+        modalEditOpenClose()
         setOpenAlertWarning(true)
       })
   }
@@ -99,7 +99,7 @@ export const UserAdmin = () => {
     // axiosNewCategory
     editCategory();
     // closeModal
-    modalCreateOpenClose();
+    modalEditOpenClose();
   }
 
   // Remove Category
@@ -174,7 +174,7 @@ export const UserAdmin = () => {
 
                   <TableCell>
                     <EditIcon onClick={() => {
-                      modalCreateOpenClose()
+                      modalEditOpenClose()
                       updateValuesCategory(category)
                     }} />
                     <DeleteIcon onClick={() => {
@@ -193,7 +193,7 @@ export const UserAdmin = () => {
       {/* modal Edit Start*/}
       <Dialog
         open={openModalEdit}
-        onClose={() => modalCreateOpenClose()}
+        onClose={() => modalEditOpenClose()}
         aria-labelledby="form-dialog-title">
         <DialogTitle> Edit  User </DialogTitle>
         <DialogContent>
@@ -252,7 +252,7 @@ export const UserAdmin = () => {
               Actualizar
               </Button>
 
-            <Button onClick={() => modalCreateOpenClose()} fullWidth variant="contained" color="secondary"  >
+            <Button onClick={() => modalEditOpenClose()} fullWidth variant="contained" color="secondary"  >
               Cancel
             </Button>
           </form>
