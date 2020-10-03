@@ -1,5 +1,5 @@
 //import react
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 //import material ui components
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -16,7 +16,7 @@ import { useStyles } from './styles';
 //import context
 import { Context } from '../../utils/Context';
 
-export const Commit = () => {
+export const Commit = ({ content, author }) => {
 	//use local state
 	const [isOpen, setIsOpen] = useState(false);
 	const [message, setMessage] = useState('example');
@@ -24,6 +24,10 @@ export const Commit = () => {
 	const classes = useStyles();
 	//use context
 	const { user } = useContext(Context);
+	//use effect
+	useEffect(() => {
+		setMessage(content);
+	}, []);
 
 	return (
 		<Card className={classes.root}>

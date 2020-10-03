@@ -33,7 +33,11 @@ export const Commits = ({ post }) => {
 		<Paper className={classes.paper}>
 			{localCommits?.length > 0 &&
 				localCommits.map((commit) => (
-					<Commit commit={commit} key={commit?._id} />
+					<Commit
+						content={commit?.content}
+						author={commit?.author}
+						key={commit?._id}
+					/>
 				))}
 		</Paper>
 	);
