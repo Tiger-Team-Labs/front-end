@@ -20,6 +20,7 @@ export const Commit = ({ content, author }) => {
 	//use local state
 	const [isOpen, setIsOpen] = useState(false);
 	const [message, setMessage] = useState('example');
+	const [localAuthor, setLocalAuthor] = useState('');
 	//use styles
 	const classes = useStyles();
 	//use context
@@ -27,7 +28,8 @@ export const Commit = ({ content, author }) => {
 	//use effect
 	useEffect(() => {
 		setMessage(content);
-	}, []);
+		setLocalAuthor(author);
+	}, [author, content]);
 
 	return (
 		<Card className={classes.root}>
@@ -42,22 +44,26 @@ export const Commit = ({ content, author }) => {
 					/>
 				) : (
 					<CardContent className={classes.content}>
-						<Typography component='h5' variant='p'>
+						<Typography component='h5' variant='body1'>
 							{message}
 						</Typography>
 					</CardContent>
 				)}
 			</div>
 			{isOpen ? (
-				<IconButton onClick={() => setIsOpen((value) => (value = false))}>
+				<IconButton
+					color='inherit'
+					onClick={() => setIsOpen((value) => (value = false))}>
 					<HighlightOffIcon />
 				</IconButton>
 			) : (
 				<>
-					<IconButton onClick={() => setIsOpen((value) => (value = true))}>
+					<IconButton
+						color='inherit'
+						onClick={() => setIsOpen((value) => (value = true))}>
 						<CreateIcon />
 					</IconButton>
-					<IconButton>
+					<IconButton color='inherit'>
 						<DeleteIcon />
 					</IconButton>
 				</>
