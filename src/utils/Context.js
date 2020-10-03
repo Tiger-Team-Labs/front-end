@@ -288,7 +288,13 @@ export const ContextProvider = memo(({ children }) => {
 	};
 
 	//update the user
+	/**
+	 * @description update and commit with id and the body of the request
+	 * @param {number} id
+	 * @param {string} content
+	 */
 	const updateCommit = (id, content) => {
+		console.log(content);
 		instance
 			.put(
 				commits('', id),

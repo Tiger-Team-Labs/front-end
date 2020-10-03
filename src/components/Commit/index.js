@@ -11,6 +11,7 @@ import TextField from '@material-ui/core/TextField';
 import DeleteIcon from '@material-ui/icons/Delete';
 import CreateIcon from '@material-ui/icons/Create';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import CheckIcon from '@material-ui/icons/Check';
 //import styles
 import { useStyles } from './styles';
 //import context
@@ -24,7 +25,7 @@ export const Commit = ({ content, author, id }) => {
 	//use styles
 	const classes = useStyles();
 	//use context
-	const { user, deleteCommit } = useContext(Context);
+	const { user, deleteCommit, updateCommit } = useContext(Context);
 	//use effect
 	useEffect(() => {
 		setMessage(content);
@@ -50,12 +51,17 @@ export const Commit = ({ content, author, id }) => {
 					</CardContent>
 				)}
 			</div>
-			{isOpen && user !== undefined && (
-				<IconButton
-					color='inherit'
-					onClick={() => setIsOpen((value) => (value = false))}>
-					<HighlightOffIcon />
-				</IconButton>
+			{isOpen && (
+				/*user !== undefined &&*/ <>
+					<IconButton color='inherit' onClick={() => updateCommit(id, message)}>
+						<CheckIcon />
+					</IconButton>
+					<IconButton
+						color='inherit'
+						onClick={() => setIsOpen((value) => (value = false))}>
+						<HighlightOffIcon />
+					</IconButton>
+				</>
 			)}
 			{!isOpen && (
 				/*user !== undefined &&*/ <>
