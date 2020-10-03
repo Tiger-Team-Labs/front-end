@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { urlUser } from '../utils/Route'
-import { Dialog, Button, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, DialogTitle, DialogContent, TextField } from '@material-ui/core'
+import { Dialog, Typography, Button, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, DialogTitle, DialogContent, TextField } from '@material-ui/core'
 // import Axios
 import axios from 'axios';
 // Loading
@@ -261,14 +261,16 @@ export const UserAdmin = () => {
       </Dialog>
       {/* modal  Edit End */}
 
-      {/* Modal Delete Start */}
+      {/* Modal Delete Start  */}
       <Dialog
         open={openModalRemove}
         onClose={() => modalRemoveOpenClose()}
       >
         <DialogTitle> ¿Are you sure?  </DialogTitle>
-        <DialogContent>
-          {`The ${valuecategory.name} category will be deleted forever `}
+        <DialogContent dividers>
+          <Typography gutterBottom>
+            {`User ${valuecategory.name}  will be deleted forever `}
+          </Typography>
         </DialogContent>
         <div className={classes.action}>
           <Button onClick={() => removeCategory()} className={classes.action} fullWidth variant="contained" color="primary">
