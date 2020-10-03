@@ -13,6 +13,7 @@ import { useStyles } from './styles';
 export const Commits = ({ post }) => {
 	//use local state
 	const [localCommits, setLocalCommits] = useState([]);
+	const [localResponse, setLocalResponse] = useState(undefined);
 	//use styles
 	const classes = useStyles();
 
@@ -21,11 +22,14 @@ export const Commits = ({ post }) => {
 		const bringUsers = async () =>
 			await instance
 				.get(commits(post))
-				.then((response) => response?.data)
+				.then((response) => {
+					setLocalResponse(response);
+					return response?.data;
+				})
 				.then((data) => setLocalCommits(data?.comments));
 
 		bringUsers();
-	}, [post]);
+	}, [post, localResponse]);
 
 	return (
 		<Paper className={classes.paper}>
