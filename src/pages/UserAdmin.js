@@ -64,7 +64,7 @@ export const UserAdmin = () => {
 
   // Update EditUser
   // Update Edit user  whit axios
-  const editCategory = async () => {
+  const editUser = async () => {
     await axios.put(urlUser + valueUser._id, valueUser,
       {
         headers: {
@@ -97,7 +97,7 @@ export const UserAdmin = () => {
     // PreventRefresh
     event.preventDefault();
     // axiosNewCategory
-    editCategory();
+    editUser();
     // closeModal
     modalEditOpenClose();
   }
