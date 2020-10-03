@@ -1,11 +1,11 @@
 //import react
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 //import commit component
 import { Commit } from '../Commit';
 //import request tools
 import { instance, commits } from '../../utils/requests';
 //import components
-import { Paper } from '@material-ui/core';
+import { Paper, Typography } from '@material-ui/core';
 //import styles
 import { useStyles } from './styles';
 
@@ -33,6 +33,9 @@ export const Commits = ({ post }) => {
 
 	return (
 		<Paper className={classes.paper}>
+			<Typography variant='caption' className={classes.title}>
+				Commits
+			</Typography>
 			{localCommits?.length > 0 &&
 				localCommits.map((commit) => (
 					<Commit

@@ -9,4 +9,8 @@ export const useStyles = makeStyles((theme) => ({
 		marginTop: '1rem',
 		background: 'transparent',
 	},
+	title: {
+		padding: '1rem 0',
+		color: 'white',
+	},
 }));
