@@ -80,7 +80,7 @@ export const UserAdmin = () => {
 
   // Require post 
   const bringCategories = async () => {
-    await axios.get(urlUser,{
+    await axios.get(urlUser, {
       headers: {
         'x-access-token': `${user?.token}`
       }
@@ -185,10 +185,11 @@ export const UserAdmin = () => {
   }
   return (
     <section className={classes.admin}>
-      <Button onClick={() => { 
-        modalCreateOpenClose(); 
-        setEditCategory(false); 
-        setValueCategory({name: "",})}}
+      <Button onClick={() => {
+        modalCreateOpenClose();
+        setEditCategory(false);
+        setValueCategory({ name: "", })
+      }}
         variant="contained" color="secondary"
       >
         Agree category
@@ -201,8 +202,10 @@ export const UserAdmin = () => {
               <TableCell>Roles</TableCell>
               <TableCell>UserName</TableCell>
               <TableCell>Email</TableCell>
+              <TableCell>Password</TableCell>
               <TableCell>Id</TableCell>
-              <TableCell>V</TableCell>
+              <TableCell>Updated At</TableCell>
+
               <TableCell>Action</TableCell>
             </TableRow>
           </TableHead>
@@ -211,11 +214,13 @@ export const UserAdmin = () => {
               return (
                 <TableRow key={category._id}>
                   <TableCell>{category.name}</TableCell>
-                  <TableCell>{category.roles.name}</TableCell>
+                  <TableCell>{category.roles[0]}</TableCell>
                   <TableCell>{category.username}</TableCell>
                   <TableCell>{category.email}</TableCell>
+                  <TableCell size={"small"}>{category.password}</TableCell>
                   <TableCell>{category._id}</TableCell>
-                  <TableCell>{category.__v}</TableCell>
+                  <TableCell>{category.updatedAt} </TableCell>
+
                   <TableCell>
                     <EditIcon onClick={() => {
                       setEditCategory(true)
@@ -258,20 +263,47 @@ export const UserAdmin = () => {
               label="Category"
               name="name"
               variant="outlined"
-              value={editcategory ? valuecategory.name : valuecategory.name}
+              value={valuecategory.name}
               onChange={handleChangeCreateCategories}
             />
-            {editcategory
-              ?
-              <Button fullWidth variant="contained" color="primary" type="submit" >
-                Actualizar
-            </Button>
-              :
-              <Button fullWidth variant="contained" color="primary" type="submit" >
-                Create
-            </Button>
-
-            }
+            <TextField
+              fullWidth
+              required
+              margin="dense"
+              id="username"
+              label="User Name"
+              name="username"
+              variant="outlined"
+              value={editcategory ? valuecategory.username : valuecategory.username}
+              onChange={handleChangeCreateCategories}
+            />
+            <TextField
+              fullWidth
+              required
+              margin="dense"
+              id="email"
+              label="Email"
+              name="email"
+              variant="outlined"
+              value={valuecategory.email}
+              onChange={handleChangeCreateCategories}
+            />
+            <TextField
+              fullWidth
+              required
+              multiline
+              rows={3}
+              margin="dense"
+              id="password"
+              label="Password"
+              name="password"
+              variant="outlined"
+              value={valuecategory.password}
+              onChange={handleChangeCreateCategories}
+            />
+            <Button fullWidth variant="contained" color="primary" type="submit" >
+              Actualizar
+              </Button>
 
             <Button onClick={() => modalCreateOpenClose()} fullWidth variant="contained" color="secondary"  >
               Cancel
@@ -291,7 +323,7 @@ export const UserAdmin = () => {
           {`The ${valuecategory.name} category will be deleted forever `}
         </DialogContent>
         <div className={classes.action}>
-          <Button onClick={()=>removeCategory()} className={classes.action} fullWidth variant="contained" color="primary">
+          <Button onClick={() => removeCategory()} className={classes.action} fullWidth variant="contained" color="primary">
             Remove
         </Button>
         </div>
