@@ -287,6 +287,24 @@ export const ContextProvider = memo(({ children }) => {
 			.catch((err) => setResponse(err.response?.status));
 	};
 
+	//update the user
+	const updateCommit = (id, content) => {
+		instance
+			.put(
+				commits('', id),
+				{
+					content: content,
+				},
+				{
+					headers: {
+						'x-access-token': `${token}`,
+					},
+				},
+			)
+			.then((response) => setResponse(response?.status))
+			.catch((err) => setResponse(err.response?.status));
+	};
+
 	//use effect for bring the posts and categories
 	/**
 	 * bring the data from de data base
@@ -361,6 +379,7 @@ export const ContextProvider = memo(({ children }) => {
 				deleteUser,
 				updateUser,
 				deleteCommit,
+				updateCommit,
 			}}>
 			{children}
 		</Context.Provider>
