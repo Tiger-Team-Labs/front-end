@@ -31,6 +31,8 @@ export const Commit = ({ content, author }) => {
 		setLocalAuthor(author);
 	}, [author, content]);
 
+	console.log(user);
+
 	return (
 		<Card className={classes.root}>
 			<div className={classes.details}>
@@ -50,13 +52,14 @@ export const Commit = ({ content, author }) => {
 					</CardContent>
 				)}
 			</div>
-			{isOpen ? (
+			{isOpen && user !== undefined && (
 				<IconButton
 					color='inherit'
 					onClick={() => setIsOpen((value) => (value = false))}>
 					<HighlightOffIcon />
 				</IconButton>
-			) : (
+			)}
+			{!isOpen && user !== undefined && (
 				<>
 					<IconButton
 						color='inherit'

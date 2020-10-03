@@ -16,6 +16,7 @@ import {
 	readUsers,
 	deleteUserWithId,
 	updateUserWithId,
+	commits,
 } from './requests';
 
 //create context and export it
@@ -266,6 +267,22 @@ export const ContextProvider = memo(({ children }) => {
 					},
 				},
 			)
+			.then((response) => setResponse(response?.status))
+			.catch((err) => setResponse(err.response?.status));
+	};
+
+	//delete commit
+	/**
+	 * @description delete the user with an id
+	 * @param {number} id
+	 */
+	const deleteCommit = (id) => {
+		instance
+			.delete(deleteUserWithId(id), {
+				headers: {
+					'x-access-token': `${token}`,
+				},
+			})
 			.then((response) => setResponse(response?.status))
 			.catch((err) => setResponse(err.response?.status));
 	};

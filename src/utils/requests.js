@@ -35,4 +35,4 @@ export const deleteUserWithId = (id) => `/users/${id}`;
 export const updateUserWithId = (id) => `/users/${id}`;
 //commits
 export const commits = (post, id) =>
-	id ? `/posts/${post}/comment/${id}` : `/posts/${post}/comment/`;
+	id ? `/posts/comment/${id}` : `/posts/${post}/comment/`;
