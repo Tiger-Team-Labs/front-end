@@ -234,7 +234,7 @@ export const Admin = () => {
       {/* modal Create or Edit Start*/}
       <Dialog
         open={openModalCreate}
-        onClose={() => modalRemoveOpenClose()}
+        onClose={() => modalCreateOpenClose()}
         aria-labelledby="form-dialog-title">
         <DialogTitle> {editcategory ? "Edit" : "Create"}  category </DialogTitle>
         <DialogContent>

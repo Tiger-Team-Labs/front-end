@@ -26,8 +26,6 @@ export const UserAdmin = () => {
   const [categories, setCategories] = useState("")
   // state modalCreateCategories
   const [openModalCreate, setOpenModalCreate] = useState(false)
-  // Modal Edit
-  const [editcategory, setEditCategory] = useState(false)
   // Modal Remove
   const [openModalRemove, setOpenModalRemove] = useState(false)
 
@@ -39,45 +37,7 @@ export const UserAdmin = () => {
   const handleChangeCreateCategories = (event) => {
     setValueCategory({ ...valuecategory, [event.target.name]: event.target.value })
   }
-  // Create New category whit axios
-  const createNewCategory = async () => {
-    await axios.post(urlUser, valuecategory,
-      {
-        headers: {
-          'x-access-token': `${user?.token}`
-        }
-      })
-      .then(res => {
-        console.log(res)
-        // refresh category
-        bringCategories()
-        // closeModal
-        modalCreateOpenClose()
-        // clean de form
-        setValueCategory({
-          name: "",
-        })
-      })
-      .catch(error => {
-        console.error(`Algo pasó en createNewCategory: ${error}`)
-        // openModal
-        modalCreateOpenClose()
-        setOpenAlertWarning(true)
-      })
-  }
-
-  // HandleSubmit Modal New Category
-  const handleSubmitNewCategory = event => {
-    // PreventRefresh
-    event.preventDefault();
-    // axiosNewCategory
-    createNewCategory();
-    // closeModal
-    modalCreateOpenClose();
-  }
-
-
-
+  
   // Require post 
   const bringCategories = async () => {
     await axios.get(urlUser, {
@@ -185,15 +145,7 @@ export const UserAdmin = () => {
   }
   return (
     <section className={classes.admin}>
-      <Button onClick={() => {
-        modalCreateOpenClose();
-        setEditCategory(false);
-        setValueCategory({ name: "", })
-      }}
-        variant="contained" color="secondary"
-      >
-        Agree category
-      </Button>
+      
       <TableContainer>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
@@ -223,7 +175,6 @@ export const UserAdmin = () => {
 
                   <TableCell>
                     <EditIcon onClick={() => {
-                      setEditCategory(true)
                       modalCreateOpenClose()
                       updateValuesCategory(category)
                     }} />
@@ -240,19 +191,16 @@ export const UserAdmin = () => {
         </Table>
       </TableContainer>
 
-      {/* modal Create or Edit Start*/}
+      {/* modal Edit Start*/}
       <Dialog
         open={openModalCreate}
-        onClose={() => modalRemoveOpenClose()}
+        onClose={() => modalCreateOpenClose()}
         aria-labelledby="form-dialog-title">
-        <DialogTitle> {editcategory ? "Edit" : "Create"}  category </DialogTitle>
+        <DialogTitle> Edit  User </DialogTitle>
         <DialogContent>
           <form
             className={classes.createPost}
-            onSubmit={editcategory
-              ? handleSubmitEditCategory
-              : handleSubmitNewCategory
-            }
+            onSubmit={handleSubmitEditCategory}
           >
             <TextField
               autoFocus
@@ -274,7 +222,7 @@ export const UserAdmin = () => {
               label="User Name"
               name="username"
               variant="outlined"
-              value={editcategory ? valuecategory.username : valuecategory.username}
+              value={valuecategory.username}
               onChange={handleChangeCreateCategories}
             />
             <TextField
@@ -311,7 +259,7 @@ export const UserAdmin = () => {
           </form>
         </DialogContent>
       </Dialog>
-      {/* modal Create or Edit End */}
+      {/* modal  Edit End */}
 
       {/* Modal Delete Start */}
       <Dialog
