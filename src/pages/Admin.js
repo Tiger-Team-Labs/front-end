@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { urlCategories } from '../utils/Route'
-import { Dialog, DialogActions, Button, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, DialogTitle, DialogContent, TextField } from '@material-ui/core'
+import { Dialog, Button, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, DialogTitle, DialogContent, TextField } from '@material-ui/core'
 // import Axios
 import axios from 'axios';
 // Loading
@@ -30,10 +30,6 @@ export const Admin = () => {
   const [editcategory, setEditCategory] = useState(false)
   // Modal Remove
   const [openModalRemove, setOpenModalRemove] = useState(false)
-
-  const editCategoryTrueFalse = () => {
-    setEditCategory(true)
-  }
 
   // state handleChange ModalCreateCategories
   const [valuecategory, setValueCategory] = useState({
@@ -94,6 +90,7 @@ export const Admin = () => {
   // bring data Categories
   useEffect(() => {
     bringCategories();
+    return;
   }, []);
 
   // open and close ModalCreate
@@ -184,7 +181,12 @@ export const Admin = () => {
   }
   return (
     <section className={classes.admin}>
-      <Button onClick={() => { modalCreateOpenClose(); setEditCategory(false) }} variant="contained" color="secondary">
+      <Button onClick={() => { 
+        modalCreateOpenClose(); 
+        setEditCategory(false); 
+        setValueCategory({name: "",})}}
+        variant="contained" color="secondary"
+      >
         Agree category
       </Button>
       <TableContainer>
