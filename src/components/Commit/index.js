@@ -53,7 +53,12 @@ export const Commit = ({ content, author, id }) => {
 			</div>
 			{isOpen && (
 				/*user !== undefined &&*/ <>
-					<IconButton color='inherit' onClick={() => updateCommit(id, message)}>
+					<IconButton
+						color='inherit'
+						onClick={() => {
+							setIsOpen(false);
+							updateCommit(id, message);
+						}}>
 						<CheckIcon />
 					</IconButton>
 					<IconButton
