@@ -21,7 +21,8 @@ export const Commits = ({ post }) => {
 		const bringUsers = async () =>
 			await instance
 				.get(commits(post))
-				.then((response) => setLocalCommits(response?.data || ''));
+				.then((response) => response?.data)
+				.then((data) => setLocalCommits(data?.comments));
 
 		bringUsers();
 	}, [post]);
@@ -30,7 +31,10 @@ export const Commits = ({ post }) => {
 
 	return (
 		<Paper className={classes.paper}>
-			{localCommits?.comments?.length > 0 ? <Commit /> : <></>}
+			{localCommits?.length > 0 &&
+				localCommits.map((commit) => (
+					<Commit commit={commit} key={commit?._id} />
+				))}
 		</Paper>
 	);
 };
