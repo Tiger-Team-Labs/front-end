@@ -67,6 +67,7 @@ export const Admin = () => {
         setOpenAlertWarning(true)
       })
   }
+
   // HandleSubmit Modal New Category
   const handleSubmitNewCategory = event => {
     // PreventRefresh
@@ -99,10 +100,44 @@ export const Admin = () => {
   }
   
 
-  const mostrarId = (id) => {
-    console.log(`id a traves de la función : ${id.name}`);
+  // Update EditCategory
+  // Update Edit category whit axios
+  const editCategory = async () => {
+    await axios.put(urlCategories+valuecategory._id, valuecategory,
+      {
+        headers: {
+          'x-access-token': `${user?.token}`
+        }
+      })
+      .then(res => {
+        console.log(res)
+        // refresh category
+        bringCategories()
+        // closeModal
+        modalCreateOpenClose()
+        // clean de form
+        setValueCategory({
+          name: "",
+        })
+      })
+      .catch(error => {
+        console.error(`Algo pasó en createNewCategory: ${error}`)
+        // openModal
+        modalCreateOpenClose()
+        setOpenAlertWarning(true)
+      })
+  }
+  const updateValuesCategory = (id) => {
     setValueCategory(id)
-    
+  }
+  // HandleSubmit Modal Edit Category
+  const handleSubmitEditCategory = event => {
+    // PreventRefresh
+    event.preventDefault();
+    // axiosNewCategory
+    editCategory();
+    // closeModal
+    modalCreateOpenClose();
   }
 
 
@@ -146,9 +181,11 @@ export const Admin = () => {
                     <EditIcon onClick={() => {
                       setEditCategory(true)
                       modalCreateOpenClose()
-                      mostrarId(category)
+                      updateValuesCategory(category)
                     }} />
-                    <DeleteIcon />
+                    <DeleteIcon onClick={()=> {
+                      console.log(category._id);
+                    }} />
                   </TableCell>
                 </TableRow>
               )
@@ -157,16 +194,20 @@ export const Admin = () => {
         </Table>
       </TableContainer>
 
-      {/* modal Create Start*/}
+      {/* modal Create or Edit Start*/}
       <Dialog
         open={openModalCreate}
+        
         onClose={() => modalCreateOpenClose()}
         aria-labelledby="form-dialog-title">
         <DialogTitle> {editcategory? "Edit" : "Create"}  category </DialogTitle>
         <DialogContent>
           <form
             className={classes.createPost}
-            onSubmit={handleSubmitNewCategory}
+            onSubmit={ editcategory
+              ? handleSubmitEditCategory
+              : handleSubmitNewCategory
+            }
           >
             <TextField
               autoFocus
@@ -182,7 +223,7 @@ export const Admin = () => {
             />
             {editcategory 
             ? 
-            <Button fullWidth variant="contained" color="primary"  >
+            <Button fullWidth variant="contained" color="primary" type="submit" >
               Actualizar
             </Button>
             :
@@ -198,7 +239,7 @@ export const Admin = () => {
           </form>
         </DialogContent>
       </Dialog>
-      {/* modal Create end */}
+      {/* modal Create or Edit End */}
     </section>
   )
 }
