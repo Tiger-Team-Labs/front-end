@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { urlCategories } from '../utils/Route'
-import { Dialog, Button, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, DialogTitle, DialogContent, TextField } from '@material-ui/core'
+import { Dialog, DialogActions, Button, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, DialogTitle, DialogContent, TextField } from '@material-ui/core'
 // import Axios
 import axios from 'axios';
 // Loading
@@ -28,9 +28,11 @@ export const Admin = () => {
   const [openModalCreate, setOpenModalCreate] = useState(false)
   // Modal Edit
   const [editcategory, setEditCategory] = useState(false)
+  // Modal Remove
+  const [openModalRemove, setOpenModalRemove] = useState(false)
 
   const editCategoryTrueFalse = () => {
-      setEditCategory(true)
+    setEditCategory(true)
   }
 
   // state handleChange ModalCreateCategories
@@ -98,12 +100,12 @@ export const Admin = () => {
   const modalCreateOpenClose = () => {
     setOpenModalCreate(!openModalCreate)
   }
-  
+
 
   // Update EditCategory
   // Update Edit category whit axios
   const editCategory = async () => {
-    await axios.put(urlCategories+valuecategory._id, valuecategory,
+    await axios.put(urlCategories + valuecategory._id, valuecategory,
       {
         headers: {
           'x-access-token': `${user?.token}`
@@ -140,6 +142,37 @@ export const Admin = () => {
     modalCreateOpenClose();
   }
 
+  // Remove Category
+  const modalRemoveOpenClose = () => {
+    setOpenModalRemove(!openModalRemove)
+  }
+  // Remove category whit axios
+  const removeCategory = async () => {
+    await axios.delete(urlCategories + valuecategory._id,
+      {
+        headers: {
+          'x-access-token': `${user?.token}`
+        }
+      })
+      .then(res => {
+        console.log(res)
+        // refresh category
+        bringCategories()
+        // closeModal
+        modalRemoveOpenClose()
+        // clean de form
+        setValueCategory({
+          name: "",
+        })
+      })
+      .catch(error => {
+        console.error(`Algo pasó en createNewCategory: ${error}`)
+        // openModal
+        modalRemoveOpenClose()
+        setOpenAlertWarning(true)
+      })
+  }
+
 
   // show loadign 
   if (categories.length === 0) {
@@ -151,8 +184,8 @@ export const Admin = () => {
   }
   return (
     <section className={classes.admin}>
-      <Button onClick={() => {modalCreateOpenClose(); setEditCategory(false)}} variant="contained" color="secondary">
-        Agree category 
+      <Button onClick={() => { modalCreateOpenClose(); setEditCategory(false) }} variant="contained" color="secondary">
+        Agree category
       </Button>
       <TableContainer>
         <Table stickyHeader aria-label="sticky table">
@@ -183,8 +216,10 @@ export const Admin = () => {
                       modalCreateOpenClose()
                       updateValuesCategory(category)
                     }} />
-                    <DeleteIcon onClick={()=> {
-                      console.log(category._id);
+                    <DeleteIcon onClick={() => {
+                      console.log(category._id)
+                      modalRemoveOpenClose()
+                      updateValuesCategory(category)
                     }} />
                   </TableCell>
                 </TableRow>
@@ -197,14 +232,13 @@ export const Admin = () => {
       {/* modal Create or Edit Start*/}
       <Dialog
         open={openModalCreate}
-        
-        onClose={() => modalCreateOpenClose()}
+        onClose={() => modalRemoveOpenClose()}
         aria-labelledby="form-dialog-title">
-        <DialogTitle> {editcategory? "Edit" : "Create"}  category </DialogTitle>
+        <DialogTitle> {editcategory ? "Edit" : "Create"}  category </DialogTitle>
         <DialogContent>
           <form
             className={classes.createPost}
-            onSubmit={ editcategory
+            onSubmit={editcategory
               ? handleSubmitEditCategory
               : handleSubmitNewCategory
             }
@@ -218,21 +252,21 @@ export const Admin = () => {
               label="Category"
               name="name"
               variant="outlined"
-              value={editcategory? valuecategory.name :  valuecategory.name}
+              value={editcategory ? valuecategory.name : valuecategory.name}
               onChange={handleChangeCreateCategories}
             />
-            {editcategory 
-            ? 
-            <Button fullWidth variant="contained" color="primary" type="submit" >
-              Actualizar
+            {editcategory
+              ?
+              <Button fullWidth variant="contained" color="primary" type="submit" >
+                Actualizar
             </Button>
-            :
-            <Button fullWidth variant="contained" color="primary" type="submit" >
-              Create
+              :
+              <Button fullWidth variant="contained" color="primary" type="submit" >
+                Create
             </Button>
-            
+
             }
-          
+
             <Button onClick={() => modalCreateOpenClose()} fullWidth variant="contained" color="secondary"  >
               Cancel
             </Button>
@@ -240,6 +274,28 @@ export const Admin = () => {
         </DialogContent>
       </Dialog>
       {/* modal Create or Edit End */}
+
+      {/* Modal Delete Start */}
+      <Dialog
+        open={openModalRemove}
+        onClose={() => modalRemoveOpenClose()}
+      >
+        <DialogTitle> ¿Are you sure?  </DialogTitle>
+        <DialogContent>
+          {`The ${valuecategory.name} category will be deleted forever `}
+        </DialogContent>
+        <div className={classes.action}>
+          <Button onClick={()=>removeCategory()} className={classes.action} fullWidth variant="contained" color="primary">
+            Remove
+        </Button>
+        </div>
+        <div className={classes.action}>
+          <Button className={classes.admin} onClick={() => modalRemoveOpenClose()} fullWidth variant="contained" color="secondary">
+            Cancel
+        </Button>
+        </div>
+      </Dialog>
+      {/* Modal Delete End */}
     </section>
   )
 }
