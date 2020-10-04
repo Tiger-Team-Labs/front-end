@@ -1,11 +1,13 @@
 //import react
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 //import commit component
 import { Commit } from '../Commit';
 //import request tools
 import { instance, commits } from '../../utils/requests';
 //import components
 import { Input, Paper, Typography } from '@material-ui/core';
+//import context
+import { Context } from '../../utils/Context';
 //import styles
 import { useStyles } from './styles';
 
@@ -17,6 +19,8 @@ export const Commits = ({ post }) => {
 	const [newCommit, setNewCommit] = useState('');
 	//use styles
 	const classes = useStyles();
+	//use context
+	const { createCommit } = useContext(Context);
 
 	//use effect to bring the commits
 	useEffect(() => {
@@ -35,7 +39,6 @@ export const Commits = ({ post }) => {
 	//handle on key press
 	const handleOnKeyPress = (event) => {
 		if (event.charCode === 13) {
-			console.log('cool');
 		}
 	};
 

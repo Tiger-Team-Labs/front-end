@@ -250,6 +250,11 @@ export const ContextProvider = memo(({ children }) => {
 	};
 
 	//update the user
+	/**
+	 *
+	 * @param {number} id
+	 * @param {string} body
+	 */
 	const updateUser = (id, body) => {
 		console.log(body);
 		console.log(id);
@@ -300,6 +305,27 @@ export const ContextProvider = memo(({ children }) => {
 				commits('', id),
 				{
 					content: content,
+				},
+				{
+					headers: {
+						'x-access-token': `${token}`,
+					},
+				},
+			)
+			.then((response) => setResponse(response?.status))
+			.catch((err) => setResponse(err.response?.status));
+	};
+
+	//create a new category
+	/**
+	 * @description: allow us to create a new category
+	 */
+	const createCommit = (postId) => {
+		instance
+			.post(
+				commits,
+				{
+					content: categoryName,
 				},
 				{
 					headers: {
@@ -386,6 +412,7 @@ export const ContextProvider = memo(({ children }) => {
 				updateUser,
 				deleteCommit,
 				updateCommit,
+				createCommit,
 			}}>
 			{children}
 		</Context.Provider>
