@@ -13,4 +13,11 @@ export const useStyles = makeStyles((theme) => ({
 		padding: '1rem 0',
 		color: 'white',
 	},
+	input: {
+		padding: '.5rem',
+		margin: '.5em',
+		minWidth: '50vw',
+		background: 'white',
+		borderRadius: '.2rem',
+	},
 }));
