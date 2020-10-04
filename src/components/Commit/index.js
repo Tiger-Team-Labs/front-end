@@ -28,8 +28,12 @@ export const Commit = ({ content, author, id }) => {
 	const { user, deleteCommit, updateCommit } = useContext(Context);
 	//use effect
 	useEffect(() => {
-		setMessage(content);
-		setLocalAuthor(author);
+		let isSubscribed = true;
+
+		isSubscribed && setMessage(content);
+		isSubscribed && setLocalAuthor(author);
+
+		return () => (isSubscribed = false);
 	}, [author, content]);
 
 	return (
@@ -51,8 +55,8 @@ export const Commit = ({ content, author, id }) => {
 					</CardContent>
 				)}
 			</div>
-			{isOpen && (
-				/*user !== undefined &&*/ <>
+			{isOpen && user?.id === localAuthor && (
+				<>
 					<IconButton
 						color='inherit'
 						onClick={() => {
@@ -68,8 +72,8 @@ export const Commit = ({ content, author, id }) => {
 					</IconButton>
 				</>
 			)}
-			{!isOpen && (
-				/*user !== undefined &&*/ <>
+			{!isOpen && user?.id === localAuthor && (
+				<>
 					<IconButton
 						color='inherit'
 						onClick={() => setIsOpen((value) => (value = true))}>

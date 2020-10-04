@@ -20,10 +20,12 @@ export const Commits = ({ post }) => {
 	//use styles
 	const classes = useStyles();
 	//use context
-	const { createCommit } = useContext(Context);
+	const { createCommit, user } = useContext(Context);
 
 	//use effect to bring the commits
 	useEffect(() => {
+		let isSubscribed = true;
+
 		const bringUsers = async () =>
 			await instance
 				.get(commits(post))
@@ -33,13 +35,22 @@ export const Commits = ({ post }) => {
 				})
 				.then((data) => setLocalCommits(data?.comments));
 
-		bringUsers();
+		isSubscribed && bringUsers();
+
+		return () => (isSubscribed = false);
 	}, [post, localResponse]);
 
 	//handle on key press
+	/**
+	 *
+	 * @param {event} event
+	 */
 	const handleOnKeyPress = (event) => {
 		if (event.charCode === 13) {
 			createCommit(post, newCommit);
+
+			//reset
+			setNewCommit('');
 		}
 	};
 
@@ -49,13 +60,15 @@ export const Commits = ({ post }) => {
 				Commits
 			</Typography>
 			<Paper className={classes.paper}>
-				<Input
-					onKeyPress={handleOnKeyPress}
-					onChange={(e) => setNewCommit(e.target.value)}
-					placeholder='To make a commit, you have to write here! and press enter'
-					value={newCommit}
-					className={classes.input}
-				/>
+				{user !== undefined && user?.roles?.length === 1 && (
+					<Input
+						onKeyPress={handleOnKeyPress}
+						onChange={(e) => setNewCommit(e.target.value)}
+						placeholder='To make a commit, you have to write here! and press enter'
+						value={newCommit}
+						className={classes.input}
+					/>
+				)}
 			</Paper>
 			{localCommits?.length > 0 &&
 				localCommits.map((commit) => (

@@ -342,6 +342,8 @@ export const ContextProvider = memo(({ children }) => {
 	 * bring the data from de data base
 	 */
 	useEffect(() => {
+		let isSubscribed = true;
+
 		const bringCategories = async () =>
 			await instance
 				.get(readCategories)
@@ -350,12 +352,16 @@ export const ContextProvider = memo(({ children }) => {
 		const bringData = async () =>
 			await instance.get(getPosts).then((response) => setPosts(response?.data));
 
-		bringCategories();
-		bringData();
+		isSubscribed && bringCategories();
+		isSubscribed && bringData();
+
+		return () => (isSubscribed = false);
 	}, [response]);
 
 	//use effect to bring the users
 	useEffect(() => {
+		let isSubscribed = true;
+
 		const bringUsers = async () =>
 			await instance
 				.get(readUsers, {
@@ -364,7 +370,10 @@ export const ContextProvider = memo(({ children }) => {
 					},
 				})
 				.then((response) => setUsers(response?.data));
-		user?.roles?.length === 2 && bringUsers();
+
+		isSubscribed && user?.roles?.length === 2 && bringUsers();
+
+		return () => (isSubscribed = false);
 	}, [token, user, response]);
 
 	return (
