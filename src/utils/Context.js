@@ -320,12 +320,12 @@ export const ContextProvider = memo(({ children }) => {
 	/**
 	 * @description: allow us to create a new category
 	 */
-	const createCommit = (postId) => {
+	const createCommit = (postId, content) => {
 		instance
 			.post(
-				commits,
+				commits(postId),
 				{
-					content: categoryName,
+					content: content,
 				},
 				{
 					headers: {

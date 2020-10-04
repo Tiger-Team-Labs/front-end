@@ -39,6 +39,7 @@ export const Commits = ({ post }) => {
 	//handle on key press
 	const handleOnKeyPress = (event) => {
 		if (event.charCode === 13) {
+			createCommit(post, newCommit);
 		}
 	};
 
