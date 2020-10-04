@@ -32,6 +32,13 @@ export const Commits = ({ post }) => {
 		bringUsers();
 	}, [post, localResponse]);
 
+	//handle on key press
+	const handleOnKeyPress = (event) => {
+		if (event.charCode === 13) {
+			console.log('cool');
+		}
+	};
+
 	return (
 		<Paper className={classes.paper}>
 			<Typography variant='caption' className={classes.title}>
@@ -39,6 +46,8 @@ export const Commits = ({ post }) => {
 			</Typography>
 			<Paper className={classes.paper}>
 				<Input
+					onKeyPress={handleOnKeyPress}
+					onChange={(e) => setNewCommit(e.target.value)}
 					placeholder='To make a commit, you have to write here! and press enter'
 					value={newCommit}
 					className={classes.input}
