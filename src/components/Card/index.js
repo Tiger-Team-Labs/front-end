@@ -32,12 +32,6 @@ export default function Cards(props) {
             <Link to={"/posts"} color="primary" >
               <Button size="small">Learn More</Button>
             </Link>
-            <Link to={"/admin"} color="primary" >
-              <Button variant="contained" color="secondary" size="small">Go to Admin</Button>
-            </Link>
-            <Link to={"/user"} color="primary" >
-              <Button variant="contained" color="secondary" size="small">Go to User</Button>
-            </Link>
           </>
           : null}
       </CardActions>

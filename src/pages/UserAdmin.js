@@ -167,7 +167,7 @@ export const UserAdmin = () => {
                   <TableCell>{user.roles[0]}</TableCell>
                   <TableCell>{user.username}</TableCell>
                   <TableCell>{user.email}</TableCell>
-                  <TableCell size={"small"}>{user.password}</TableCell>
+                  <TableCell >{user.password}</TableCell>
                   <TableCell>{user._id}</TableCell>
                   <TableCell>{user.updatedAt} </TableCell>
 

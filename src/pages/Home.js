@@ -7,13 +7,21 @@ import Loading from '../components/Loading';
 import Cards from '../components/Card'
 // import Context
 import { Context } from '../utils/Contex';
-import {urlCategories} from '../utils/Route'
+import { urlCategories } from '../utils/Route'
+import { Link } from 'react-router-dom';
+import { Button } from "@material-ui/core";
+import { useStyles } from '../Style'
+
+
+
 
 
 
 export default function Home() {
+  const classes = useStyles();
   const {
     categories,
+    user,
     setCategories,
   } = useContext(Context);
 
@@ -36,7 +44,7 @@ export default function Home() {
   if (categories.length === 0) {
     return (
       <>
-        <h1>Bienvenidos a Foro App</h1>
+        <h1>Welcome to Foro App</h1>
         <Loading />
       </>
     );
@@ -44,11 +52,31 @@ export default function Home() {
     // show Categories
     return (
       <>
+        <h1>Welcome to Foro App</h1>
         {categories.map((categorie, _id) => {
           return (
-            <Cards key={categorie._id} data={categorie}/>
+            <Cards key={categorie._id} data={categorie} />
           )
         })}
+        {user?.roles.length === 2
+          ?<>
+              <Button>
+                <Link to={"/user"} className={classes.link}>
+                  User
+              </Link>
+              </Button>
+
+          {`  `}
+
+              <Button>
+                <Link to={"/admin"} className={classes.link} >
+                  Category
+              </Link>
+              </Button>
+
+          </>
+          : null
+        }
       </>
     )
   }

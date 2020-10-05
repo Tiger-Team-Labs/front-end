@@ -9,6 +9,9 @@ import {
   TextField,
   makeStyles,
 } from '@material-ui/core';
+// icon
+import VpnKeyIcon from '@material-ui/icons/VpnKey';
+
 // value de context
 import { Context } from '../../utils/Contex';
 
@@ -93,7 +96,7 @@ export default function Form() {
           value={values.password}
           onChange={handleChange}
         />
-        <Button fullWidth variant="contained" color="secondary" type="submit" >
+        <Button startIcon={<VpnKeyIcon/>} fullWidth variant="contained" color="secondary" type="submit" >
           Sign Up
         </Button>
       </form>

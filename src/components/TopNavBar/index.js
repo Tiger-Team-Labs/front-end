@@ -7,20 +7,20 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 // Icons
 import SportsEsportsIcon from '@material-ui/icons/SportsEsports';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 // import Context
 import { Context } from '../../utils/Contex';
 // Styles
-import {useStyles} from '../../Style/'
+import { useStyles } from '../../Style/'
+import { LongMenu } from '../Menu/'
 
 
 export default function TopNavBar() {
+
   const classes = useStyles();
   // Context
   const {
     handleClickOpenFormDialog,
     user,
-    setUser
   } = React.useContext(Context);
 
   return (
@@ -29,28 +29,22 @@ export default function TopNavBar() {
         <Toolbar>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <Link to={"/"} className={classes.link}>
-              <SportsEsportsIcon  />
+              <SportsEsportsIcon />
             </Link>
           </IconButton>
           <Typography variant="h6" className={classes.title}>
             Foro Game
           </Typography>
-          {user !== undefined 
+          {user !== undefined
             ? <>
-                <AccountCircleIcon /> Hola {user.username}
-                <Link to={"/"} className={classes.link}>
-                  <Button color="inherit" onClick={()=>setUser(undefined)}>
-                    Log-uot 
-                  </Button>
-                </Link>
-              </>
-            : 
-                <Button color="inherit" onClick={handleClickOpenFormDialog}>
-                  Login
-                </Button>
-              
+              Hola {user.username} <LongMenu />
+            </>
+            : <>
+              <Button color="inherit" onClick={handleClickOpenFormDialog}>
+                Login
+              </Button>
+            </>
           }
-          
         </Toolbar>
       </AppBar>
     </div>
