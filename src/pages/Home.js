@@ -77,8 +77,6 @@ export default function Home() {
             <Cards key={categorie._id} data={categorie} />
           )
         })}
-
-       
       </>
     )
   }

@@ -153,7 +153,7 @@ export const UserAdmin = () => {
               <TableCell>Roles</TableCell>
               <TableCell>UserName</TableCell>
               <TableCell>Email</TableCell>
-              <TableCell>Password</TableCell>
+            
               <TableCell>Id</TableCell>
               <TableCell>Updated At</TableCell>
               <TableCell>Action</TableCell>
@@ -167,7 +167,7 @@ export const UserAdmin = () => {
                   <TableCell>{user.roles[0]}</TableCell>
                   <TableCell>{user.username}</TableCell>
                   <TableCell>{user.email}</TableCell>
-                  <TableCell >{user.password}</TableCell>
+                
                   <TableCell>{user._id}</TableCell>
                   <TableCell>{user.updatedAt} </TableCell>
 
@@ -240,6 +240,7 @@ export const UserAdmin = () => {
               margin="dense"
               id="password"
               label="Password"
+              type="password"
               name="password"
               variant="outlined"
               value={valueUser.password}
