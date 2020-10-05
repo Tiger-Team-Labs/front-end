@@ -1,4 +1,3 @@
-###### tags: `react`
 # Foro app :crossed_swords: 
 >This is a react app created with mern stack by Tigers Team (platzi master)
 ## Description
