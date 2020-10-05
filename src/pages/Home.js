@@ -53,14 +53,9 @@ export default function Home() {
     return (
       <>
         <h1>Welcome to Foro App</h1>
-        {categories.map((categorie, _id) => {
-          return (
-            <Cards key={categorie._id} data={categorie} />
-          )
-        })}
         {user?.roles.length === 2
           ?<>
-              <Button>
+              <Button color="secondary" variant="contained">
                 <Link to={"/user"} className={classes.link}>
                   User
               </Link>
@@ -68,7 +63,7 @@ export default function Home() {
 
           {`  `}
 
-              <Button>
+              <Button color="secondary" variant="contained" >
                 <Link to={"/admin"} className={classes.link} >
                   Category
               </Link>
@@ -77,6 +72,13 @@ export default function Home() {
           </>
           : null
         }
+        {categories.map((categorie, _id) => {
+          return (
+            <Cards key={categorie._id} data={categorie} />
+          )
+        })}
+
+       
       </>
     )
   }

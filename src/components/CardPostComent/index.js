@@ -13,7 +13,7 @@ import { useStyles } from '../../Style/'
 // import Context
 import { Context } from '../../utils/Contex';
 
-export default function CardPost(props) {
+export default function CardPostComent(props) {
   const {data} = props
   const classes = useStyles();
   const {
@@ -43,16 +43,6 @@ export default function CardPost(props) {
           <Typography variant='caption' >
             {data.createdAt}
           </Typography>
-          <Link to={`/posts/${data?._id}/comment`}>
-          <Button onClick={()=> {
-            console.log(data)
-            setAuxiliarValues(data)
-          }} 
-          variant="contained" 
-          color="default">
-            Comments
-          </Button>
-          </Link>
         </AccordionDetails>
       </Accordion>
       {user !== undefined

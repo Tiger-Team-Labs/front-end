@@ -9,6 +9,8 @@ import MenuList from '@material-ui/core/MenuList';
 import Popper from '@material-ui/core/Popper';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import Button from '@material-ui/core/Button';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+
 
 
 
@@ -59,7 +61,7 @@ export function LongMenu() {
           aria-haspopup="true"
           onClick={handleToggle}
         >
-          menu
+          <MoreVertIcon />
         </Button>
         <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
           {({ TransitionProps, placement }) => (
@@ -70,9 +72,7 @@ export function LongMenu() {
               <Paper>
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                    <MenuItem onClick={handleClose}>Profilelegr</MenuItem>
-                    <MenuItem onClick={handleClose}>My account</MenuItem>
-                    <MenuItem onClick={()=>{handleClose(); setUser(undefined)}}>Logout</MenuItem>
+                    <MenuItem onClick={()=> setUser(undefined)}>Logout</MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>

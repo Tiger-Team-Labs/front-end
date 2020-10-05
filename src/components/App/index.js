@@ -15,6 +15,7 @@ import Loading from '../Loading';
 // import error NotFound pages
 import NotFound from '../NotFound'
 import RemovePost from '../RemovePost'
+import Comment from '../../pages/Comment'
 
 //create and export App component
 export default function App() {
@@ -27,6 +28,7 @@ export default function App() {
           <Route exact path="/posts" component={Post}/>
           <Route exact path="/posts/:post_id/edit" component={EditPost}/>
           <Route exact path="/posts/:post_id/remove" component={RemovePost}/>
+          <Route exact path="/posts/:post_id/comment" component={Comment}/>
           <Route exact path="/admin" component={Admin}/>
           <Route exact path="/user" component={UserAdmin}/>
           <Route component={NotFound} />

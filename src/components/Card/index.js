@@ -13,27 +13,30 @@ import { Context } from '../../utils/Contex';
 
 
 export default function Cards(props) {
+  const {data} = props
   const classes = useStyles();
   const {
     user,
+    setAuxiliarValues
   } = useContext(Context);
 
   return (
     <Card className={classes.card} variant="outlined">
       <CardContent >
         <Typography variant="h3" component="h3">
-          {props.data.name}
+          {data.name}
         </Typography>
       </CardContent>
       <CardActions>
-        {/* is Login or Register */}
+        <>
         {user !== undefined
-          ? <>
+          ? 
             <Link to={"/posts"} color="primary" >
               <Button size="small">Learn More</Button>
             </Link>
-          </>
+          
           : null}
+          </>
       </CardActions>
     </Card>
   );

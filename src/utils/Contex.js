@@ -156,6 +156,12 @@ const handleCloseRemovePost = () => {
   setOpenRemovePost(false);
 };
 
+// auxiliar Values
+const [auxiliarValues,
+  setAuxiliarValues] = useState(undefined
+  )
+
+
   // return Value
   return (
     <Context.Provider value={{
@@ -199,7 +205,9 @@ const handleCloseRemovePost = () => {
       openRemovePost, 
       setOpenRemovePost,
       handleClickOpenRemovePost,
-      handleCloseRemovePost
+      handleCloseRemovePost,
+      auxiliarValues,
+      setAuxiliarValues
     }}>
       {children}
     </Context.Provider>
